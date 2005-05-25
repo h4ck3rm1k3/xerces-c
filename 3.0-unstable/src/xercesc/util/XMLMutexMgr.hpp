@@ -15,30 +15,34 @@
  */
 
 /*
- * $Id$
+ * $Id: MacAbstractFile.hpp 176026 2004-09-08 13:57:07Z peiyongz $
  */
 
-#pragma once
+#ifndef XMLMUTEXMGL_HPP
+#define XMLMUTEXMGL_HPP
 
 #include <xercesc/util/XMemory.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Abstract class for files. This is be used to allow multiple file handling implementations.
-class XMLAbstractFile : public XMemory
+typedef void* XMLMutexHandle;
+
+//	Abstract class for mutex implementation.
+//  This is be used to allow multiple mutex handling implementations.
+class XMLMutexMgr : public XMemory
 {
     public:
-        XMLMacAbstractFile() {}
-        virtual ~XMLMacAbstractFile() {}
+        XMLMutexMgr() {}
+        virtual ~XMLMutexMgr() {}
 
-        virtual unsigned long currPos() = 0;
-        virtual void close() = 0;
-        virtual unsigned long size() = 0;
-        virtual bool open(const XMLCh* path, bool toWrite = false) = 0;
-        virtual bool open(const char* path, bool toWrite = false) = 0;
-        virtual unsigned long read(unsigned long byteCount, XMLByte* buffer) = 0;
-        virtual void write(unsigned long byteCount, const XMLByte* buffer) = 0;
-        virtual void reset() = 0;
+		// Mutex operations
+		virtual XMLMutexHandle	create(MemoryManager* const manager) = 0;
+		virtual void			destroy(XMLMutexHandle mtx, MemoryManager* const manager) = 0;
+		virtual void			lock(XMLMutexHandle mtx) = 0;
+		virtual void			unlock(XMLMutexHandle mtx) = 0;
 };
 
 XERCES_CPP_NAMESPACE_END
+
+
+#endif

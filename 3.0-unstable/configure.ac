@@ -141,6 +141,9 @@ XERCES_LIBWWW_PREFIX
 XERCES_NETACCESSOR_SELECTION
 XERCES_TRANSCODER_SELECTION
 XERCES_MSGLOADER_SELECTION
+XERCES_FILEMGR_SELECTION
+XERCES_MUTEXMGR_SELECTION
+XERCES_ATOMICOPMGR_SELECTION
 
 
 
@@ -148,6 +151,11 @@ XERCES_MSGLOADER_SELECTION
 # Define some namespace-protected macros for use in the publicly visible
 # XercesConfig.h file.
 ######################################################
+AC_DEFINE([XERCES_AUTOCONF], 1, [Define to true if autoconf is used in this configuration])
+
+AS_IF([test x$ac_cv_header_sys_types_h = xyes],
+	AC_DEFINE([XERCES_HAVE_SYS_TYPES_H], 1, [Define to 1 if we have sys/types.h]))
+
 case $host in
 *-*-msdos* | *-*-mingw32* | *-*-cygwin* | *-*-windows* )
 	platform_export="__declspec(dllexport)"
@@ -161,8 +169,6 @@ esac
 AC_DEFINE_UNQUOTED([XERCES_PLATFORM_EXPORT], [$platform_export], [Define as the platform's export attribute])
 AC_DEFINE_UNQUOTED([XERCES_PLATFORM_IMPORT], [$platform_import], [Define as the platform's import attribute])
 
-AC_DEFINE([XERCES_AUTOCONF], 1, [Define to true if autoconf is used in this configuration])
-
 AS_IF([test ! $ac_cv_cxx_have_bool],
 	AC_DEFINE([XERCES_NO_NATIVE_BOOL], 1, [Define if there is no native bool support in this environment]))
 
@@ -173,8 +179,8 @@ AC_DEFINE_UNQUOTED([XERCES_16BIT_INT], $xerces_cv_type_16bit_int, [An appropriat
 AC_DEFINE_UNQUOTED([XERCES_32BIT_INT], $xerces_cv_type_32bit_int, [An appropriate 32 bit integer type])
 
 AS_IF([test $ac_cv_sizeof_wchar_t -eq 2],
-	AC_DEFINE([XERCES_XMLCH], [wchar_t], [Define to the 16 bit type used to represent Xerces UTF-16 characters]),
-	AC_DEFINE_UNQUOTED([XERCES_XMLCH], [unsigned $xerces_cv_type_16bit_int], [Define to the 16 bit type used to represent Xerces UTF-16 characters]))
+	AC_DEFINE([XERCES_XMLCH_T], [wchar_t], [Define to the 16 bit type used to represent Xerces UTF-16 characters]),
+	AC_DEFINE_UNQUOTED([XERCES_XMLCH_T], [unsigned $xerces_cv_type_16bit_int], [Define to the 16 bit type used to represent Xerces UTF-16 characters]))
 	
 AS_IF([test x$ac_cv_type_size_t = xyes],
 	AC_DEFINE([XERCES_SIZE_T], [size_t], [Define as the appropriate size_t type]),

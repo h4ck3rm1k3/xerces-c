@@ -48,11 +48,14 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/cxx_have_bool.m4 \
 	$(top_srcdir)/m4/cxx_have_namespaces.m4 \
 	$(top_srcdir)/m4/cxx_have_std_libs.m4 \
 	$(top_srcdir)/m4/cxx_have_std_namespace.m4 \
+	$(top_srcdir)/m4/xerces_atomicopmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_curl_prefix.m4 \
+	$(top_srcdir)/m4/xerces_filemgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_icu_prefix.m4 \
 	$(top_srcdir)/m4/xerces_libwww_prefix.m4 \
 	$(top_srcdir)/m4/xerces_link_darwin_framework.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
+	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
 	$(top_srcdir)/m4/xerces_type_16bit_int.m4 \
@@ -157,6 +160,12 @@ XERCES_USE_NETACCESSOR_SOCKET_FALSE = @XERCES_USE_NETACCESSOR_SOCKET_FALSE@
 XERCES_USE_NETACCESSOR_SOCKET_TRUE = @XERCES_USE_NETACCESSOR_SOCKET_TRUE@
 XERCES_USE_NETACCESSOR_WINSOCK_FALSE = @XERCES_USE_NETACCESSOR_WINSOCK_FALSE@
 XERCES_USE_NETACCESSOR_WINSOCK_TRUE = @XERCES_USE_NETACCESSOR_WINSOCK_TRUE@
+XERCES_USE_POSIX_ATOMICOPMGR_FALSE = @XERCES_USE_POSIX_ATOMICOPMGR_FALSE@
+XERCES_USE_POSIX_ATOMICOPMGR_TRUE = @XERCES_USE_POSIX_ATOMICOPMGR_TRUE@
+XERCES_USE_POSIX_FILEMGR_FALSE = @XERCES_USE_POSIX_FILEMGR_FALSE@
+XERCES_USE_POSIX_FILEMGR_TRUE = @XERCES_USE_POSIX_FILEMGR_TRUE@
+XERCES_USE_POSIX_MUTEXMGR_FALSE = @XERCES_USE_POSIX_MUTEXMGR_FALSE@
+XERCES_USE_POSIX_MUTEXMGR_TRUE = @XERCES_USE_POSIX_MUTEXMGR_TRUE@
 XERCES_USE_TRANSCODER_ICU_FALSE = @XERCES_USE_TRANSCODER_ICU_FALSE@
 XERCES_USE_TRANSCODER_ICU_TRUE = @XERCES_USE_TRANSCODER_ICU_TRUE@
 XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE = @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE@

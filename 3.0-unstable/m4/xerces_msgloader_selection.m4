@@ -22,6 +22,7 @@ AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 	ml_list=
 	
 	# Check for inmemory msgloader
+	AC_MSG_CHECKING([for whether we support the InMemory MsgLoader])
 	list_add=
 	AS_IF([true], [
 		AC_ARG_ENABLE([msgloader-inmemory],

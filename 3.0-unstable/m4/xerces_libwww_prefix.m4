@@ -29,6 +29,7 @@ AC_DEFUN([XERCES_LIBWWW_PREFIX],
 			done
 		fi
 	])
+	
 	]
 )
 

@@ -238,6 +238,9 @@
 /* Define to true if autoconf is used in this configuration */
 #undef XERCES_AUTOCONF
 
+/* Define to 1 if we have sys/types.h */
+#undef XERCES_HAVE_SYS_TYPES_H
+
 /* Define if there is support for L"widestring" */
 #undef XERCES_LSTRSUPPORT
 
@@ -280,6 +283,15 @@
 /* Define to use the WinSock NetAccessor */
 #undef XERCES_USE_NETACCESSOR_WINSOCK
 
+/* Define to use the POSIX AtomicOp mgr */
+#undef XERCES_USE_POSIX_ATOMICOPMGR
+
+/* Define to use the POSIX file mgr */
+#undef XERCES_USE_POSIX_FILEMGR
+
+/* Define to use the POSIX mutex mgr */
+#undef XERCES_USE_POSIX_MUTEXMGR
+
 /* Define to use the ICU-based transcoder */
 #undef XERCES_USE_TRANSCODER_ICU
 
@@ -287,7 +299,7 @@
 #undef XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER
 
 /* Define to the 16 bit type used to represent Xerces UTF-16 characters */
-#undef XERCES_XMLCH
+#undef XERCES_XMLCH_T
 
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const

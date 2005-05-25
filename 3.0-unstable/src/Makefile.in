@@ -35,7 +35,7 @@
 #
 
 
-SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) $(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) $(libicu_la_SOURCES) $(libinmemory_la_SOURCES) $(libinternal_la_SOURCES) $(libmacosunicodeconverter_la_SOURCES) $(libmacplatform_la_SOURCES) $(libparsers_la_SOURCES) $(libsax_la_SOURCES) $(libsax2_la_SOURCES) $(libsrc_la_SOURCES) $(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
+SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) $(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) $(libicu_la_SOURCES) $(libinmemory_la_SOURCES) $(libinternal_la_SOURCES) $(libmacosunicodeconverter_la_SOURCES) $(libparsers_la_SOURCES) $(libsax_la_SOURCES) $(libsax2_la_SOURCES) $(libsrc_la_SOURCES) $(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -83,7 +83,6 @@ DIST_COMMON = $(am__nobase_libcfurl_la_HEADERS_DIST) \
 	$(nobase_libdom_la_HEADERS) $(nobase_libdomimpl_la_HEADERS) \
 	$(nobase_libframework_la_HEADERS) \
 	$(nobase_libinternal_la_HEADERS) \
-	$(nobase_libmacplatform_la_HEADERS) \
 	$(nobase_libparsers_la_HEADERS) $(nobase_libsax2_la_HEADERS) \
 	$(nobase_libsax_la_HEADERS) $(nobase_libutil_la_HEADERS) \
 	$(nobase_libvalidators_la_HEADERS) $(srcdir)/Makefile.am \
@@ -94,11 +93,14 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/cxx_have_bool.m4 \
 	$(top_srcdir)/m4/cxx_have_namespaces.m4 \
 	$(top_srcdir)/m4/cxx_have_std_libs.m4 \
 	$(top_srcdir)/m4/cxx_have_std_namespace.m4 \
+	$(top_srcdir)/m4/xerces_atomicopmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_curl_prefix.m4 \
+	$(top_srcdir)/m4/xerces_filemgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_icu_prefix.m4 \
 	$(top_srcdir)/m4/xerces_libwww_prefix.m4 \
 	$(top_srcdir)/m4/xerces_link_darwin_framework.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
+	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
 	$(top_srcdir)/m4/xerces_type_16bit_int.m4 \
@@ -265,44 +267,39 @@ am__objects_8 = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConve
 libmacosunicodeconverter_la_OBJECTS =  \
 	$(am_libmacosunicodeconverter_la_OBJECTS)
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am_libmacosunicodeconverter_la_rpath =
-libmacplatform_la_LIBADD =
-am__objects_9 = xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo \
-	xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo \
-	xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo
-am_libmacplatform_la_OBJECTS = $(am__objects_9)
-libmacplatform_la_OBJECTS = $(am_libmacplatform_la_OBJECTS)
 libparsers_la_LIBADD =
-am__objects_10 = xercesc/parsers/AbstractDOMParser.lo \
+am__objects_9 = xercesc/parsers/AbstractDOMParser.lo \
 	xercesc/parsers/DOMBuilderImpl.lo \
 	xercesc/parsers/SAX2XMLFilterImpl.lo \
 	xercesc/parsers/SAX2XMLReaderImpl.lo \
 	xercesc/parsers/SAXParser.lo \
 	xercesc/parsers/XercesDOMParser.lo
-am_libparsers_la_OBJECTS = $(am__objects_10)
+am_libparsers_la_OBJECTS = $(am__objects_9)
 libparsers_la_OBJECTS = $(am_libparsers_la_OBJECTS)
 libsax_la_LIBADD =
-am__objects_11 = xercesc/sax/Dummy.lo xercesc/sax/InputSource.lo \
+am__objects_10 = xercesc/sax/Dummy.lo xercesc/sax/InputSource.lo \
 	xercesc/sax/SAXException.lo xercesc/sax/SAXParseException.lo
-am_libsax_la_OBJECTS = $(am__objects_11)
+am_libsax_la_OBJECTS = $(am__objects_10)
 libsax_la_OBJECTS = $(am_libsax_la_OBJECTS)
 libsax2_la_LIBADD =
-am__objects_12 = xercesc/sax2/sax2Dummy.lo
-am_libsax2_la_OBJECTS = $(am__objects_12)
+am__objects_11 = xercesc/sax2/sax2Dummy.lo
+am_libsax2_la_OBJECTS = $(am__objects_11)
 libsax2_la_OBJECTS = $(am_libsax2_la_OBJECTS)
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@am__DEPENDENCIES_1 = libcfurl.la
 @XERCES_USE_TRANSCODER_ICU_TRUE@am__DEPENDENCIES_2 = libicu.la
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am__DEPENDENCIES_3 = libmacosunicodeconverter.la
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@am__DEPENDENCIES_4 =  \
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@	libinmemory.la
-am__DEPENDENCIES_5 = libdom.la libdomimpl.la libframework.la \
-	libinternal.la libparsers.la libsax.la libsax2.la libutil.la \
-	libvalidators.la $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) \
-	$(am__DEPENDENCIES_3) $(am__DEPENDENCIES_4) libmacplatform.la
+am__DEPENDENCIES_5 = libutil.la libdom.la libdomimpl.la \
+	libframework.la libinternal.la libparsers.la libsax.la \
+	libsax2.la libvalidators.la $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_3) \
+	$(am__DEPENDENCIES_4)
 libsrc_la_DEPENDENCIES = $(am__DEPENDENCIES_5)
 am_libsrc_la_OBJECTS =
 libsrc_la_OBJECTS = $(am_libsrc_la_OBJECTS)
 libutil_la_LIBADD =
-am__objects_13 = xercesc/util/Base64.lo \
+am__objects_12 = xercesc/util/Base64.lo \
 	xercesc/util/BinFileInputStream.lo \
 	xercesc/util/BinInputStream.lo \
 	xercesc/util/BinMemInputStream.lo xercesc/util/BitSet.lo \
@@ -354,10 +351,10 @@ am__objects_13 = xercesc/util/Base64.lo \
 	xercesc/util/XMLUTF16Transcoder.lo \
 	xercesc/util/XMLUTF8Transcoder.lo \
 	xercesc/util/XMLWin1252Transcoder.lo
-am_libutil_la_OBJECTS = $(am__objects_13)
+am_libutil_la_OBJECTS = $(am__objects_12)
 libutil_la_OBJECTS = $(am_libutil_la_OBJECTS)
 libvalidators_la_LIBADD =
-am__objects_14 = xercesc/validators/common/AllContentModel.lo \
+am__objects_13 = xercesc/validators/common/AllContentModel.lo \
 	xercesc/validators/common/CMAny.lo \
 	xercesc/validators/common/CMBinaryOp.lo \
 	xercesc/validators/common/CMUnaryOp.lo \
@@ -445,7 +442,7 @@ am__objects_14 = xercesc/validators/common/AllContentModel.lo \
 	xercesc/validators/schema/XSDErrorReporter.lo \
 	xercesc/validators/schema/XSDLocator.lo \
 	xercesc/validators/schema/XUtil.lo
-am_libvalidators_la_OBJECTS = $(am__objects_14)
+am_libvalidators_la_OBJECTS = $(am__objects_13)
 libvalidators_la_OBJECTS = $(am_libvalidators_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
@@ -471,19 +468,17 @@ SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) \
 	$(libicu_la_SOURCES) $(libinmemory_la_SOURCES) \
 	$(libinternal_la_SOURCES) \
 	$(libmacosunicodeconverter_la_SOURCES) \
-	$(libmacplatform_la_SOURCES) $(libparsers_la_SOURCES) \
-	$(libsax_la_SOURCES) $(libsax2_la_SOURCES) \
-	$(libsrc_la_SOURCES) $(libutil_la_SOURCES) \
-	$(libvalidators_la_SOURCES)
+	$(libparsers_la_SOURCES) $(libsax_la_SOURCES) \
+	$(libsax2_la_SOURCES) $(libsrc_la_SOURCES) \
+	$(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
 DIST_SOURCES = $(am__libcfurl_la_SOURCES_DIST) $(libdom_la_SOURCES) \
 	$(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) \
 	$(am__libicu_la_SOURCES_DIST) \
 	$(am__libinmemory_la_SOURCES_DIST) $(libinternal_la_SOURCES) \
 	$(am__libmacosunicodeconverter_la_SOURCES_DIST) \
-	$(libmacplatform_la_SOURCES) $(libparsers_la_SOURCES) \
-	$(libsax_la_SOURCES) $(libsax2_la_SOURCES) \
-	$(libsrc_la_SOURCES) $(libutil_la_SOURCES) \
-	$(libvalidators_la_SOURCES)
+	$(libparsers_la_SOURCES) $(libsax_la_SOURCES) \
+	$(libsax2_la_SOURCES) $(libsrc_la_SOURCES) \
+	$(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
 am__nobase_libcfurl_la_HEADERS_DIST = xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/URLAccessCFBinInputStream.hpp
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
@@ -498,7 +493,6 @@ am__installdirs = "$(DESTDIR)$(libcfurl_ladir)" \
 	"$(DESTDIR)$(libinmemory_ladir)" \
 	"$(DESTDIR)$(libinternal_ladir)" \
 	"$(DESTDIR)$(libmacosunicodeconverter_ladir)" \
-	"$(DESTDIR)$(libmacplatform_ladir)" \
 	"$(DESTDIR)$(libparsers_ladir)" "$(DESTDIR)$(libsax2_ladir)" \
 	"$(DESTDIR)$(libsax_ladir)" "$(DESTDIR)$(libutil_ladir)" \
 	"$(DESTDIR)$(libvalidators_ladir)"
@@ -516,7 +510,6 @@ nobase_libinmemory_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libinternal_laHEADERS_INSTALL = $(install_sh_DATA)
 am__nobase_libmacosunicodeconverter_la_HEADERS_DIST = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.hpp
 nobase_libmacosunicodeconverter_laHEADERS_INSTALL = $(install_sh_DATA)
-nobase_libmacplatform_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libparsers_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libsax2_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libsax_laHEADERS_INSTALL = $(install_sh_DATA)
@@ -528,7 +521,6 @@ HEADERS = $(nobase_libcfurl_la_HEADERS) $(nobase_libdom_la_HEADERS) \
 	$(nobase_libinmemory_la_HEADERS) \
 	$(nobase_libinternal_la_HEADERS) \
 	$(nobase_libmacosunicodeconverter_la_HEADERS) \
-	$(nobase_libmacplatform_la_HEADERS) \
 	$(nobase_libparsers_la_HEADERS) $(nobase_libsax2_la_HEADERS) \
 	$(nobase_libsax_la_HEADERS) $(nobase_libutil_la_HEADERS) \
 	$(nobase_libvalidators_la_HEADERS)
@@ -605,6 +597,12 @@ XERCES_USE_NETACCESSOR_SOCKET_FALSE = @XERCES_USE_NETACCESSOR_SOCKET_FALSE@
 XERCES_USE_NETACCESSOR_SOCKET_TRUE = @XERCES_USE_NETACCESSOR_SOCKET_TRUE@
 XERCES_USE_NETACCESSOR_WINSOCK_FALSE = @XERCES_USE_NETACCESSOR_WINSOCK_FALSE@
 XERCES_USE_NETACCESSOR_WINSOCK_TRUE = @XERCES_USE_NETACCESSOR_WINSOCK_TRUE@
+XERCES_USE_POSIX_ATOMICOPMGR_FALSE = @XERCES_USE_POSIX_ATOMICOPMGR_FALSE@
+XERCES_USE_POSIX_ATOMICOPMGR_TRUE = @XERCES_USE_POSIX_ATOMICOPMGR_TRUE@
+XERCES_USE_POSIX_FILEMGR_FALSE = @XERCES_USE_POSIX_FILEMGR_FALSE@
+XERCES_USE_POSIX_FILEMGR_TRUE = @XERCES_USE_POSIX_FILEMGR_TRUE@
+XERCES_USE_POSIX_MUTEXMGR_FALSE = @XERCES_USE_POSIX_MUTEXMGR_FALSE@
+XERCES_USE_POSIX_MUTEXMGR_TRUE = @XERCES_USE_POSIX_MUTEXMGR_TRUE@
 XERCES_USE_TRANSCODER_ICU_FALSE = @XERCES_USE_TRANSCODER_ICU_FALSE@
 XERCES_USE_TRANSCODER_ICU_TRUE = @XERCES_USE_TRANSCODER_ICU_TRUE@
 XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE = @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE@
@@ -671,14 +669,13 @@ libsrc_la_LIBADD = ${src_libraries}
 #
 # Build convenience libraries for the various xerces components
 #
-
-#
-# TEMPORARY PLATFORM SUPPORT
-#
-src_libraries = libdom.la libdomimpl.la libframework.la libinternal.la \
-	libparsers.la libsax.la libsax2.la libutil.la libvalidators.la \
-	$(am__append_1) $(am__append_2) $(am__append_3) \
-	$(am__append_4) libmacplatform.la
+src_libraries = libutil.la libdom.la libdomimpl.la libframework.la \
+	libinternal.la libparsers.la libsax.la libsax2.la \
+	libvalidators.la $(am__append_1) $(am__append_2) \
+	$(am__append_3) $(am__append_4)
+libutil_ladir = ${includedir}
+nobase_libutil_la_HEADERS = ${util_headers}
+libutil_la_SOURCES = ${util_sources}
 libdom_ladir = ${includedir}
 nobase_libdom_la_HEADERS = ${dom_headers}
 libdom_la_SOURCES = ${dom_sources}
@@ -700,9 +697,6 @@ libsax_la_SOURCES = ${sax_sources}
 libsax2_ladir = ${includedir}
 nobase_libsax2_la_HEADERS = ${sax2_headers}
 libsax2_la_SOURCES = ${sax2_sources}
-libutil_ladir = ${includedir}
-nobase_libutil_la_HEADERS = ${util_headers}
-libutil_la_SOURCES = ${util_sources}
 libvalidators_ladir = ${includedir}
 nobase_libvalidators_la_HEADERS = ${validators_headers}
 libvalidators_la_SOURCES = ${validators_sources}
@@ -721,13 +715,17 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_ladir = ${includedir}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@nobase_libinmemory_la_HEADERS = ${inmemory_headers}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_la_SOURCES = ${inmemory_sources}
-libmacplatform_ladir = ${includedir}
-nobase_libmacplatform_la_HEADERS = ${macplatform_headers}
-libmacplatform_la_SOURCES = ${macplatform_sources}
-libmacplatform_la_CPPFLAGS = -DXML_USE_NETACCESSOR_URLACCESSCF \
-									-DXML_USE_MACOS_UNICODECONVERTER \
-									-DXML_USE_INMEMORY_MSGLOADER
 
+#
+# TEMPORARY PLATFORM SUPPORT
+#
+#src_libraries +=					libmacplatform.la
+#libmacplatform_ladir =				${includedir}
+#nobase_libmacplatform_la_HEADERS =	${macplatform_headers}
+#libmacplatform_la_SOURCES =		${macplatform_sources}
+#libmacplatform_la_CPPFLAGS =		-DXML_USE_NETACCESSOR_URLACCESSCF \
+#									-DXML_USE_MACOS_UNICODECONVERTER \
+#									-DXML_USE_INMEMORY_MSGLOADER
 
 #
 # Definition of sources/headers for each convenience library
@@ -1941,23 +1939,6 @@ xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.lo: xercesc
 	xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR)/$(am__dirstamp)
 libmacosunicodeconverter.la: $(libmacosunicodeconverter_la_OBJECTS) $(libmacosunicodeconverter_la_DEPENDENCIES) 
 	$(CXXLINK) $(am_libmacosunicodeconverter_la_rpath) $(libmacosunicodeconverter_la_LDFLAGS) $(libmacosunicodeconverter_la_OBJECTS) $(libmacosunicodeconverter_la_LIBADD) $(LIBS)
-xercesc/util/Platforms/MacOS/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/Platforms/MacOS
-	@: > xercesc/util/Platforms/MacOS/$(am__dirstamp)
-xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/Platforms/MacOS/$(DEPDIR)
-	@: > xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp)
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo:  \
-	xercesc/util/Platforms/MacOS/$(am__dirstamp) \
-	xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp)
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo:  \
-	xercesc/util/Platforms/MacOS/$(am__dirstamp) \
-	xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp)
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo:  \
-	xercesc/util/Platforms/MacOS/$(am__dirstamp) \
-	xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp)
-libmacplatform.la: $(libmacplatform_la_OBJECTS) $(libmacplatform_la_DEPENDENCIES) 
-	$(CXXLINK)  $(libmacplatform_la_LDFLAGS) $(libmacplatform_la_OBJECTS) $(libmacplatform_la_LIBADD) $(LIBS)
 xercesc/parsers/$(am__dirstamp):
 	@$(mkdir_p) xercesc/parsers
 	@: > xercesc/parsers/$(am__dirstamp)
@@ -2759,12 +2740,6 @@ mostlyclean-compile:
 	-rm -f xercesc/util/PanicHandler.lo
 	-rm -f xercesc/util/PlatformUtils.$(OBJEXT)
 	-rm -f xercesc/util/PlatformUtils.lo
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.$(OBJEXT)
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.$(OBJEXT)
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.$(OBJEXT)
-	-rm -f xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo
 	-rm -f xercesc/util/QName.$(OBJEXT)
 	-rm -f xercesc/util/QName.lo
 	-rm -f xercesc/util/StringPool.$(OBJEXT)
@@ -3242,9 +3217,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MsgLoaders/InMemory/$(DEPDIR)/InMemMsgLoader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/MacOSURLAccessCF.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/URLAccessCFBinInputStream.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacCarbonFile.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacOSPlatformUtils.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacPosixFile.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Transcoders/ICU/$(DEPDIR)/libicu_la-ICUTransService.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR)/MacOSUnicodeConverter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/regx/$(DEPDIR)/ASCIIRangeFactory.Plo@am__quote@
@@ -3393,27 +3365,6 @@ xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo: xercesc/util/Transcod
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libicu_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo `test -f 'xercesc/util/Transcoders/ICU/ICUTransService.cpp' || echo '$(srcdir)/'`xercesc/util/Transcoders/ICU/ICUTransService.cpp
 
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo: xercesc/util/Platforms/MacOS/MacCarbonFile.cpp
-@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo -MD -MP -MF "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacCarbonFile.Tpo" -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo `test -f 'xercesc/util/Platforms/MacOS/MacCarbonFile.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacCarbonFile.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacCarbonFile.Tpo" "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacCarbonFile.Plo"; else rm -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacCarbonFile.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='xercesc/util/Platforms/MacOS/MacCarbonFile.cpp' object='xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacCarbonFile.lo `test -f 'xercesc/util/Platforms/MacOS/MacCarbonFile.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacCarbonFile.cpp
-
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo: xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp
-@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo -MD -MP -MF "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacOSPlatformUtils.Tpo" -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo `test -f 'xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacOSPlatformUtils.Tpo" "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacOSPlatformUtils.Plo"; else rm -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacOSPlatformUtils.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp' object='xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacOSPlatformUtils.lo `test -f 'xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp
-
-xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo: xercesc/util/Platforms/MacOS/MacPosixFile.cpp
-@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo -MD -MP -MF "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacPosixFile.Tpo" -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo `test -f 'xercesc/util/Platforms/MacOS/MacPosixFile.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacPosixFile.cpp; \
-@am__fastdepCXX_TRUE@	then mv -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacPosixFile.Tpo" "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacPosixFile.Plo"; else rm -f "xercesc/util/Platforms/MacOS/$(DEPDIR)/libmacplatform_la-MacPosixFile.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='xercesc/util/Platforms/MacOS/MacPosixFile.cpp' object='xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libmacplatform_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/Platforms/MacOS/libmacplatform_la-MacPosixFile.lo `test -f 'xercesc/util/Platforms/MacOS/MacPosixFile.cpp' || echo '$(srcdir)/'`xercesc/util/Platforms/MacOS/MacPosixFile.cpp
-
 mostlyclean-libtool:
 	-rm -f *.lo
 
@@ -3430,7 +3381,6 @@ clean-libtool:
 	-rm -rf xercesc/util/.libs xercesc/util/_libs
 	-rm -rf xercesc/util/MsgLoaders/InMemory/.libs xercesc/util/MsgLoaders/InMemory/_libs
 	-rm -rf xercesc/util/NetAccessors/MacOSURLAccessCF/.libs xercesc/util/NetAccessors/MacOSURLAccessCF/_libs
-	-rm -rf xercesc/util/Platforms/MacOS/.libs xercesc/util/Platforms/MacOS/_libs
 	-rm -rf xercesc/util/Transcoders/ICU/.libs xercesc/util/Transcoders/ICU/_libs
 	-rm -rf xercesc/util/Transcoders/MacOSUnicodeConverter/.libs xercesc/util/Transcoders/MacOSUnicodeConverter/_libs
 	-rm -rf xercesc/util/regx/.libs xercesc/util/regx/_libs
@@ -3595,25 +3545,6 @@ uninstall-nobase_libmacosunicodeconverter_laHEADERS:
 	  echo " rm -f '$(DESTDIR)$(libmacosunicodeconverter_ladir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(libmacosunicodeconverter_ladir)/$$f"; \
 	done
-install-nobase_libmacplatform_laHEADERS: $(nobase_libmacplatform_la_HEADERS)
-	@$(NORMAL_INSTALL)
-	test -z "$(libmacplatform_ladir)" || $(mkdir_p) "$(DESTDIR)$(libmacplatform_ladir)"
-	@$(am__vpath_adj_setup) \
-	list='$(nobase_libmacplatform_la_HEADERS)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  $(am__vpath_adj) \
-	  echo " $(nobase_libmacplatform_laHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(libmacplatform_ladir)/$$f'"; \
-	  $(nobase_libmacplatform_laHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(libmacplatform_ladir)/$$f"; \
-	done
-
-uninstall-nobase_libmacplatform_laHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@$(am__vpath_adj_setup) \
-	list='$(nobase_libmacplatform_la_HEADERS)'; for p in $$list; do \
-	  $(am__vpath_adj) \
-	  echo " rm -f '$(DESTDIR)$(libmacplatform_ladir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(libmacplatform_ladir)/$$f"; \
-	done
 install-nobase_libparsers_laHEADERS: $(nobase_libparsers_la_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(libparsers_ladir)" || $(mkdir_p) "$(DESTDIR)$(libparsers_ladir)"
@@ -3759,7 +3690,7 @@ distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
-	$(mkdir_p) $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/Platforms/MacOS $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
+	$(mkdir_p) $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \
@@ -3790,7 +3721,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libcfurl_ladir)" "$(DESTDIR)$(libdom_ladir)" "$(DESTDIR)$(libdomimpl_ladir)" "$(DESTDIR)$(libframework_ladir)" "$(DESTDIR)$(libicu_ladir)" "$(DESTDIR)$(libinmemory_ladir)" "$(DESTDIR)$(libinternal_ladir)" "$(DESTDIR)$(libmacosunicodeconverter_ladir)" "$(DESTDIR)$(libmacplatform_ladir)" "$(DESTDIR)$(libparsers_ladir)" "$(DESTDIR)$(libsax2_ladir)" "$(DESTDIR)$(libsax_ladir)" "$(DESTDIR)$(libutil_ladir)" "$(DESTDIR)$(libvalidators_ladir)"; do \
+	for dir in "$(DESTDIR)$(libcfurl_ladir)" "$(DESTDIR)$(libdom_ladir)" "$(DESTDIR)$(libdomimpl_ladir)" "$(DESTDIR)$(libframework_ladir)" "$(DESTDIR)$(libicu_ladir)" "$(DESTDIR)$(libinmemory_ladir)" "$(DESTDIR)$(libinternal_ladir)" "$(DESTDIR)$(libmacosunicodeconverter_ladir)" "$(DESTDIR)$(libparsers_ladir)" "$(DESTDIR)$(libsax2_ladir)" "$(DESTDIR)$(libsax_ladir)" "$(DESTDIR)$(libutil_ladir)" "$(DESTDIR)$(libvalidators_ladir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -3835,8 +3766,6 @@ distclean-generic:
 	-rm -f xercesc/util/MsgLoaders/InMemory/$(am__dirstamp)
 	-rm -f xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/$(am__dirstamp)
 	-rm -f xercesc/util/NetAccessors/MacOSURLAccessCF/$(am__dirstamp)
-	-rm -f xercesc/util/Platforms/MacOS/$(DEPDIR)/$(am__dirstamp)
-	-rm -f xercesc/util/Platforms/MacOS/$(am__dirstamp)
 	-rm -f xercesc/util/Transcoders/ICU/$(DEPDIR)/$(am__dirstamp)
 	-rm -f xercesc/util/Transcoders/ICU/$(am__dirstamp)
 	-rm -f xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR)/$(am__dirstamp)
@@ -3863,7 +3792,7 @@ clean-am: clean-generic clean-libtool clean-noinstLTLIBRARIES \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf xercesc/dom/$(DEPDIR) xercesc/dom/impl/$(DEPDIR) xercesc/framework/$(DEPDIR) xercesc/framework/psvi/$(DEPDIR) xercesc/internal/$(DEPDIR) xercesc/parsers/$(DEPDIR) xercesc/sax/$(DEPDIR) xercesc/sax2/$(DEPDIR) xercesc/util/$(DEPDIR) xercesc/util/MsgLoaders/InMemory/$(DEPDIR) xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR) xercesc/util/Platforms/MacOS/$(DEPDIR) xercesc/util/Transcoders/ICU/$(DEPDIR) xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR) xercesc/util/regx/$(DEPDIR) xercesc/validators/DTD/$(DEPDIR) xercesc/validators/common/$(DEPDIR) xercesc/validators/datatype/$(DEPDIR) xercesc/validators/schema/$(DEPDIR) xercesc/validators/schema/identity/$(DEPDIR)
+	-rm -rf xercesc/dom/$(DEPDIR) xercesc/dom/impl/$(DEPDIR) xercesc/framework/$(DEPDIR) xercesc/framework/psvi/$(DEPDIR) xercesc/internal/$(DEPDIR) xercesc/parsers/$(DEPDIR) xercesc/sax/$(DEPDIR) xercesc/sax2/$(DEPDIR) xercesc/util/$(DEPDIR) xercesc/util/MsgLoaders/InMemory/$(DEPDIR) xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR) xercesc/util/Transcoders/ICU/$(DEPDIR) xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR) xercesc/util/regx/$(DEPDIR) xercesc/validators/DTD/$(DEPDIR) xercesc/validators/common/$(DEPDIR) xercesc/validators/datatype/$(DEPDIR) xercesc/validators/schema/$(DEPDIR) xercesc/validators/schema/identity/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -3886,7 +3815,6 @@ install-data-am: install-nobase_libcfurl_laHEADERS \
 	install-nobase_libinmemory_laHEADERS \
 	install-nobase_libinternal_laHEADERS \
 	install-nobase_libmacosunicodeconverter_laHEADERS \
-	install-nobase_libmacplatform_laHEADERS \
 	install-nobase_libparsers_laHEADERS \
 	install-nobase_libsax2_laHEADERS \
 	install-nobase_libsax_laHEADERS \
@@ -3902,7 +3830,7 @@ install-man:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf xercesc/dom/$(DEPDIR) xercesc/dom/impl/$(DEPDIR) xercesc/framework/$(DEPDIR) xercesc/framework/psvi/$(DEPDIR) xercesc/internal/$(DEPDIR) xercesc/parsers/$(DEPDIR) xercesc/sax/$(DEPDIR) xercesc/sax2/$(DEPDIR) xercesc/util/$(DEPDIR) xercesc/util/MsgLoaders/InMemory/$(DEPDIR) xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR) xercesc/util/Platforms/MacOS/$(DEPDIR) xercesc/util/Transcoders/ICU/$(DEPDIR) xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR) xercesc/util/regx/$(DEPDIR) xercesc/validators/DTD/$(DEPDIR) xercesc/validators/common/$(DEPDIR) xercesc/validators/datatype/$(DEPDIR) xercesc/validators/schema/$(DEPDIR) xercesc/validators/schema/identity/$(DEPDIR)
+	-rm -rf xercesc/dom/$(DEPDIR) xercesc/dom/impl/$(DEPDIR) xercesc/framework/$(DEPDIR) xercesc/framework/psvi/$(DEPDIR) xercesc/internal/$(DEPDIR) xercesc/parsers/$(DEPDIR) xercesc/sax/$(DEPDIR) xercesc/sax2/$(DEPDIR) xercesc/util/$(DEPDIR) xercesc/util/MsgLoaders/InMemory/$(DEPDIR) xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR) xercesc/util/Transcoders/ICU/$(DEPDIR) xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR) xercesc/util/regx/$(DEPDIR) xercesc/validators/DTD/$(DEPDIR) xercesc/validators/common/$(DEPDIR) xercesc/validators/datatype/$(DEPDIR) xercesc/validators/schema/$(DEPDIR) xercesc/validators/schema/identity/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -3927,7 +3855,6 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	uninstall-nobase_libinmemory_laHEADERS \
 	uninstall-nobase_libinternal_laHEADERS \
 	uninstall-nobase_libmacosunicodeconverter_laHEADERS \
-	uninstall-nobase_libmacplatform_laHEADERS \
 	uninstall-nobase_libparsers_laHEADERS \
 	uninstall-nobase_libsax2_laHEADERS \
 	uninstall-nobase_libsax_laHEADERS \
@@ -3948,7 +3875,6 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	install-nobase_libinmemory_laHEADERS \
 	install-nobase_libinternal_laHEADERS \
 	install-nobase_libmacosunicodeconverter_laHEADERS \
-	install-nobase_libmacplatform_laHEADERS \
 	install-nobase_libparsers_laHEADERS \
 	install-nobase_libsax2_laHEADERS \
 	install-nobase_libsax_laHEADERS \
@@ -3966,7 +3892,6 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	uninstall-nobase_libinmemory_laHEADERS \
 	uninstall-nobase_libinternal_laHEADERS \
 	uninstall-nobase_libmacosunicodeconverter_laHEADERS \
-	uninstall-nobase_libmacplatform_laHEADERS \
 	uninstall-nobase_libparsers_laHEADERS \
 	uninstall-nobase_libsax2_laHEADERS \
 	uninstall-nobase_libsax_laHEADERS \

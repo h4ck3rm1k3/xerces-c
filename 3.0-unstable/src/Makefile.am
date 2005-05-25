@@ -40,6 +40,11 @@ libsrc_la_LIBADD =					${src_libraries}
 #
 src_libraries =
 
+src_libraries +=					libutil.la
+libutil_ladir =						${includedir}
+nobase_libutil_la_HEADERS =			${util_headers}
+libutil_la_SOURCES =				${util_sources}
+
 src_libraries +=					libdom.la
 libdom_ladir =						${includedir}
 nobase_libdom_la_HEADERS =			${dom_headers}
@@ -74,11 +79,6 @@ src_libraries +=					libsax2.la
 libsax2_ladir =						${includedir}
 nobase_libsax2_la_HEADERS =			${sax2_headers}
 libsax2_la_SOURCES =				${sax2_sources}
-
-src_libraries +=					libutil.la
-libutil_ladir =						${includedir}
-nobase_libutil_la_HEADERS =			${util_headers}
-libutil_la_SOURCES =				${util_sources}
 
 src_libraries +=					libvalidators.la
 libvalidators_ladir =				${includedir}
@@ -130,14 +130,13 @@ endif
 #
 # TEMPORARY PLATFORM SUPPORT
 #
-src_libraries +=					libmacplatform.la
-libmacplatform_ladir =				${includedir}
-nobase_libmacplatform_la_HEADERS =	${macplatform_headers}
-libmacplatform_la_SOURCES =			${macplatform_sources}
-libmacplatform_la_CPPFLAGS =		-DXML_USE_NETACCESSOR_URLACCESSCF \
-									-DXML_USE_MACOS_UNICODECONVERTER \
-									-DXML_USE_INMEMORY_MSGLOADER
-
+#src_libraries +=					libmacplatform.la
+#libmacplatform_ladir =				${includedir}
+#nobase_libmacplatform_la_HEADERS =	${macplatform_headers}
+#libmacplatform_la_SOURCES =		${macplatform_sources}
+#libmacplatform_la_CPPFLAGS =		-DXML_USE_NETACCESSOR_URLACCESSCF \
+#									-DXML_USE_MACOS_UNICODECONVERTER \
+#									-DXML_USE_INMEMORY_MSGLOADER
 
 #
 # Definition of sources/headers for each convenience library

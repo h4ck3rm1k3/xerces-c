@@ -464,7 +464,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL LIBOBJS CURL_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL LIBOBJS CURL_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE XERCES_USE_POSIX_FILEMGR_TRUE XERCES_USE_POSIX_FILEMGR_FALSE XERCES_USE_POSIX_MUTEXMGR_TRUE XERCES_USE_POSIX_MUTEXMGR_FALSE XERCES_USE_POSIX_ATOMICOPMGR_TRUE XERCES_USE_POSIX_ATOMICOPMGR_FALSE LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -23689,6 +23689,7 @@ echo "${ECHO_T}$xerces_cv_libwww_prefix" >&6
 
 
 
+
 	######################################################
 	# Test for availability of each netaccessor on this host.
 	# For each netaccessor that's available, and hasn't been disabled, add it to our list.
@@ -24070,6 +24071,7 @@ fi
 	# Check for MacOSUnicodeConverter
 	echo "$as_me:$LINENO: checking for whether we can support the MacOSUnicodeConverter Transcoder" >&5
 echo $ECHO_N "checking for whether we can support the MacOSUnicodeConverter Transcoder... $ECHO_C" >&6
+	list_add=
 	case $host_os in
 	darwin*)
 		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
@@ -24187,6 +24189,8 @@ fi
 	ml_list=
 
 	# Check for inmemory msgloader
+	echo "$as_me:$LINENO: checking for whether we support the InMemory MsgLoader" >&5
+echo $ECHO_N "checking for whether we support the InMemory MsgLoader... $ECHO_C" >&6
 	list_add=
 	if true; then
 
@@ -24275,11 +24279,155 @@ fi
 
 
 
+	echo "$as_me:$LINENO: checking for which File Manager to use" >&5
+echo $ECHO_N "checking for which File Manager to use... $ECHO_C" >&6
+	mgr=
+
+	# Platform specific checks
+	case $host_os in
+	windows* | cygwin*)
+		#mgr=Windows
+		;;
+	esac
+
+	# Fall back to using posix files
+	if test -z "$mgr"; then
+  mgr=POSIX;
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_USE_POSIX_FILEMGR 1
+_ACEOF
+
+
+fi
+
+
+	echo "$as_me:$LINENO: result: $mgr" >&5
+echo "${ECHO_T}$mgr" >&6
+
+	# Define the auto-make conditionals which determine what actually gets compiled
+	# Note that these macros can't be executed conditionally, which is why they're here, not above.
+
+
+if test x"$mgr" = xPOSIX; then
+  XERCES_USE_POSIX_FILEMGR_TRUE=
+  XERCES_USE_POSIX_FILEMGR_FALSE='#'
+else
+  XERCES_USE_POSIX_FILEMGR_TRUE='#'
+  XERCES_USE_POSIX_FILEMGR_FALSE=
+fi
+
+
+
+
+
+
+	echo "$as_me:$LINENO: checking for which Mutex Manager to use" >&5
+echo $ECHO_N "checking for which Mutex Manager to use... $ECHO_C" >&6
+	mgr=
+
+	# Platform specific checks
+	case $host_os in
+	windows* | cygwin*)
+		#mgr=Windows
+		;;
+	esac
+
+	# Fall back to using posix mutex
+	if test -z "$mgr"; then
+  mgr=POSIX;
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_USE_POSIX_MUTEXMGR 1
+_ACEOF
+
+
+fi
+
+
+	echo "$as_me:$LINENO: result: $mgr" >&5
+echo "${ECHO_T}$mgr" >&6
+
+	# Define the auto-make conditionals which determine what actually gets compiled
+	# Note that these macros can't be executed conditionally, which is why they're here, not above.
+
+
+if test x"$mgr" = xPOSIX; then
+  XERCES_USE_POSIX_MUTEXMGR_TRUE=
+  XERCES_USE_POSIX_MUTEXMGR_FALSE='#'
+else
+  XERCES_USE_POSIX_MUTEXMGR_TRUE='#'
+  XERCES_USE_POSIX_MUTEXMGR_FALSE=
+fi
+
+
+
+
+
+
+	echo "$as_me:$LINENO: checking for which AtomicOp Manager to use" >&5
+echo $ECHO_N "checking for which AtomicOp Manager to use... $ECHO_C" >&6
+	mgr=
+
+	# Platform specific checks
+	case $host_os in
+	windows* | cygwin*)
+		#mgr=Windows
+		;;
+	esac
+
+	# Fall back to using posix mutex
+	if test -z "$mgr"; then
+  mgr=POSIX;
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_USE_POSIX_ATOMICOPMGR 1
+_ACEOF
+
+
+fi
+
+
+	echo "$as_me:$LINENO: result: $mgr" >&5
+echo "${ECHO_T}$mgr" >&6
+
+	# Define the auto-make conditionals which determine what actually gets compiled
+	# Note that these macros can't be executed conditionally, which is why they're here, not above.
+
+
+if test x"$mgr" = xPOSIX; then
+  XERCES_USE_POSIX_ATOMICOPMGR_TRUE=
+  XERCES_USE_POSIX_ATOMICOPMGR_FALSE='#'
+else
+  XERCES_USE_POSIX_ATOMICOPMGR_TRUE='#'
+  XERCES_USE_POSIX_ATOMICOPMGR_FALSE=
+fi
+
+
+
+
+
+
 
 ######################################################
 # Define some namespace-protected macros for use in the publicly visible
 # XercesConfig.h file.
 ######################################################
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_AUTOCONF 1
+_ACEOF
+
+
+if test x$ac_cv_header_sys_types_h = xyes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_HAVE_SYS_TYPES_H 1
+_ACEOF
+
+fi
+
+
 case $host in
 *-*-msdos* | *-*-mingw32* | *-*-cygwin* | *-*-windows* )
 	platform_export="__declspec(dllexport)"
@@ -24298,12 +24446,6 @@ _ACEOF
 
 cat >>confdefs.h <<_ACEOF
 #define XERCES_PLATFORM_IMPORT $platform_import
-_ACEOF
-
-
-
-cat >>confdefs.h <<\_ACEOF
-#define XERCES_AUTOCONF 1
 _ACEOF
 
 
@@ -24339,13 +24481,13 @@ _ACEOF
 if test $ac_cv_sizeof_wchar_t -eq 2; then
 
 cat >>confdefs.h <<\_ACEOF
-#define XERCES_XMLCH wchar_t
+#define XERCES_XMLCH_T wchar_t
 _ACEOF
 
 else
 
 cat >>confdefs.h <<_ACEOF
-#define XERCES_XMLCH unsigned $xerces_cv_type_16bit_int
+#define XERCES_XMLCH_T unsigned $xerces_cv_type_16bit_int
 _ACEOF
 
 fi
@@ -24572,6 +24714,27 @@ if test -z "${XERCES_USE_MSGLOADER_INMEMORY_TRUE}" && test -z "${XERCES_USE_MSGL
   { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_MSGLOADER_INMEMORY\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"XERCES_USE_MSGLOADER_INMEMORY\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${XERCES_USE_POSIX_FILEMGR_TRUE}" && test -z "${XERCES_USE_POSIX_FILEMGR_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_POSIX_FILEMGR\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"XERCES_USE_POSIX_FILEMGR\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${XERCES_USE_POSIX_MUTEXMGR_TRUE}" && test -z "${XERCES_USE_POSIX_MUTEXMGR_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_POSIX_MUTEXMGR\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"XERCES_USE_POSIX_MUTEXMGR\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${XERCES_USE_POSIX_ATOMICOPMGR_TRUE}" && test -z "${XERCES_USE_POSIX_ATOMICOPMGR_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_POSIX_ATOMICOPMGR\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"XERCES_USE_POSIX_ATOMICOPMGR\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -25199,6 +25362,12 @@ s,@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@,$XERCES_USE_TRANSCODER_MACO
 s,@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE@,$XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE,;t t
 s,@XERCES_USE_MSGLOADER_INMEMORY_TRUE@,$XERCES_USE_MSGLOADER_INMEMORY_TRUE,;t t
 s,@XERCES_USE_MSGLOADER_INMEMORY_FALSE@,$XERCES_USE_MSGLOADER_INMEMORY_FALSE,;t t
+s,@XERCES_USE_POSIX_FILEMGR_TRUE@,$XERCES_USE_POSIX_FILEMGR_TRUE,;t t
+s,@XERCES_USE_POSIX_FILEMGR_FALSE@,$XERCES_USE_POSIX_FILEMGR_FALSE,;t t
+s,@XERCES_USE_POSIX_MUTEXMGR_TRUE@,$XERCES_USE_POSIX_MUTEXMGR_TRUE,;t t
+s,@XERCES_USE_POSIX_MUTEXMGR_FALSE@,$XERCES_USE_POSIX_MUTEXMGR_FALSE,;t t
+s,@XERCES_USE_POSIX_ATOMICOPMGR_TRUE@,$XERCES_USE_POSIX_ATOMICOPMGR_TRUE,;t t
+s,@XERCES_USE_POSIX_ATOMICOPMGR_FALSE@,$XERCES_USE_POSIX_ATOMICOPMGR_FALSE,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF
 

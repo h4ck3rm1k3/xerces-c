@@ -6,7 +6,7 @@
 //
 // There are two primary xerces configuration header files:
 //
-//	xerces_hdr_config.h		--  For configuration of items that must be accessable
+//	x_config.h				--  For configuration of items that must be accessable
 //								through public headers. This file has limited information
 //								and carefully works to avoid collision of macro names, etc.
 //
@@ -21,14 +21,18 @@
 // is used out of the box.
 //
 
+#ifndef X_CONFIG_HPP
+#define X_CONFIG_HPP
+
 // ---------------------------------------------------------------------------
 //  These defines are set by configure as appropriate for the platform.
 // ---------------------------------------------------------------------------
 #define XERCES_AUTOCONF 1
+#define XERCES_HAVE_SYS_TYPES_H 1
 
 #define XERCES_16BIT_INT short
 #define XERCES_32BIT_INT int
-#define XERCES_XMLCH unsigned short
+#define XERCES_XMLCH_T unsigned short
 #define XERCES_SIZE_T size_t
 #define XERCES_SSIZE_T ssize_t
 
@@ -40,21 +44,15 @@
 #define XERCES_PLATFORM_IMPORT 
 #endif
 
-// ---------------------------------------------------------------------------
-//  Define our version of the XML character
-// ---------------------------------------------------------------------------
-typedef XERCES_XMLCH				XMLCh;
 
 // ---------------------------------------------------------------------------
-//  Define unsigned 16 and 32 bits integers
+//  Must include sys/types.h if we're going to typedef to size_t below,
+//	so include sys/types.h if it's available.
 // ---------------------------------------------------------------------------
-typedef unsigned XERCES_16BIT_INT	XMLUInt16;
-typedef unsigned XERCES_32BIT_INT	XMLUInt32;
+#if defined(XERCES_HAVE_SYS_TYPES_H)
+#include <sys/types.h>
+#endif
 
-// ---------------------------------------------------------------------------
-//  Define signed 32 bits integers
-// ---------------------------------------------------------------------------
-typedef XERCES_32BIT_INT			XMLInt32;
 
 // ---------------------------------------------------------------------------
 //  XMLSize_t is the unsigned integral type.
@@ -62,10 +60,36 @@ typedef XERCES_32BIT_INT			XMLInt32;
 typedef XERCES_SIZE_T				XMLSize_t;
 typedef XERCES_SSIZE_T				XMLSSize_t;
 
+// ---------------------------------------------------------------------------
+//  Define our version of the XML character
+// ---------------------------------------------------------------------------
+typedef XERCES_XMLCH_T				XMLCh;
+
+// ---------------------------------------------------------------------------
+//  Define unsigned 16 and 32 bit integers
+// ---------------------------------------------------------------------------
+typedef unsigned XERCES_16BIT_INT	XMLUInt16;
+typedef unsigned XERCES_32BIT_INT	XMLUInt32;
+
+// ---------------------------------------------------------------------------
+//  Define signed 32 bit integers
+// ---------------------------------------------------------------------------
+typedef XERCES_32BIT_INT			XMLInt32;
+
+// ---------------------------------------------------------------------------
+//  XMLFilePos is the type used to represent a file position.
+// ---------------------------------------------------------------------------
+// *** TODO: shouldn't hardcode this.
+typedef unsigned long				XMLFilePos;
+
+
 
 // ---------------------------------------------------------------------------
 //  Force on the Xerces debug token if it is on in the build environment
 // ---------------------------------------------------------------------------
 #if defined(_DEBUG)
 #define XERCES_DEBUG
+#endif
+
+
 #endif

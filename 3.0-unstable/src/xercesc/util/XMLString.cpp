@@ -22,6 +22,15 @@
 // ---------------------------------------------------------------------------
 //  Includes
 // ---------------------------------------------------------------------------
+#include <config.h>
+
+#if !HAVE_STRICMP
+#	include <lib/stricmp.h>
+#endif
+#if !HAVE_STRNICMP
+#	include <lib/strnicmp.h>
+#endif
+
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
