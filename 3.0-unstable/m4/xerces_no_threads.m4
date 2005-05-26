@@ -19,6 +19,6 @@ AC_DEFUN([XERCES_NO_THREADS],
 			[xerces_cv_no_threads=yes])],
 		[xerces_cv_no_threads=no])
 	AS_IF([test x$xerces_cv_no_threads = xyes],
-		[AC_DEFINE([NO_THREADS], 1, [Define to specify no threading is used])])
+		[AC_DEFINE([APP_NO_THREADS], 1, [Define to specify no threading is used])])
 	]
 )
