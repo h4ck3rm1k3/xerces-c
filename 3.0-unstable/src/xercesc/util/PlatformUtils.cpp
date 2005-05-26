@@ -27,7 +27,8 @@
 
 // *** TODO: protect and x-platform
 #include <limits.h>
-#include <sys/timeb.h>
+// #include <sys/timeb.h>
+#include <sys/time.h>
 
 #include <xercesc/util/Mutexes.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
@@ -628,11 +629,20 @@ XMLPlatformUtils::isAnySlash(XMLCh c)
 // ---------------------------------------------------------------------------
 unsigned long XMLPlatformUtils::getCurrentMillis()
 {
-	// *** TODO: per platform support here
-    timeb aTime;
+	unsigned long ms = 0;
+	
+	// *** TODO: autoconf checks and additional platform support?
+#if 0
+	timeb aTime;
     ftime(&aTime);
-    return (unsigned long)(aTime.time*1000 + aTime.millitm);
+    ms = (unsigned long)(aTime.time*1000 + aTime.millitm);
+#else
+    struct timeval aTime;
+    gettimeofday(&aTime, NULL);
+    ms = (unsigned long) (aTime.tv_sec * 1000 + aTime.tv_usec / 1000);
+#endif
 
+	return ms;
 }
 
 
