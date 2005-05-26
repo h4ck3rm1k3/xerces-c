@@ -306,10 +306,10 @@
 /* #undef XERCES_USE_NETACCESSOR_WINSOCK */
 
 /* Define to use the ICU-based transcoder */
-/* #undef XERCES_USE_TRANSCODER_ICU */
+#define XERCES_USE_TRANSCODER_ICU 1
 
 /* Define to use the Mac OS UnicodeConverter-based transcoder */
-#define XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER 1
+/* #undef XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER */
 
 /* Define to the 16 bit type used to represent Xerces UTF-16 characters */
 #define XERCES_XMLCH_T unsigned short
