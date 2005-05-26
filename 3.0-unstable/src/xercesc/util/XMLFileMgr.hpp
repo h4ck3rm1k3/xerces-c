@@ -59,3 +59,4 @@ class XMLFileMgr : public XMemory
 XERCES_CPP_NAMESPACE_END
 
 #endif
+
