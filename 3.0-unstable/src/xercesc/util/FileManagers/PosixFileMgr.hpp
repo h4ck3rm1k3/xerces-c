@@ -56,3 +56,4 @@ class PosixFileMgr : public XMLFileMgr
 XERCES_CPP_NAMESPACE_END
 
 #endif
+

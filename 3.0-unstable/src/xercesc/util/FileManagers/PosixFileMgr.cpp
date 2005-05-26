@@ -225,3 +225,4 @@ PosixFileMgr::isRelative(const XMLCh* const toCheck, MemoryManager* const manage
 
 
 XERCES_CPP_NAMESPACE_END
+
