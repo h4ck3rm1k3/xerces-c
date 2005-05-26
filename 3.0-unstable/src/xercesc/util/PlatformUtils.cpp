@@ -601,10 +601,8 @@ bool XMLPlatformUtils::isRelative(const XMLCh* const toCheck
 }
 
 
-/*
-	TODO: we probably want to move this as an inline function into the weavepaths code.
-*/
-bool XMLPlatformUtils::isAnySlash(XMLCh c) 
+inline bool
+XMLPlatformUtils::isAnySlash(XMLCh c) 
 {
     return (
 			false
