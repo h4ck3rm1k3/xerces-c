@@ -25,16 +25,18 @@
 // ---------------------------------------------------------------------------
 #include <config.h>
 
+// *** TODO: protect and x-platform
+#include <limits.h>
+#include <sys/timeb.h>
+
 #include <xercesc/util/Mutexes.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/RefVectorOf.hpp>
-#include <xercesc/util/TransService.hpp>
 #include <xercesc/util/XMLString.hpp>
-#include <xercesc/util/XMLMsgLoader.hpp>
-#include <xercesc/util/XMLNetAccessor.hpp>
 #include <xercesc/util/XMLUni.hpp>
 #include <xercesc/internal/XMLReader.hpp>
 #include <xercesc/util/RuntimeException.hpp>
+#include <xercesc/util/OutOfMemoryException.hpp>
 #include <xercesc/util/XMLRegisterCleanup.hpp>
 #include <xercesc/util/DefaultPanicHandler.hpp>
 #include <xercesc/util/XMLInitializer.hpp>
@@ -56,10 +58,38 @@
 #	include <xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp>
 #endif
 
-#include <limits.h>
+#include <xercesc/util/XMLNetAccessor.hpp>
+#if XERCES_USE_NETACCESSOR_SOCKET
+#	include <xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp>
+#endif
+#if XERCES_USE_NETACCESSOR_LIBWWW
+#	include <xercesc/util/NetAccessors/libWWW/LibWWWNetAccessor.hpp>
+#endif
+#if XERCES_USE_NETACCESSOR_CFURL
+#	include <xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp>
+#endif
 
-// *** TODO: protect and x-platform
-#include <sys/timeb.h>
+#include <xercesc/util/XMLMsgLoader.hpp>
+#if XERCES_USE_MSGLOADER_ICU
+#	include <xercesc/util/MsgLoaders/ICU/ICUMsgLoader.hpp>
+#endif
+#if XERCES_USE_MSGLOADER_ICONV
+#	include <xercesc/util/MsgLoaders/MsgCatalog/MsgCatalogLoader.hpp>
+#endif
+#if XERCES_USE_MSGLOADER_INMEMORY
+#	include <xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.hpp>
+#endif
+
+#include <xercesc/util/TransService.hpp>
+#if XERCES_USE_TRANSCODER_ICU
+#	include <xercesc/util/Transcoders/ICU/ICUTransService.hpp>
+#endif
+#if XERCES_USE_TRANSCODER_ICONV
+#	include <xercesc/util/Transcoders/Iconv/IconvTransService.hpp>
+#endif
+#if XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER
+#	include <xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.hpp>
+#endif
 
 XERCES_CPP_NAMESPACE_BEGIN
 
@@ -319,6 +349,85 @@ void XMLPlatformUtils::panic(const PanicHandler::PanicReasons reason)
     fgUserPanicHandler? fgUserPanicHandler->panic(reason) : fgDefaultPanicHandler->panic(reason);	
 }
 
+
+
+// ---------------------------------------------------------------------------
+//  XMLPlatformUtils: Private Static Methods
+// ---------------------------------------------------------------------------
+
+XMLNetAccessor* XMLPlatformUtils::makeNetAccessor()
+{
+	XMLNetAccessor* na = 0;
+	
+	#if defined (XERCES_USE_NETACCESSOR_SOCKET)
+		na = new SocketNetAccessor();
+	#elif defined (XERCES_USE_NETACCESSOR_LIBWWW)
+		na = new LibWWWNetAccessor();
+	#elif defined (XERCES_USE_NETACCESSOR_CFURL)
+		na = new MacOSURLAccessCF();
+	#else
+		#warning No NetAccessor is configured for this platform. Xerces will have no net access.
+	#endif
+
+	return na;
+}
+
+
+//
+//  This method is called by the platform independent part of this class
+//  when client code asks to have one of the supported message sets loaded.
+//
+
+XMLMsgLoader* XMLPlatformUtils::loadAMsgSet(const XMLCh* const msgDomain)
+{
+    XMLMsgLoader* ms;
+    
+    try
+    {
+	#if defined (XERCES_USE_MSGLOADER_ICU)
+		ms = new ICUMsgLoader(msgDomain);
+	#elif defined (XERCES_USE_MSGLOADER_ICONV)
+		ms = new MsgCatalogLoader(msgDomain);
+	#else // XERCES_USE_MSGLOADER_INMEMORY
+		ms = new InMemMsgLoader(msgDomain);
+	#endif
+    }
+    catch(const OutOfMemoryException&)
+    {
+        throw;
+    }
+    catch(...)
+    {
+        panic(PanicHandler::Panic_CantLoadMsgDomain);
+    }
+    
+    return ms;
+}
+
+
+//
+//  This method is called very early in the bootstrapping process. This guy
+//  must create a transcoding service and return it. It cannot use any string
+//  methods, any transcoding services, throw any exceptions, etc... It just
+//  makes a transcoding service and returns it, or returns zero on failure.
+//
+
+XMLTransService* XMLPlatformUtils::makeTransService()
+{
+	XMLTransService* tc = 0;
+	
+	#if defined   (XERCES_USE_TRANSCODER_ICU)
+		tc = new ICUTransService;
+	#elif defined (XERCES_USE_TRANSCODER_ICONV)
+		tc = new IconvTransService;
+	#elif defined (XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER)
+		tc = new MacOSUnicodeConverter();
+	#else
+		#error No Transcoder configured for platform! You must configure it.
+	#endif
+	
+	return tc;
+}
 
 
 // ---------------------------------------------------------------------------
