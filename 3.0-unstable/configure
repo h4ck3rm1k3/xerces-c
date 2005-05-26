@@ -464,7 +464,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL LIBOBJS CURL_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE XERCES_USE_FILEMGR_POSIX_TRUE XERCES_USE_FILEMGR_POSIX_FALSE XERCES_USE_MUTEXMGR_NOTHREAD_TRUE XERCES_USE_MUTEXMGR_NOTHREAD_FALSE XERCES_USE_MUTEXMGR_POSIX_TRUE XERCES_USE_MUTEXMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE XERCES_USE_ATOMICOPMGR_POSIX_TRUE XERCES_USE_ATOMICOPMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_MACOS_TRUE XERCES_USE_ATOMICOPMGR_MACOS_FALSE LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL LIBOBJS CURL_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_TRANSCODER_ICONV_TRUE XERCES_USE_TRANSCODER_ICONV_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE XERCES_USE_FILEMGR_POSIX_TRUE XERCES_USE_FILEMGR_POSIX_FALSE XERCES_USE_MUTEXMGR_NOTHREAD_TRUE XERCES_USE_MUTEXMGR_NOTHREAD_FALSE XERCES_USE_MUTEXMGR_POSIX_TRUE XERCES_USE_MUTEXMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE XERCES_USE_ATOMICOPMGR_POSIX_TRUE XERCES_USE_ATOMICOPMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_MACOS_TRUE XERCES_USE_ATOMICOPMGR_MACOS_FALSE LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -1047,6 +1047,8 @@ Optional Features:
                           Enable cfurl-based NetAccessor support
   --enable-netaccessor-winsock
                           Enable winsock-based NetAccessor support
+  --enable-transcoder-iconv
+                          Enable iconv-based transcoder support
   --enable-transcoder-icu Enable icu-based transcoder support
   --enable-transcoder-macosunicodeconverter
                           Enable MacOSUnicodeConverter-based transcoder
@@ -4268,7 +4270,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 4271 "configure"' > conftest.$ac_ext
+  echo '#line 4273 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -5383,7 +5385,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:5386:" \
+echo "$as_me:5388:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -6452,11 +6454,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:6455: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:6457: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:6459: \$? = $ac_status" >&5
+   echo "$as_me:6461: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -6707,11 +6709,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:6710: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:6712: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:6714: \$? = $ac_status" >&5
+   echo "$as_me:6716: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -6767,11 +6769,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:6770: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:6772: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:6774: \$? = $ac_status" >&5
+   echo "$as_me:6776: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -8967,7 +8969,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 8970 "configure"
+#line 8972 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -9065,7 +9067,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 9068 "configure"
+#line 9070 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -11285,11 +11287,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:11288: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:11290: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:11292: \$? = $ac_status" >&5
+   echo "$as_me:11294: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -11345,11 +11347,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:11348: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:11350: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:11352: \$? = $ac_status" >&5
+   echo "$as_me:11354: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -12708,7 +12710,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 12711 "configure"
+#line 12713 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12806,7 +12808,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 12809 "configure"
+#line 12811 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13661,11 +13663,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13664: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13666: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:13668: \$? = $ac_status" >&5
+   echo "$as_me:13670: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -13721,11 +13723,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:13724: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:13726: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:13728: \$? = $ac_status" >&5
+   echo "$as_me:13730: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -15777,11 +15779,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:15780: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:15782: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:15784: \$? = $ac_status" >&5
+   echo "$as_me:15786: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -16032,11 +16034,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16035: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16037: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16039: \$? = $ac_status" >&5
+   echo "$as_me:16041: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -16092,11 +16094,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16095: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16097: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:16099: \$? = $ac_status" >&5
+   echo "$as_me:16101: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -18292,7 +18294,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 18295 "configure"
+#line 18297 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -18390,7 +18392,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 18393 "configure"
+#line 18395 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -24037,6 +24039,295 @@ echo "${ECHO_T}$xerces_cv_icu_prefix" >&6
 
 	tc_list=
 
+	# Check for iconv support
+
+for ac_header in wchar.h
+do
+as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
+if eval "test \"\${$as_ac_Header+set}\" = set"; then
+  echo "$as_me:$LINENO: checking for $ac_header" >&5
+echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
+if eval "test \"\${$as_ac_Header+set}\" = set"; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+fi
+echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_Header'}'`" >&5
+echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
+else
+  # Is the header compilable?
+echo "$as_me:$LINENO: checking $ac_header usability" >&5
+echo $ECHO_N "checking $ac_header usability... $ECHO_C" >&6
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+$ac_includes_default
+#include <$ac_header>
+_ACEOF
+rm -f conftest.$ac_objext
+if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+  (eval $ac_compile) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"
+			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest.$ac_objext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  ac_header_compiler=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+ac_header_compiler=no
+fi
+rm -f conftest.err conftest.$ac_objext conftest.$ac_ext
+echo "$as_me:$LINENO: result: $ac_header_compiler" >&5
+echo "${ECHO_T}$ac_header_compiler" >&6
+
+# Is the header present?
+echo "$as_me:$LINENO: checking $ac_header presence" >&5
+echo $ECHO_N "checking $ac_header presence... $ECHO_C" >&6
+cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+#include <$ac_header>
+_ACEOF
+if { (eval echo "$as_me:$LINENO: \"$ac_cpp conftest.$ac_ext\"") >&5
+  (eval $ac_cpp conftest.$ac_ext) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } >/dev/null; then
+  if test -s conftest.err; then
+    ac_cpp_err=$ac_c_preproc_warn_flag
+    ac_cpp_err=$ac_cpp_err$ac_c_werror_flag
+  else
+    ac_cpp_err=
+  fi
+else
+  ac_cpp_err=yes
+fi
+if test -z "$ac_cpp_err"; then
+  ac_header_preproc=yes
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+  ac_header_preproc=no
+fi
+rm -f conftest.err conftest.$ac_ext
+echo "$as_me:$LINENO: result: $ac_header_preproc" >&5
+echo "${ECHO_T}$ac_header_preproc" >&6
+
+# So?  What about this header?
+case $ac_header_compiler:$ac_header_preproc:$ac_c_preproc_warn_flag in
+  yes:no: )
+    { echo "$as_me:$LINENO: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header: proceeding with the compiler's result" >&5
+echo "$as_me: WARNING: $ac_header: proceeding with the compiler's result" >&2;}
+    ac_header_preproc=yes
+    ;;
+  no:yes:* )
+    { echo "$as_me:$LINENO: WARNING: $ac_header: present but cannot be compiled" >&5
+echo "$as_me: WARNING: $ac_header: present but cannot be compiled" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header:     check for missing prerequisite headers?" >&5
+echo "$as_me: WARNING: $ac_header:     check for missing prerequisite headers?" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header: see the Autoconf documentation" >&5
+echo "$as_me: WARNING: $ac_header: see the Autoconf documentation" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header:     section \"Present But Cannot Be Compiled\"" >&5
+echo "$as_me: WARNING: $ac_header:     section \"Present But Cannot Be Compiled\"" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header: proceeding with the preprocessor's result" >&5
+echo "$as_me: WARNING: $ac_header: proceeding with the preprocessor's result" >&2;}
+    { echo "$as_me:$LINENO: WARNING: $ac_header: in the future, the compiler will take precedence" >&5
+echo "$as_me: WARNING: $ac_header: in the future, the compiler will take precedence" >&2;}
+    (
+      cat <<\_ASBOX
+## ----------------------------------- ##
+## Report this to the xercesc3 lists.  ##
+## ----------------------------------- ##
+_ASBOX
+    ) |
+      sed "s/^/$as_me: WARNING:     /" >&2
+    ;;
+esac
+echo "$as_me:$LINENO: checking for $ac_header" >&5
+echo $ECHO_N "checking for $ac_header... $ECHO_C" >&6
+if eval "test \"\${$as_ac_Header+set}\" = set"; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  eval "$as_ac_Header=\$ac_header_preproc"
+fi
+echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_Header'}'`" >&5
+echo "${ECHO_T}`eval echo '${'$as_ac_Header'}'`" >&6
+
+fi
+if test `eval echo '${'$as_ac_Header'}'` = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define `echo "HAVE_$ac_header" | $as_tr_cpp` 1
+_ACEOF
+
+else
+  no_iconv=true
+fi
+
+done
+
+
+
+
+
+
+for ac_func in towupper towlower mblen wcstombs mbstowcs
+do
+as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
+echo "$as_me:$LINENO: checking for $ac_func" >&5
+echo $ECHO_N "checking for $ac_func... $ECHO_C" >&6
+if eval "test \"\${$as_ac_var+set}\" = set"; then
+  echo $ECHO_N "(cached) $ECHO_C" >&6
+else
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+/* Define $ac_func to an innocuous variant, in case <limits.h> declares $ac_func.
+   For example, HP-UX 11i <limits.h> declares gettimeofday.  */
+#define $ac_func innocuous_$ac_func
+
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char $ac_func (); below.
+    Prefer <limits.h> to <assert.h> if __STDC__ is defined, since
+    <limits.h> exists even on freestanding compilers.  */
+
+#ifdef __STDC__
+# include <limits.h>
+#else
+# include <assert.h>
+#endif
+
+#undef $ac_func
+
+/* Override any gcc2 internal prototype to avoid an error.  */
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+/* We use char because int might match the return type of a gcc2
+   builtin and then its argument prototype would still apply.  */
+char $ac_func ();
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_$ac_func) || defined (__stub___$ac_func)
+choke me
+#else
+char (*f) () = $ac_func;
+#endif
+#ifdef __cplusplus
+}
+#endif
+
+int
+main ()
+{
+return f != $ac_func;
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext conftest$ac_exeext
+if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
+  (eval $ac_link) 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } &&
+	 { ac_try='test -z "$ac_c_werror_flag"
+			 || test ! -s conftest.err'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; } &&
+	 { ac_try='test -s conftest$ac_exeext'
+  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
+  (eval $ac_try) 2>&5
+  ac_status=$?
+  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }; }; then
+  eval "$as_ac_var=yes"
+else
+  echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+eval "$as_ac_var=no"
+fi
+rm -f conftest.err conftest.$ac_objext \
+      conftest$ac_exeext conftest.$ac_ext
+fi
+echo "$as_me:$LINENO: result: `eval echo '${'$as_ac_var'}'`" >&5
+echo "${ECHO_T}`eval echo '${'$as_ac_var'}'`" >&6
+if test `eval echo '${'$as_ac_var'}'` = yes; then
+  cat >>confdefs.h <<_ACEOF
+#define `echo "HAVE_$ac_func" | $as_tr_cpp` 1
+_ACEOF
+
+else
+  no_iconv=true
+fi
+done
+
+	echo "$as_me:$LINENO: checking for whether we can support the iconv Transcoder" >&5
+echo $ECHO_N "checking for whether we can support the iconv Transcoder... $ECHO_C" >&6
+	list_add=
+	no_iconv=false
+	if ! $no_iconv; then
+
+		# Check whether --enable-transcoder-iconv or --disable-transcoder-iconv was given.
+if test "${enable_transcoder_iconv+set}" = set; then
+  enableval="$enable_transcoder_iconv"
+  if test x"$enableval" = xyes; then
+  list_add=ICONV
+fi
+
+else
+  list_add=iconv
+fi;
+
+fi
+
+	if test x"$list_add" != x; then
+  tc_list="$tc_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+else
+  echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+
+fi
+
 
 	# Check for ICU
 
@@ -24059,7 +24350,7 @@ fi;
 fi
 
 	if test x"$list_add" != x; then
-  tc_list="$tc_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  tc_list="$tc_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24090,7 +24381,7 @@ fi;
 		;;
 	esac
 	if test x"$list_add" != x; then
-  tc_list="$tc_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  tc_list="$tc_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24119,7 +24410,7 @@ echo $ECHO_N "checking for which Transcoder to use (choices:$tc_list)... $ECHO_C
 
 		# Check for each transcoder, in implicit rank order
 		case $tc_list in
-		*icu*)
+		*-icu-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_TRANSCODER_ICU 1
@@ -24128,7 +24419,7 @@ _ACEOF
 			transcoder=icu
 			break
 			;;
-		*macosunicodeconverter*)
+		*-macosunicodeconverter-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER 1
@@ -24137,6 +24428,17 @@ _ACEOF
 			transcoder=macosunicodeconverter
 			break
 			;;
+
+		*-iconv-*)
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_USE_TRANSCODER_ICONV 1
+_ACEOF
+
+			transcoder=iconv
+			break
+			;;
+
 		*)
 			if test $i -eq 2; then
 				echo "$as_me:$LINENO: result: none" >&5
@@ -24173,6 +24475,16 @@ if test x"$transcoder" = xmacosunicodeconverter; then
 else
   XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE='#'
   XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE=
+fi
+
+
+
+if test x"$transcoder" = xiconv; then
+  XERCES_USE_TRANSCODER_ICONV_TRUE=
+  XERCES_USE_TRANSCODER_ICONV_FALSE='#'
+else
+  XERCES_USE_TRANSCODER_ICONV_TRUE='#'
+  XERCES_USE_TRANSCODER_ICONV_FALSE=
 fi
 
 
@@ -24335,7 +24647,7 @@ fi;
 	if test x$xerces_cv_no_threads = xyes; then
 
 cat >>confdefs.h <<\_ACEOF
-#define NO_THREADS 1
+#define APP_NO_THREADS 1
 _ACEOF
 
 fi
@@ -24812,6 +25124,13 @@ if test -z "${XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE}" && test -z "${X
   { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER\" was never defined.
 Usually this means the macro was only invoked conditionally." >&5
 echo "$as_me: error: conditional \"XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER\" was never defined.
+Usually this means the macro was only invoked conditionally." >&2;}
+   { (exit 1); exit 1; }; }
+fi
+if test -z "${XERCES_USE_TRANSCODER_ICONV_TRUE}" && test -z "${XERCES_USE_TRANSCODER_ICONV_FALSE}"; then
+  { { echo "$as_me:$LINENO: error: conditional \"XERCES_USE_TRANSCODER_ICONV\" was never defined.
+Usually this means the macro was only invoked conditionally." >&5
+echo "$as_me: error: conditional \"XERCES_USE_TRANSCODER_ICONV\" was never defined.
 Usually this means the macro was only invoked conditionally." >&2;}
    { (exit 1); exit 1; }; }
 fi
@@ -25486,6 +25805,8 @@ s,@XERCES_USE_TRANSCODER_ICU_TRUE@,$XERCES_USE_TRANSCODER_ICU_TRUE,;t t
 s,@XERCES_USE_TRANSCODER_ICU_FALSE@,$XERCES_USE_TRANSCODER_ICU_FALSE,;t t
 s,@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@,$XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE,;t t
 s,@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE@,$XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE,;t t
+s,@XERCES_USE_TRANSCODER_ICONV_TRUE@,$XERCES_USE_TRANSCODER_ICONV_TRUE,;t t
+s,@XERCES_USE_TRANSCODER_ICONV_FALSE@,$XERCES_USE_TRANSCODER_ICONV_FALSE,;t t
 s,@XERCES_USE_MSGLOADER_INMEMORY_TRUE@,$XERCES_USE_MSGLOADER_INMEMORY_TRUE,;t t
 s,@XERCES_USE_MSGLOADER_INMEMORY_FALSE@,$XERCES_USE_MSGLOADER_INMEMORY_FALSE,;t t
 s,@XERCES_USE_FILEMGR_POSIX_TRUE@,$XERCES_USE_FILEMGR_POSIX_TRUE,;t t

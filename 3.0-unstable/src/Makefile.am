@@ -107,6 +107,13 @@ libicu_la_CPPFLAGS =				-I${ICU_PREFIX}/include
 libicu_la_LIBADD =					-L${ICU_PREFIX}/lib -licuuc -licudata
 endif
 
+if XERCES_USE_TRANSCODER_ICONV
+src_libraries +=					libiconv.la
+libiconv_ladir =					${includedir}
+nobase_libiconv_la_HEADERS =		${iconv_headers}
+libiconv_la_SOURCES =				${iconv_sources}
+endif
+
 if XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER
 src_libraries +=								libmacosunicodeconverter.la
 libmacosunicodeconverter_ladir =				${includedir}
@@ -960,6 +967,11 @@ icu_headers = \
 icu_sources = \
 	xercesc/util/Transcoders/ICU/ICUTransService.cpp
 
+iconv_headers = \
+	xercesc/util/Transcoders/Iconv/IconvTransService.hpp
+
+iconv_sources = \
+	xercesc/util/Transcoders/Iconv/IconvTransService.cpp
 
 macosunicodeconverter_headers = \
 	xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.hpp

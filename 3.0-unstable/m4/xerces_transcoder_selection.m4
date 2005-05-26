@@ -21,6 +21,24 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	
 	tc_list=
 	
+	# Check for iconv support
+	AC_CHECK_HEADERS([wchar.h], [], [no_iconv=true])
+	AC_CHECK_FUNCS([towupper towlower mblen wcstombs mbstowcs], [], [no_iconv=true])
+	AC_MSG_CHECKING([for whether we can support the iconv Transcoder])
+	list_add=
+	no_iconv=false
+	AS_IF([! $no_iconv], [
+		AC_ARG_ENABLE([transcoder-iconv],
+			AS_HELP_STRING([--enable-transcoder-iconv],
+				[Enable iconv-based transcoder support]),
+			[AS_IF([test x"$enableval" = xyes],
+				[list_add=ICONV])],
+			[list_add=iconv])
+	])
+	AS_IF([test x"$list_add" != x],
+		[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
+		[AC_MSG_RESULT(no)]
+	)
 
 	# Check for ICU
 	AC_REQUIRE([XERCES_ICU_PREFIX])
@@ -35,7 +53,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 			[list_add=icu])
 	])
 	AS_IF([test x"$list_add" != x],
-		[tc_list="$tc_list $list_add"; AC_MSG_RESULT(yes)],
+		[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -56,7 +74,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 		;;
 	esac
 	AS_IF([test x"$list_add" != x],
-		[tc_list="$tc_list $list_add"; AC_MSG_RESULT(yes)],
+		[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 
@@ -79,16 +97,23 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 		
 		# Check for each transcoder, in implicit rank order
 		case $tc_list in
-		*icu*)
+		*-icu-*)
 			AC_DEFINE([XERCES_USE_TRANSCODER_ICU], 1, [Define to use the ICU-based transcoder])
 			transcoder=icu
 			break
 			;;
-		*macosunicodeconverter*)
+		*-macosunicodeconverter-*)
 			AC_DEFINE([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER], 1, [Define to use the Mac OS UnicodeConverter-based transcoder])
 			transcoder=macosunicodeconverter
 			break
 			;;
+
+		*-iconv-*)
+			AC_DEFINE([XERCES_USE_TRANSCODER_ICONV], 1, [Define to use the iconv transcoder])
+			transcoder=iconv
+			break
+			;;
+			
 		*)
 			if [test $i -eq 2]; then
 				AC_MSG_RESULT([none])
@@ -105,6 +130,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	# Note that these macros can't be executed conditionally, which is why they're here, not above.
 	AM_CONDITIONAL([XERCES_USE_TRANSCODER_ICU],						[test x"$transcoder" = xicu])
 	AM_CONDITIONAL([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER],	[test x"$transcoder" = xmacosunicodeconverter])
+	AM_CONDITIONAL([XERCES_USE_TRANSCODER_ICONV],					[test x"$transcoder" = xiconv])
 
 	]
 )

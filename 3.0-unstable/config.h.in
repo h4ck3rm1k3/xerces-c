@@ -1,5 +1,8 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+/* Define to specify no threading is used */
+#undef APP_NO_THREADS
+
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #undef HAVE_ARPA_INET_H
 
@@ -56,6 +59,9 @@
 
 /* Define to 1 if you have the `mblen' function. */
 #undef HAVE_MBLEN
+
+/* Define to 1 if you have the `mbstowcs' function. */
+#undef HAVE_MBSTOWCS
 
 /* Define to 1 if you have the `memmove' function. */
 #undef HAVE_MEMMOVE
@@ -165,11 +171,20 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
+/* Define to 1 if you have the `towlower' function. */
+#undef HAVE_TOWLOWER
+
+/* Define to 1 if you have the `towupper' function. */
+#undef HAVE_TOWUPPER
+
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
 /* Define to 1 if you have the <wchar.h> header file. */
 #undef HAVE_WCHAR_H
+
+/* Define to 1 if you have the `wcstombs' function. */
+#undef HAVE_WCSTOMBS
 
 /* Define to 1 if you have the <wctype.h> header file. */
 #undef HAVE_WCTYPE_H
@@ -179,9 +194,6 @@
 
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 #undef NO_MINUS_C_MINUS_O
-
-/* Define to specify no threading is used */
-#undef NO_THREADS
 
 /* Name of package */
 #undef PACKAGE
@@ -303,6 +315,9 @@
 
 /* Define to use the WinSock NetAccessor */
 #undef XERCES_USE_NETACCESSOR_WINSOCK
+
+/* Define to use the iconv transcoder */
+#undef XERCES_USE_TRANSCODER_ICONV
 
 /* Define to use the ICU-based transcoder */
 #undef XERCES_USE_TRANSCODER_ICU
