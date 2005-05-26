@@ -127,13 +127,12 @@ public :
       *   there is no reason, nor facility, to override it.
       */
     static MemoryManager*       fgArrayMemoryManager;
-
+	
 	static XMLFileMgr*			fgFileMgr;
 	static XMLMutexMgr*			fgMutexMgr;
 	static XMLAtomicOpMgr*		fgAtomicOpMgr;
-	
-    static XMLMutex*            fgAtomicMutex;
     
+    static XMLMutex*			fgAtomicMutex;
     //@}
 
 

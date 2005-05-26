@@ -19,44 +19,53 @@
  * $Id$
  */
 
-#ifndef POSIXATOMICOPMGL_HPP
-#define POSIXATOMICOPMGL_HPP
-
+#include <xercesc/util/XercesDefs.hpp>
 #include <xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp>
+#include <xercesc/util/Mutexes.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
+
 
 PosixAtomicOpMgr::PosixAtomicOpMgr()
 {
 }
 
 
-virtual
 PosixAtomicOpMgr::~PosixAtomicOpMgr()
 {
 }
 
+
 // Atomic operations
-virtual void*
+void*
 PosixAtomicOpMgr::compareAndSwap(void**            toFill
 							 , const void* const newValue
 							 , const void* const toCompare)
 {
+    XMLMutexLock lockMutex(&fMutex);
+
+    void *retVal = *toFill;
+    if (*toFill == toCompare)
+        *toFill = (void *)newValue;
+
+    return retVal;
 }
 
 
-virtual int
+int
 PosixAtomicOpMgr::increment(int &location)
 {
+    XMLMutexLock lockMutex(&fMutex);
+    return ++location;
 }
 
 
-virtual int
+int
 PosixAtomicOpMgr::decrement(int &location)
 {
+    XMLMutexLock lockMutex(&fMutex);
+    return --location;
 }
 
+
 XERCES_CPP_NAMESPACE_END
-
-
-#endif

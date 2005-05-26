@@ -25,14 +25,14 @@ AC_DEFUN([XERCES_FILEMGR_SELECTION],
 	# Fall back to using posix files
 	AS_IF([test -z "$mgr"],
 		[mgr=POSIX;
-			AC_DEFINE([XERCES_USE_POSIX_FILEMGR], 1, [Define to use the POSIX file mgr])
+			AC_DEFINE([XERCES_USE_FILEMGR_POSIX], 1, [Define to use the POSIX file mgr])
 		])
 
 	AC_MSG_RESULT($mgr)
 	
 	# Define the auto-make conditionals which determine what actually gets compiled
 	# Note that these macros can't be executed conditionally, which is why they're here, not above.
-	AM_CONDITIONAL([XERCES_USE_POSIX_FILEMGR],	[test x"$mgr" = xPOSIX])
+	AM_CONDITIONAL([XERCES_USE_FILEMGR_POSIX],	[test x"$mgr" = xPOSIX])
 	
 	]
 )

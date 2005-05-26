@@ -15,49 +15,93 @@
  */
 
 /*
- * $Id: MacAbstractFile.hpp 176026 2004-09-08 13:57:07Z peiyongz $
+ * $Id$
  */
 
+#include <pthread.h>
+
 #include <xercesc/util/MutexManagers/PosixMutexMgr.hpp>
+#include <xercesc/util/PlatformUtils.hpp>
+#include <xercesc/util/RuntimeException.hpp>
+#include <xercesc/util/PanicHandler.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
+
+//	Wrap up the mutex with XMemory
+class PosixMutexWrap : public XMemory {
+public:
+	pthread_mutex_t	m;
+};
+
+
 PosixMutexMgr::PosixMutexMgr()
 {
 }
 
 
-virtual
-PosixMutexMgr::PosixMutexMgr()
+PosixMutexMgr::~PosixMutexMgr()
 {
 }
 
 
-virtual XMLMutexHandle
+XMLMutexHandle
 PosixMutexMgr::create(MemoryManager* const manager)
 {
+    PosixMutexWrap* mutex = new (manager) PosixMutexWrap;
+    
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_init(&attr);
+    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+    
+    if (pthread_mutex_init(&mutex->m, &attr))
+        XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+        
+    pthread_mutexattr_destroy(&attr);
+
+    return (void*)(mutex);
 }
 
 
-virtual void
+void
 PosixMutexMgr::destroy(XMLMutexHandle mtx, MemoryManager* const manager)
 {
+	PosixMutexWrap* mutex = (PosixMutexWrap*)(mtx);
+    if (mutex != NULL)
+    {
+        if (pthread_mutex_destroy(&mutex->m))
+        {
+            ThrowXMLwithMemMgr(XMLPlatformUtilsException,
+                     XMLExcepts::Mutex_CouldNotDestroy, manager);
+        }
+        delete mutex;
+    }
 }
 
 
-virtual void
+void
 PosixMutexMgr::lock(XMLMutexHandle mtx)
 {
+	PosixMutexWrap* mutex = (PosixMutexWrap*)(mtx);
+    if (mutex != NULL)
+    {
+        if (pthread_mutex_lock(&mutex->m))
+            XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+    }
 }
 
 
-virtual void
+void
 PosixMutexMgr::unlock(XMLMutexHandle mtx)
 {
+	PosixMutexWrap* mutex = (PosixMutexWrap*)(mtx);
+    if (mutex != NULL)
+    {
+        if (pthread_mutex_unlock(&mutex->m))
+            XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+    }
 }
 
 
 XERCES_CPP_NAMESPACE_END
 
-
-#endif

@@ -266,8 +266,17 @@
 /* Define if the std namespace is supported */
 #define XERCES_STD_NAMESPACE 1
 
+/* Define to use the POSIX AtomicOp mgr */
+#define XERCES_USE_ATOMICOPMGR_POSIX 1
+
+/* Define to use the POSIX file mgr */
+#define XERCES_USE_FILEMGR_POSIX 1
+
 /* Define to use the InMemory MsgLoader */
 #define XERCES_USE_MSGLOADER_INMEMORY 1
+
+/* Define to use the POSIX mutex mgr */
+#define XERCES_USE_MUTEXMGR_POSIX 1
 
 /* Define to use the Mac OS X CFURL NetAccessor */
 #define XERCES_USE_NETACCESSOR_CFURL 1
@@ -283,15 +292,6 @@
 
 /* Define to use the WinSock NetAccessor */
 /* #undef XERCES_USE_NETACCESSOR_WINSOCK */
-
-/* Define to use the POSIX AtomicOp mgr */
-#define XERCES_USE_POSIX_ATOMICOPMGR 1
-
-/* Define to use the POSIX file mgr */
-#define XERCES_USE_POSIX_FILEMGR 1
-
-/* Define to use the POSIX mutex mgr */
-#define XERCES_USE_POSIX_MUTEXMGR 1
 
 /* Define to use the ICU-based transcoder */
 /* #undef XERCES_USE_TRANSCODER_ICU */

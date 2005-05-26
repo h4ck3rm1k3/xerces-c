@@ -25,14 +25,14 @@ AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 	# Fall back to using posix mutex
 	AS_IF([test -z "$mgr"],
 		[mgr=POSIX;
-			AC_DEFINE([XERCES_USE_POSIX_MUTEXMGR], 1, [Define to use the POSIX mutex mgr])
+			AC_DEFINE([XERCES_USE_MUTEXMGR_POSIX], 1, [Define to use the POSIX mutex mgr])
 		])
 
 	AC_MSG_RESULT($mgr)
 	
 	# Define the auto-make conditionals which determine what actually gets compiled
 	# Note that these macros can't be executed conditionally, which is why they're here, not above.
-	AM_CONDITIONAL([XERCES_USE_POSIX_MUTEXMGR],	[test x"$mgr" = xPOSIX])
+	AM_CONDITIONAL([XERCES_USE_MUTEXMGR_POSIX],	[test x"$mgr" = xPOSIX])
 	
 	]
 )

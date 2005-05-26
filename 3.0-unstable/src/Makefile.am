@@ -125,7 +125,35 @@ nobase_libinmemory_la_HEADERS =		${inmemory_headers}
 libinmemory_la_SOURCES =			${inmemory_sources}
 endif
 
+#
+# AtomicOp Managers, conditionally built based on settings from configure
+#
+if XERCES_USE_ATOMICOPMGR_POSIX
+src_libraries +=					libposixaomgr.la
+libposixaomgr_ladir =				${includedir}
+nobase_libposixaomgr_la_HEADERS =	${posixaomgr_headers}
+libposixaomgr_la_SOURCES =			${posixaomgr_sources}
+endif
 
+#
+# Mutex Managers, conditionally built based on settings from configure
+#
+if XERCES_USE_MUTEXMGR_POSIX
+src_libraries +=					libposixmmgr.la
+libposixmmgr_ladir =				${includedir}
+nobase_libposixmmgr_la_HEADERS =	${posixmmgr_headers}
+libposixmmgr_la_SOURCES =			${posixmmgr_sources}
+endif
+
+#
+# File Managers, conditionally built based on settings from configure
+#
+if XERCES_USE_FILEMGR_POSIX
+src_libraries +=					libposixfmgr.la
+libposixfmgr_ladir =				${includedir}
+nobase_libposixfmgr_la_HEADERS =	${posixfmgr_headers}
+libposixfmgr_la_SOURCES =			${posixfmgr_sources}
+endif
 
 #
 # TEMPORARY PLATFORM SUPPORT
@@ -933,6 +961,28 @@ inmemory_headers = \
 	
 inmemory_sources = \
 	xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.cpp
+
+
+posixfmgr_headers = \
+	xercesc/util/FileManagers/PosixFileMgr.hpp
+
+posixfmgr_sources = \
+	xercesc/util/FileManagers/PosixFileMgr.cpp
+
+
+posixmmgr_headers = \
+	xercesc/util/MutexManagers/PosixMutexMgr.hpp
+
+posixmmgr_sources = \
+	xercesc/util/MutexManagers/PosixMutexMgr.cpp
+
+
+posixaomgr_headers = \
+	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp
+
+posixaomgr_sources = \
+	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.cpp
+
 
 
 macplatform_headers = \

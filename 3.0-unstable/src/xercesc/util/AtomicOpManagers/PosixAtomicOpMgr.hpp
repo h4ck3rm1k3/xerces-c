@@ -23,6 +23,7 @@
 #define POSIXATOMICOPMGL_HPP
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
+#include <xercesc/util/Mutexes.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
@@ -40,6 +41,9 @@ class PosixAtomicOpMgr : public XMLAtomicOpMgr
 									 , const void* const toCompare);
 		virtual int		increment(int &location);
 		virtual int		decrement(int &location);
+		
+	private:
+		XMLMutex		fMutex;
 };
 
 XERCES_CPP_NAMESPACE_END

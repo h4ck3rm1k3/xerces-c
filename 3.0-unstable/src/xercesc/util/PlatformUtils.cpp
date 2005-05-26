@@ -42,17 +42,17 @@
 #include <xercesc/internal/MemoryManagerArrayImpl.hpp>
 
 #include <xercesc/util/XMLFileMgr.hpp>
-#if XERCES_USE_POSIX_FILEMGR
+#if XERCES_USE_FILEMGR_POSIX
 #	include <xercesc/util/FileManagers/PosixFileMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLMutexMgr.hpp>
-#if XERCES_USE_POSIX_MUTEXMGR
+#if XERCES_USE_MUTEXMGR_POSIX
 #	include <xercesc/util/MutexManagers/PosixMutexMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
-#if XERCES_USE_POSIX_ATOMICOPMGR
+#if XERCES_USE_ATOMICOPMGR_POSIX
 #	include <xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp>
 #endif
 
@@ -100,7 +100,12 @@ MemoryManager*          XMLPlatformUtils::fgMemoryManager = 0;
 MemoryManagerArrayImpl  gArrayMemoryManager;
 MemoryManager*          XMLPlatformUtils::fgArrayMemoryManager = &gArrayMemoryManager;
 bool                    XMLPlatformUtils::fgMemMgrAdopted = true;
-XMLMutex*               XMLPlatformUtils::fgAtomicMutex = 0;
+
+XMLFileMgr*             XMLPlatformUtils::fgFileMgr = 0;
+XMLMutexMgr*            XMLPlatformUtils::fgMutexMgr = 0;
+XMLAtomicOpMgr*         XMLPlatformUtils::fgAtomicOpMgr = 0;
+
+XMLMutex*				XMLPlatformUtils::fgAtomicMutex = 0;
 
 // ---------------------------------------------------------------------------
 //  XMLPlatformUtils: Init/term methods
@@ -161,20 +166,20 @@ void XMLPlatformUtils::Initialize(const char*          const locale
         fgUserPanicHandler = panicHandler;
     }
     
-    //
-    //  Call the platform init method, which is implemented in each of the
-    //  per-platform implementation cpp files. This one does the very low
-    //  level per-platform setup. It cannot use any XML util services at all,
-    //  i.e. only native services.
-    //
-    platformInit();
-
+    
+    // Initialize the platform-specific mutex file, and atomic op mgrs
+    fgMutexMgr		= makeMutexMgr(fgMemoryManager);
+    fgAtomicOpMgr	= makeAtomicOpMgr(fgMemoryManager);
+    fgFileMgr		= makeFileMgr(fgMemoryManager);
+    
+    
     // Create the local sync mutex
-    gSyncMutex = new XMLMutex;
+    gSyncMutex		= new XMLMutex;
+    fgAtomicMutex	= new XMLMutex;
+
 
 	// Create the mutex for the static data cleanup list
     gXMLCleanupListMutex = new XMLMutex;
-    fgAtomicMutex = new XMLMutex;
 
     //
     //  Ask the per-platform code to make the desired transcoding service for
@@ -258,13 +263,9 @@ void XMLPlatformUtils::Terminate()
     delete fgTransService;
     fgTransService = 0;
 
-    // Clean up the sync mutex
-    delete gSyncMutex;
-    gSyncMutex = 0;
-
-    // Clean up mutex
-    delete fgAtomicMutex;
-    fgAtomicMutex = 0;
+    // Clean up mutexes
+    delete gSyncMutex;		gSyncMutex = 0;
+    delete fgAtomicMutex;	fgAtomicMutex = 0;
 
 	// Clean up statically allocated, lazily cleaned data in each class
 	// that has registered for it.
@@ -277,13 +278,11 @@ void XMLPlatformUtils::Terminate()
 	delete gXMLCleanupListMutex;
 	gXMLCleanupListMutex = 0;
 
-    //
-    //  And do platform termination. This cannot do use any XML services
-    //  at all, it can only clean up local stuff. It it reports an error,
-    //  it cannot use any XML exception or error reporting services.
-    //
-    platformTerm();
-
+	// Clean up our mgrs
+	delete fgFileMgr;		fgFileMgr = 0;
+	delete fgAtomicOpMgr;	fgAtomicOpMgr = 0;
+	delete fgMutexMgr;		fgMutexMgr = 0;
+	
     /***
      *  de-allocate resource
      *
@@ -330,7 +329,7 @@ XMLPlatformUtils::makeFileMgr(MemoryManager* const memmgr)
 {
 	XMLFileMgr* mgr = NULL;
 	
-	#if XERCES_USE_POSIX_FILEMGR
+	#if XERCES_USE_FILEMGR_POSIX
 		mgr = new (memmgr) PosixFileMgr;
 	#else
 		#error No File Manager configured for platform! You must configure it.
@@ -344,6 +343,9 @@ FileHandle
 XMLPlatformUtils::openFile(const char* const fileName
                            , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->open(fileName, false, memmgr);
 }
 
@@ -351,6 +353,9 @@ XMLPlatformUtils::openFile(const char* const fileName
 FileHandle
 XMLPlatformUtils::openFile(const XMLCh* const fileName, MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->open(fileName, false, memmgr);
 }
 
@@ -359,6 +364,9 @@ FileHandle
 XMLPlatformUtils::openFileToWrite(const char* const fileName
                                   , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->open(fileName, true, memmgr);
 }
 
@@ -367,6 +375,9 @@ FileHandle
 XMLPlatformUtils::openFileToWrite(const XMLCh* const fileName
                                   , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
  	return fgFileMgr->open(fileName, true, memmgr);
 }
 
@@ -374,6 +385,9 @@ XMLPlatformUtils::openFileToWrite(const XMLCh* const fileName
 FileHandle
 XMLPlatformUtils::openStdInHandle(MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->openStdIn(memmgr);
 }
 
@@ -382,6 +396,9 @@ void
 XMLPlatformUtils::closeFile(const FileHandle theFile
                             , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->close(theFile, memmgr);
 }
 
@@ -389,6 +406,9 @@ void
 XMLPlatformUtils::resetFile(FileHandle theFile
                             , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->reset(theFile, memmgr);
 }
 
@@ -397,6 +417,9 @@ XMLFilePos
 XMLPlatformUtils::curFilePos(const FileHandle theFile
                              , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->curPos(theFile, memmgr);
 }
 
@@ -404,6 +427,9 @@ XMLFilePos
 XMLPlatformUtils::fileSize(const FileHandle theFile
                            , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->size(theFile, memmgr);
 }
 
@@ -414,6 +440,9 @@ XMLPlatformUtils::readFileBuffer(   const FileHandle      theFile
                                  ,        XMLByte* const  toFill
                                  ,  MemoryManager* const  memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
     return fgFileMgr->read(theFile, toRead, toFill, memmgr);
 }
 
@@ -424,6 +453,9 @@ XMLPlatformUtils::writeBufferToFile(   const   FileHandle   theFile
                                     ,  const XMLByte* const toFlush
                                     ,  MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	fgFileMgr->write(theFile, toWrite, toFlush, memmgr);
 }
 
@@ -434,12 +466,18 @@ XMLPlatformUtils::writeBufferToFile(   const   FileHandle   theFile
 XMLCh* XMLPlatformUtils::getFullPath(const XMLCh* const srcPath,
                                      MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
 	return fgFileMgr->getFullPath(srcPath, memmgr);
 }
 
 
 XMLCh* XMLPlatformUtils::getCurrentDirectory(MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
     return fgFileMgr->getCurrentDirectory(memmgr);
 }
 
@@ -447,6 +485,9 @@ XMLCh* XMLPlatformUtils::getCurrentDirectory(MemoryManager* const memmgr)
 bool XMLPlatformUtils::isRelative(const XMLCh* const toCheck
                                   , MemoryManager* const memmgr)
 {
+    if (!fgFileMgr)
+		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
+
     return fgFileMgr->isRelative(toCheck, memmgr);
 }
 
@@ -486,7 +527,7 @@ XMLMutexMgr* XMLPlatformUtils::makeMutexMgr(MemoryManager* const memmgr)
 {
 	XMLMutexMgr* mgr = NULL;
 	
-	#if XERCES_USE_POSIX_MUTEXMGR
+	#if XERCES_USE_MUTEXMGR_POSIX
 		mgr = new (memmgr) PosixMutexMgr;
 	#else
 		#error No Mutex Manager configured for platform! You must configure it.
@@ -495,25 +536,39 @@ XMLMutexMgr* XMLPlatformUtils::makeMutexMgr(MemoryManager* const memmgr)
 	return mgr;
 }
 
+
 XMLMutexHandle XMLPlatformUtils::makeMutex(MemoryManager* const memmgr)
 {
+    if (!fgMutexMgr)
+		XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+
 	return fgMutexMgr->create(memmgr);
 }
 
+
 void XMLPlatformUtils::closeMutex(XMLMutexHandle const mtx, MemoryManager* const memmgr)
 {
+    if (!fgMutexMgr)
+		XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+
 	fgMutexMgr->destroy(mtx, memmgr);
 }
 
 
 void XMLPlatformUtils::lockMutex(XMLMutexHandle const mtx)
 {
+    if (!fgMutexMgr)
+		XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+
 	fgMutexMgr->lock(mtx);
 }
 
 
 void XMLPlatformUtils::unlockMutex(XMLMutexHandle const mtx)
 {
+    if (!fgMutexMgr)
+		XMLPlatformUtils::panic(PanicHandler::Panic_MutexErr);
+
 	fgMutexMgr->unlock(mtx);
 }
 
@@ -525,7 +580,7 @@ XMLAtomicOpMgr* XMLPlatformUtils::makeAtomicOpMgr(MemoryManager* const memmgr)
 {
 	XMLAtomicOpMgr* mgr = NULL;
 	
-	#if XERCES_USE_POSIX_ATOMICOPMGR
+	#if XERCES_USE_ATOMICOPMGR_POSIX
 		mgr = new (memmgr) PosixAtomicOpMgr;
 	#else
 		#error No AtomicOp Manager configured for platform! You must configure it.
@@ -539,18 +594,27 @@ void* XMLPlatformUtils::compareAndSwap(void**            toFill
                                      , const void* const newValue
                                      , const void* const toCompare)
 {
+    if (!fgAtomicOpMgr)
+		ThrowXML(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero);
+
 	return fgAtomicOpMgr->compareAndSwap(toFill, newValue, toCompare);
 }
 
 
 int XMLPlatformUtils::atomicIncrement(int &location)
 {
+    if (!fgAtomicOpMgr)
+		ThrowXML(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero);
+
 	return fgAtomicOpMgr->increment(location);
 }
 
 
 int XMLPlatformUtils::atomicDecrement(int &location)
 {
+    if (!fgAtomicOpMgr)
+		ThrowXML(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero);
+
 	return fgAtomicOpMgr->decrement(location);
 }
 
