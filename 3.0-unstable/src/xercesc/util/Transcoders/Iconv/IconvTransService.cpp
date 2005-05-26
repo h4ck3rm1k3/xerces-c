@@ -26,23 +26,11 @@
 #include <xercesc/util/XMLUniDefs.hpp>
 #include <xercesc/util/XMLUni.hpp>
 #include <xercesc/framework/MemoryManager.hpp>
-#include <wchar.h>
 
-#if defined (XML_GCC) || defined (XML_PTX) || defined (XML_IBMVAOS2) || defined(XML_LINUX) || defined (XML_UNIXWARE)
-    #if defined(XML_BEOS)
-        wint_t towlower(wint_t wc) {
-          return ((wc>'A')&&(wc<'Z') ? wc+'a'-'A' : wc);
-        }
-        wint_t towupper(wint_t wc) {
-          return ((wc>'a')&&(wc<'z') ? wc-'a'+'A' : wc);
-        }
-        wint_t iswspace(wint_t wc) {
-          return (wc==(wint_t)' ');
-        }
-    #elif !defined(XML_OPENSERVER)
-        #include <wctype.h>
-    #endif
-#endif
+// *** TODO: May need some autoconf checks for wctype.h, and possible substitution thereof
+#include <wchar.h>
+#include <wctype.h>
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
