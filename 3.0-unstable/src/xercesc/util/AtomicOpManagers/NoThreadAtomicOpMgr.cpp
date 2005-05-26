@@ -19,33 +19,47 @@
  * $Id$
  */
 
-#ifndef POSIXATOMICOPMGL_HPP
-#define POSIXATOMICOPMGL_HPP
-
-#include <xercesc/util/XMLAtomicOpMgr.hpp>
-#include <xercesc/util/Mutexes.hpp>
+#include <xercesc/util/XercesDefs.hpp>
+#include <xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Posix pthread mutex implementation.
-class PosixAtomicOpMgr : public XMLAtomicOpMgr
-{
-    public:
-        PosixAtomicOpMgr();
-        virtual ~PosixAtomicOpMgr();
 
-		// Atomic operations
-		virtual void* 	compareAndSwap(void**            toFill
-									 , const void* const newValue
-									 , const void* const toCompare);
-		virtual int		increment(int &location);
-		virtual int		decrement(int &location);
-		
-	private:
-		XMLMutex		fMutex;
-};
+NoThreadAtomicOpMgr::NoThreadAtomicOpMgr()
+{
+}
+
+
+NoThreadAtomicOpMgr::~NoThreadAtomicOpMgr()
+{
+}
+
+
+// Atomic operations
+void*
+NoThreadAtomicOpMgr::compareAndSwap(void**            toFill
+							 , const void* const newValue
+							 , const void* const toCompare)
+{
+    void *retVal = *toFill;
+    if (*toFill == toCompare)
+        *toFill = (void *)newValue;
+    return retVal;
+}
+
+
+int
+NoThreadAtomicOpMgr::increment(int &location)
+{
+    return ++location;
+}
+
+
+int
+NoThreadAtomicOpMgr::decrement(int &location)
+{
+    return --location;
+}
+
 
 XERCES_CPP_NAMESPACE_END
-
-
-#endif

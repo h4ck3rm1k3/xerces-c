@@ -1,4 +1,3 @@
-
 /*
  * Copyright 1999-2000,2004-2005 The Apache Software Foundation.
  * 
@@ -19,33 +18,53 @@
  * $Id$
  */
 
-#ifndef POSIXATOMICOPMGL_HPP
-#define POSIXATOMICOPMGL_HPP
+#include <pthread.h>
 
-#include <xercesc/util/XMLAtomicOpMgr.hpp>
-#include <xercesc/util/Mutexes.hpp>
+#include <xercesc/util/MutexManagers/NoThreadMutexMgr.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Posix pthread mutex implementation.
-class PosixAtomicOpMgr : public XMLAtomicOpMgr
-{
-    public:
-        PosixAtomicOpMgr();
-        virtual ~PosixAtomicOpMgr();
+/*
+	The NoThread mutex manager is for use where no threading is used
+	in an environment. Since no threading is used, mutexes are not
+	needed, so the implementation does essentially nothing.
+*/
 
-		// Atomic operations
-		virtual void* 	compareAndSwap(void**            toFill
-									 , const void* const newValue
-									 , const void* const toCompare);
-		virtual int		increment(int &location);
-		virtual int		decrement(int &location);
-		
-	private:
-		XMLMutex		fMutex;
-};
+
+NoThreadMutexMgr::NoThreadMutexMgr()
+{
+}
+
+
+NoThreadMutexMgr::~NoThreadMutexMgr()
+{
+}
+
+
+XMLMutexHandle
+NoThreadMutexMgr::create(MemoryManager* const manager)
+{
+    return 0;
+}
+
+
+void
+NoThreadMutexMgr::destroy(XMLMutexHandle mtx, MemoryManager* const manager)
+{
+}
+
+
+void
+NoThreadMutexMgr::lock(XMLMutexHandle mtx)
+{
+}
+
+
+void
+NoThreadMutexMgr::unlock(XMLMutexHandle mtx)
+{
+}
+
 
 XERCES_CPP_NAMESPACE_END
 
-
-#endif

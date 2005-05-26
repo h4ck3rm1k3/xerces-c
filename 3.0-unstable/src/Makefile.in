@@ -35,7 +35,7 @@
 #
 
 
-SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) $(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) $(libicu_la_SOURCES) $(libinmemory_la_SOURCES) $(libinternal_la_SOURCES) $(libmacosunicodeconverter_la_SOURCES) $(libparsers_la_SOURCES) $(libposixaomgr_la_SOURCES) $(libposixfmgr_la_SOURCES) $(libposixmmgr_la_SOURCES) $(libsax_la_SOURCES) $(libsax2_la_SOURCES) $(libsrc_la_SOURCES) $(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
+SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) $(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) $(libicu_la_SOURCES) $(libinmemory_la_SOURCES) $(libinternal_la_SOURCES) $(libmacosaomgr_la_SOURCES) $(libmacosunicodeconverter_la_SOURCES) $(libnothreadaomgr_la_SOURCES) $(libnothreadmmgr_la_SOURCES) $(libparsers_la_SOURCES) $(libposixaomgr_la_SOURCES) $(libposixfmgr_la_SOURCES) $(libposixmmgr_la_SOURCES) $(libsax_la_SOURCES) $(libsax2_la_SOURCES) $(libsrc_la_SOURCES) $(libutil_la_SOURCES) $(libvalidators_la_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -79,22 +79,28 @@ host_triplet = @host@
 #
 # AtomicOp Managers, conditionally built based on settings from configure
 #
-@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am__append_5 = libposixaomgr.la
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@am__append_5 = libnothreadaomgr.la
+@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am__append_6 = libposixaomgr.la
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@am__append_7 = libmacosaomgr.la
 
 #
 # Mutex Managers, conditionally built based on settings from configure
 #
-@XERCES_USE_MUTEXMGR_POSIX_TRUE@am__append_6 = libposixmmgr.la
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@am__append_8 = libnothreadmmgr.la
+@XERCES_USE_MUTEXMGR_POSIX_TRUE@am__append_9 = libposixmmgr.la
 
 #
 # File Managers, conditionally built based on settings from configure
 #
-@XERCES_USE_FILEMGR_POSIX_TRUE@am__append_7 = libposixfmgr.la
+@XERCES_USE_FILEMGR_POSIX_TRUE@am__append_10 = libposixfmgr.la
 subdir = src
 DIST_COMMON = $(am__nobase_libcfurl_la_HEADERS_DIST) \
 	$(am__nobase_libicu_la_HEADERS_DIST) \
 	$(am__nobase_libinmemory_la_HEADERS_DIST) \
+	$(am__nobase_libmacosaomgr_la_HEADERS_DIST) \
 	$(am__nobase_libmacosunicodeconverter_la_HEADERS_DIST) \
+	$(am__nobase_libnothreadaomgr_la_HEADERS_DIST) \
+	$(am__nobase_libnothreadmmgr_la_HEADERS_DIST) \
 	$(am__nobase_libposixaomgr_la_HEADERS_DIST) \
 	$(am__nobase_libposixfmgr_la_HEADERS_DIST) \
 	$(am__nobase_libposixmmgr_la_HEADERS_DIST) \
@@ -120,6 +126,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/cxx_have_bool.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
 	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
+	$(top_srcdir)/m4/xerces_no_threads.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
 	$(top_srcdir)/m4/xerces_type_16bit_int.m4 \
 	$(top_srcdir)/m4/xerces_type_32bit_int.m4 \
@@ -278,75 +285,107 @@ am__objects_7 = xercesc/internal/BinFileOutputStream.lo \
 	xercesc/internal/XTemplateSerializer.lo
 am_libinternal_la_OBJECTS = $(am__objects_7)
 libinternal_la_OBJECTS = $(am_libinternal_la_OBJECTS)
+libmacosaomgr_la_LIBADD =
+am__libmacosaomgr_la_SOURCES_DIST =  \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.cpp
+am__objects_8 = xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.lo
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@am_libmacosaomgr_la_OBJECTS =  \
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@	$(am__objects_8)
+libmacosaomgr_la_OBJECTS = $(am_libmacosaomgr_la_OBJECTS)
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@am_libmacosaomgr_la_rpath =
 libmacosunicodeconverter_la_LIBADD =
 am__libmacosunicodeconverter_la_SOURCES_DIST = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.cpp
-am__objects_8 = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.lo
-@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am_libmacosunicodeconverter_la_OBJECTS = $(am__objects_8)
+am__objects_9 = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.lo
+@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am_libmacosunicodeconverter_la_OBJECTS = $(am__objects_9)
 libmacosunicodeconverter_la_OBJECTS =  \
 	$(am_libmacosunicodeconverter_la_OBJECTS)
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am_libmacosunicodeconverter_la_rpath =
+libnothreadaomgr_la_LIBADD =
+am__libnothreadaomgr_la_SOURCES_DIST =  \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.cpp
+am__objects_10 = xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.lo
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@am_libnothreadaomgr_la_OBJECTS =  \
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@	$(am__objects_10)
+libnothreadaomgr_la_OBJECTS = $(am_libnothreadaomgr_la_OBJECTS)
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@am_libnothreadaomgr_la_rpath =
+libnothreadmmgr_la_LIBADD =
+am__libnothreadmmgr_la_SOURCES_DIST =  \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.cpp
+am__objects_11 = xercesc/util/MutexManagers/NoThreadMutexMgr.lo
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@am_libnothreadmmgr_la_OBJECTS =  \
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@	$(am__objects_11)
+libnothreadmmgr_la_OBJECTS = $(am_libnothreadmmgr_la_OBJECTS)
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@am_libnothreadmmgr_la_rpath =
 libparsers_la_LIBADD =
-am__objects_9 = xercesc/parsers/AbstractDOMParser.lo \
+am__objects_12 = xercesc/parsers/AbstractDOMParser.lo \
 	xercesc/parsers/DOMBuilderImpl.lo \
 	xercesc/parsers/SAX2XMLFilterImpl.lo \
 	xercesc/parsers/SAX2XMLReaderImpl.lo \
 	xercesc/parsers/SAXParser.lo \
 	xercesc/parsers/XercesDOMParser.lo
-am_libparsers_la_OBJECTS = $(am__objects_9)
+am_libparsers_la_OBJECTS = $(am__objects_12)
 libparsers_la_OBJECTS = $(am_libparsers_la_OBJECTS)
 libposixaomgr_la_LIBADD =
 am__libposixaomgr_la_SOURCES_DIST =  \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.cpp
-am__objects_10 = xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.lo
+am__objects_13 = xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.lo
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am_libposixaomgr_la_OBJECTS =  \
-@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@	$(am__objects_10)
+@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@	$(am__objects_13)
 libposixaomgr_la_OBJECTS = $(am_libposixaomgr_la_OBJECTS)
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am_libposixaomgr_la_rpath =
 libposixfmgr_la_LIBADD =
 am__libposixfmgr_la_SOURCES_DIST =  \
 	xercesc/util/FileManagers/PosixFileMgr.cpp
-am__objects_11 = xercesc/util/FileManagers/PosixFileMgr.lo
+am__objects_14 = xercesc/util/FileManagers/PosixFileMgr.lo
 @XERCES_USE_FILEMGR_POSIX_TRUE@am_libposixfmgr_la_OBJECTS =  \
-@XERCES_USE_FILEMGR_POSIX_TRUE@	$(am__objects_11)
+@XERCES_USE_FILEMGR_POSIX_TRUE@	$(am__objects_14)
 libposixfmgr_la_OBJECTS = $(am_libposixfmgr_la_OBJECTS)
 @XERCES_USE_FILEMGR_POSIX_TRUE@am_libposixfmgr_la_rpath =
 libposixmmgr_la_LIBADD =
 am__libposixmmgr_la_SOURCES_DIST =  \
 	xercesc/util/MutexManagers/PosixMutexMgr.cpp
-am__objects_12 = xercesc/util/MutexManagers/PosixMutexMgr.lo
+am__objects_15 = xercesc/util/MutexManagers/PosixMutexMgr.lo
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@am_libposixmmgr_la_OBJECTS =  \
-@XERCES_USE_MUTEXMGR_POSIX_TRUE@	$(am__objects_12)
+@XERCES_USE_MUTEXMGR_POSIX_TRUE@	$(am__objects_15)
 libposixmmgr_la_OBJECTS = $(am_libposixmmgr_la_OBJECTS)
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@am_libposixmmgr_la_rpath =
 libsax_la_LIBADD =
-am__objects_13 = xercesc/sax/Dummy.lo xercesc/sax/InputSource.lo \
+am__objects_16 = xercesc/sax/Dummy.lo xercesc/sax/InputSource.lo \
 	xercesc/sax/SAXException.lo xercesc/sax/SAXParseException.lo
-am_libsax_la_OBJECTS = $(am__objects_13)
+am_libsax_la_OBJECTS = $(am__objects_16)
 libsax_la_OBJECTS = $(am_libsax_la_OBJECTS)
 libsax2_la_LIBADD =
-am__objects_14 = xercesc/sax2/sax2Dummy.lo
-am_libsax2_la_OBJECTS = $(am__objects_14)
+am__objects_17 = xercesc/sax2/sax2Dummy.lo
+am_libsax2_la_OBJECTS = $(am__objects_17)
 libsax2_la_OBJECTS = $(am_libsax2_la_OBJECTS)
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@am__DEPENDENCIES_1 = libcfurl.la
 @XERCES_USE_TRANSCODER_ICU_TRUE@am__DEPENDENCIES_2 = libicu.la
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@am__DEPENDENCIES_3 = libmacosunicodeconverter.la
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@am__DEPENDENCIES_4 =  \
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@	libinmemory.la
-@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am__DEPENDENCIES_5 =  \
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@am__DEPENDENCIES_5 =  \
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@	libnothreadaomgr.la
+@XERCES_USE_ATOMICOPMGR_POSIX_TRUE@am__DEPENDENCIES_6 =  \
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@	libposixaomgr.la
-@XERCES_USE_MUTEXMGR_POSIX_TRUE@am__DEPENDENCIES_6 = libposixmmgr.la
-@XERCES_USE_FILEMGR_POSIX_TRUE@am__DEPENDENCIES_7 = libposixfmgr.la
-am__DEPENDENCIES_8 = libutil.la libdom.la libdomimpl.la \
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@am__DEPENDENCIES_7 =  \
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@	libmacosaomgr.la
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@am__DEPENDENCIES_8 =  \
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@	libnothreadmmgr.la
+@XERCES_USE_MUTEXMGR_POSIX_TRUE@am__DEPENDENCIES_9 = libposixmmgr.la
+@XERCES_USE_FILEMGR_POSIX_TRUE@am__DEPENDENCIES_10 = libposixfmgr.la
+am__DEPENDENCIES_11 = libutil.la libdom.la libdomimpl.la \
 	libframework.la libinternal.la libparsers.la libsax.la \
 	libsax2.la libvalidators.la $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_3) \
 	$(am__DEPENDENCIES_4) $(am__DEPENDENCIES_5) \
-	$(am__DEPENDENCIES_6) $(am__DEPENDENCIES_7)
-libsrc_la_DEPENDENCIES = $(am__DEPENDENCIES_8)
+	$(am__DEPENDENCIES_6) $(am__DEPENDENCIES_7) \
+	$(am__DEPENDENCIES_8) $(am__DEPENDENCIES_9) \
+	$(am__DEPENDENCIES_10)
+libsrc_la_DEPENDENCIES = $(am__DEPENDENCIES_11)
 am_libsrc_la_OBJECTS =
 libsrc_la_OBJECTS = $(am_libsrc_la_OBJECTS)
 libutil_la_LIBADD =
-am__objects_15 = xercesc/util/Base64.lo \
+am__objects_18 = xercesc/util/Base64.lo \
 	xercesc/util/BinFileInputStream.lo \
 	xercesc/util/BinInputStream.lo \
 	xercesc/util/BinMemInputStream.lo xercesc/util/BitSet.lo \
@@ -398,10 +437,10 @@ am__objects_15 = xercesc/util/Base64.lo \
 	xercesc/util/XMLUTF16Transcoder.lo \
 	xercesc/util/XMLUTF8Transcoder.lo \
 	xercesc/util/XMLWin1252Transcoder.lo
-am_libutil_la_OBJECTS = $(am__objects_15)
+am_libutil_la_OBJECTS = $(am__objects_18)
 libutil_la_OBJECTS = $(am_libutil_la_OBJECTS)
 libvalidators_la_LIBADD =
-am__objects_16 = xercesc/validators/common/AllContentModel.lo \
+am__objects_19 = xercesc/validators/common/AllContentModel.lo \
 	xercesc/validators/common/CMAny.lo \
 	xercesc/validators/common/CMBinaryOp.lo \
 	xercesc/validators/common/CMUnaryOp.lo \
@@ -489,7 +528,7 @@ am__objects_16 = xercesc/validators/common/AllContentModel.lo \
 	xercesc/validators/schema/XSDErrorReporter.lo \
 	xercesc/validators/schema/XSDLocator.lo \
 	xercesc/validators/schema/XUtil.lo
-am_libvalidators_la_OBJECTS = $(am__objects_16)
+am_libvalidators_la_OBJECTS = $(am__objects_19)
 libvalidators_la_OBJECTS = $(am_libvalidators_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
@@ -513,8 +552,9 @@ LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 SOURCES = $(libcfurl_la_SOURCES) $(libdom_la_SOURCES) \
 	$(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) \
 	$(libicu_la_SOURCES) $(libinmemory_la_SOURCES) \
-	$(libinternal_la_SOURCES) \
+	$(libinternal_la_SOURCES) $(libmacosaomgr_la_SOURCES) \
 	$(libmacosunicodeconverter_la_SOURCES) \
+	$(libnothreadaomgr_la_SOURCES) $(libnothreadmmgr_la_SOURCES) \
 	$(libparsers_la_SOURCES) $(libposixaomgr_la_SOURCES) \
 	$(libposixfmgr_la_SOURCES) $(libposixmmgr_la_SOURCES) \
 	$(libsax_la_SOURCES) $(libsax2_la_SOURCES) \
@@ -524,7 +564,10 @@ DIST_SOURCES = $(am__libcfurl_la_SOURCES_DIST) $(libdom_la_SOURCES) \
 	$(libdomimpl_la_SOURCES) $(libframework_la_SOURCES) \
 	$(am__libicu_la_SOURCES_DIST) \
 	$(am__libinmemory_la_SOURCES_DIST) $(libinternal_la_SOURCES) \
+	$(am__libmacosaomgr_la_SOURCES_DIST) \
 	$(am__libmacosunicodeconverter_la_SOURCES_DIST) \
+	$(am__libnothreadaomgr_la_SOURCES_DIST) \
+	$(am__libnothreadmmgr_la_SOURCES_DIST) \
 	$(libparsers_la_SOURCES) $(am__libposixaomgr_la_SOURCES_DIST) \
 	$(am__libposixfmgr_la_SOURCES_DIST) \
 	$(am__libposixmmgr_la_SOURCES_DIST) $(libsax_la_SOURCES) \
@@ -543,7 +586,10 @@ am__installdirs = "$(DESTDIR)$(libcfurl_ladir)" \
 	"$(DESTDIR)$(libframework_ladir)" "$(DESTDIR)$(libicu_ladir)" \
 	"$(DESTDIR)$(libinmemory_ladir)" \
 	"$(DESTDIR)$(libinternal_ladir)" \
+	"$(DESTDIR)$(libmacosaomgr_ladir)" \
 	"$(DESTDIR)$(libmacosunicodeconverter_ladir)" \
+	"$(DESTDIR)$(libnothreadaomgr_ladir)" \
+	"$(DESTDIR)$(libnothreadmmgr_ladir)" \
 	"$(DESTDIR)$(libparsers_ladir)" \
 	"$(DESTDIR)$(libposixaomgr_ladir)" \
 	"$(DESTDIR)$(libposixfmgr_ladir)" \
@@ -562,8 +608,17 @@ am__nobase_libinmemory_la_HEADERS_DIST =  \
 	xercesc/util/MsgLoaders/InMemory/XercesMessages_en_US.hpp
 nobase_libinmemory_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libinternal_laHEADERS_INSTALL = $(install_sh_DATA)
+am__nobase_libmacosaomgr_la_HEADERS_DIST =  \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.hpp
+nobase_libmacosaomgr_laHEADERS_INSTALL = $(install_sh_DATA)
 am__nobase_libmacosunicodeconverter_la_HEADERS_DIST = xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.hpp
 nobase_libmacosunicodeconverter_laHEADERS_INSTALL = $(install_sh_DATA)
+am__nobase_libnothreadaomgr_la_HEADERS_DIST =  \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.hpp
+nobase_libnothreadaomgr_laHEADERS_INSTALL = $(install_sh_DATA)
+am__nobase_libnothreadmmgr_la_HEADERS_DIST =  \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.hpp
+nobase_libnothreadmmgr_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libparsers_laHEADERS_INSTALL = $(install_sh_DATA)
 am__nobase_libposixaomgr_la_HEADERS_DIST =  \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp
@@ -583,7 +638,10 @@ HEADERS = $(nobase_libcfurl_la_HEADERS) $(nobase_libdom_la_HEADERS) \
 	$(nobase_libframework_la_HEADERS) $(nobase_libicu_la_HEADERS) \
 	$(nobase_libinmemory_la_HEADERS) \
 	$(nobase_libinternal_la_HEADERS) \
+	$(nobase_libmacosaomgr_la_HEADERS) \
 	$(nobase_libmacosunicodeconverter_la_HEADERS) \
+	$(nobase_libnothreadaomgr_la_HEADERS) \
+	$(nobase_libnothreadmmgr_la_HEADERS) \
 	$(nobase_libparsers_la_HEADERS) \
 	$(nobase_libposixaomgr_la_HEADERS) \
 	$(nobase_libposixfmgr_la_HEADERS) \
@@ -651,12 +709,18 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
+XERCES_USE_ATOMICOPMGR_MACOS_FALSE = @XERCES_USE_ATOMICOPMGR_MACOS_FALSE@
+XERCES_USE_ATOMICOPMGR_MACOS_TRUE = @XERCES_USE_ATOMICOPMGR_MACOS_TRUE@
+XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE = @XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE@
+XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE = @XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@
 XERCES_USE_ATOMICOPMGR_POSIX_FALSE = @XERCES_USE_ATOMICOPMGR_POSIX_FALSE@
 XERCES_USE_ATOMICOPMGR_POSIX_TRUE = @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@
 XERCES_USE_FILEMGR_POSIX_FALSE = @XERCES_USE_FILEMGR_POSIX_FALSE@
 XERCES_USE_FILEMGR_POSIX_TRUE = @XERCES_USE_FILEMGR_POSIX_TRUE@
 XERCES_USE_MSGLOADER_INMEMORY_FALSE = @XERCES_USE_MSGLOADER_INMEMORY_FALSE@
 XERCES_USE_MSGLOADER_INMEMORY_TRUE = @XERCES_USE_MSGLOADER_INMEMORY_TRUE@
+XERCES_USE_MUTEXMGR_NOTHREAD_FALSE = @XERCES_USE_MUTEXMGR_NOTHREAD_FALSE@
+XERCES_USE_MUTEXMGR_NOTHREAD_TRUE = @XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@
 XERCES_USE_MUTEXMGR_POSIX_FALSE = @XERCES_USE_MUTEXMGR_POSIX_FALSE@
 XERCES_USE_MUTEXMGR_POSIX_TRUE = @XERCES_USE_MUTEXMGR_POSIX_TRUE@
 XERCES_USE_NETACCESSOR_CFURL_FALSE = @XERCES_USE_NETACCESSOR_CFURL_FALSE@
@@ -739,7 +803,8 @@ src_libraries = libutil.la libdom.la libdomimpl.la libframework.la \
 	libinternal.la libparsers.la libsax.la libsax2.la \
 	libvalidators.la $(am__append_1) $(am__append_2) \
 	$(am__append_3) $(am__append_4) $(am__append_5) \
-	$(am__append_6) $(am__append_7)
+	$(am__append_6) $(am__append_7) $(am__append_8) \
+	$(am__append_9) $(am__append_10)
 libutil_ladir = ${includedir}
 nobase_libutil_la_HEADERS = ${util_headers}
 libutil_la_SOURCES = ${util_sources}
@@ -782,9 +847,19 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_ladir = ${includedir}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@nobase_libinmemory_la_HEADERS = ${inmemory_headers}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_la_SOURCES = ${inmemory_sources}
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@libnothreadaomgr_ladir = ${includedir}
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@nobase_libnothreadaomgr_la_HEADERS = ${nothreadaomgr_headers}
+@XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE@libnothreadaomgr_la_SOURCES = ${nothreadaomgr_sources}
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@libposixaomgr_ladir = ${includedir}
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@nobase_libposixaomgr_la_HEADERS = ${posixaomgr_headers}
 @XERCES_USE_ATOMICOPMGR_POSIX_TRUE@libposixaomgr_la_SOURCES = ${posixaomgr_sources}
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_ladir = ${includedir}
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@nobase_libmacosaomgr_la_HEADERS = ${macosaomgr_headers}
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_la_SOURCES = ${macosaomgr_sources}
+@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_la_LDFLAGS = -Wl,-framework -Wl,CoreServices
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@libnothreadmmgr_ladir = ${includedir}
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@nobase_libnothreadmmgr_la_HEADERS = ${nothreadmmgr_headers}
+@XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@libnothreadmmgr_la_SOURCES = ${nothreadmmgr_sources}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_ladir = ${includedir}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@nobase_libposixmmgr_la_HEADERS = ${posixmmgr_headers}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_la_SOURCES = ${posixmmgr_sources}
@@ -1592,17 +1667,35 @@ posixfmgr_headers = \
 posixfmgr_sources = \
 	xercesc/util/FileManagers/PosixFileMgr.cpp
 
+nothreadmmgr_headers = \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.hpp
+
+nothreadmmgr_sources = \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.cpp
+
 posixmmgr_headers = \
 	xercesc/util/MutexManagers/PosixMutexMgr.hpp
 
 posixmmgr_sources = \
 	xercesc/util/MutexManagers/PosixMutexMgr.cpp
 
+nothreadaomgr_headers = \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.hpp
+
+nothreadaomgr_sources = \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.cpp
+
 posixaomgr_headers = \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp
 
 posixaomgr_sources = \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.cpp
+
+macosaomgr_headers = \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.hpp
+
+macosaomgr_sources = \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.cpp
 
 macplatform_headers = \
 	xercesc/util/Platforms/MacOS/MacAbstractFile.hpp \
@@ -2023,6 +2116,17 @@ xercesc/internal/XTemplateSerializer.lo:  \
 	xercesc/internal/$(DEPDIR)/$(am__dirstamp)
 libinternal.la: $(libinternal_la_OBJECTS) $(libinternal_la_DEPENDENCIES) 
 	$(CXXLINK)  $(libinternal_la_LDFLAGS) $(libinternal_la_OBJECTS) $(libinternal_la_LIBADD) $(LIBS)
+xercesc/util/AtomicOpManagers/$(am__dirstamp):
+	@$(mkdir_p) xercesc/util/AtomicOpManagers
+	@: > xercesc/util/AtomicOpManagers/$(am__dirstamp)
+xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) xercesc/util/AtomicOpManagers/$(DEPDIR)
+	@: > xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp)
+xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.lo:  \
+	xercesc/util/AtomicOpManagers/$(am__dirstamp) \
+	xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp)
+libmacosaomgr.la: $(libmacosaomgr_la_OBJECTS) $(libmacosaomgr_la_DEPENDENCIES) 
+	$(CXXLINK) $(am_libmacosaomgr_la_rpath) $(libmacosaomgr_la_LDFLAGS) $(libmacosaomgr_la_OBJECTS) $(libmacosaomgr_la_LIBADD) $(LIBS)
 xercesc/util/Transcoders/MacOSUnicodeConverter/$(am__dirstamp):
 	@$(mkdir_p) xercesc/util/Transcoders/MacOSUnicodeConverter
 	@: > xercesc/util/Transcoders/MacOSUnicodeConverter/$(am__dirstamp)
@@ -2033,6 +2137,22 @@ xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.lo: xercesc
 	xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR)/$(am__dirstamp)
 libmacosunicodeconverter.la: $(libmacosunicodeconverter_la_OBJECTS) $(libmacosunicodeconverter_la_DEPENDENCIES) 
 	$(CXXLINK) $(am_libmacosunicodeconverter_la_rpath) $(libmacosunicodeconverter_la_LDFLAGS) $(libmacosunicodeconverter_la_OBJECTS) $(libmacosunicodeconverter_la_LIBADD) $(LIBS)
+xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.lo:  \
+	xercesc/util/AtomicOpManagers/$(am__dirstamp) \
+	xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp)
+libnothreadaomgr.la: $(libnothreadaomgr_la_OBJECTS) $(libnothreadaomgr_la_DEPENDENCIES) 
+	$(CXXLINK) $(am_libnothreadaomgr_la_rpath) $(libnothreadaomgr_la_LDFLAGS) $(libnothreadaomgr_la_OBJECTS) $(libnothreadaomgr_la_LIBADD) $(LIBS)
+xercesc/util/MutexManagers/$(am__dirstamp):
+	@$(mkdir_p) xercesc/util/MutexManagers
+	@: > xercesc/util/MutexManagers/$(am__dirstamp)
+xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) xercesc/util/MutexManagers/$(DEPDIR)
+	@: > xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp)
+xercesc/util/MutexManagers/NoThreadMutexMgr.lo:  \
+	xercesc/util/MutexManagers/$(am__dirstamp) \
+	xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp)
+libnothreadmmgr.la: $(libnothreadmmgr_la_OBJECTS) $(libnothreadmmgr_la_DEPENDENCIES) 
+	$(CXXLINK) $(am_libnothreadmmgr_la_rpath) $(libnothreadmmgr_la_LDFLAGS) $(libnothreadmmgr_la_OBJECTS) $(libnothreadmmgr_la_LIBADD) $(LIBS)
 xercesc/parsers/$(am__dirstamp):
 	@$(mkdir_p) xercesc/parsers
 	@: > xercesc/parsers/$(am__dirstamp)
@@ -2053,12 +2173,6 @@ xercesc/parsers/XercesDOMParser.lo: xercesc/parsers/$(am__dirstamp) \
 	xercesc/parsers/$(DEPDIR)/$(am__dirstamp)
 libparsers.la: $(libparsers_la_OBJECTS) $(libparsers_la_DEPENDENCIES) 
 	$(CXXLINK)  $(libparsers_la_LDFLAGS) $(libparsers_la_OBJECTS) $(libparsers_la_LIBADD) $(LIBS)
-xercesc/util/AtomicOpManagers/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/AtomicOpManagers
-	@: > xercesc/util/AtomicOpManagers/$(am__dirstamp)
-xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/AtomicOpManagers/$(DEPDIR)
-	@: > xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp)
 xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.lo:  \
 	xercesc/util/AtomicOpManagers/$(am__dirstamp) \
 	xercesc/util/AtomicOpManagers/$(DEPDIR)/$(am__dirstamp)
@@ -2075,12 +2189,6 @@ xercesc/util/FileManagers/PosixFileMgr.lo:  \
 	xercesc/util/FileManagers/$(DEPDIR)/$(am__dirstamp)
 libposixfmgr.la: $(libposixfmgr_la_OBJECTS) $(libposixfmgr_la_DEPENDENCIES) 
 	$(CXXLINK) $(am_libposixfmgr_la_rpath) $(libposixfmgr_la_LDFLAGS) $(libposixfmgr_la_OBJECTS) $(libposixfmgr_la_LIBADD) $(LIBS)
-xercesc/util/MutexManagers/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/MutexManagers
-	@: > xercesc/util/MutexManagers/$(am__dirstamp)
-xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) xercesc/util/MutexManagers/$(DEPDIR)
-	@: > xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp)
 xercesc/util/MutexManagers/PosixMutexMgr.lo:  \
 	xercesc/util/MutexManagers/$(am__dirstamp) \
 	xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp)
@@ -2831,6 +2939,10 @@ mostlyclean-compile:
 	-rm -f xercesc/sax/SAXParseException.lo
 	-rm -f xercesc/sax2/sax2Dummy.$(OBJEXT)
 	-rm -f xercesc/sax2/sax2Dummy.lo
+	-rm -f xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.$(OBJEXT)
+	-rm -f xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.lo
+	-rm -f xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.$(OBJEXT)
+	-rm -f xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.lo
 	-rm -f xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.$(OBJEXT)
 	-rm -f xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.lo
 	-rm -f xercesc/util/Base64.$(OBJEXT)
@@ -2861,6 +2973,8 @@ mostlyclean-compile:
 	-rm -f xercesc/util/KVStringPair.lo
 	-rm -f xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.$(OBJEXT)
 	-rm -f xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.lo
+	-rm -f xercesc/util/MutexManagers/NoThreadMutexMgr.$(OBJEXT)
+	-rm -f xercesc/util/MutexManagers/NoThreadMutexMgr.lo
 	-rm -f xercesc/util/MutexManagers/PosixMutexMgr.$(OBJEXT)
 	-rm -f xercesc/util/MutexManagers/PosixMutexMgr.lo
 	-rm -f xercesc/util/Mutexes.$(OBJEXT)
@@ -3347,9 +3461,12 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/$(DEPDIR)/XMLUri.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/$(DEPDIR)/XMLWin1252Transcoder.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/$(DEPDIR)/XMemory.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/AtomicOpManagers/$(DEPDIR)/MacOSAtomicOpMgr.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/AtomicOpManagers/$(DEPDIR)/NoThreadAtomicOpMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/AtomicOpManagers/$(DEPDIR)/PosixAtomicOpMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/FileManagers/$(DEPDIR)/PosixFileMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MsgLoaders/InMemory/$(DEPDIR)/InMemMsgLoader.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MutexManagers/$(DEPDIR)/NoThreadMutexMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MutexManagers/$(DEPDIR)/PosixMutexMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/MacOSURLAccessCF.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/URLAccessCFBinInputStream.Plo@am__quote@
@@ -3665,6 +3782,25 @@ uninstall-nobase_libinternal_laHEADERS:
 	  echo " rm -f '$(DESTDIR)$(libinternal_ladir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(libinternal_ladir)/$$f"; \
 	done
+install-nobase_libmacosaomgr_laHEADERS: $(nobase_libmacosaomgr_la_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(libmacosaomgr_ladir)" || $(mkdir_p) "$(DESTDIR)$(libmacosaomgr_ladir)"
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libmacosaomgr_la_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  $(am__vpath_adj) \
+	  echo " $(nobase_libmacosaomgr_laHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(libmacosaomgr_ladir)/$$f'"; \
+	  $(nobase_libmacosaomgr_laHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(libmacosaomgr_ladir)/$$f"; \
+	done
+
+uninstall-nobase_libmacosaomgr_laHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libmacosaomgr_la_HEADERS)'; for p in $$list; do \
+	  $(am__vpath_adj) \
+	  echo " rm -f '$(DESTDIR)$(libmacosaomgr_ladir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(libmacosaomgr_ladir)/$$f"; \
+	done
 install-nobase_libmacosunicodeconverter_laHEADERS: $(nobase_libmacosunicodeconverter_la_HEADERS)
 	@$(NORMAL_INSTALL)
 	test -z "$(libmacosunicodeconverter_ladir)" || $(mkdir_p) "$(DESTDIR)$(libmacosunicodeconverter_ladir)"
@@ -3683,6 +3819,44 @@ uninstall-nobase_libmacosunicodeconverter_laHEADERS:
 	  $(am__vpath_adj) \
 	  echo " rm -f '$(DESTDIR)$(libmacosunicodeconverter_ladir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(libmacosunicodeconverter_ladir)/$$f"; \
+	done
+install-nobase_libnothreadaomgr_laHEADERS: $(nobase_libnothreadaomgr_la_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(libnothreadaomgr_ladir)" || $(mkdir_p) "$(DESTDIR)$(libnothreadaomgr_ladir)"
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libnothreadaomgr_la_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  $(am__vpath_adj) \
+	  echo " $(nobase_libnothreadaomgr_laHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(libnothreadaomgr_ladir)/$$f'"; \
+	  $(nobase_libnothreadaomgr_laHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(libnothreadaomgr_ladir)/$$f"; \
+	done
+
+uninstall-nobase_libnothreadaomgr_laHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libnothreadaomgr_la_HEADERS)'; for p in $$list; do \
+	  $(am__vpath_adj) \
+	  echo " rm -f '$(DESTDIR)$(libnothreadaomgr_ladir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(libnothreadaomgr_ladir)/$$f"; \
+	done
+install-nobase_libnothreadmmgr_laHEADERS: $(nobase_libnothreadmmgr_la_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(libnothreadmmgr_ladir)" || $(mkdir_p) "$(DESTDIR)$(libnothreadmmgr_ladir)"
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libnothreadmmgr_la_HEADERS)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  $(am__vpath_adj) \
+	  echo " $(nobase_libnothreadmmgr_laHEADERS_INSTALL) '$$d$$p' '$(DESTDIR)$(libnothreadmmgr_ladir)/$$f'"; \
+	  $(nobase_libnothreadmmgr_laHEADERS_INSTALL) "$$d$$p" "$(DESTDIR)$(libnothreadmmgr_ladir)/$$f"; \
+	done
+
+uninstall-nobase_libnothreadmmgr_laHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@$(am__vpath_adj_setup) \
+	list='$(nobase_libnothreadmmgr_la_HEADERS)'; for p in $$list; do \
+	  $(am__vpath_adj) \
+	  echo " rm -f '$(DESTDIR)$(libnothreadmmgr_ladir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(libnothreadmmgr_ladir)/$$f"; \
 	done
 install-nobase_libparsers_laHEADERS: $(nobase_libparsers_la_HEADERS)
 	@$(NORMAL_INSTALL)
@@ -3917,7 +4091,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libcfurl_ladir)" "$(DESTDIR)$(libdom_ladir)" "$(DESTDIR)$(libdomimpl_ladir)" "$(DESTDIR)$(libframework_ladir)" "$(DESTDIR)$(libicu_ladir)" "$(DESTDIR)$(libinmemory_ladir)" "$(DESTDIR)$(libinternal_ladir)" "$(DESTDIR)$(libmacosunicodeconverter_ladir)" "$(DESTDIR)$(libparsers_ladir)" "$(DESTDIR)$(libposixaomgr_ladir)" "$(DESTDIR)$(libposixfmgr_ladir)" "$(DESTDIR)$(libposixmmgr_ladir)" "$(DESTDIR)$(libsax2_ladir)" "$(DESTDIR)$(libsax_ladir)" "$(DESTDIR)$(libutil_ladir)" "$(DESTDIR)$(libvalidators_ladir)"; do \
+	for dir in "$(DESTDIR)$(libcfurl_ladir)" "$(DESTDIR)$(libdom_ladir)" "$(DESTDIR)$(libdomimpl_ladir)" "$(DESTDIR)$(libframework_ladir)" "$(DESTDIR)$(libicu_ladir)" "$(DESTDIR)$(libinmemory_ladir)" "$(DESTDIR)$(libinternal_ladir)" "$(DESTDIR)$(libmacosaomgr_ladir)" "$(DESTDIR)$(libmacosunicodeconverter_ladir)" "$(DESTDIR)$(libnothreadaomgr_ladir)" "$(DESTDIR)$(libnothreadmmgr_ladir)" "$(DESTDIR)$(libparsers_ladir)" "$(DESTDIR)$(libposixaomgr_ladir)" "$(DESTDIR)$(libposixfmgr_ladir)" "$(DESTDIR)$(libposixmmgr_ladir)" "$(DESTDIR)$(libsax2_ladir)" "$(DESTDIR)$(libsax_ladir)" "$(DESTDIR)$(libutil_ladir)" "$(DESTDIR)$(libvalidators_ladir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -4016,7 +4190,10 @@ install-data-am: install-nobase_libcfurl_laHEADERS \
 	install-nobase_libicu_laHEADERS \
 	install-nobase_libinmemory_laHEADERS \
 	install-nobase_libinternal_laHEADERS \
+	install-nobase_libmacosaomgr_laHEADERS \
 	install-nobase_libmacosunicodeconverter_laHEADERS \
+	install-nobase_libnothreadaomgr_laHEADERS \
+	install-nobase_libnothreadmmgr_laHEADERS \
 	install-nobase_libparsers_laHEADERS \
 	install-nobase_libposixaomgr_laHEADERS \
 	install-nobase_libposixfmgr_laHEADERS \
@@ -4059,7 +4236,10 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	uninstall-nobase_libicu_laHEADERS \
 	uninstall-nobase_libinmemory_laHEADERS \
 	uninstall-nobase_libinternal_laHEADERS \
+	uninstall-nobase_libmacosaomgr_laHEADERS \
 	uninstall-nobase_libmacosunicodeconverter_laHEADERS \
+	uninstall-nobase_libnothreadaomgr_laHEADERS \
+	uninstall-nobase_libnothreadmmgr_laHEADERS \
 	uninstall-nobase_libparsers_laHEADERS \
 	uninstall-nobase_libposixaomgr_laHEADERS \
 	uninstall-nobase_libposixfmgr_laHEADERS \
@@ -4082,7 +4262,10 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	install-nobase_libicu_laHEADERS \
 	install-nobase_libinmemory_laHEADERS \
 	install-nobase_libinternal_laHEADERS \
+	install-nobase_libmacosaomgr_laHEADERS \
 	install-nobase_libmacosunicodeconverter_laHEADERS \
+	install-nobase_libnothreadaomgr_laHEADERS \
+	install-nobase_libnothreadmmgr_laHEADERS \
 	install-nobase_libparsers_laHEADERS \
 	install-nobase_libposixaomgr_laHEADERS \
 	install-nobase_libposixfmgr_laHEADERS \
@@ -4102,7 +4285,10 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurl_laHEADERS \
 	uninstall-nobase_libicu_laHEADERS \
 	uninstall-nobase_libinmemory_laHEADERS \
 	uninstall-nobase_libinternal_laHEADERS \
+	uninstall-nobase_libmacosaomgr_laHEADERS \
 	uninstall-nobase_libmacosunicodeconverter_laHEADERS \
+	uninstall-nobase_libnothreadaomgr_laHEADERS \
+	uninstall-nobase_libnothreadmmgr_laHEADERS \
 	uninstall-nobase_libparsers_laHEADERS \
 	uninstall-nobase_libposixaomgr_laHEADERS \
 	uninstall-nobase_libposixfmgr_laHEADERS \

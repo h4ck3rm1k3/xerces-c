@@ -181,6 +181,9 @@
 /* Define to 1 if your C compiler doesn't accept -c and -o together. */
 /* #undef NO_MINUS_C_MINUS_O */
 
+/* Define to specify no threading is used */
+/* #undef NO_THREADS */
+
 /* Name of package */
 #define PACKAGE "xercesc3"
 
@@ -266,14 +269,23 @@
 /* Define if the std namespace is supported */
 #define XERCES_STD_NAMESPACE 1
 
+/* Define to use the MacOS AtomicOp mgr */
+#define XERCES_USE_ATOMICOPMGR_MACOS 1
+
+/* Define to use the NoThread AtomicOp mgr */
+/* #undef XERCES_USE_ATOMICOPMGR_NOTHREAD */
+
 /* Define to use the POSIX AtomicOp mgr */
-#define XERCES_USE_ATOMICOPMGR_POSIX 1
+/* #undef XERCES_USE_ATOMICOPMGR_POSIX */
 
 /* Define to use the POSIX file mgr */
 #define XERCES_USE_FILEMGR_POSIX 1
 
 /* Define to use the InMemory MsgLoader */
 #define XERCES_USE_MSGLOADER_INMEMORY 1
+
+/* Define to use the NoThread Mutex mgr */
+/* #undef XERCES_USE_MUTEXMGR_NOTHREAD */
 
 /* Define to use the POSIX mutex mgr */
 #define XERCES_USE_MUTEXMGR_POSIX 1

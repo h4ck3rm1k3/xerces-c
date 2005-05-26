@@ -19,20 +19,23 @@
  * $Id$
  */
 
-#ifndef POSIXATOMICOPMGL_HPP
-#define POSIXATOMICOPMGL_HPP
+#ifndef NOTHREADATOMICOPMGL_HPP
+#define NOTHREADATOMICOPMGL_HPP
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
-#include <xercesc/util/Mutexes.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Posix pthread mutex implementation.
-class PosixAtomicOpMgr : public XMLAtomicOpMgr
+/*
+	The NoThread atomic op manager is for use where no threading is used
+	in an environment. Since no threading is used, atomic operations
+	do not really need to be atomic.
+*/
+class NoThreadAtomicOpMgr : public XMLAtomicOpMgr
 {
     public:
-        PosixAtomicOpMgr();
-        virtual ~PosixAtomicOpMgr();
+        NoThreadAtomicOpMgr();
+        virtual ~NoThreadAtomicOpMgr();
 
 		// Atomic operations
 		virtual void* 	compareAndSwap(void**            toFill
@@ -40,9 +43,6 @@ class PosixAtomicOpMgr : public XMLAtomicOpMgr
 									 , const void* const toCompare);
 		virtual int		increment(int &location);
 		virtual int		decrement(int &location);
-		
-	private:
-		XMLMutex		fMutex;
 };
 
 XERCES_CPP_NAMESPACE_END

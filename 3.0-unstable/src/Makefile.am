@@ -128,6 +128,13 @@ endif
 #
 # AtomicOp Managers, conditionally built based on settings from configure
 #
+if XERCES_USE_ATOMICOPMGR_NOTHREAD
+src_libraries +=					libnothreadaomgr.la
+libnothreadaomgr_ladir =			${includedir}
+nobase_libnothreadaomgr_la_HEADERS =${nothreadaomgr_headers}
+libnothreadaomgr_la_SOURCES =		${nothreadaomgr_sources}
+endif
+
 if XERCES_USE_ATOMICOPMGR_POSIX
 src_libraries +=					libposixaomgr.la
 libposixaomgr_ladir =				${includedir}
@@ -135,9 +142,24 @@ nobase_libposixaomgr_la_HEADERS =	${posixaomgr_headers}
 libposixaomgr_la_SOURCES =			${posixaomgr_sources}
 endif
 
+if XERCES_USE_ATOMICOPMGR_MACOS
+src_libraries +=					libmacosaomgr.la
+libmacosaomgr_ladir =				${includedir}
+nobase_libmacosaomgr_la_HEADERS =	${macosaomgr_headers}
+libmacosaomgr_la_SOURCES =			${macosaomgr_sources}
+libmacosaomgr_la_LDFLAGS =			-Wl,-framework -Wl,CoreServices
+endif
+
 #
 # Mutex Managers, conditionally built based on settings from configure
 #
+if XERCES_USE_MUTEXMGR_NOTHREAD
+src_libraries +=					libnothreadmmgr.la
+libnothreadmmgr_ladir =				${includedir}
+nobase_libnothreadmmgr_la_HEADERS =	${nothreadmmgr_headers}
+libnothreadmmgr_la_SOURCES =		${nothreadmmgr_sources}
+endif
+
 if XERCES_USE_MUTEXMGR_POSIX
 src_libraries +=					libposixmmgr.la
 libposixmmgr_ladir =				${includedir}
@@ -970,6 +992,12 @@ posixfmgr_sources = \
 	xercesc/util/FileManagers/PosixFileMgr.cpp
 
 
+nothreadmmgr_headers = \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.hpp
+
+nothreadmmgr_sources = \
+	xercesc/util/MutexManagers/NoThreadMutexMgr.cpp
+
 posixmmgr_headers = \
 	xercesc/util/MutexManagers/PosixMutexMgr.hpp
 
@@ -977,12 +1005,23 @@ posixmmgr_sources = \
 	xercesc/util/MutexManagers/PosixMutexMgr.cpp
 
 
+nothreadaomgr_headers = \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.hpp
+
+nothreadaomgr_sources = \
+	xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.cpp
+
 posixaomgr_headers = \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp
 
 posixaomgr_sources = \
 	xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.cpp
 
+macosaomgr_headers = \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.hpp
+
+macosaomgr_sources = \
+	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.cpp
 
 
 macplatform_headers = \

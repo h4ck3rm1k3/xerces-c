@@ -18,19 +18,23 @@
  * $Id: MacAbstractFile.hpp 176026 2004-09-08 13:57:07Z peiyongz $
  */
 
-#ifndef POSIXMUTEXMGL_HPP
-#define POSIXMUTEXMGL_HPP
+#ifndef NOTHREADMUTEXMGL_HPP
+#define NOTHREADMUTEXMGL_HPP
 
 #include <xercesc/util/XMLMutexMgr.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Posix mutex implementation.
-class PosixMutexMgr : public XMLMutexMgr
+/*
+	The NoThread mutex manager is for use where no threading is used
+	in an environment. Since no threading is used, mutexes are not
+	needed, so the implementation does essentially nothing.
+*/
+class NoThreadMutexMgr : public XMLMutexMgr
 {
     public:
-        PosixMutexMgr();
-        virtual ~PosixMutexMgr();
+        NoThreadMutexMgr();
+        virtual ~NoThreadMutexMgr();
 
 		// Mutex operations
 		virtual XMLMutexHandle	create(MemoryManager* const manager);

@@ -49,13 +49,22 @@
 #endif
 
 #include <xercesc/util/XMLMutexMgr.hpp>
+#if XERCES_USE_MUTEXMGR_NOTHREAD
+#	include <xercesc/util/MutexManagers/NoThreadMutexMgr.hpp>
+#endif
 #if XERCES_USE_MUTEXMGR_POSIX
 #	include <xercesc/util/MutexManagers/PosixMutexMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
+#if XERCES_USE_ATOMICOPMGR_NOTHREAD
+#	include <xercesc/util/AtomicOpManagers/NoThreadAtomicOpMgr.hpp>
+#endif
 #if XERCES_USE_ATOMICOPMGR_POSIX
 #	include <xercesc/util/AtomicOpManagers/PosixAtomicOpMgr.hpp>
+#endif
+#if XERCES_USE_ATOMICOPMGR_MACOS
+#	include <xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLNetAccessor.hpp>
@@ -634,7 +643,9 @@ XMLMutexMgr* XMLPlatformUtils::makeMutexMgr(MemoryManager* const memmgr)
 {
 	XMLMutexMgr* mgr = NULL;
 	
-	#if XERCES_USE_MUTEXMGR_POSIX
+	#if XERCES_USE_MUTEXMGR_NOTHREAD
+		mgr = new (memmgr) NoThreadMutexMgr;
+	#elif XERCES_USE_MUTEXMGR_POSIX
 		mgr = new (memmgr) PosixMutexMgr;
 	#else
 		#error No Mutex Manager configured for platform! You must configure it.
@@ -687,8 +698,12 @@ XMLAtomicOpMgr* XMLPlatformUtils::makeAtomicOpMgr(MemoryManager* const memmgr)
 {
 	XMLAtomicOpMgr* mgr = NULL;
 	
-	#if XERCES_USE_ATOMICOPMGR_POSIX
+	#if XERCES_USE_ATOMICOPMGR_NOTHREAD
+		mgr = new (memmgr) NoThreadAtomicOpMgr;
+	#elif XERCES_USE_ATOMICOPMGR_POSIX
 		mgr = new (memmgr) PosixAtomicOpMgr;
+	#elif XERCES_USE_ATOMICOPMGR_MACOS
+		mgr = new (memmgr) MacOSAtomicOpMgr;
 	#else
 		#error No AtomicOp Manager configured for platform! You must configure it.
 	#endif

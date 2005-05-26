@@ -19,20 +19,23 @@
  * $Id$
  */
 
-#ifndef POSIXATOMICOPMGL_HPP
-#define POSIXATOMICOPMGL_HPP
+#ifndef MACOSATOMICOPMGL_HPP
+#define MACOSATOMICOPMGL_HPP
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
-#include <xercesc/util/Mutexes.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
 
-//	Posix pthread mutex implementation.
-class PosixAtomicOpMgr : public XMLAtomicOpMgr
+/*
+	The MacOS atomic op manager utilizes atomic operation primitives
+	in MacOS, which use atomic support in hardware if it's
+	available.
+*/
+class MacOSAtomicOpMgr : public XMLAtomicOpMgr
 {
     public:
-        PosixAtomicOpMgr();
-        virtual ~PosixAtomicOpMgr();
+        MacOSAtomicOpMgr();
+        virtual ~MacOSAtomicOpMgr();
 
 		// Atomic operations
 		virtual void* 	compareAndSwap(void**            toFill
@@ -40,9 +43,6 @@ class PosixAtomicOpMgr : public XMLAtomicOpMgr
 									 , const void* const toCompare);
 		virtual int		increment(int &location);
 		virtual int		decrement(int &location);
-		
-	private:
-		XMLMutex		fMutex;
 };
 
 XERCES_CPP_NAMESPACE_END
