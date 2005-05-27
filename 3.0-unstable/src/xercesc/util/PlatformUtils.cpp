@@ -638,16 +638,19 @@ unsigned long XMLPlatformUtils::getCurrentMillis()
 {
 	unsigned long ms = 0;
 	
-	// *** TODO: autoconf checks and additional platform support?
-#if 0
-	timeb aTime;
-    ftime(&aTime);
-    ms = (unsigned long)(aTime.time*1000 + aTime.millitm);
-#else
-    struct timeval aTime;
-    gettimeofday(&aTime, NULL);
-    ms = (unsigned long) (aTime.tv_sec * 1000 + aTime.tv_usec / 1000);
-#endif
+	// *** TODO: additional platform support?
+	#if   HAVE_SYS_TIME_H
+		struct timeval aTime;
+		gettimeofday(&aTime, NULL);
+		ms = (unsigned long) (aTime.tv_sec * 1000 + aTime.tv_usec / 1000);
+	#elif HAVE_SYS_TIMEB_H
+		timeb aTime;
+		ftime(&aTime);
+		ms = (unsigned long)(aTime.time*1000 + aTime.millitm);
+	#else
+		// Make this a warning instead?
+		#error No timing support is configured for this platform. You must configure it.
+	#endif
 
 	return ms;
 }
