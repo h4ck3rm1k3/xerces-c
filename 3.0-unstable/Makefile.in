@@ -227,7 +227,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = lib src obj tests
+SUBDIRS = lib src obj tests samples
 ACLOCAL_AMFLAGS = -I m4
 all: config.h xerces_hdr_config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
