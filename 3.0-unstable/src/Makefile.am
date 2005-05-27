@@ -86,7 +86,7 @@ nobase_libvalidators_la_HEADERS =	${validators_headers}
 libvalidators_la_SOURCES =			${validators_sources}
 
 #
-# Transcoders, conditionally built based on settings from configure
+# NetAccessors, conditionally built based on settings from configure
 #
 if XERCES_USE_NETACCESSOR_SOCKET
 src_libraries +=					libsockets.la
@@ -110,7 +110,7 @@ src_libraries +=					libicu.la
 libicu_ladir =						${includedir}
 nobase_libicu_la_HEADERS =			${icu_headers}
 libicu_la_SOURCES =					${icu_sources}
-libicu_la_CPPFLAGS =				-I${ICU_PREFIX}/include
+libicu_la_CPPFLAGS =				-I${ICU_PREFIX}/include $(AM_CPPFLAGS)
 libicu_la_LIBADD =					-L${ICU_PREFIX}/lib -licuuc -licudata
 endif
 
@@ -180,7 +180,7 @@ libposixmmgr_ladir =				${includedir}
 nobase_libposixmmgr_la_HEADERS =	${posixmmgr_headers}
 libposixmmgr_la_SOURCES =			${posixmmgr_sources}
 libposixmmgr_la_LIBADD =			${PTHREAD_LIBS}
-libposixmmgr_la_CFLAGS =			${PTHREAD_CFLAGS}
+libposixmmgr_la_CPPFLAGS =			${PTHREAD_CFLAGS} $(AM_CPPFLAGS)
 endif
 
 #
@@ -192,17 +192,6 @@ libposixfmgr_ladir =				${includedir}
 nobase_libposixfmgr_la_HEADERS =	${posixfmgr_headers}
 libposixfmgr_la_SOURCES =			${posixfmgr_sources}
 endif
-
-#
-# TEMPORARY PLATFORM SUPPORT
-#
-#src_libraries +=					libmacplatform.la
-#libmacplatform_ladir =				${includedir}
-#nobase_libmacplatform_la_HEADERS =	${macplatform_headers}
-#libmacplatform_la_SOURCES =		${macplatform_sources}
-#libmacplatform_la_CPPFLAGS =		-DXML_USE_NETACCESSOR_URLACCESSCF \
-#									-DXML_USE_MACOS_UNICODECONVERTER \
-#									-DXML_USE_INMEMORY_MSGLOADER
 
 #
 # Definition of sources/headers for each convenience library

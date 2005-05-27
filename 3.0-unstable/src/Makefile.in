@@ -61,7 +61,7 @@ build_triplet = @build@
 host_triplet = @host@
 
 #
-# Transcoders, conditionally built based on settings from configure
+# NetAccessors, conditionally built based on settings from configure
 #
 @XERCES_USE_NETACCESSOR_SOCKET_TRUE@am__append_1 = libsockets.la
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@am__append_2 = libcfurl.la
@@ -359,7 +359,8 @@ am__DEPENDENCIES_1 =
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@	$(am__DEPENDENCIES_1)
 am__libposixmmgr_la_SOURCES_DIST =  \
 	xercesc/util/MutexManagers/PosixMutexMgr.cpp
-am__objects_16 = xercesc/util/MutexManagers/PosixMutexMgr.lo
+am__objects_16 =  \
+	xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@am_libposixmmgr_la_OBJECTS =  \
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@	$(am__objects_16)
 libposixmmgr_la_OBJECTS = $(am_libposixmmgr_la_OBJECTS)
@@ -888,7 +889,7 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_ladir = ${includedir}
 @XERCES_USE_TRANSCODER_ICU_TRUE@nobase_libicu_la_HEADERS = ${icu_headers}
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_SOURCES = ${icu_sources}
-@XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_CPPFLAGS = -I${ICU_PREFIX}/include
+@XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_CPPFLAGS = -I${ICU_PREFIX}/include $(AM_CPPFLAGS)
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_LIBADD = -L${ICU_PREFIX}/lib -licuuc -licudata
 @XERCES_USE_TRANSCODER_ICONV_TRUE@libiconv_ladir = ${includedir}
 @XERCES_USE_TRANSCODER_ICONV_TRUE@nobase_libiconv_la_HEADERS = ${iconv_headers}
@@ -917,21 +918,10 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@nobase_libposixmmgr_la_HEADERS = ${posixmmgr_headers}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_la_SOURCES = ${posixmmgr_sources}
 @XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_la_LIBADD = ${PTHREAD_LIBS}
-@XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_la_CFLAGS = ${PTHREAD_CFLAGS}
+@XERCES_USE_MUTEXMGR_POSIX_TRUE@libposixmmgr_la_CPPFLAGS = ${PTHREAD_CFLAGS} $(AM_CPPFLAGS)
 @XERCES_USE_FILEMGR_POSIX_TRUE@libposixfmgr_ladir = ${includedir}
 @XERCES_USE_FILEMGR_POSIX_TRUE@nobase_libposixfmgr_la_HEADERS = ${posixfmgr_headers}
 @XERCES_USE_FILEMGR_POSIX_TRUE@libposixfmgr_la_SOURCES = ${posixfmgr_sources}
-
-#
-# TEMPORARY PLATFORM SUPPORT
-#
-#src_libraries +=					libmacplatform.la
-#libmacplatform_ladir =				${includedir}
-#nobase_libmacplatform_la_HEADERS =	${macplatform_headers}
-#libmacplatform_la_SOURCES =		${macplatform_sources}
-#libmacplatform_la_CPPFLAGS =		-DXML_USE_NETACCESSOR_URLACCESSCF \
-#									-DXML_USE_MACOS_UNICODECONVERTER \
-#									-DXML_USE_INMEMORY_MSGLOADER
 
 #
 # Definition of sources/headers for each convenience library
@@ -2267,7 +2257,7 @@ xercesc/util/FileManagers/PosixFileMgr.lo:  \
 	xercesc/util/FileManagers/$(DEPDIR)/$(am__dirstamp)
 libposixfmgr.la: $(libposixfmgr_la_OBJECTS) $(libposixfmgr_la_DEPENDENCIES) 
 	$(CXXLINK) $(am_libposixfmgr_la_rpath) $(libposixfmgr_la_LDFLAGS) $(libposixfmgr_la_OBJECTS) $(libposixfmgr_la_LIBADD) $(LIBS)
-xercesc/util/MutexManagers/PosixMutexMgr.lo:  \
+xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo:  \
 	xercesc/util/MutexManagers/$(am__dirstamp) \
 	xercesc/util/MutexManagers/$(DEPDIR)/$(am__dirstamp)
 libposixmmgr.la: $(libposixmmgr_la_OBJECTS) $(libposixmmgr_la_DEPENDENCIES) 
@@ -3064,8 +3054,8 @@ mostlyclean-compile:
 	-rm -f xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.lo
 	-rm -f xercesc/util/MutexManagers/NoThreadMutexMgr.$(OBJEXT)
 	-rm -f xercesc/util/MutexManagers/NoThreadMutexMgr.lo
-	-rm -f xercesc/util/MutexManagers/PosixMutexMgr.$(OBJEXT)
-	-rm -f xercesc/util/MutexManagers/PosixMutexMgr.lo
+	-rm -f xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.$(OBJEXT)
+	-rm -f xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo
 	-rm -f xercesc/util/Mutexes.$(OBJEXT)
 	-rm -f xercesc/util/Mutexes.lo
 	-rm -f xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.$(OBJEXT)
@@ -3560,7 +3550,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/FileManagers/$(DEPDIR)/PosixFileMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MsgLoaders/InMemory/$(DEPDIR)/InMemMsgLoader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MutexManagers/$(DEPDIR)/NoThreadMutexMgr.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MutexManagers/$(DEPDIR)/PosixMutexMgr.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/MutexManagers/$(DEPDIR)/libposixmmgr_la-PosixMutexMgr.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/MacOSURLAccessCF.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/URLAccessCFBinInputStream.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/Socket/$(DEPDIR)/SocketNetAccessor.Plo@am__quote@
@@ -3712,6 +3702,13 @@ xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo: xercesc/util/Transcod
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='xercesc/util/Transcoders/ICU/ICUTransService.cpp' object='xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libicu_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo `test -f 'xercesc/util/Transcoders/ICU/ICUTransService.cpp' || echo '$(srcdir)/'`xercesc/util/Transcoders/ICU/ICUTransService.cpp
+
+xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo: xercesc/util/MutexManagers/PosixMutexMgr.cpp
+@am__fastdepCXX_TRUE@	if $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libposixmmgr_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo -MD -MP -MF "xercesc/util/MutexManagers/$(DEPDIR)/libposixmmgr_la-PosixMutexMgr.Tpo" -c -o xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo `test -f 'xercesc/util/MutexManagers/PosixMutexMgr.cpp' || echo '$(srcdir)/'`xercesc/util/MutexManagers/PosixMutexMgr.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "xercesc/util/MutexManagers/$(DEPDIR)/libposixmmgr_la-PosixMutexMgr.Tpo" "xercesc/util/MutexManagers/$(DEPDIR)/libposixmmgr_la-PosixMutexMgr.Plo"; else rm -f "xercesc/util/MutexManagers/$(DEPDIR)/libposixmmgr_la-PosixMutexMgr.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='xercesc/util/MutexManagers/PosixMutexMgr.cpp' object='xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libposixmmgr_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o xercesc/util/MutexManagers/libposixmmgr_la-PosixMutexMgr.lo `test -f 'xercesc/util/MutexManagers/PosixMutexMgr.cpp' || echo '$(srcdir)/'`xercesc/util/MutexManagers/PosixMutexMgr.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
