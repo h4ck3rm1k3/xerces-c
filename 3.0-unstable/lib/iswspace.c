@@ -20,7 +20,7 @@
 
 #include "iswspace.h"
 
-int iswspace(int wc);
+int iswspace(int wc)
 {
 	return wc == ' ';
 }

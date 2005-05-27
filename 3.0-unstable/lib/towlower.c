@@ -20,7 +20,7 @@
 
 #include "towlower.h"
 
-int towlower(int wc);
+int towlower(int wc)
 {
 	return (wc >= 'A') && (wc <= 'Z')
 				? wc + 'a' - 'A'

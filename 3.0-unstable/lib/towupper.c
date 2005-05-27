@@ -20,7 +20,7 @@
 
 #include "towupper.h"
 
-int towupper(int c);
+int towupper(int c)
 {
 	return (c >= 'a') && (c <= 'z')
 				? c - 'a' + 'A'
