@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: MacAbstractFile.hpp 176026 2004-09-08 13:57:07Z peiyongz $
+ * $Id$
  */
 
 #ifndef XMLMUTEXMGL_HPP
