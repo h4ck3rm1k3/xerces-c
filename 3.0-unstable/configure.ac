@@ -35,7 +35,7 @@ AC_CONFIG_FILES([Makefile lib/Makefile src/Makefile obj/Makefile tests/Makefile]
 AC_CANONICAL_HOST
 
 # Initialize automake
-AM_INIT_AUTOMAKE([foreign dist-bzip2 tar-ustar])
+AM_INIT_AUTOMAKE([foreign subdir-objects dist-bzip2 tar-ustar])
 AM_MAINTAINER_MODE
 
 # Checks for programs.
