@@ -32,14 +32,14 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 			[list_add=curl])
 	])
 	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list $list_add"; AC_MSG_RESULT(yes)],
+		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
-	
+	AC_REQUIRE([XERCES_LIBWWW_PREFIX])	
 	AC_MSG_CHECKING([for whether we can support the libwww-based NetAccessor])
 	list_add=
-	AS_IF([test x"$libwww_dir" != x], [
+	AS_IF([test x"$xerces_cv_libwww_prefix" != x], [
 		AC_ARG_ENABLE([netaccessor-libwww],
 			AS_HELP_STRING([--enable-netaccessor-libwww],
 				[Enable libwww-based NetAccessor support]),
@@ -48,7 +48,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 			[na_list=libwww])
 	])
 	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list $list_add"; AC_MSG_RESULT(yes)],
+		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -64,7 +64,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 			[list_add=socket])
 		])
 	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list $list_add"; AC_MSG_RESULT(yes)],
+		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -73,18 +73,19 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	list_add=
 	case $host_os in
 	darwin*)
-		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
-		AC_ARG_ENABLE([netaccessor-cfurl],
-			AS_HELP_STRING([--enable-netaccessor-cfurl],
-				[Enable cfurl-based NetAccessor support]),
-			[AS_IF([test x"$enableval" = xyes],
-				[list_add=CFURL])],
-			[list_add=cfurl])
-		fi
+		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
+			AC_ARG_ENABLE([netaccessor-cfurl],
+				AS_HELP_STRING([--enable-netaccessor-cfurl],
+					[Enable cfurl-based NetAccessor support]),
+				[AS_IF([test x"$enableval" = xyes],
+					[list_add=CFURL])],
+				[list_add=cfurl])
+			]
+		)
 		;;
 	esac
 	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list $list_add"; AC_MSG_RESULT(yes)],
+		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -103,7 +104,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 		;;
 	esac
 	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list $list_add"; AC_MSG_RESULT(yes)],
+		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -124,37 +125,43 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 		
 		# Check for each netaccessor, in implicit rank order
 		case $na_list in
-		*curl*)
+		
+		*-curl-*)
 			AC_DEFINE([XERCES_USE_NETACCESSOR_CURL], 1, [Define to use the CURL NetAccessor])
 			netaccessor=curl
 			break
 			;;
-		*cfurl*)
+			
+		*-cfurl-*)
 			AC_DEFINE([XERCES_USE_NETACCESSOR_CFURL], 1, [Define to use the Mac OS X CFURL NetAccessor])
 			netaccessor=cfurl
-			XERCES_LINK_DARWIN_FRAMEWORK([CoreServices])
 			break
 			;;
-		*winsock*)
+			
+		*-winsock-*)
 			AC_DEFINE([XERCES_USE_NETACCESSOR_WINSOCK], 1, [Define to use the WinSock NetAccessor])
 			netaccessor=winsock
 			break
 			;;
-		*socket*)
+			
+		*-socket-*)
 			AC_DEFINE([XERCES_USE_NETACCESSOR_SOCKET], 1, [Define to use the Sockets-based NetAccessor])
 			netaccessor=socket
 			break
 			;;
-		*libwww*)
+			
+		*-libwww-*)
 			AC_DEFINE([XERCES_USE_NETACCESSOR_LIBWWW], 1, [Define to use the libwww NetAccessor])
 			netaccessor=libwww
 			break
 			;;
+			
 		*)
 			if [test $i -eq 2]; then
 				AC_MSG_RESULT([none available; there will be no network access!!!])
 			fi
 			;;
+			
 		esac
 	done
 	if test x"$netaccessor" != x; then

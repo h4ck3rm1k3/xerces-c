@@ -313,13 +313,13 @@
 #define XERCES_USE_MUTEXMGR_POSIX 1
 
 /* Define to use the Mac OS X CFURL NetAccessor */
-#define XERCES_USE_NETACCESSOR_CFURL 1
+/* #undef XERCES_USE_NETACCESSOR_CFURL */
 
 /* Define to use the CURL NetAccessor */
 /* #undef XERCES_USE_NETACCESSOR_CURL */
 
 /* Define to use the libwww NetAccessor */
-/* #undef XERCES_USE_NETACCESSOR_LIBWWW */
+#define XERCES_USE_NETACCESSOR_LIBWWW 1
 
 /* Define to use the Sockets-based NetAccessor */
 /* #undef XERCES_USE_NETACCESSOR_SOCKET */

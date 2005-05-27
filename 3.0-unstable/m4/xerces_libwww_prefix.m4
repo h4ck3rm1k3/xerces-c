@@ -22,7 +22,7 @@ AC_DEFUN([XERCES_LIBWWW_PREFIX],
 		if test x"$with_libwww" != x"no"; then
 			search_list="$with_libwww /usr/local /usr"
 			for i in $search_list; do
-				if test -r "$i/include/w3c-libwww/HTTP.h"; then
+				if test -r "$i/include/w3c-libwww/WWWInit.h"; then
 					xerces_cv_libwww_prefix=$i
 					break
 				fi
@@ -30,6 +30,8 @@ AC_DEFUN([XERCES_LIBWWW_PREFIX],
 		fi
 	])
 	
+	
+	AC_SUBST([LIBWWW_PREFIX], [$xerces_cv_libwww_prefix])
 	]
 )
 

@@ -464,7 +464,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL acx_pthread_config PTHREAD_CC PTHREAD_LIBS PTHREAD_CFLAGS LIBOBJS CURL_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_TRANSCODER_ICONV_TRUE XERCES_USE_TRANSCODER_ICONV_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE XERCES_USE_FILEMGR_POSIX_TRUE XERCES_USE_FILEMGR_POSIX_FALSE XERCES_USE_MUTEXMGR_NOTHREAD_TRUE XERCES_USE_MUTEXMGR_NOTHREAD_FALSE XERCES_USE_MUTEXMGR_POSIX_TRUE XERCES_USE_MUTEXMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE XERCES_USE_ATOMICOPMGR_POSIX_TRUE XERCES_USE_ATOMICOPMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_MACOS_TRUE XERCES_USE_ATOMICOPMGR_MACOS_FALSE LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS build build_cpu build_vendor build_os host host_cpu host_vendor host_os INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CXX CXXFLAGS LDFLAGS CPPFLAGS ac_ct_CXX EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CC CFLAGS ac_ct_CC CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LN_S EGREP ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL acx_pthread_config PTHREAD_CC PTHREAD_LIBS PTHREAD_CFLAGS LIBOBJS CURL_PREFIX LIBWWW_PREFIX XERCES_USE_NETACCESSOR_CURL_TRUE XERCES_USE_NETACCESSOR_CURL_FALSE XERCES_USE_NETACCESSOR_CFURL_TRUE XERCES_USE_NETACCESSOR_CFURL_FALSE XERCES_USE_NETACCESSOR_WINSOCK_TRUE XERCES_USE_NETACCESSOR_WINSOCK_FALSE XERCES_USE_NETACCESSOR_SOCKET_TRUE XERCES_USE_NETACCESSOR_SOCKET_FALSE XERCES_USE_NETACCESSOR_LIBWWW_TRUE XERCES_USE_NETACCESSOR_LIBWWW_FALSE ICU_PREFIX XERCES_USE_TRANSCODER_ICU_TRUE XERCES_USE_TRANSCODER_ICU_FALSE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_FALSE XERCES_USE_TRANSCODER_ICONV_TRUE XERCES_USE_TRANSCODER_ICONV_FALSE XERCES_USE_MSGLOADER_INMEMORY_TRUE XERCES_USE_MSGLOADER_INMEMORY_FALSE XERCES_USE_FILEMGR_POSIX_TRUE XERCES_USE_FILEMGR_POSIX_FALSE XERCES_USE_MUTEXMGR_NOTHREAD_TRUE XERCES_USE_MUTEXMGR_NOTHREAD_FALSE XERCES_USE_MUTEXMGR_POSIX_TRUE XERCES_USE_MUTEXMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_NOTHREAD_TRUE XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE XERCES_USE_ATOMICOPMGR_POSIX_TRUE XERCES_USE_ATOMICOPMGR_POSIX_FALSE XERCES_USE_ATOMICOPMGR_MACOS_TRUE XERCES_USE_ATOMICOPMGR_MACOS_FALSE LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -24107,7 +24107,7 @@ else
 		if test x"$with_libwww" != x"no"; then
 			search_list="$with_libwww /usr/local /usr"
 			for i in $search_list; do
-				if test -r "$i/include/w3c-libwww/HTTP.h"; then
+				if test -r "$i/include/w3c-libwww/WWWInit.h"; then
 					xerces_cv_libwww_prefix=$i
 					break
 				fi
@@ -24117,6 +24117,9 @@ else
 fi
 echo "$as_me:$LINENO: result: $xerces_cv_libwww_prefix" >&5
 echo "${ECHO_T}$xerces_cv_libwww_prefix" >&6
+
+
+	LIBWWW_PREFIX=$xerces_cv_libwww_prefix
 
 
 
@@ -24151,7 +24154,7 @@ fi;
 fi
 
 	if test x"$list_add" != x; then
-  na_list="$na_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24164,7 +24167,7 @@ fi
 	echo "$as_me:$LINENO: checking for whether we can support the libwww-based NetAccessor" >&5
 echo $ECHO_N "checking for whether we can support the libwww-based NetAccessor... $ECHO_C" >&6
 	list_add=
-	if test x"$libwww_dir" != x; then
+	if test x"$xerces_cv_libwww_prefix" != x; then
 
 		# Check whether --enable-netaccessor-libwww or --disable-netaccessor-libwww was given.
 if test "${enable_netaccessor_libwww+set}" = set; then
@@ -24180,7 +24183,7 @@ fi;
 fi
 
 	if test x"$list_add" != x; then
-  na_list="$na_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24208,7 +24211,7 @@ fi;
 fi
 
 	if test x"$list_add" != x; then
-  na_list="$na_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24224,7 +24227,8 @@ echo $ECHO_N "checking for whether we can support the CFURL NetAccessor (Mac OS 
 	case $host_os in
 	darwin*)
 		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
-		# Check whether --enable-netaccessor-cfurl or --disable-netaccessor-cfurl was given.
+
+			# Check whether --enable-netaccessor-cfurl or --disable-netaccessor-cfurl was given.
 if test "${enable_netaccessor_cfurl+set}" = set; then
   enableval="$enable_netaccessor_cfurl"
   if test x"$enableval" = xyes; then
@@ -24234,11 +24238,14 @@ fi
 else
   list_add=cfurl
 fi;
-		fi
+
+
+fi
+
 		;;
 	esac
 	if test x"$list_add" != x; then
-  na_list="$na_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24267,7 +24274,7 @@ fi;
 		;;
 	esac
 	if test x"$list_add" != x; then
-  na_list="$na_list $list_add"; echo "$as_me:$LINENO: result: yes" >&5
+  na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
   echo "$as_me:$LINENO: result: no" >&5
@@ -24294,7 +24301,8 @@ echo $ECHO_N "checking for which NetAccessor to use (choices:$na_list)... $ECHO_
 
 		# Check for each netaccessor, in implicit rank order
 		case $na_list in
-		*curl*)
+
+		*-curl-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_CURL 1
@@ -24303,31 +24311,18 @@ _ACEOF
 			netaccessor=curl
 			break
 			;;
-		*cfurl*)
+
+		*-cfurl-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_CFURL 1
 _ACEOF
 
 			netaccessor=cfurl
-
-	case $host_os in
-	darwin*)
-		test -z "${xerces_darwin_frameworks}" && xerces_darwin_frameworks="-"
-		case ${xerces_darwin_frameworks} in
-		*-CoreServices-*)
-			;;
-		*)
-			xerces_darwin_frameworks="-CoreServices${xerces_darwin_frameworks}"
-			LIBS="-Wl,-framework -Wl,CoreServices $LIBS"
-			;;
-		esac
-		;;
-	esac
-
 			break
 			;;
-		*winsock*)
+
+		*-winsock-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_WINSOCK 1
@@ -24336,7 +24331,8 @@ _ACEOF
 			netaccessor=winsock
 			break
 			;;
-		*socket*)
+
+		*-socket-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_SOCKET 1
@@ -24345,7 +24341,8 @@ _ACEOF
 			netaccessor=socket
 			break
 			;;
-		*libwww*)
+
+		*-libwww-*)
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_LIBWWW 1
@@ -24354,12 +24351,14 @@ _ACEOF
 			netaccessor=libwww
 			break
 			;;
+
 		*)
 			if test $i -eq 2; then
 				echo "$as_me:$LINENO: result: none available; there will be no network access!!!" >&5
 echo "${ECHO_T}none available; there will be no network access!!!" >&6
 			fi
 			;;
+
 		esac
 	done
 	if test x"$netaccessor" != x; then
@@ -24838,6 +24837,7 @@ echo $ECHO_N "checking for which Transcoder to use (choices:$tc_list)... $ECHO_C
 
 		# Check for each transcoder, in implicit rank order
 		case $tc_list in
+
 		*-icu-*)
 
 cat >>confdefs.h <<\_ACEOF
@@ -24847,6 +24847,7 @@ _ACEOF
 			transcoder=icu
 			break
 			;;
+
 		*-macosunicodeconverter-*)
 
 cat >>confdefs.h <<\_ACEOF
@@ -26236,6 +26237,7 @@ s,@PTHREAD_LIBS@,$PTHREAD_LIBS,;t t
 s,@PTHREAD_CFLAGS@,$PTHREAD_CFLAGS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@CURL_PREFIX@,$CURL_PREFIX,;t t
+s,@LIBWWW_PREFIX@,$LIBWWW_PREFIX,;t t
 s,@XERCES_USE_NETACCESSOR_CURL_TRUE@,$XERCES_USE_NETACCESSOR_CURL_TRUE,;t t
 s,@XERCES_USE_NETACCESSOR_CURL_FALSE@,$XERCES_USE_NETACCESSOR_CURL_FALSE,;t t
 s,@XERCES_USE_NETACCESSOR_CFURL_TRUE@,$XERCES_USE_NETACCESSOR_CFURL_TRUE,;t t

@@ -23,12 +23,19 @@
 // ---------------------------------------------------------------------------
 //  Includes
 // ---------------------------------------------------------------------------
-#include <config.h>
+#if HAVE_CONFIG_H
+#	include <config.h>
+#endif
 
-// *** TODO: protect and x-platform
-#include <limits.h>
-// #include <sys/timeb.h>
-#include <sys/time.h>
+#if HAVE_LIMITS_H
+#	include <limits.h>
+#endif
+#if HAVE_SYS_TIME_H
+#	include <sys/time.h>
+#endif
+#if HAVE_SYS_TIMEB_H
+#	include <sys/timeb.h>
+#endif
 
 #include <xercesc/util/Mutexes.hpp>
 #include <xercesc/util/PlatformUtils.hpp>

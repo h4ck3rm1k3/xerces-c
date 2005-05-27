@@ -54,7 +54,6 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_filemgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_icu_prefix.m4 \
 	$(top_srcdir)/m4/xerces_libwww_prefix.m4 \
-	$(top_srcdir)/m4/xerces_link_darwin_framework.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
 	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
@@ -131,6 +130,7 @@ LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
+LIBWWW_PREFIX = @LIBWWW_PREFIX@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
