@@ -97,11 +97,13 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 		
 		# Check for each transcoder, in implicit rank order
 		case $tc_list in
+		
 		*-icu-*)
 			AC_DEFINE([XERCES_USE_TRANSCODER_ICU], 1, [Define to use the ICU-based transcoder])
 			transcoder=icu
 			break
 			;;
+			
 		*-macosunicodeconverter-*)
 			AC_DEFINE([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER], 1, [Define to use the Mac OS UnicodeConverter-based transcoder])
 			transcoder=macosunicodeconverter
