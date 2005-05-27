@@ -373,9 +373,11 @@ am_libsax2_la_OBJECTS = $(am__objects_18)
 libsax2_la_OBJECTS = $(am_libsax2_la_OBJECTS)
 libsockets_la_LIBADD =
 am__libsockets_la_SOURCES_DIST =  \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.cpp
 am__objects_19 =  \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.lo
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.lo \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.lo
 @XERCES_USE_NETACCESSOR_SOCKET_TRUE@am_libsockets_la_OBJECTS =  \
 @XERCES_USE_NETACCESSOR_SOCKET_TRUE@	$(am__objects_19)
 libsockets_la_OBJECTS = $(am_libsockets_la_OBJECTS)
@@ -665,7 +667,8 @@ nobase_libposixmmgr_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libsax2_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libsax_laHEADERS_INSTALL = $(install_sh_DATA)
 am__nobase_libsockets_la_HEADERS_DIST =  \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.hpp
 nobase_libsockets_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libutil_laHEADERS_INSTALL = $(install_sh_DATA)
 nobase_libvalidators_laHEADERS_INSTALL = $(install_sh_DATA)
@@ -1693,10 +1696,12 @@ macosunicodeconverter_sources = \
 	xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.cpp
 
 sockets_headers = \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.hpp
 
 sockets_sources = \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.cpp
 
 cfurl_headers = \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp \
@@ -2290,6 +2295,9 @@ xercesc/util/NetAccessors/Socket/$(DEPDIR)/$(am__dirstamp):
 	@$(mkdir_p) xercesc/util/NetAccessors/Socket/$(DEPDIR)
 	@: > xercesc/util/NetAccessors/Socket/$(DEPDIR)/$(am__dirstamp)
 xercesc/util/NetAccessors/Socket/SocketNetAccessor.lo:  \
+	xercesc/util/NetAccessors/Socket/$(am__dirstamp) \
+	xercesc/util/NetAccessors/Socket/$(DEPDIR)/$(am__dirstamp)
+xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.lo:  \
 	xercesc/util/NetAccessors/Socket/$(am__dirstamp) \
 	xercesc/util/NetAccessors/Socket/$(DEPDIR)/$(am__dirstamp)
 libsockets.la: $(libsockets_la_OBJECTS) $(libsockets_la_DEPENDENCIES) 
@@ -3059,6 +3067,8 @@ mostlyclean-compile:
 	-rm -f xercesc/util/NetAccessors/MacOSURLAccessCF/URLAccessCFBinInputStream.lo
 	-rm -f xercesc/util/NetAccessors/Socket/SocketNetAccessor.$(OBJEXT)
 	-rm -f xercesc/util/NetAccessors/Socket/SocketNetAccessor.lo
+	-rm -f xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.$(OBJEXT)
+	-rm -f xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.lo
 	-rm -f xercesc/util/PanicHandler.$(OBJEXT)
 	-rm -f xercesc/util/PanicHandler.lo
 	-rm -f xercesc/util/PlatformUtils.$(OBJEXT)
@@ -3549,6 +3559,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/MacOSURLAccessCF.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/MacOSURLAccessCF/$(DEPDIR)/URLAccessCFBinInputStream.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/Socket/$(DEPDIR)/SocketNetAccessor.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/NetAccessors/Socket/$(DEPDIR)/UnixHTTPURLInputStream.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Transcoders/ICU/$(DEPDIR)/libicu_la-ICUTransService.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Transcoders/Iconv/$(DEPDIR)/IconvTransService.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@xercesc/util/Transcoders/MacOSUnicodeConverter/$(DEPDIR)/MacOSUnicodeConverter.Plo@am__quote@

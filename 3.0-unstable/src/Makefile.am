@@ -977,10 +977,12 @@ macosunicodeconverter_sources = \
 
 
 sockets_headers = \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.hpp
 	
 sockets_sources = \
-	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp \
+	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.cpp
 	
 cfurl_headers = \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp \
