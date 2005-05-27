@@ -26,92 +26,92 @@ AM_CPPFLAGS =						-I${top_srcdir}/src
 
 testprogs =
 
-testprogs +=						_DOMTest
-_DOMTest_SOURCES = 					DOM/DOMTest/DTest.cpp \
-									DOM/DOMTest/DTest.h
+testprogs +=						DOMTest
+DOMTest_SOURCES = 					src/DOM/DOMTest/DTest.cpp \
+									src/DOM/DOMTest/DTest.h
 
-testprogs +=						_DOMMemTest
-_DOMMemTest_SOURCES = 				DOM/DOMMemTest/DOMMemTest.cpp
+testprogs +=						DOMMemTest
+DOMMemTest_SOURCES = 				src/DOM/DOMMemTest/DOMMemTest.cpp
 
-testprogs +=						_Normalizer
-_Normalizer_SOURCES = 				DOM/Normalizer/Normalizer.cpp \
-									DOM/Normalizer/Normalizer.hpp
-TestNormalizer_EXTRA =				DOM/Normalizer/expectedOutput
+testprogs +=						Normalizer
+Normalizer_SOURCES = 				src/DOM/Normalizer/Normalizer.cpp \
+									src/DOM/Normalizer/Normalizer.hpp
+Normalizer_EXTRA =					src/DOM/Normalizer/expectedOutput
 
-testprogs +=						_RangeTest
-_RangeTest_SOURCES = 				DOM/RangeTest/RangeTest.cpp
+testprogs +=						RangeTest
+RangeTest_SOURCES = 				src/DOM/RangeTest/RangeTest.cpp
 
-testprogs +=						_Traversal
-_Traversal_SOURCES = 				DOM/Traversal/Traversal.cpp
+testprogs +=						Traversal
+Traversal_SOURCES = 				src/DOM/Traversal/Traversal.cpp
 
-testprogs +=						_TypeInfo
-_TypeInfo_SOURCES =	 				DOM/TypeInfo/TypeInfo.cpp \
-									DOM/TypeInfo/TypeInfo.hpp
-_TypeInfo_EXTRA =					DOM/TypeInfo/data/combined.dtd \
-									DOM/TypeInfo/data/combined.xml \
-									DOM/TypeInfo/data/combined.xsd \
-									DOM/TypeInfo/data/SecondSchema.xsd \
-									DOM/TypeInfo/data/TypeInfo.dtd \
-									DOM/TypeInfo/data/TypeInfo.xml \
-									DOM/TypeInfo/data/TypeInfo.xsd \
-									DOM/TypeInfo/data/TypeInfoJustDTD.xml \
-									DOM/TypeInfo/data/TypeInfoNoDTD.xml \
-									DOM/TypeInfo/data/TypeInfoNoDTD.xsd
+testprogs +=						TypeInfo
+TypeInfo_SOURCES =	 				src/DOM/TypeInfo/TypeInfo.cpp \
+									src/DOM/TypeInfo/TypeInfo.hpp
+TypeInfo_EXTRA =					src/DOM/TypeInfo/data/combined.dtd \
+									src/DOM/TypeInfo/data/combined.xml \
+									src/DOM/TypeInfo/data/combined.xsd \
+									src/DOM/TypeInfo/data/SecondSchema.xsd \
+									src/DOM/TypeInfo/data/TypeInfo.dtd \
+									src/DOM/TypeInfo/data/TypeInfo.xml \
+									src/DOM/TypeInfo/data/TypeInfo.xsd \
+									src/DOM/TypeInfo/data/TypeInfoJustDTD.xml \
+									src/DOM/TypeInfo/data/TypeInfoNoDTD.xml \
+									src/DOM/TypeInfo/data/TypeInfoNoDTD.xsd
 
-testprogs +=						_EncodingTest
-_EncodingTest_SOURCES = 			EncodingTest/EncodingTest.cpp
+testprogs +=						EncodingTest
+EncodingTest_SOURCES = 				src/EncodingTest/EncodingTest.cpp
 
-testprogs +=						_InitTermTest
-_InitTermTest_SOURCES = 			InitTermTest/InitTermTest.cpp \
-									InitTermTest/InitTermTest.hpp
+testprogs +=						InitTermTest
+InitTermTest_SOURCES = 				src/InitTermTest/InitTermTest.cpp \
+									src/InitTermTest/InitTermTest.hpp
 
 # This tests the deprecated dom, which we don't build at the moment
-#testprogs +=						_MemHandlerTest
-#_MemHandlerTest_SOURCES = 			MemHandlerTest/MemoryMonitor.cpp \
-#									MemHandlerTest/MemoryMonitor.hpp \
-#									MemHandlerTest/SimpleHashPtr.cpp \
-#									MemHandlerTest/SimpleHashPtr.hpp \
-#									MemHandlerTest/SimpleValueHashTableOf.hpp
+#testprogs +=						MemHandlerTest
+#MemHandlerTest_SOURCES = 			src/MemHandlerTest/MemoryMonitor.cpp \
+#									src/MemHandlerTest/MemoryMonitor.hpp \
+#									src/MemHandlerTest/SimpleHashPtr.cpp \
+#									src/MemHandlerTest/SimpleHashPtr.hpp \
+#									src/MemHandlerTest/SimpleValueHashTableOf.hpp
 
 # Doesn't compile under gcc4 for some reason
 # dcargill says this is obsolete and we can delete it.
-#testprogs +=						_ParserTest
-#_ParserTest_SOURCES = 				ParserTest/ParserTest.cpp \
-#									ParserTest/ParserTest.hpp \
-#									ParserTest/ParserTest_Parser.cpp \
-#									ParserTest/ParserTest_Parser.hpp
+#testprogs +=						ParserTest
+#ParserTest_SOURCES = 				src/ParserTest/ParserTest.cpp \
+#									src/ParserTest/ParserTest.hpp \
+#									src/ParserTest/ParserTest_Parser.cpp \
+#									src/ParserTest/ParserTest_Parser.hpp
 
 # Needs to use generic pthread conditionals HAS_PTHREADS
-#testprogs +=						_ThreadTest
-#_ThreadTest_SOURCES = 				ThreadTest/ThreadTest.cpp
+#testprogs +=						ThreadTest
+#ThreadTest_SOURCES = 				src/ThreadTest/ThreadTest.cpp
 
 # Fails to compile under gcc 4 (ambiguous calls to NullPointerException)
 # dcargill says this is obsolete and we can delete it.
-#testprogs +=						_UtilTests
-#_UtilTests_SOURCES = 				UtilTests/CoreTests_BitSet.cpp \
-#									UtilTests/CoreTests_CountedPointer.cpp \
-#									UtilTests/CoreTests_RefArray.cpp \
-#									UtilTests/CoreTests_RefHashTable.cpp \
-#									UtilTests/CoreTests_RefStack.cpp \
-#									UtilTests/CoreTests_RefVector.cpp \
-#									UtilTests/CoreTests_String.cpp \
-#									UtilTests/CoreTests_Transcoders.cpp \
-#									UtilTests/CoreTests_URL.cpp \
-#									UtilTests/CoreTests_ValueArray.cpp \
-#									UtilTests/CoreTests_ValueStack.cpp \
-#									UtilTests/CoreTests_ValueVector.cpp \
-#									UtilTests/CoreTestsMain.cpp \
-#									UtilTests/CoreTests.hpp
+#testprogs +=						UtilTests
+#UtilTests_SOURCES = 				src/UtilTests/CoreTests_BitSet.cpp \
+#									src/UtilTests/CoreTests_CountedPointer.cpp \
+#									src/UtilTests/CoreTests_RefArray.cpp \
+#									src/UtilTests/CoreTests_RefHashTable.cpp \
+#									src/UtilTests/CoreTests_RefStack.cpp \
+#									src/UtilTests/CoreTests_RefVector.cpp \
+#									src/UtilTests/CoreTests_String.cpp \
+#									src/UtilTests/CoreTests_Transcoders.cpp \
+#									src/UtilTests/CoreTests_URL.cpp \
+#									src/UtilTests/CoreTests_ValueArray.cpp \
+#									src/UtilTests/CoreTests_ValueStack.cpp \
+#									src/UtilTests/CoreTests_ValueVector.cpp \
+#									src/UtilTests/CoreTestsMain.cpp \
+#									src/UtilTests/CoreTests.hpp
 
-testprogs +=						_XSerializerTest
-_XSerializerTest_SOURCES = 			XSerializerTest/XSerializerHandlers.cpp \
-									XSerializerTest/XSerializerHandlers.hpp \
-									XSerializerTest/XSerializerTest.cpp \
-									XSerializerTest/XSerializerTest.hpp
+testprogs +=						XSerializerTest
+XSerializerTest_SOURCES = 			src/XSerializerTest/XSerializerHandlers.cpp \
+									src/XSerializerTest/XSerializerHandlers.hpp \
+									src/XSerializerTest/XSerializerTest.cpp \
+									src/XSerializerTest/XSerializerTest.hpp
 
 # Fails to compile under gcc4 (values too long for long type)
-testprogs +=						_XSValueTest
-_XSValueTest_SOURCES = 				XSValueTest/XSValueTest.cpp \
-									XSValueTest/XSValueTest.hpp
+testprogs +=						XSValueTest
+XSValueTest_SOURCES = 				src/XSValueTest/XSValueTest.cpp \
+									src/XSValueTest/XSValueTest.hpp
 
 

@@ -33,7 +33,7 @@
 #
 # $Id$
 #
-SOURCES = $(_DOMMemTest_SOURCES) $(_DOMTest_SOURCES) $(_EncodingTest_SOURCES) $(_InitTermTest_SOURCES) $(_Normalizer_SOURCES) $(_RangeTest_SOURCES) $(_Traversal_SOURCES) $(_TypeInfo_SOURCES) $(_XSValueTest_SOURCES) $(_XSerializerTest_SOURCES)
+SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) $(EncodingTest_SOURCES) $(InitTermTest_SOURCES) $(Normalizer_SOURCES) $(RangeTest_SOURCES) $(Traversal_SOURCES) $(TypeInfo_SOURCES) $(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -86,54 +86,53 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h \
 	$(top_builddir)/xerces_hdr_config.h
 CONFIG_CLEAN_FILES =
-am__EXEEXT_1 = _DOMTest$(EXEEXT) _DOMMemTest$(EXEEXT) \
-	_Normalizer$(EXEEXT) _RangeTest$(EXEEXT) _Traversal$(EXEEXT) \
-	_TypeInfo$(EXEEXT) _EncodingTest$(EXEEXT) \
-	_InitTermTest$(EXEEXT) _XSerializerTest$(EXEEXT) \
-	_XSValueTest$(EXEEXT)
+am__EXEEXT_1 = DOMTest$(EXEEXT) DOMMemTest$(EXEEXT) \
+	Normalizer$(EXEEXT) RangeTest$(EXEEXT) Traversal$(EXEEXT) \
+	TypeInfo$(EXEEXT) EncodingTest$(EXEEXT) InitTermTest$(EXEEXT) \
+	XSerializerTest$(EXEEXT) XSValueTest$(EXEEXT)
 am__dirstamp = $(am__leading_dot)dirstamp
-am__DOMMemTest_OBJECTS = DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
-_DOMMemTest_OBJECTS = $(am__DOMMemTest_OBJECTS)
-_DOMMemTest_LDADD = $(LDADD)
-_DOMMemTest_DEPENDENCIES = ../obj/libxerces.la
-am__DOMTest_OBJECTS = DOM/DOMTest/DTest.$(OBJEXT)
-_DOMTest_OBJECTS = $(am__DOMTest_OBJECTS)
-_DOMTest_LDADD = $(LDADD)
-_DOMTest_DEPENDENCIES = ../obj/libxerces.la
-am__EncodingTest_OBJECTS = EncodingTest/EncodingTest.$(OBJEXT)
-_EncodingTest_OBJECTS = $(am__EncodingTest_OBJECTS)
-_EncodingTest_LDADD = $(LDADD)
-_EncodingTest_DEPENDENCIES = ../obj/libxerces.la
-am__InitTermTest_OBJECTS = InitTermTest/InitTermTest.$(OBJEXT)
-_InitTermTest_OBJECTS = $(am__InitTermTest_OBJECTS)
-_InitTermTest_LDADD = $(LDADD)
-_InitTermTest_DEPENDENCIES = ../obj/libxerces.la
-am__Normalizer_OBJECTS = DOM/Normalizer/Normalizer.$(OBJEXT)
-_Normalizer_OBJECTS = $(am__Normalizer_OBJECTS)
-_Normalizer_LDADD = $(LDADD)
-_Normalizer_DEPENDENCIES = ../obj/libxerces.la
-am__RangeTest_OBJECTS = DOM/RangeTest/RangeTest.$(OBJEXT)
-_RangeTest_OBJECTS = $(am__RangeTest_OBJECTS)
-_RangeTest_LDADD = $(LDADD)
-_RangeTest_DEPENDENCIES = ../obj/libxerces.la
-am__Traversal_OBJECTS = DOM/Traversal/Traversal.$(OBJEXT)
-_Traversal_OBJECTS = $(am__Traversal_OBJECTS)
-_Traversal_LDADD = $(LDADD)
-_Traversal_DEPENDENCIES = ../obj/libxerces.la
-am__TypeInfo_OBJECTS = DOM/TypeInfo/TypeInfo.$(OBJEXT)
-_TypeInfo_OBJECTS = $(am__TypeInfo_OBJECTS)
-_TypeInfo_LDADD = $(LDADD)
-_TypeInfo_DEPENDENCIES = ../obj/libxerces.la
-am__XSValueTest_OBJECTS = XSValueTest/XSValueTest.$(OBJEXT)
-_XSValueTest_OBJECTS = $(am__XSValueTest_OBJECTS)
-_XSValueTest_LDADD = $(LDADD)
-_XSValueTest_DEPENDENCIES = ../obj/libxerces.la
-am__XSerializerTest_OBJECTS =  \
-	XSerializerTest/XSerializerHandlers.$(OBJEXT) \
-	XSerializerTest/XSerializerTest.$(OBJEXT)
-_XSerializerTest_OBJECTS = $(am__XSerializerTest_OBJECTS)
-_XSerializerTest_LDADD = $(LDADD)
-_XSerializerTest_DEPENDENCIES = ../obj/libxerces.la
+am_DOMMemTest_OBJECTS = src/DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
+DOMMemTest_OBJECTS = $(am_DOMMemTest_OBJECTS)
+DOMMemTest_LDADD = $(LDADD)
+DOMMemTest_DEPENDENCIES = ../obj/libxerces.la
+am_DOMTest_OBJECTS = src/DOM/DOMTest/DTest.$(OBJEXT)
+DOMTest_OBJECTS = $(am_DOMTest_OBJECTS)
+DOMTest_LDADD = $(LDADD)
+DOMTest_DEPENDENCIES = ../obj/libxerces.la
+am_EncodingTest_OBJECTS = src/EncodingTest/EncodingTest.$(OBJEXT)
+EncodingTest_OBJECTS = $(am_EncodingTest_OBJECTS)
+EncodingTest_LDADD = $(LDADD)
+EncodingTest_DEPENDENCIES = ../obj/libxerces.la
+am_InitTermTest_OBJECTS = src/InitTermTest/InitTermTest.$(OBJEXT)
+InitTermTest_OBJECTS = $(am_InitTermTest_OBJECTS)
+InitTermTest_LDADD = $(LDADD)
+InitTermTest_DEPENDENCIES = ../obj/libxerces.la
+am_Normalizer_OBJECTS = src/DOM/Normalizer/Normalizer.$(OBJEXT)
+Normalizer_OBJECTS = $(am_Normalizer_OBJECTS)
+Normalizer_LDADD = $(LDADD)
+Normalizer_DEPENDENCIES = ../obj/libxerces.la
+am_RangeTest_OBJECTS = src/DOM/RangeTest/RangeTest.$(OBJEXT)
+RangeTest_OBJECTS = $(am_RangeTest_OBJECTS)
+RangeTest_LDADD = $(LDADD)
+RangeTest_DEPENDENCIES = ../obj/libxerces.la
+am_Traversal_OBJECTS = src/DOM/Traversal/Traversal.$(OBJEXT)
+Traversal_OBJECTS = $(am_Traversal_OBJECTS)
+Traversal_LDADD = $(LDADD)
+Traversal_DEPENDENCIES = ../obj/libxerces.la
+am_TypeInfo_OBJECTS = src/DOM/TypeInfo/TypeInfo.$(OBJEXT)
+TypeInfo_OBJECTS = $(am_TypeInfo_OBJECTS)
+TypeInfo_LDADD = $(LDADD)
+TypeInfo_DEPENDENCIES = ../obj/libxerces.la
+am_XSValueTest_OBJECTS = src/XSValueTest/XSValueTest.$(OBJEXT)
+XSValueTest_OBJECTS = $(am_XSValueTest_OBJECTS)
+XSValueTest_LDADD = $(LDADD)
+XSValueTest_DEPENDENCIES = ../obj/libxerces.la
+am_XSerializerTest_OBJECTS =  \
+	src/XSerializerTest/XSerializerHandlers.$(OBJEXT) \
+	src/XSerializerTest/XSerializerTest.$(OBJEXT)
+XSerializerTest_OBJECTS = $(am_XSerializerTest_OBJECTS)
+XSerializerTest_LDADD = $(LDADD)
+XSerializerTest_DEPENDENCIES = ../obj/libxerces.la
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -153,16 +152,16 @@ LTCOMPILE = $(LIBTOOL) --tag=CC --mode=compile $(CC) $(DEFS) \
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(_DOMMemTest_SOURCES) $(_DOMTest_SOURCES) \
-	$(_EncodingTest_SOURCES) $(_InitTermTest_SOURCES) \
-	$(_Normalizer_SOURCES) $(_RangeTest_SOURCES) \
-	$(_Traversal_SOURCES) $(_TypeInfo_SOURCES) \
-	$(_XSValueTest_SOURCES) $(_XSerializerTest_SOURCES)
-DIST_SOURCES = $(_DOMMemTest_SOURCES) $(_DOMTest_SOURCES) \
-	$(_EncodingTest_SOURCES) $(_InitTermTest_SOURCES) \
-	$(_Normalizer_SOURCES) $(_RangeTest_SOURCES) \
-	$(_Traversal_SOURCES) $(_TypeInfo_SOURCES) \
-	$(_XSValueTest_SOURCES) $(_XSerializerTest_SOURCES)
+SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) \
+	$(EncodingTest_SOURCES) $(InitTermTest_SOURCES) \
+	$(Normalizer_SOURCES) $(RangeTest_SOURCES) \
+	$(Traversal_SOURCES) $(TypeInfo_SOURCES) \
+	$(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
+DIST_SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) \
+	$(EncodingTest_SOURCES) $(InitTermTest_SOURCES) \
+	$(Normalizer_SOURCES) $(RangeTest_SOURCES) \
+	$(Traversal_SOURCES) $(TypeInfo_SOURCES) \
+	$(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -306,82 +305,81 @@ LDADD = ../obj/libxerces.la
 AM_CPPFLAGS = -I${top_srcdir}/src
 
 # This tests the deprecated dom, which we don't build at the moment
-#testprogs +=						_MemHandlerTest
-#_MemHandlerTest_SOURCES = 			MemHandlerTest/MemoryMonitor.cpp \
-#									MemHandlerTest/MemoryMonitor.hpp \
-#									MemHandlerTest/SimpleHashPtr.cpp \
-#									MemHandlerTest/SimpleHashPtr.hpp \
-#									MemHandlerTest/SimpleValueHashTableOf.hpp
+#testprogs +=						MemHandlerTest
+#MemHandlerTest_SOURCES = 			src/MemHandlerTest/MemoryMonitor.cpp \
+#									src/MemHandlerTest/MemoryMonitor.hpp \
+#									src/MemHandlerTest/SimpleHashPtr.cpp \
+#									src/MemHandlerTest/SimpleHashPtr.hpp \
+#									src/MemHandlerTest/SimpleValueHashTableOf.hpp
 
 # Doesn't compile under gcc4 for some reason
 # dcargill says this is obsolete and we can delete it.
-#testprogs +=						_ParserTest
-#_ParserTest_SOURCES = 				ParserTest/ParserTest.cpp \
-#									ParserTest/ParserTest.hpp \
-#									ParserTest/ParserTest_Parser.cpp \
-#									ParserTest/ParserTest_Parser.hpp
+#testprogs +=						ParserTest
+#ParserTest_SOURCES = 				src/ParserTest/ParserTest.cpp \
+#									src/ParserTest/ParserTest.hpp \
+#									src/ParserTest/ParserTest_Parser.cpp \
+#									src/ParserTest/ParserTest_Parser.hpp
 
 # Needs to use generic pthread conditionals HAS_PTHREADS
-#testprogs +=						_ThreadTest
-#_ThreadTest_SOURCES = 				ThreadTest/ThreadTest.cpp
+#testprogs +=						ThreadTest
+#ThreadTest_SOURCES = 				src/ThreadTest/ThreadTest.cpp
 
 # Fails to compile under gcc 4 (ambiguous calls to NullPointerException)
 # dcargill says this is obsolete and we can delete it.
-#testprogs +=						_UtilTests
-#_UtilTests_SOURCES = 				UtilTests/CoreTests_BitSet.cpp \
-#									UtilTests/CoreTests_CountedPointer.cpp \
-#									UtilTests/CoreTests_RefArray.cpp \
-#									UtilTests/CoreTests_RefHashTable.cpp \
-#									UtilTests/CoreTests_RefStack.cpp \
-#									UtilTests/CoreTests_RefVector.cpp \
-#									UtilTests/CoreTests_String.cpp \
-#									UtilTests/CoreTests_Transcoders.cpp \
-#									UtilTests/CoreTests_URL.cpp \
-#									UtilTests/CoreTests_ValueArray.cpp \
-#									UtilTests/CoreTests_ValueStack.cpp \
-#									UtilTests/CoreTests_ValueVector.cpp \
-#									UtilTests/CoreTestsMain.cpp \
-#									UtilTests/CoreTests.hpp
+#testprogs +=						UtilTests
+#UtilTests_SOURCES = 				src/UtilTests/CoreTests_BitSet.cpp \
+#									src/UtilTests/CoreTests_CountedPointer.cpp \
+#									src/UtilTests/CoreTests_RefArray.cpp \
+#									src/UtilTests/CoreTests_RefHashTable.cpp \
+#									src/UtilTests/CoreTests_RefStack.cpp \
+#									src/UtilTests/CoreTests_RefVector.cpp \
+#									src/UtilTests/CoreTests_String.cpp \
+#									src/UtilTests/CoreTests_Transcoders.cpp \
+#									src/UtilTests/CoreTests_URL.cpp \
+#									src/UtilTests/CoreTests_ValueArray.cpp \
+#									src/UtilTests/CoreTests_ValueStack.cpp \
+#									src/UtilTests/CoreTests_ValueVector.cpp \
+#									src/UtilTests/CoreTestsMain.cpp \
+#									src/UtilTests/CoreTests.hpp
 
 # Fails to compile under gcc4 (values too long for long type)
-testprogs = _DOMTest _DOMMemTest _Normalizer _RangeTest _Traversal \
-	_TypeInfo _EncodingTest _InitTermTest _XSerializerTest \
-	_XSValueTest
-_DOMTest_SOURCES = DOM/DOMTest/DTest.cpp \
-									DOM/DOMTest/DTest.h
+testprogs = DOMTest DOMMemTest Normalizer RangeTest Traversal TypeInfo \
+	EncodingTest InitTermTest XSerializerTest XSValueTest
+DOMTest_SOURCES = src/DOM/DOMTest/DTest.cpp \
+									src/DOM/DOMTest/DTest.h
 
-_DOMMemTest_SOURCES = DOM/DOMMemTest/DOMMemTest.cpp
-_Normalizer_SOURCES = DOM/Normalizer/Normalizer.cpp \
-									DOM/Normalizer/Normalizer.hpp
+DOMMemTest_SOURCES = src/DOM/DOMMemTest/DOMMemTest.cpp
+Normalizer_SOURCES = src/DOM/Normalizer/Normalizer.cpp \
+									src/DOM/Normalizer/Normalizer.hpp
 
-TestNormalizer_EXTRA = DOM/Normalizer/expectedOutput
-_RangeTest_SOURCES = DOM/RangeTest/RangeTest.cpp
-_Traversal_SOURCES = DOM/Traversal/Traversal.cpp
-_TypeInfo_SOURCES = DOM/TypeInfo/TypeInfo.cpp \
-									DOM/TypeInfo/TypeInfo.hpp
+Normalizer_EXTRA = src/DOM/Normalizer/expectedOutput
+RangeTest_SOURCES = src/DOM/RangeTest/RangeTest.cpp
+Traversal_SOURCES = src/DOM/Traversal/Traversal.cpp
+TypeInfo_SOURCES = src/DOM/TypeInfo/TypeInfo.cpp \
+									src/DOM/TypeInfo/TypeInfo.hpp
 
-_TypeInfo_EXTRA = DOM/TypeInfo/data/combined.dtd \
-									DOM/TypeInfo/data/combined.xml \
-									DOM/TypeInfo/data/combined.xsd \
-									DOM/TypeInfo/data/SecondSchema.xsd \
-									DOM/TypeInfo/data/TypeInfo.dtd \
-									DOM/TypeInfo/data/TypeInfo.xml \
-									DOM/TypeInfo/data/TypeInfo.xsd \
-									DOM/TypeInfo/data/TypeInfoJustDTD.xml \
-									DOM/TypeInfo/data/TypeInfoNoDTD.xml \
-									DOM/TypeInfo/data/TypeInfoNoDTD.xsd
+TypeInfo_EXTRA = src/DOM/TypeInfo/data/combined.dtd \
+									src/DOM/TypeInfo/data/combined.xml \
+									src/DOM/TypeInfo/data/combined.xsd \
+									src/DOM/TypeInfo/data/SecondSchema.xsd \
+									src/DOM/TypeInfo/data/TypeInfo.dtd \
+									src/DOM/TypeInfo/data/TypeInfo.xml \
+									src/DOM/TypeInfo/data/TypeInfo.xsd \
+									src/DOM/TypeInfo/data/TypeInfoJustDTD.xml \
+									src/DOM/TypeInfo/data/TypeInfoNoDTD.xml \
+									src/DOM/TypeInfo/data/TypeInfoNoDTD.xsd
 
-_EncodingTest_SOURCES = EncodingTest/EncodingTest.cpp
-_InitTermTest_SOURCES = InitTermTest/InitTermTest.cpp \
-									InitTermTest/InitTermTest.hpp
+EncodingTest_SOURCES = src/EncodingTest/EncodingTest.cpp
+InitTermTest_SOURCES = src/InitTermTest/InitTermTest.cpp \
+									src/InitTermTest/InitTermTest.hpp
 
-_XSerializerTest_SOURCES = XSerializerTest/XSerializerHandlers.cpp \
-									XSerializerTest/XSerializerHandlers.hpp \
-									XSerializerTest/XSerializerTest.cpp \
-									XSerializerTest/XSerializerTest.hpp
+XSerializerTest_SOURCES = src/XSerializerTest/XSerializerHandlers.cpp \
+									src/XSerializerTest/XSerializerHandlers.hpp \
+									src/XSerializerTest/XSerializerTest.cpp \
+									src/XSerializerTest/XSerializerTest.hpp
 
-_XSValueTest_SOURCES = XSValueTest/XSValueTest.cpp \
-									XSValueTest/XSValueTest.hpp
+XSValueTest_SOURCES = src/XSValueTest/XSValueTest.cpp \
+									src/XSValueTest/XSValueTest.hpp
 
 all: all-am
 
@@ -423,149 +421,156 @@ clean-checkPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-DOM/DOMMemTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMMemTest
-	@: > DOM/DOMMemTest/$(am__dirstamp)
-DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMMemTest/$(DEPDIR)
-	@: > DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
-DOM/DOMMemTest/DOMMemTest.$(OBJEXT): DOM/DOMMemTest/$(am__dirstamp) \
-	DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
-_DOMMemTest$(EXEEXT): $(_DOMMemTest_OBJECTS) $(_DOMMemTest_DEPENDENCIES) 
-	@rm -f _DOMMemTest$(EXEEXT)
-	$(CXXLINK) $(_DOMMemTest_LDFLAGS) $(_DOMMemTest_OBJECTS) $(_DOMMemTest_LDADD) $(LIBS)
-DOM/DOMTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMTest
-	@: > DOM/DOMTest/$(am__dirstamp)
-DOM/DOMTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMTest/$(DEPDIR)
-	@: > DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
-DOM/DOMTest/DTest.$(OBJEXT): DOM/DOMTest/$(am__dirstamp) \
-	DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
-_DOMTest$(EXEEXT): $(_DOMTest_OBJECTS) $(_DOMTest_DEPENDENCIES) 
-	@rm -f _DOMTest$(EXEEXT)
-	$(CXXLINK) $(_DOMTest_LDFLAGS) $(_DOMTest_OBJECTS) $(_DOMTest_LDADD) $(LIBS)
-EncodingTest/$(am__dirstamp):
-	@$(mkdir_p) EncodingTest
-	@: > EncodingTest/$(am__dirstamp)
-EncodingTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) EncodingTest/$(DEPDIR)
-	@: > EncodingTest/$(DEPDIR)/$(am__dirstamp)
-EncodingTest/EncodingTest.$(OBJEXT): EncodingTest/$(am__dirstamp) \
-	EncodingTest/$(DEPDIR)/$(am__dirstamp)
-_EncodingTest$(EXEEXT): $(_EncodingTest_OBJECTS) $(_EncodingTest_DEPENDENCIES) 
-	@rm -f _EncodingTest$(EXEEXT)
-	$(CXXLINK) $(_EncodingTest_LDFLAGS) $(_EncodingTest_OBJECTS) $(_EncodingTest_LDADD) $(LIBS)
-InitTermTest/$(am__dirstamp):
-	@$(mkdir_p) InitTermTest
-	@: > InitTermTest/$(am__dirstamp)
-InitTermTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) InitTermTest/$(DEPDIR)
-	@: > InitTermTest/$(DEPDIR)/$(am__dirstamp)
-InitTermTest/InitTermTest.$(OBJEXT): InitTermTest/$(am__dirstamp) \
-	InitTermTest/$(DEPDIR)/$(am__dirstamp)
-_InitTermTest$(EXEEXT): $(_InitTermTest_OBJECTS) $(_InitTermTest_DEPENDENCIES) 
-	@rm -f _InitTermTest$(EXEEXT)
-	$(CXXLINK) $(_InitTermTest_LDFLAGS) $(_InitTermTest_OBJECTS) $(_InitTermTest_LDADD) $(LIBS)
-DOM/Normalizer/$(am__dirstamp):
-	@$(mkdir_p) DOM/Normalizer
-	@: > DOM/Normalizer/$(am__dirstamp)
-DOM/Normalizer/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/Normalizer/$(DEPDIR)
-	@: > DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
-DOM/Normalizer/Normalizer.$(OBJEXT): DOM/Normalizer/$(am__dirstamp) \
-	DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
-_Normalizer$(EXEEXT): $(_Normalizer_OBJECTS) $(_Normalizer_DEPENDENCIES) 
-	@rm -f _Normalizer$(EXEEXT)
-	$(CXXLINK) $(_Normalizer_LDFLAGS) $(_Normalizer_OBJECTS) $(_Normalizer_LDADD) $(LIBS)
-DOM/RangeTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/RangeTest
-	@: > DOM/RangeTest/$(am__dirstamp)
-DOM/RangeTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/RangeTest/$(DEPDIR)
-	@: > DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
-DOM/RangeTest/RangeTest.$(OBJEXT): DOM/RangeTest/$(am__dirstamp) \
-	DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
-_RangeTest$(EXEEXT): $(_RangeTest_OBJECTS) $(_RangeTest_DEPENDENCIES) 
-	@rm -f _RangeTest$(EXEEXT)
-	$(CXXLINK) $(_RangeTest_LDFLAGS) $(_RangeTest_OBJECTS) $(_RangeTest_LDADD) $(LIBS)
-DOM/Traversal/$(am__dirstamp):
-	@$(mkdir_p) DOM/Traversal
-	@: > DOM/Traversal/$(am__dirstamp)
-DOM/Traversal/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/Traversal/$(DEPDIR)
-	@: > DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
-DOM/Traversal/Traversal.$(OBJEXT): DOM/Traversal/$(am__dirstamp) \
-	DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
-_Traversal$(EXEEXT): $(_Traversal_OBJECTS) $(_Traversal_DEPENDENCIES) 
-	@rm -f _Traversal$(EXEEXT)
-	$(CXXLINK) $(_Traversal_LDFLAGS) $(_Traversal_OBJECTS) $(_Traversal_LDADD) $(LIBS)
-DOM/TypeInfo/$(am__dirstamp):
-	@$(mkdir_p) DOM/TypeInfo
-	@: > DOM/TypeInfo/$(am__dirstamp)
-DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/TypeInfo/$(DEPDIR)
-	@: > DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
-DOM/TypeInfo/TypeInfo.$(OBJEXT): DOM/TypeInfo/$(am__dirstamp) \
-	DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
-_TypeInfo$(EXEEXT): $(_TypeInfo_OBJECTS) $(_TypeInfo_DEPENDENCIES) 
-	@rm -f _TypeInfo$(EXEEXT)
-	$(CXXLINK) $(_TypeInfo_LDFLAGS) $(_TypeInfo_OBJECTS) $(_TypeInfo_LDADD) $(LIBS)
-XSValueTest/$(am__dirstamp):
-	@$(mkdir_p) XSValueTest
-	@: > XSValueTest/$(am__dirstamp)
-XSValueTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) XSValueTest/$(DEPDIR)
-	@: > XSValueTest/$(DEPDIR)/$(am__dirstamp)
-XSValueTest/XSValueTest.$(OBJEXT): XSValueTest/$(am__dirstamp) \
-	XSValueTest/$(DEPDIR)/$(am__dirstamp)
-_XSValueTest$(EXEEXT): $(_XSValueTest_OBJECTS) $(_XSValueTest_DEPENDENCIES) 
-	@rm -f _XSValueTest$(EXEEXT)
-	$(CXXLINK) $(_XSValueTest_LDFLAGS) $(_XSValueTest_OBJECTS) $(_XSValueTest_LDADD) $(LIBS)
-XSerializerTest/$(am__dirstamp):
-	@$(mkdir_p) XSerializerTest
-	@: > XSerializerTest/$(am__dirstamp)
-XSerializerTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) XSerializerTest/$(DEPDIR)
-	@: > XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-XSerializerTest/XSerializerHandlers.$(OBJEXT):  \
-	XSerializerTest/$(am__dirstamp) \
-	XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-XSerializerTest/XSerializerTest.$(OBJEXT):  \
-	XSerializerTest/$(am__dirstamp) \
-	XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-_XSerializerTest$(EXEEXT): $(_XSerializerTest_OBJECTS) $(_XSerializerTest_DEPENDENCIES) 
-	@rm -f _XSerializerTest$(EXEEXT)
-	$(CXXLINK) $(_XSerializerTest_LDFLAGS) $(_XSerializerTest_OBJECTS) $(_XSerializerTest_LDADD) $(LIBS)
+src/DOM/DOMMemTest/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/DOMMemTest
+	@: > src/DOM/DOMMemTest/$(am__dirstamp)
+src/DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/DOMMemTest/$(DEPDIR)
+	@: > src/DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
+src/DOM/DOMMemTest/DOMMemTest.$(OBJEXT):  \
+	src/DOM/DOMMemTest/$(am__dirstamp) \
+	src/DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
+DOMMemTest$(EXEEXT): $(DOMMemTest_OBJECTS) $(DOMMemTest_DEPENDENCIES) 
+	@rm -f DOMMemTest$(EXEEXT)
+	$(CXXLINK) $(DOMMemTest_LDFLAGS) $(DOMMemTest_OBJECTS) $(DOMMemTest_LDADD) $(LIBS)
+src/DOM/DOMTest/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/DOMTest
+	@: > src/DOM/DOMTest/$(am__dirstamp)
+src/DOM/DOMTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/DOMTest/$(DEPDIR)
+	@: > src/DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
+src/DOM/DOMTest/DTest.$(OBJEXT): src/DOM/DOMTest/$(am__dirstamp) \
+	src/DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
+DOMTest$(EXEEXT): $(DOMTest_OBJECTS) $(DOMTest_DEPENDENCIES) 
+	@rm -f DOMTest$(EXEEXT)
+	$(CXXLINK) $(DOMTest_LDFLAGS) $(DOMTest_OBJECTS) $(DOMTest_LDADD) $(LIBS)
+src/EncodingTest/$(am__dirstamp):
+	@$(mkdir_p) src/EncodingTest
+	@: > src/EncodingTest/$(am__dirstamp)
+src/EncodingTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/EncodingTest/$(DEPDIR)
+	@: > src/EncodingTest/$(DEPDIR)/$(am__dirstamp)
+src/EncodingTest/EncodingTest.$(OBJEXT):  \
+	src/EncodingTest/$(am__dirstamp) \
+	src/EncodingTest/$(DEPDIR)/$(am__dirstamp)
+EncodingTest$(EXEEXT): $(EncodingTest_OBJECTS) $(EncodingTest_DEPENDENCIES) 
+	@rm -f EncodingTest$(EXEEXT)
+	$(CXXLINK) $(EncodingTest_LDFLAGS) $(EncodingTest_OBJECTS) $(EncodingTest_LDADD) $(LIBS)
+src/InitTermTest/$(am__dirstamp):
+	@$(mkdir_p) src/InitTermTest
+	@: > src/InitTermTest/$(am__dirstamp)
+src/InitTermTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/InitTermTest/$(DEPDIR)
+	@: > src/InitTermTest/$(DEPDIR)/$(am__dirstamp)
+src/InitTermTest/InitTermTest.$(OBJEXT):  \
+	src/InitTermTest/$(am__dirstamp) \
+	src/InitTermTest/$(DEPDIR)/$(am__dirstamp)
+InitTermTest$(EXEEXT): $(InitTermTest_OBJECTS) $(InitTermTest_DEPENDENCIES) 
+	@rm -f InitTermTest$(EXEEXT)
+	$(CXXLINK) $(InitTermTest_LDFLAGS) $(InitTermTest_OBJECTS) $(InitTermTest_LDADD) $(LIBS)
+src/DOM/Normalizer/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/Normalizer
+	@: > src/DOM/Normalizer/$(am__dirstamp)
+src/DOM/Normalizer/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/Normalizer/$(DEPDIR)
+	@: > src/DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
+src/DOM/Normalizer/Normalizer.$(OBJEXT):  \
+	src/DOM/Normalizer/$(am__dirstamp) \
+	src/DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
+Normalizer$(EXEEXT): $(Normalizer_OBJECTS) $(Normalizer_DEPENDENCIES) 
+	@rm -f Normalizer$(EXEEXT)
+	$(CXXLINK) $(Normalizer_LDFLAGS) $(Normalizer_OBJECTS) $(Normalizer_LDADD) $(LIBS)
+src/DOM/RangeTest/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/RangeTest
+	@: > src/DOM/RangeTest/$(am__dirstamp)
+src/DOM/RangeTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/RangeTest/$(DEPDIR)
+	@: > src/DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
+src/DOM/RangeTest/RangeTest.$(OBJEXT):  \
+	src/DOM/RangeTest/$(am__dirstamp) \
+	src/DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
+RangeTest$(EXEEXT): $(RangeTest_OBJECTS) $(RangeTest_DEPENDENCIES) 
+	@rm -f RangeTest$(EXEEXT)
+	$(CXXLINK) $(RangeTest_LDFLAGS) $(RangeTest_OBJECTS) $(RangeTest_LDADD) $(LIBS)
+src/DOM/Traversal/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/Traversal
+	@: > src/DOM/Traversal/$(am__dirstamp)
+src/DOM/Traversal/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/Traversal/$(DEPDIR)
+	@: > src/DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
+src/DOM/Traversal/Traversal.$(OBJEXT):  \
+	src/DOM/Traversal/$(am__dirstamp) \
+	src/DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
+Traversal$(EXEEXT): $(Traversal_OBJECTS) $(Traversal_DEPENDENCIES) 
+	@rm -f Traversal$(EXEEXT)
+	$(CXXLINK) $(Traversal_LDFLAGS) $(Traversal_OBJECTS) $(Traversal_LDADD) $(LIBS)
+src/DOM/TypeInfo/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/TypeInfo
+	@: > src/DOM/TypeInfo/$(am__dirstamp)
+src/DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/DOM/TypeInfo/$(DEPDIR)
+	@: > src/DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
+src/DOM/TypeInfo/TypeInfo.$(OBJEXT): src/DOM/TypeInfo/$(am__dirstamp) \
+	src/DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
+TypeInfo$(EXEEXT): $(TypeInfo_OBJECTS) $(TypeInfo_DEPENDENCIES) 
+	@rm -f TypeInfo$(EXEEXT)
+	$(CXXLINK) $(TypeInfo_LDFLAGS) $(TypeInfo_OBJECTS) $(TypeInfo_LDADD) $(LIBS)
+src/XSValueTest/$(am__dirstamp):
+	@$(mkdir_p) src/XSValueTest
+	@: > src/XSValueTest/$(am__dirstamp)
+src/XSValueTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/XSValueTest/$(DEPDIR)
+	@: > src/XSValueTest/$(DEPDIR)/$(am__dirstamp)
+src/XSValueTest/XSValueTest.$(OBJEXT):  \
+	src/XSValueTest/$(am__dirstamp) \
+	src/XSValueTest/$(DEPDIR)/$(am__dirstamp)
+XSValueTest$(EXEEXT): $(XSValueTest_OBJECTS) $(XSValueTest_DEPENDENCIES) 
+	@rm -f XSValueTest$(EXEEXT)
+	$(CXXLINK) $(XSValueTest_LDFLAGS) $(XSValueTest_OBJECTS) $(XSValueTest_LDADD) $(LIBS)
+src/XSerializerTest/$(am__dirstamp):
+	@$(mkdir_p) src/XSerializerTest
+	@: > src/XSerializerTest/$(am__dirstamp)
+src/XSerializerTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/XSerializerTest/$(DEPDIR)
+	@: > src/XSerializerTest/$(DEPDIR)/$(am__dirstamp)
+src/XSerializerTest/XSerializerHandlers.$(OBJEXT):  \
+	src/XSerializerTest/$(am__dirstamp) \
+	src/XSerializerTest/$(DEPDIR)/$(am__dirstamp)
+src/XSerializerTest/XSerializerTest.$(OBJEXT):  \
+	src/XSerializerTest/$(am__dirstamp) \
+	src/XSerializerTest/$(DEPDIR)/$(am__dirstamp)
+XSerializerTest$(EXEEXT): $(XSerializerTest_OBJECTS) $(XSerializerTest_DEPENDENCIES) 
+	@rm -f XSerializerTest$(EXEEXT)
+	$(CXXLINK) $(XSerializerTest_LDFLAGS) $(XSerializerTest_OBJECTS) $(XSerializerTest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
-	-rm -f DOM/DOMTest/DTest.$(OBJEXT)
-	-rm -f DOM/Normalizer/Normalizer.$(OBJEXT)
-	-rm -f DOM/RangeTest/RangeTest.$(OBJEXT)
-	-rm -f DOM/Traversal/Traversal.$(OBJEXT)
-	-rm -f DOM/TypeInfo/TypeInfo.$(OBJEXT)
-	-rm -f EncodingTest/EncodingTest.$(OBJEXT)
-	-rm -f InitTermTest/InitTermTest.$(OBJEXT)
-	-rm -f XSValueTest/XSValueTest.$(OBJEXT)
-	-rm -f XSerializerTest/XSerializerHandlers.$(OBJEXT)
-	-rm -f XSerializerTest/XSerializerTest.$(OBJEXT)
+	-rm -f src/DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
+	-rm -f src/DOM/DOMTest/DTest.$(OBJEXT)
+	-rm -f src/DOM/Normalizer/Normalizer.$(OBJEXT)
+	-rm -f src/DOM/RangeTest/RangeTest.$(OBJEXT)
+	-rm -f src/DOM/Traversal/Traversal.$(OBJEXT)
+	-rm -f src/DOM/TypeInfo/TypeInfo.$(OBJEXT)
+	-rm -f src/EncodingTest/EncodingTest.$(OBJEXT)
+	-rm -f src/InitTermTest/InitTermTest.$(OBJEXT)
+	-rm -f src/XSValueTest/XSValueTest.$(OBJEXT)
+	-rm -f src/XSerializerTest/XSerializerHandlers.$(OBJEXT)
+	-rm -f src/XSerializerTest/XSerializerTest.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/DOMMemTest/$(DEPDIR)/DOMMemTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/DOMTest/$(DEPDIR)/DTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/Normalizer/$(DEPDIR)/Normalizer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/RangeTest/$(DEPDIR)/RangeTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/Traversal/$(DEPDIR)/Traversal.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/TypeInfo/$(DEPDIR)/TypeInfo.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@EncodingTest/$(DEPDIR)/EncodingTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@InitTermTest/$(DEPDIR)/InitTermTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSValueTest/$(DEPDIR)/XSValueTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSerializerTest/$(DEPDIR)/XSerializerHandlers.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSerializerTest/$(DEPDIR)/XSerializerTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/DOMMemTest/$(DEPDIR)/DOMMemTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/DOMTest/$(DEPDIR)/DTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/Normalizer/$(DEPDIR)/Normalizer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/RangeTest/$(DEPDIR)/RangeTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/Traversal/$(DEPDIR)/Traversal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/DOM/TypeInfo/$(DEPDIR)/TypeInfo.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/EncodingTest/$(DEPDIR)/EncodingTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/InitTermTest/$(DEPDIR)/InitTermTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/XSValueTest/$(DEPDIR)/XSValueTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerHandlers.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerTest.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`; \
@@ -701,26 +706,26 @@ clean-generic:
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
-	-rm -f DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/DOMMemTest/$(am__dirstamp)
-	-rm -f DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/DOMTest/$(am__dirstamp)
-	-rm -f DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/Normalizer/$(am__dirstamp)
-	-rm -f DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/RangeTest/$(am__dirstamp)
-	-rm -f DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/Traversal/$(am__dirstamp)
-	-rm -f DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/TypeInfo/$(am__dirstamp)
-	-rm -f EncodingTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f EncodingTest/$(am__dirstamp)
-	-rm -f InitTermTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f InitTermTest/$(am__dirstamp)
-	-rm -f XSValueTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f XSValueTest/$(am__dirstamp)
-	-rm -f XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f XSerializerTest/$(am__dirstamp)
+	-rm -f src/DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/DOMMemTest/$(am__dirstamp)
+	-rm -f src/DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/DOMTest/$(am__dirstamp)
+	-rm -f src/DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/Normalizer/$(am__dirstamp)
+	-rm -f src/DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/RangeTest/$(am__dirstamp)
+	-rm -f src/DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/Traversal/$(am__dirstamp)
+	-rm -f src/DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/DOM/TypeInfo/$(am__dirstamp)
+	-rm -f src/EncodingTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/EncodingTest/$(am__dirstamp)
+	-rm -f src/InitTermTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/InitTermTest/$(am__dirstamp)
+	-rm -f src/XSValueTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/XSValueTest/$(am__dirstamp)
+	-rm -f src/XSerializerTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/XSerializerTest/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -731,7 +736,7 @@ clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf DOM/DOMMemTest/$(DEPDIR) DOM/DOMTest/$(DEPDIR) DOM/Normalizer/$(DEPDIR) DOM/RangeTest/$(DEPDIR) DOM/Traversal/$(DEPDIR) DOM/TypeInfo/$(DEPDIR) EncodingTest/$(DEPDIR) InitTermTest/$(DEPDIR) XSValueTest/$(DEPDIR) XSerializerTest/$(DEPDIR)
+	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -757,7 +762,7 @@ install-man:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf DOM/DOMMemTest/$(DEPDIR) DOM/DOMTest/$(DEPDIR) DOM/Normalizer/$(DEPDIR) DOM/RangeTest/$(DEPDIR) DOM/Traversal/$(DEPDIR) DOM/TypeInfo/$(DEPDIR) EncodingTest/$(DEPDIR) InitTermTest/$(DEPDIR) XSValueTest/$(DEPDIR) XSerializerTest/$(DEPDIR)
+	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
