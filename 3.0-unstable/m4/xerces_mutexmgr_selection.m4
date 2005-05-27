@@ -39,6 +39,10 @@ AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 		[
 			mgr=POSIX;
 			AC_DEFINE([XERCES_USE_MUTEXMGR_POSIX], 1, [Define to use the POSIX mutex mgr])
+			
+			# Set additional flags for link and compile
+			LIBS="${LIBS} ${PTHREAD_LIBS}"
+			CXXFLAGS="${CXXFLAGS} ${PTHREAD_CFLAGS}"
 		])
 		
 	# If we still didn't find a mutex package, bail

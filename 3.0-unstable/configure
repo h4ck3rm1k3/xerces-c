@@ -25125,6 +25125,10 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
 
+			# Set additional flags for link and compile
+			LIBS="${LIBS} ${PTHREAD_LIBS}"
+			CXXFLAGS="${CXXFLAGS} ${PTHREAD_CFLAGS}"
+
 fi
 
 

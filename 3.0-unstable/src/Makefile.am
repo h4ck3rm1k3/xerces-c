@@ -110,7 +110,7 @@ src_libraries +=					libicu.la
 libicu_ladir =						${includedir}
 nobase_libicu_la_HEADERS =			${icu_headers}
 libicu_la_SOURCES =					${icu_sources}
-libicu_la_CPPFLAGS =				-I${ICU_PREFIX}/include $(AM_CPPFLAGS)
+libicu_la_CPPFLAGS =				-I${ICU_PREFIX}/include ${AM_CPPFLAGS}
 libicu_la_LIBADD =					-L${ICU_PREFIX}/lib -licuuc -licudata
 endif
 
@@ -179,8 +179,6 @@ src_libraries +=					libposixmmgr.la
 libposixmmgr_ladir =				${includedir}
 nobase_libposixmmgr_la_HEADERS =	${posixmmgr_headers}
 libposixmmgr_la_SOURCES =			${posixmmgr_sources}
-libposixmmgr_la_LIBADD =			${PTHREAD_LIBS}
-libposixmmgr_la_CPPFLAGS =			${PTHREAD_CFLAGS} $(AM_CPPFLAGS)
 endif
 
 #
