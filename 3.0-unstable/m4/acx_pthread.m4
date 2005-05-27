@@ -43,6 +43,8 @@ dnl @category InstalledPackages
 dnl @author Steven G. Johnson <stevenj@alum.mit.edu>
 dnl @version 2005-01-14
 dnl @license GPLWithACException
+dnl
+dnl (license info is here: http://ac-archive.sourceforge.net/doc/copyright.html)
 
 AC_DEFUN([ACX_PTHREAD], [
 AC_REQUIRE([AC_CANONICAL_HOST])
