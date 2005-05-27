@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: DOM.hpp,v 1.12 2004/09/08 13:55:38 peiyongz Exp $
+ * $Id$
  */
 
 #include "strnicmp.h"

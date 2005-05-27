@@ -18,18 +18,12 @@
  * $Id$
  */
 
-#include "stricmp.h"
-#include "config.h"
+#include "towlower.h"
 
-#if defined(HAVE_STRING)
-#include <string.h>
-#endif
-
-int stricmp(const char* const str1, const char* const  str2) 
+int towlower(int wc);
 {
-#if defined(HAVE_STRCASECMP)
-	return strcasecmp(str1, str2);
-#else
-	#error Need implementation of stricmp compatibility function
-#endif
+	return (wc >= 'A') && (wc <= 'Z')
+				? wc + 'a' - 'A'
+				: wc
+				;
 }

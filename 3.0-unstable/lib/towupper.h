@@ -18,18 +18,17 @@
  * $Id$
  */
 
-#include "stricmp.h"
-#include "config.h"
+#ifndef TOWUPPER_H
+#define TOWUPPER_H
 
-#if defined(HAVE_STRING)
-#include <string.h>
+#ifdef __cplusplus
+extern "C" {
 #endif
 
-int stricmp(const char* const str1, const char* const  str2) 
-{
-#if defined(HAVE_STRCASECMP)
-	return strcasecmp(str1, str2);
-#else
-	#error Need implementation of stricmp compatibility function
-#endif
+extern int towupper(int wc);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif

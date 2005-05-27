@@ -1,6 +1,3 @@
-#ifndef STRICMP_H
-#define STRICMP_H
-
 /*
  * Copyright 2005 The Apache Software Foundation.
  * 
@@ -18,8 +15,11 @@
  */
 
 /*
- * $Id: DOM.hpp,v 1.12 2004/09/08 13:55:38 peiyongz Exp $
+ * $Id$
  */
+
+#ifndef STRICMP_H
+#define STRICMP_H
 
 #ifdef __cplusplus
 extern "C" {

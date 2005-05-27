@@ -22,18 +22,36 @@
 // ---------------------------------------------------------------------------
 //  Includes
 // ---------------------------------------------------------------------------
+
+#include <config.h>
+
+#if HAVE_WCHAR_H
+#	include <wchar.h>
+#endif
+#if HAVE_WCTYPE_H
+#	include <wctype.h>
+#endif
+
+// Fill in for broken or missing wctype functions on some platforms
+#if !HAVE_ISWSPACE
+#	include <iswspace.h>
+#endif
+#if !HAVE_TOWUPPER
+#	include <towupper.h>
+#endif
+#if !HAVE_TOWLOWER
+#	include <towlower.h>
+#endif
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "IconvTransService.hpp"
 #include <xercesc/util/XMLUniDefs.hpp>
 #include <xercesc/util/XMLUni.hpp>
 #include <xercesc/framework/MemoryManager.hpp>
 
-// *** TODO: May need some autoconf checks for wctype.h, and possible substitution thereof
-#include <wchar.h>
-#include <wctype.h>
-
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 XERCES_CPP_NAMESPACE_BEGIN
 

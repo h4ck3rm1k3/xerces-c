@@ -97,7 +97,7 @@ AC_CHECK_FUNCS([clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeof
 #
 # Orchestrate the replacement of missing functions
 #
-AC_REPLACE_FUNCS([stricmp strnicmp])
+AC_REPLACE_FUNCS([stricmp strnicmp iswspace towlower towupper])
 
 
 
