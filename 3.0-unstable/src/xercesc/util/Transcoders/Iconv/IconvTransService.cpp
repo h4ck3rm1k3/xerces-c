@@ -34,13 +34,13 @@
 
 // Fill in for broken or missing wctype functions on some platforms
 #if !HAVE_ISWSPACE
-#	include <iswspace.h>
+#	include <lib/iswspace.h>
 #endif
 #if !HAVE_TOWUPPER
-#	include <towupper.h>
+#	include <lib/towupper.h>
 #endif
 #if !HAVE_TOWLOWER
-#	include <towlower.h>
+#	include <lib/towlower.h>
 #endif
 
 #include <string.h>
