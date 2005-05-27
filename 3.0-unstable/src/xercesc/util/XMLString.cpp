@@ -22,7 +22,9 @@
 // ---------------------------------------------------------------------------
 //  Includes
 // ---------------------------------------------------------------------------
-#include <config.h>
+#if HAVE_CONFIG_H
+#	include <config.h>
+#endif
 
 #if !HAVE_STRICMP
 #	include <lib/stricmp.h>
