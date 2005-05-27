@@ -92,46 +92,44 @@ am__EXEEXT_1 = _DOMTest$(EXEEXT) _DOMMemTest$(EXEEXT) \
 	_TypeInfo$(EXEEXT) _EncodingTest$(EXEEXT) \
 	_InitTermTest$(EXEEXT) _XSerializerTest$(EXEEXT) \
 	_XSValueTest$(EXEEXT)
-am__dirstamp = $(am__leading_dot)dirstamp
-am__DOMMemTest_OBJECTS = DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
+am__DOMMemTest_OBJECTS = DOMMemTest.$(OBJEXT)
 _DOMMemTest_OBJECTS = $(am__DOMMemTest_OBJECTS)
 _DOMMemTest_LDADD = $(LDADD)
 _DOMMemTest_DEPENDENCIES = ../obj/libxerces.la
-am__DOMTest_OBJECTS = DOM/DOMTest/DTest.$(OBJEXT)
+am__DOMTest_OBJECTS = DTest.$(OBJEXT)
 _DOMTest_OBJECTS = $(am__DOMTest_OBJECTS)
 _DOMTest_LDADD = $(LDADD)
 _DOMTest_DEPENDENCIES = ../obj/libxerces.la
-am__EncodingTest_OBJECTS = EncodingTest/EncodingTest.$(OBJEXT)
+am__EncodingTest_OBJECTS = EncodingTest.$(OBJEXT)
 _EncodingTest_OBJECTS = $(am__EncodingTest_OBJECTS)
 _EncodingTest_LDADD = $(LDADD)
 _EncodingTest_DEPENDENCIES = ../obj/libxerces.la
-am__InitTermTest_OBJECTS = InitTermTest/InitTermTest.$(OBJEXT)
+am__InitTermTest_OBJECTS = InitTermTest.$(OBJEXT)
 _InitTermTest_OBJECTS = $(am__InitTermTest_OBJECTS)
 _InitTermTest_LDADD = $(LDADD)
 _InitTermTest_DEPENDENCIES = ../obj/libxerces.la
-am__Normalizer_OBJECTS = DOM/Normalizer/Normalizer.$(OBJEXT)
+am__Normalizer_OBJECTS = Normalizer.$(OBJEXT)
 _Normalizer_OBJECTS = $(am__Normalizer_OBJECTS)
 _Normalizer_LDADD = $(LDADD)
 _Normalizer_DEPENDENCIES = ../obj/libxerces.la
-am__RangeTest_OBJECTS = DOM/RangeTest/RangeTest.$(OBJEXT)
+am__RangeTest_OBJECTS = RangeTest.$(OBJEXT)
 _RangeTest_OBJECTS = $(am__RangeTest_OBJECTS)
 _RangeTest_LDADD = $(LDADD)
 _RangeTest_DEPENDENCIES = ../obj/libxerces.la
-am__Traversal_OBJECTS = DOM/Traversal/Traversal.$(OBJEXT)
+am__Traversal_OBJECTS = Traversal.$(OBJEXT)
 _Traversal_OBJECTS = $(am__Traversal_OBJECTS)
 _Traversal_LDADD = $(LDADD)
 _Traversal_DEPENDENCIES = ../obj/libxerces.la
-am__TypeInfo_OBJECTS = DOM/TypeInfo/TypeInfo.$(OBJEXT)
+am__TypeInfo_OBJECTS = TypeInfo.$(OBJEXT)
 _TypeInfo_OBJECTS = $(am__TypeInfo_OBJECTS)
 _TypeInfo_LDADD = $(LDADD)
 _TypeInfo_DEPENDENCIES = ../obj/libxerces.la
-am__XSValueTest_OBJECTS = XSValueTest/XSValueTest.$(OBJEXT)
+am__XSValueTest_OBJECTS = XSValueTest.$(OBJEXT)
 _XSValueTest_OBJECTS = $(am__XSValueTest_OBJECTS)
 _XSValueTest_LDADD = $(LDADD)
 _XSValueTest_DEPENDENCIES = ../obj/libxerces.la
-am__XSerializerTest_OBJECTS =  \
-	XSerializerTest/XSerializerHandlers.$(OBJEXT) \
-	XSerializerTest/XSerializerTest.$(OBJEXT)
+am__XSerializerTest_OBJECTS = XSerializerHandlers.$(OBJEXT) \
+	XSerializerTest.$(OBJEXT)
 _XSerializerTest_OBJECTS = $(am__XSerializerTest_OBJECTS)
 _XSerializerTest_LDADD = $(LDADD)
 _XSerializerTest_DEPENDENCIES = ../obj/libxerces.la
@@ -423,173 +421,229 @@ clean-checkPROGRAMS:
 	  echo " rm -f $$p $$f"; \
 	  rm -f $$p $$f ; \
 	done
-DOM/DOMMemTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMMemTest
-	@: > DOM/DOMMemTest/$(am__dirstamp)
-DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMMemTest/$(DEPDIR)
-	@: > DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
-DOM/DOMMemTest/DOMMemTest.$(OBJEXT): DOM/DOMMemTest/$(am__dirstamp) \
-	DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
 _DOMMemTest$(EXEEXT): $(_DOMMemTest_OBJECTS) $(_DOMMemTest_DEPENDENCIES) 
 	@rm -f _DOMMemTest$(EXEEXT)
 	$(CXXLINK) $(_DOMMemTest_LDFLAGS) $(_DOMMemTest_OBJECTS) $(_DOMMemTest_LDADD) $(LIBS)
-DOM/DOMTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMTest
-	@: > DOM/DOMTest/$(am__dirstamp)
-DOM/DOMTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/DOMTest/$(DEPDIR)
-	@: > DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
-DOM/DOMTest/DTest.$(OBJEXT): DOM/DOMTest/$(am__dirstamp) \
-	DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
 _DOMTest$(EXEEXT): $(_DOMTest_OBJECTS) $(_DOMTest_DEPENDENCIES) 
 	@rm -f _DOMTest$(EXEEXT)
 	$(CXXLINK) $(_DOMTest_LDFLAGS) $(_DOMTest_OBJECTS) $(_DOMTest_LDADD) $(LIBS)
-EncodingTest/$(am__dirstamp):
-	@$(mkdir_p) EncodingTest
-	@: > EncodingTest/$(am__dirstamp)
-EncodingTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) EncodingTest/$(DEPDIR)
-	@: > EncodingTest/$(DEPDIR)/$(am__dirstamp)
-EncodingTest/EncodingTest.$(OBJEXT): EncodingTest/$(am__dirstamp) \
-	EncodingTest/$(DEPDIR)/$(am__dirstamp)
 _EncodingTest$(EXEEXT): $(_EncodingTest_OBJECTS) $(_EncodingTest_DEPENDENCIES) 
 	@rm -f _EncodingTest$(EXEEXT)
 	$(CXXLINK) $(_EncodingTest_LDFLAGS) $(_EncodingTest_OBJECTS) $(_EncodingTest_LDADD) $(LIBS)
-InitTermTest/$(am__dirstamp):
-	@$(mkdir_p) InitTermTest
-	@: > InitTermTest/$(am__dirstamp)
-InitTermTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) InitTermTest/$(DEPDIR)
-	@: > InitTermTest/$(DEPDIR)/$(am__dirstamp)
-InitTermTest/InitTermTest.$(OBJEXT): InitTermTest/$(am__dirstamp) \
-	InitTermTest/$(DEPDIR)/$(am__dirstamp)
 _InitTermTest$(EXEEXT): $(_InitTermTest_OBJECTS) $(_InitTermTest_DEPENDENCIES) 
 	@rm -f _InitTermTest$(EXEEXT)
 	$(CXXLINK) $(_InitTermTest_LDFLAGS) $(_InitTermTest_OBJECTS) $(_InitTermTest_LDADD) $(LIBS)
-DOM/Normalizer/$(am__dirstamp):
-	@$(mkdir_p) DOM/Normalizer
-	@: > DOM/Normalizer/$(am__dirstamp)
-DOM/Normalizer/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/Normalizer/$(DEPDIR)
-	@: > DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
-DOM/Normalizer/Normalizer.$(OBJEXT): DOM/Normalizer/$(am__dirstamp) \
-	DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
 _Normalizer$(EXEEXT): $(_Normalizer_OBJECTS) $(_Normalizer_DEPENDENCIES) 
 	@rm -f _Normalizer$(EXEEXT)
 	$(CXXLINK) $(_Normalizer_LDFLAGS) $(_Normalizer_OBJECTS) $(_Normalizer_LDADD) $(LIBS)
-DOM/RangeTest/$(am__dirstamp):
-	@$(mkdir_p) DOM/RangeTest
-	@: > DOM/RangeTest/$(am__dirstamp)
-DOM/RangeTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/RangeTest/$(DEPDIR)
-	@: > DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
-DOM/RangeTest/RangeTest.$(OBJEXT): DOM/RangeTest/$(am__dirstamp) \
-	DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
 _RangeTest$(EXEEXT): $(_RangeTest_OBJECTS) $(_RangeTest_DEPENDENCIES) 
 	@rm -f _RangeTest$(EXEEXT)
 	$(CXXLINK) $(_RangeTest_LDFLAGS) $(_RangeTest_OBJECTS) $(_RangeTest_LDADD) $(LIBS)
-DOM/Traversal/$(am__dirstamp):
-	@$(mkdir_p) DOM/Traversal
-	@: > DOM/Traversal/$(am__dirstamp)
-DOM/Traversal/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/Traversal/$(DEPDIR)
-	@: > DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
-DOM/Traversal/Traversal.$(OBJEXT): DOM/Traversal/$(am__dirstamp) \
-	DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
 _Traversal$(EXEEXT): $(_Traversal_OBJECTS) $(_Traversal_DEPENDENCIES) 
 	@rm -f _Traversal$(EXEEXT)
 	$(CXXLINK) $(_Traversal_LDFLAGS) $(_Traversal_OBJECTS) $(_Traversal_LDADD) $(LIBS)
-DOM/TypeInfo/$(am__dirstamp):
-	@$(mkdir_p) DOM/TypeInfo
-	@: > DOM/TypeInfo/$(am__dirstamp)
-DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) DOM/TypeInfo/$(DEPDIR)
-	@: > DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
-DOM/TypeInfo/TypeInfo.$(OBJEXT): DOM/TypeInfo/$(am__dirstamp) \
-	DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
 _TypeInfo$(EXEEXT): $(_TypeInfo_OBJECTS) $(_TypeInfo_DEPENDENCIES) 
 	@rm -f _TypeInfo$(EXEEXT)
 	$(CXXLINK) $(_TypeInfo_LDFLAGS) $(_TypeInfo_OBJECTS) $(_TypeInfo_LDADD) $(LIBS)
-XSValueTest/$(am__dirstamp):
-	@$(mkdir_p) XSValueTest
-	@: > XSValueTest/$(am__dirstamp)
-XSValueTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) XSValueTest/$(DEPDIR)
-	@: > XSValueTest/$(DEPDIR)/$(am__dirstamp)
-XSValueTest/XSValueTest.$(OBJEXT): XSValueTest/$(am__dirstamp) \
-	XSValueTest/$(DEPDIR)/$(am__dirstamp)
 _XSValueTest$(EXEEXT): $(_XSValueTest_OBJECTS) $(_XSValueTest_DEPENDENCIES) 
 	@rm -f _XSValueTest$(EXEEXT)
 	$(CXXLINK) $(_XSValueTest_LDFLAGS) $(_XSValueTest_OBJECTS) $(_XSValueTest_LDADD) $(LIBS)
-XSerializerTest/$(am__dirstamp):
-	@$(mkdir_p) XSerializerTest
-	@: > XSerializerTest/$(am__dirstamp)
-XSerializerTest/$(DEPDIR)/$(am__dirstamp):
-	@$(mkdir_p) XSerializerTest/$(DEPDIR)
-	@: > XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-XSerializerTest/XSerializerHandlers.$(OBJEXT):  \
-	XSerializerTest/$(am__dirstamp) \
-	XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-XSerializerTest/XSerializerTest.$(OBJEXT):  \
-	XSerializerTest/$(am__dirstamp) \
-	XSerializerTest/$(DEPDIR)/$(am__dirstamp)
 _XSerializerTest$(EXEEXT): $(_XSerializerTest_OBJECTS) $(_XSerializerTest_DEPENDENCIES) 
 	@rm -f _XSerializerTest$(EXEEXT)
 	$(CXXLINK) $(_XSerializerTest_LDFLAGS) $(_XSerializerTest_OBJECTS) $(_XSerializerTest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
-	-rm -f DOM/DOMTest/DTest.$(OBJEXT)
-	-rm -f DOM/Normalizer/Normalizer.$(OBJEXT)
-	-rm -f DOM/RangeTest/RangeTest.$(OBJEXT)
-	-rm -f DOM/Traversal/Traversal.$(OBJEXT)
-	-rm -f DOM/TypeInfo/TypeInfo.$(OBJEXT)
-	-rm -f EncodingTest/EncodingTest.$(OBJEXT)
-	-rm -f InitTermTest/InitTermTest.$(OBJEXT)
-	-rm -f XSValueTest/XSValueTest.$(OBJEXT)
-	-rm -f XSerializerTest/XSerializerHandlers.$(OBJEXT)
-	-rm -f XSerializerTest/XSerializerTest.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/DOMMemTest/$(DEPDIR)/DOMMemTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/DOMTest/$(DEPDIR)/DTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/Normalizer/$(DEPDIR)/Normalizer.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/RangeTest/$(DEPDIR)/RangeTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/Traversal/$(DEPDIR)/Traversal.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@DOM/TypeInfo/$(DEPDIR)/TypeInfo.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@EncodingTest/$(DEPDIR)/EncodingTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@InitTermTest/$(DEPDIR)/InitTermTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSValueTest/$(DEPDIR)/XSValueTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSerializerTest/$(DEPDIR)/XSerializerHandlers.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@XSerializerTest/$(DEPDIR)/XSerializerTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DOMMemTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/EncodingTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/InitTermTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Normalizer.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RangeTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Traversal.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TypeInfo.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSValueTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSerializerHandlers.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/XSerializerTest.Po@am__quote@
 
 .cpp.o:
-@am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`; \
-@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
-@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-@am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`; \
-@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
-@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .cpp.lo:
-@am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
-@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
-@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Plo"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Plo"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
+
+DOMMemTest.o: DOM/DOMMemTest/DOMMemTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DOMMemTest.o -MD -MP -MF "$(DEPDIR)/DOMMemTest.Tpo" -c -o DOMMemTest.o `test -f 'DOM/DOMMemTest/DOMMemTest.cpp' || echo '$(srcdir)/'`DOM/DOMMemTest/DOMMemTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/DOMMemTest.Tpo" "$(DEPDIR)/DOMMemTest.Po"; else rm -f "$(DEPDIR)/DOMMemTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/DOMMemTest/DOMMemTest.cpp' object='DOMMemTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DOMMemTest.o `test -f 'DOM/DOMMemTest/DOMMemTest.cpp' || echo '$(srcdir)/'`DOM/DOMMemTest/DOMMemTest.cpp
+
+DOMMemTest.obj: DOM/DOMMemTest/DOMMemTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DOMMemTest.obj -MD -MP -MF "$(DEPDIR)/DOMMemTest.Tpo" -c -o DOMMemTest.obj `if test -f 'DOM/DOMMemTest/DOMMemTest.cpp'; then $(CYGPATH_W) 'DOM/DOMMemTest/DOMMemTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/DOMMemTest/DOMMemTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/DOMMemTest.Tpo" "$(DEPDIR)/DOMMemTest.Po"; else rm -f "$(DEPDIR)/DOMMemTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/DOMMemTest/DOMMemTest.cpp' object='DOMMemTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DOMMemTest.obj `if test -f 'DOM/DOMMemTest/DOMMemTest.cpp'; then $(CYGPATH_W) 'DOM/DOMMemTest/DOMMemTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/DOMMemTest/DOMMemTest.cpp'; fi`
+
+DTest.o: DOM/DOMTest/DTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DTest.o -MD -MP -MF "$(DEPDIR)/DTest.Tpo" -c -o DTest.o `test -f 'DOM/DOMTest/DTest.cpp' || echo '$(srcdir)/'`DOM/DOMTest/DTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/DTest.Tpo" "$(DEPDIR)/DTest.Po"; else rm -f "$(DEPDIR)/DTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/DOMTest/DTest.cpp' object='DTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DTest.o `test -f 'DOM/DOMTest/DTest.cpp' || echo '$(srcdir)/'`DOM/DOMTest/DTest.cpp
+
+DTest.obj: DOM/DOMTest/DTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT DTest.obj -MD -MP -MF "$(DEPDIR)/DTest.Tpo" -c -o DTest.obj `if test -f 'DOM/DOMTest/DTest.cpp'; then $(CYGPATH_W) 'DOM/DOMTest/DTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/DOMTest/DTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/DTest.Tpo" "$(DEPDIR)/DTest.Po"; else rm -f "$(DEPDIR)/DTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/DOMTest/DTest.cpp' object='DTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o DTest.obj `if test -f 'DOM/DOMTest/DTest.cpp'; then $(CYGPATH_W) 'DOM/DOMTest/DTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/DOMTest/DTest.cpp'; fi`
+
+EncodingTest.o: EncodingTest/EncodingTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT EncodingTest.o -MD -MP -MF "$(DEPDIR)/EncodingTest.Tpo" -c -o EncodingTest.o `test -f 'EncodingTest/EncodingTest.cpp' || echo '$(srcdir)/'`EncodingTest/EncodingTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/EncodingTest.Tpo" "$(DEPDIR)/EncodingTest.Po"; else rm -f "$(DEPDIR)/EncodingTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='EncodingTest/EncodingTest.cpp' object='EncodingTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o EncodingTest.o `test -f 'EncodingTest/EncodingTest.cpp' || echo '$(srcdir)/'`EncodingTest/EncodingTest.cpp
+
+EncodingTest.obj: EncodingTest/EncodingTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT EncodingTest.obj -MD -MP -MF "$(DEPDIR)/EncodingTest.Tpo" -c -o EncodingTest.obj `if test -f 'EncodingTest/EncodingTest.cpp'; then $(CYGPATH_W) 'EncodingTest/EncodingTest.cpp'; else $(CYGPATH_W) '$(srcdir)/EncodingTest/EncodingTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/EncodingTest.Tpo" "$(DEPDIR)/EncodingTest.Po"; else rm -f "$(DEPDIR)/EncodingTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='EncodingTest/EncodingTest.cpp' object='EncodingTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o EncodingTest.obj `if test -f 'EncodingTest/EncodingTest.cpp'; then $(CYGPATH_W) 'EncodingTest/EncodingTest.cpp'; else $(CYGPATH_W) '$(srcdir)/EncodingTest/EncodingTest.cpp'; fi`
+
+InitTermTest.o: InitTermTest/InitTermTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT InitTermTest.o -MD -MP -MF "$(DEPDIR)/InitTermTest.Tpo" -c -o InitTermTest.o `test -f 'InitTermTest/InitTermTest.cpp' || echo '$(srcdir)/'`InitTermTest/InitTermTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/InitTermTest.Tpo" "$(DEPDIR)/InitTermTest.Po"; else rm -f "$(DEPDIR)/InitTermTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='InitTermTest/InitTermTest.cpp' object='InitTermTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o InitTermTest.o `test -f 'InitTermTest/InitTermTest.cpp' || echo '$(srcdir)/'`InitTermTest/InitTermTest.cpp
+
+InitTermTest.obj: InitTermTest/InitTermTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT InitTermTest.obj -MD -MP -MF "$(DEPDIR)/InitTermTest.Tpo" -c -o InitTermTest.obj `if test -f 'InitTermTest/InitTermTest.cpp'; then $(CYGPATH_W) 'InitTermTest/InitTermTest.cpp'; else $(CYGPATH_W) '$(srcdir)/InitTermTest/InitTermTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/InitTermTest.Tpo" "$(DEPDIR)/InitTermTest.Po"; else rm -f "$(DEPDIR)/InitTermTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='InitTermTest/InitTermTest.cpp' object='InitTermTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o InitTermTest.obj `if test -f 'InitTermTest/InitTermTest.cpp'; then $(CYGPATH_W) 'InitTermTest/InitTermTest.cpp'; else $(CYGPATH_W) '$(srcdir)/InitTermTest/InitTermTest.cpp'; fi`
+
+Normalizer.o: DOM/Normalizer/Normalizer.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Normalizer.o -MD -MP -MF "$(DEPDIR)/Normalizer.Tpo" -c -o Normalizer.o `test -f 'DOM/Normalizer/Normalizer.cpp' || echo '$(srcdir)/'`DOM/Normalizer/Normalizer.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/Normalizer.Tpo" "$(DEPDIR)/Normalizer.Po"; else rm -f "$(DEPDIR)/Normalizer.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/Normalizer/Normalizer.cpp' object='Normalizer.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Normalizer.o `test -f 'DOM/Normalizer/Normalizer.cpp' || echo '$(srcdir)/'`DOM/Normalizer/Normalizer.cpp
+
+Normalizer.obj: DOM/Normalizer/Normalizer.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Normalizer.obj -MD -MP -MF "$(DEPDIR)/Normalizer.Tpo" -c -o Normalizer.obj `if test -f 'DOM/Normalizer/Normalizer.cpp'; then $(CYGPATH_W) 'DOM/Normalizer/Normalizer.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/Normalizer/Normalizer.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/Normalizer.Tpo" "$(DEPDIR)/Normalizer.Po"; else rm -f "$(DEPDIR)/Normalizer.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/Normalizer/Normalizer.cpp' object='Normalizer.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Normalizer.obj `if test -f 'DOM/Normalizer/Normalizer.cpp'; then $(CYGPATH_W) 'DOM/Normalizer/Normalizer.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/Normalizer/Normalizer.cpp'; fi`
+
+RangeTest.o: DOM/RangeTest/RangeTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangeTest.o -MD -MP -MF "$(DEPDIR)/RangeTest.Tpo" -c -o RangeTest.o `test -f 'DOM/RangeTest/RangeTest.cpp' || echo '$(srcdir)/'`DOM/RangeTest/RangeTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/RangeTest.Tpo" "$(DEPDIR)/RangeTest.Po"; else rm -f "$(DEPDIR)/RangeTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/RangeTest/RangeTest.cpp' object='RangeTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangeTest.o `test -f 'DOM/RangeTest/RangeTest.cpp' || echo '$(srcdir)/'`DOM/RangeTest/RangeTest.cpp
+
+RangeTest.obj: DOM/RangeTest/RangeTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT RangeTest.obj -MD -MP -MF "$(DEPDIR)/RangeTest.Tpo" -c -o RangeTest.obj `if test -f 'DOM/RangeTest/RangeTest.cpp'; then $(CYGPATH_W) 'DOM/RangeTest/RangeTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/RangeTest/RangeTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/RangeTest.Tpo" "$(DEPDIR)/RangeTest.Po"; else rm -f "$(DEPDIR)/RangeTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/RangeTest/RangeTest.cpp' object='RangeTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o RangeTest.obj `if test -f 'DOM/RangeTest/RangeTest.cpp'; then $(CYGPATH_W) 'DOM/RangeTest/RangeTest.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/RangeTest/RangeTest.cpp'; fi`
+
+Traversal.o: DOM/Traversal/Traversal.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Traversal.o -MD -MP -MF "$(DEPDIR)/Traversal.Tpo" -c -o Traversal.o `test -f 'DOM/Traversal/Traversal.cpp' || echo '$(srcdir)/'`DOM/Traversal/Traversal.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/Traversal.Tpo" "$(DEPDIR)/Traversal.Po"; else rm -f "$(DEPDIR)/Traversal.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/Traversal/Traversal.cpp' object='Traversal.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Traversal.o `test -f 'DOM/Traversal/Traversal.cpp' || echo '$(srcdir)/'`DOM/Traversal/Traversal.cpp
+
+Traversal.obj: DOM/Traversal/Traversal.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT Traversal.obj -MD -MP -MF "$(DEPDIR)/Traversal.Tpo" -c -o Traversal.obj `if test -f 'DOM/Traversal/Traversal.cpp'; then $(CYGPATH_W) 'DOM/Traversal/Traversal.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/Traversal/Traversal.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/Traversal.Tpo" "$(DEPDIR)/Traversal.Po"; else rm -f "$(DEPDIR)/Traversal.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/Traversal/Traversal.cpp' object='Traversal.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o Traversal.obj `if test -f 'DOM/Traversal/Traversal.cpp'; then $(CYGPATH_W) 'DOM/Traversal/Traversal.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/Traversal/Traversal.cpp'; fi`
+
+TypeInfo.o: DOM/TypeInfo/TypeInfo.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TypeInfo.o -MD -MP -MF "$(DEPDIR)/TypeInfo.Tpo" -c -o TypeInfo.o `test -f 'DOM/TypeInfo/TypeInfo.cpp' || echo '$(srcdir)/'`DOM/TypeInfo/TypeInfo.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/TypeInfo.Tpo" "$(DEPDIR)/TypeInfo.Po"; else rm -f "$(DEPDIR)/TypeInfo.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/TypeInfo/TypeInfo.cpp' object='TypeInfo.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TypeInfo.o `test -f 'DOM/TypeInfo/TypeInfo.cpp' || echo '$(srcdir)/'`DOM/TypeInfo/TypeInfo.cpp
+
+TypeInfo.obj: DOM/TypeInfo/TypeInfo.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT TypeInfo.obj -MD -MP -MF "$(DEPDIR)/TypeInfo.Tpo" -c -o TypeInfo.obj `if test -f 'DOM/TypeInfo/TypeInfo.cpp'; then $(CYGPATH_W) 'DOM/TypeInfo/TypeInfo.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/TypeInfo/TypeInfo.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/TypeInfo.Tpo" "$(DEPDIR)/TypeInfo.Po"; else rm -f "$(DEPDIR)/TypeInfo.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='DOM/TypeInfo/TypeInfo.cpp' object='TypeInfo.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o TypeInfo.obj `if test -f 'DOM/TypeInfo/TypeInfo.cpp'; then $(CYGPATH_W) 'DOM/TypeInfo/TypeInfo.cpp'; else $(CYGPATH_W) '$(srcdir)/DOM/TypeInfo/TypeInfo.cpp'; fi`
+
+XSValueTest.o: XSValueTest/XSValueTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSValueTest.o -MD -MP -MF "$(DEPDIR)/XSValueTest.Tpo" -c -o XSValueTest.o `test -f 'XSValueTest/XSValueTest.cpp' || echo '$(srcdir)/'`XSValueTest/XSValueTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSValueTest.Tpo" "$(DEPDIR)/XSValueTest.Po"; else rm -f "$(DEPDIR)/XSValueTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSValueTest/XSValueTest.cpp' object='XSValueTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSValueTest.o `test -f 'XSValueTest/XSValueTest.cpp' || echo '$(srcdir)/'`XSValueTest/XSValueTest.cpp
+
+XSValueTest.obj: XSValueTest/XSValueTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSValueTest.obj -MD -MP -MF "$(DEPDIR)/XSValueTest.Tpo" -c -o XSValueTest.obj `if test -f 'XSValueTest/XSValueTest.cpp'; then $(CYGPATH_W) 'XSValueTest/XSValueTest.cpp'; else $(CYGPATH_W) '$(srcdir)/XSValueTest/XSValueTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSValueTest.Tpo" "$(DEPDIR)/XSValueTest.Po"; else rm -f "$(DEPDIR)/XSValueTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSValueTest/XSValueTest.cpp' object='XSValueTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSValueTest.obj `if test -f 'XSValueTest/XSValueTest.cpp'; then $(CYGPATH_W) 'XSValueTest/XSValueTest.cpp'; else $(CYGPATH_W) '$(srcdir)/XSValueTest/XSValueTest.cpp'; fi`
+
+XSerializerHandlers.o: XSerializerTest/XSerializerHandlers.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSerializerHandlers.o -MD -MP -MF "$(DEPDIR)/XSerializerHandlers.Tpo" -c -o XSerializerHandlers.o `test -f 'XSerializerTest/XSerializerHandlers.cpp' || echo '$(srcdir)/'`XSerializerTest/XSerializerHandlers.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSerializerHandlers.Tpo" "$(DEPDIR)/XSerializerHandlers.Po"; else rm -f "$(DEPDIR)/XSerializerHandlers.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSerializerTest/XSerializerHandlers.cpp' object='XSerializerHandlers.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSerializerHandlers.o `test -f 'XSerializerTest/XSerializerHandlers.cpp' || echo '$(srcdir)/'`XSerializerTest/XSerializerHandlers.cpp
+
+XSerializerHandlers.obj: XSerializerTest/XSerializerHandlers.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSerializerHandlers.obj -MD -MP -MF "$(DEPDIR)/XSerializerHandlers.Tpo" -c -o XSerializerHandlers.obj `if test -f 'XSerializerTest/XSerializerHandlers.cpp'; then $(CYGPATH_W) 'XSerializerTest/XSerializerHandlers.cpp'; else $(CYGPATH_W) '$(srcdir)/XSerializerTest/XSerializerHandlers.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSerializerHandlers.Tpo" "$(DEPDIR)/XSerializerHandlers.Po"; else rm -f "$(DEPDIR)/XSerializerHandlers.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSerializerTest/XSerializerHandlers.cpp' object='XSerializerHandlers.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSerializerHandlers.obj `if test -f 'XSerializerTest/XSerializerHandlers.cpp'; then $(CYGPATH_W) 'XSerializerTest/XSerializerHandlers.cpp'; else $(CYGPATH_W) '$(srcdir)/XSerializerTest/XSerializerHandlers.cpp'; fi`
+
+XSerializerTest.o: XSerializerTest/XSerializerTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSerializerTest.o -MD -MP -MF "$(DEPDIR)/XSerializerTest.Tpo" -c -o XSerializerTest.o `test -f 'XSerializerTest/XSerializerTest.cpp' || echo '$(srcdir)/'`XSerializerTest/XSerializerTest.cpp; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSerializerTest.Tpo" "$(DEPDIR)/XSerializerTest.Po"; else rm -f "$(DEPDIR)/XSerializerTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSerializerTest/XSerializerTest.cpp' object='XSerializerTest.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSerializerTest.o `test -f 'XSerializerTest/XSerializerTest.cpp' || echo '$(srcdir)/'`XSerializerTest/XSerializerTest.cpp
+
+XSerializerTest.obj: XSerializerTest/XSerializerTest.cpp
+@am__fastdepCXX_TRUE@	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT XSerializerTest.obj -MD -MP -MF "$(DEPDIR)/XSerializerTest.Tpo" -c -o XSerializerTest.obj `if test -f 'XSerializerTest/XSerializerTest.cpp'; then $(CYGPATH_W) 'XSerializerTest/XSerializerTest.cpp'; else $(CYGPATH_W) '$(srcdir)/XSerializerTest/XSerializerTest.cpp'; fi`; \
+@am__fastdepCXX_TRUE@	then mv -f "$(DEPDIR)/XSerializerTest.Tpo" "$(DEPDIR)/XSerializerTest.Po"; else rm -f "$(DEPDIR)/XSerializerTest.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='XSerializerTest/XSerializerTest.cpp' object='XSerializerTest.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o XSerializerTest.obj `if test -f 'XSerializerTest/XSerializerTest.cpp'; then $(CYGPATH_W) 'XSerializerTest/XSerializerTest.cpp'; else $(CYGPATH_W) '$(srcdir)/XSerializerTest/XSerializerTest.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -701,26 +755,6 @@ clean-generic:
 
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
-	-rm -f DOM/DOMMemTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/DOMMemTest/$(am__dirstamp)
-	-rm -f DOM/DOMTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/DOMTest/$(am__dirstamp)
-	-rm -f DOM/Normalizer/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/Normalizer/$(am__dirstamp)
-	-rm -f DOM/RangeTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/RangeTest/$(am__dirstamp)
-	-rm -f DOM/Traversal/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/Traversal/$(am__dirstamp)
-	-rm -f DOM/TypeInfo/$(DEPDIR)/$(am__dirstamp)
-	-rm -f DOM/TypeInfo/$(am__dirstamp)
-	-rm -f EncodingTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f EncodingTest/$(am__dirstamp)
-	-rm -f InitTermTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f InitTermTest/$(am__dirstamp)
-	-rm -f XSValueTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f XSValueTest/$(am__dirstamp)
-	-rm -f XSerializerTest/$(DEPDIR)/$(am__dirstamp)
-	-rm -f XSerializerTest/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -731,7 +765,7 @@ clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf DOM/DOMMemTest/$(DEPDIR) DOM/DOMTest/$(DEPDIR) DOM/Normalizer/$(DEPDIR) DOM/RangeTest/$(DEPDIR) DOM/Traversal/$(DEPDIR) DOM/TypeInfo/$(DEPDIR) EncodingTest/$(DEPDIR) InitTermTest/$(DEPDIR) XSValueTest/$(DEPDIR) XSerializerTest/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -757,7 +791,7 @@ install-man:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf DOM/DOMMemTest/$(DEPDIR) DOM/DOMTest/$(DEPDIR) DOM/Normalizer/$(DEPDIR) DOM/RangeTest/$(DEPDIR) DOM/Traversal/$(DEPDIR) DOM/TypeInfo/$(DEPDIR) EncodingTest/$(DEPDIR) InitTermTest/$(DEPDIR) XSValueTest/$(DEPDIR) XSerializerTest/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
