@@ -12,6 +12,7 @@ dnl $Id$
 AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 	[
 	AC_REQUIRE([XERCES_NO_THREADS])
+	AC_REQUIRE([ACX_PTHREAD])
 	
 	AC_MSG_CHECKING([for which Mutex Manager to use])
 	mgr=
@@ -33,11 +34,16 @@ AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 			esac
 		])
 	
-	# Fall back to using posix mutex
-	AS_IF([test -z "$mgr"],
-		[mgr=POSIX;
+	# Fall back to using posix mutex id we can
+	AS_IF([test -z "$mgr" && test x$acx_pthread_ok = xyes],
+		[
+			mgr=POSIX;
 			AC_DEFINE([XERCES_USE_MUTEXMGR_POSIX], 1, [Define to use the POSIX mutex mgr])
 		])
+		
+	# If we still didn't find a mutex package, bail
+	AS_IF([test -z "$mgr"],
+		[AC_MSG_ERROR([Xerces cannot function without mutex support. You may want to --disable-threads.])])
 
 	AC_MSG_RESULT($mgr)
 	

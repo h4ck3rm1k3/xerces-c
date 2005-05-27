@@ -88,6 +88,13 @@ libvalidators_la_SOURCES =			${validators_sources}
 #
 # Transcoders, conditionally built based on settings from configure
 #
+if XERCES_USE_NETACCESSOR_SOCKET
+src_libraries +=					libsockets.la
+libsockets_ladir =					${includedir}
+nobase_libsockets_la_HEADERS =		${sockets_headers}
+libsockets_la_SOURCES =				${sockets_sources}
+endif
+
 if XERCES_USE_NETACCESSOR_CFURL
 src_libraries +=					libcfurl.la
 libcfurl_ladir =					${includedir}
@@ -96,7 +103,7 @@ libcfurl_la_SOURCES =				${cfurl_sources}
 endif
 
 #
-# NetAccessors, conditionally built based on settings from configure
+# Transcoders, conditionally built based on settings from configure
 #
 if XERCES_USE_TRANSCODER_ICU
 src_libraries +=					libicu.la
@@ -172,6 +179,8 @@ src_libraries +=					libposixmmgr.la
 libposixmmgr_ladir =				${includedir}
 nobase_libposixmmgr_la_HEADERS =	${posixmmgr_headers}
 libposixmmgr_la_SOURCES =			${posixmmgr_sources}
+libposixmmgr_la_LIBADD =			${PTHREAD_LIBS}
+libposixmmgr_la_CFLAGS =			${PTHREAD_CFLAGS}
 endif
 
 #
@@ -980,6 +989,12 @@ macosunicodeconverter_sources = \
 	xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.cpp
 
 
+sockets_headers = \
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp
+	
+sockets_sources = \
+	xercesc/util/NetAccessors/Socket/SocketNetAccessor.cpp
+	
 cfurl_headers = \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/URLAccessCFBinInputStream.hpp

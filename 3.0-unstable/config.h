@@ -94,6 +94,9 @@
 /* Define to 1 if you have the `pathconf' function. */
 #define HAVE_PATHCONF 1
 
+/* Define if you have POSIX threads libraries and header files. */
+#define HAVE_PTHREAD 1
+
 /* Define to 1 if you have the `realpath' function. */
 #define HAVE_REALPATH 1
 
@@ -216,6 +219,10 @@
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "3.0"
+
+/* Define to necessary symbol if this constant uses a non-standard name on
+   your system. */
+/* #undef PTHREAD_CREATE_JOINABLE */
 
 /* The size of a `int', as computed by sizeof. */
 #define SIZEOF_INT 4
