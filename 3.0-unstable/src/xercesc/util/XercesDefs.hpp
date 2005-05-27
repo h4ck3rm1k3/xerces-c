@@ -23,189 +23,27 @@
 #if !defined(XERCESDEFS_HPP)
 #define XERCESDEFS_HPP
 
-#include	<x_config.h>
+// ---------------------------------------------------------------------------
+//  The file xerces_hdr_config defines critical configuration information
+//	used by the remainder of this file.
+//
+//	There are two major configuration files:
+//		- xerces_hdr_config.h		-- Contains defines that are safe for
+//									   access through public headers.
+//
+//		- config.h					-- Contains defines that may conflict
+//									   with other packages; should only be
+//									   included by Xerces implementation files.
+//
+//	Both of these files are generated through the autoconf/configure process.
+// ---------------------------------------------------------------------------
+#include	<xerces_hdr_config.h>
 
 // ---------------------------------------------------------------------------
 //  Include the Xerces version information; this is kept in a separate file to
 //  make modification simple and obvious. Updates to the version header file
 // ---------------------------------------------------------------------------
 #include    <xercesc/util/XercesVersion.hpp>
-
-
-#if 0
-
-
-// ---------------------------------------------------------------------------
-//  Include the header that does automatic sensing of the current platform
-//  and compiler.
-// ---------------------------------------------------------------------------
-#include    <xercesc/util/AutoSense.hpp>
-
-// ---------------------------------------------------------------------------
-//  According to the platform we include a platform specific file. This guy
-//  will set up any platform specific stuff, such as character mode.
-// ---------------------------------------------------------------------------
-#if defined(XML_WIN32)
-#include    <xercesc/util/Platforms/Win32/Win32Defs.hpp>
-#endif
-
-#if defined(XML_CYGWIN)
-#include    <xercesc/util/Platforms/Cygwin/CygwinDefs.hpp>
-#endif
-
-#if defined(XML_AIX)
-#include    <xercesc/util/Platforms/AIX/AIXDefs.hpp>
-#endif
-
-#if defined(XML_SOLARIS)
-#include    <xercesc/util/Platforms/Solaris/SolarisDefs.hpp>
-#endif
-
-#if defined(XML_OPENSERVER)
-#include    <xercesc/util/Platforms/OpenServer/OpenServerDefs.hpp>
-#endif
-
-#if defined(XML_UNIXWARE)
-#include    <xercesc/util/Platforms/UnixWare/UnixWareDefs.hpp>
-#endif
-
-#if defined(XML_HPUX)
-#include    <xercesc/util/Platforms/HPUX/HPUXDefs.hpp>
-#endif
-
-#if defined(XML_IRIX)
-#include    <xercesc/util/Platforms/IRIX/IRIXDefs.hpp>
-#endif
-
-#if defined(XML_INTERIX)
-#include    <xercesc/util/Platforms/Interix/InterixDefs.hpp>
-#endif
-
-#if defined(XML_TANDEM)
-#include    <xercesc/util/Platforms/Tandem/TandemDefs.hpp>
-#endif
-
-#if defined(XML_BEOS)
-#include    <xercesc/util/Platforms/BeOS/BeOSDefs.hpp>
-#endif
-
-#if defined(XML_LINUX)
-#include    <xercesc/util/Platforms/Linux/LinuxDefs.hpp>
-#endif
-
-#if defined(XML_FREEBSD)
-#include    <xercesc/util/Platforms/FreeBSD/FreeBSDDefs.hpp>
-#endif
-
-#if defined(XML_OS390)
-#include    <xercesc/util/Platforms/OS390/OS390Defs.hpp>
-#endif
-
-#if defined(XML_PTX)
-#include    <xercesc/util/Platforms/PTX/PTXDefs.hpp>
-#endif
-
-#if defined(XML_OS2)
-#include    <xercesc/util/Platforms/OS2/OS2Defs.hpp>
-#endif
-
-#if defined(XML_MACOS)
-#include	<xercesc/util/Platforms/MacOS/MacOSDefs.hpp>
-#endif
-
-#if defined(XML_AS400)
-#include	<xercesc/util/Platforms/OS400/OS400Defs.hpp>
-#endif
-
-#if defined(XML_TRU64)
-#include	<xercesc/util/Platforms/Tru64/Tru64Defs.hpp>
-#endif
-
-#if defined(XML_QNX)
-#include	<xercesc/util/Platforms/QNX/QNXDefs.hpp>
-#endif
-
-// ---------------------------------------------------------------------------
-//  And now we subinclude a header according to the development environment
-//  we are on. This guy defines for each platform some basic stuff that is
-//  specific to the development environment.
-// ---------------------------------------------------------------------------
-#if defined(XML_VISUALCPP)
-#include    <xercesc/util/Compilers/VCPPDefs.hpp>
-#endif
-
-#if defined(XML_CSET)
-#include    <xercesc/util/Compilers/CSetDefs.hpp>
-#endif
-
-#if defined(XML_BORLAND)
-#include    <xercesc/util/Compilers/BorlandCDefs.hpp>
-#endif
-
-#if defined(XML_SUNCC) || defined(XML_SUNCC5)
-#include    <xercesc/util/Compilers/SunCCDefs.hpp>
-#endif
-
-#if defined(XML_SCOCC)
-#include    <xercesc/util/Compilers/SCOCCDefs.hpp>
-#endif
-
-#if defined(XML_SOLARIS_KAICC)
-#include    <xercesc/util/Compilers/SunKaiDefs.hpp>
-#endif
-
-#if defined(XML_HPUX_CC) || defined(XML_HPUX_aCC) || defined(XML_HPUX_KAICC)
-#include    <xercesc/util/Compilers/HPCCDefs.hpp>
-#endif
-
-#if defined(XML_MIPSPRO_CC)
-#include    <xercesc/util/Compilers/MIPSproDefs.hpp>
-#endif
-
-#if defined(XML_TANDEMCC)
-#include    <xercesc/util/Compilers/TandemCCDefs.hpp>
-#endif
-
-#if defined(XML_GCC)
-#include    <xercesc/util/Compilers/GCCDefs.hpp>
-#endif
-
-#if defined(XML_MVSCPP)
-#include    <xercesc/util/Compilers/MVSCPPDefs.hpp>
-#endif
-
-#if defined(XML_IBMVAW32)
-#include    <xercesc/util/Compilers/IBMVAW32Defs.hpp>
-#endif
-
-#if defined(XML_IBMVAOS2)
-#include    <xercesc/util/Compilers/IBMVAOS2Defs.hpp>
-#endif
-
-#if defined(XML_METROWERKS)
-#include	<xercesc/util/Compilers/CodeWarriorDefs.hpp>
-#endif
-
-#if defined(XML_PTX_CC)
-#include	<xercesc/util/Compilers/PTXCCDefs.hpp>
-#endif
-
-#if defined(XML_AS400)
-#include	<xercesc/util/Compilers/OS400SetDefs.hpp>
-#endif
-
-#if defined(XML_DECCXX)
-#include	<xercesc/util/Compilers/DECCXXDefs.hpp>
-#endif
-
-#if defined(XML_QCC)
-#include	<xercesc/util/Compilers/QCCDefs.hpp>
-#endif
-
-
-#endif
-
-
 
 
 // ---------------------------------------------------------------------------

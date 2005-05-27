@@ -1,11 +1,27 @@
-//
-//	••• This file should probably get rolled into XercesDefs.h
-//
+/*
+ * Copyright 1999-2004 The Apache Software Foundation.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+ * $Id$
+ */
 
 //
 // There are two primary xerces configuration header files:
 //
-//	x_config.h				--  For configuration of items that must be accessable
+//	xerces_hdr_config.h		--  For configuration of items that must be accessable
 //								through public headers. This file has limited information
 //								and carefully works to avoid collision of macro names, etc.
 //
@@ -22,6 +38,31 @@
 
 #ifndef X_CONFIG_HPP
 #define X_CONFIG_HPP
+
+#if !HAVE_CONFIG_H
+// ===========================================================================
+//  This section provides hooks for build environments where autoconf
+//  is not used. At a minimum, these environments must supply the definitions
+//	below.
+// ===========================================================================
+
+//	*** TODO: this is an example/idea for how this should be done
+
+#if   WINDOWS_IDE_BUILD
+	// Configuration for a build through Visual Studio
+	#include <..SOMEPATHTO../WindowsVisualStudioConfig.h>
+#elif MACOS_XCODE_BUILD
+	// Configuration for a build through XCode
+	#include <..SOMEPATHTO../MacsOSXCodeConfig.h>
+#else
+	#error This build must be configured through autoconf or by providing
+	#error specific instructions for a non-autoconf build.
+#endif
+
+#else
+// ===========================================================================
+//	This section contains defines that are configured through autoconf.
+// ===========================================================================
 
 // ---------------------------------------------------------------------------
 //  These defines are set by configure as appropriate for the platform.
@@ -48,8 +89,8 @@
 //  Must include sys/types.h if we're going to typedef to size_t below,
 //	so include sys/types.h if it's available.
 // ---------------------------------------------------------------------------
-#if defined(XERCES_HAVE_SYS_TYPES_H)
-#include <sys/types.h>
+#if XERCES_HAVE_SYS_TYPES_H
+#	include <sys/types.h>
 #endif
 
 
@@ -78,8 +119,7 @@ typedef XERCES_32BIT_INT			XMLInt32;
 // ---------------------------------------------------------------------------
 //  XMLFilePos is the type used to represent a file position.
 // ---------------------------------------------------------------------------
-// *** TODO: shouldn't hardcode this.
-typedef unsigned long				XMLFilePos;
+typedef unsigned XERCES_32BIT_INT	XMLFilePos;
 
 
 
@@ -90,5 +130,5 @@ typedef unsigned long				XMLFilePos;
 #define XERCES_DEBUG
 #endif
 
-
+#endif
 #endif

@@ -37,10 +37,10 @@ build_triplet = @build@
 host_triplet = @host@
 DIST_COMMON = $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(srcdir)/x_config.h.in $(top_srcdir)/configure config/compile \
-	config/config.guess config/config.sub config/depcomp \
-	config/install-sh config/ltmain.sh config/missing \
-	config/mkinstalldirs
+	$(srcdir)/xerces_hdr_config.h.in $(top_srcdir)/configure \
+	config/compile config/config.guess config/config.sub \
+	config/depcomp config/install-sh config/ltmain.sh \
+	config/missing config/mkinstalldirs
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
@@ -68,7 +68,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
-CONFIG_HEADER = config.h x_config.h
+CONFIG_HEADER = config.h xerces_hdr_config.h
 CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
@@ -229,7 +229,7 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = lib src obj tests
 ACLOCAL_AMFLAGS = -I m4
-all: config.h x_config.h
+all: config.h xerces_hdr_config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
 .SUFFIXES:
@@ -281,18 +281,18 @@ $(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	rm -f stamp-h1
 	touch $@
 
-x_config.h: stamp-h2
+xerces_hdr_config.h: stamp-h2
 	@if test ! -f $@; then \
 	  rm -f stamp-h2; \
 	  $(MAKE) stamp-h2; \
 	else :; fi
 
-stamp-h2: $(srcdir)/x_config.h.in $(top_builddir)/config.status
+stamp-h2: $(srcdir)/xerces_hdr_config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h2
-	cd $(top_builddir) && $(SHELL) ./config.status x_config.h
+	cd $(top_builddir) && $(SHELL) ./config.status xerces_hdr_config.h
 
 distclean-hdr:
-	-rm -f config.h stamp-h1 x_config.h stamp-h2
+	-rm -f config.h stamp-h1 xerces_hdr_config.h stamp-h2
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -385,7 +385,7 @@ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	mkid -fID $$unique
 tags: TAGS
 
-TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in x_config.h.in $(TAGS_DEPENDENCIES) \
+TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in xerces_hdr_config.h.in $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
@@ -402,7 +402,7 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in x_config.h.in $(TAGS_DEPE
 	      tags="$$tags $$include_option=$$here/$$subdir/TAGS"; \
 	  fi; \
 	done; \
-	list='$(SOURCES) $(HEADERS) config.h.in x_config.h.in $(LISP) $(TAGS_FILES)'; \
+	list='$(SOURCES) $(HEADERS) config.h.in xerces_hdr_config.h.in $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
@@ -414,11 +414,11 @@ TAGS: tags-recursive $(HEADERS) $(SOURCES) config.h.in x_config.h.in $(TAGS_DEPE
 	    $$tags $$unique; \
 	fi
 ctags: CTAGS
-CTAGS: ctags-recursive $(HEADERS) $(SOURCES) config.h.in x_config.h.in $(TAGS_DEPENDENCIES) \
+CTAGS: ctags-recursive $(HEADERS) $(SOURCES) config.h.in xerces_hdr_config.h.in $(TAGS_DEPENDENCIES) \
 		$(TAGS_FILES) $(LISP)
 	tags=; \
 	here=`pwd`; \
-	list='$(SOURCES) $(HEADERS) config.h.in x_config.h.in $(LISP) $(TAGS_FILES)'; \
+	list='$(SOURCES) $(HEADERS) config.h.in xerces_hdr_config.h.in $(LISP) $(TAGS_FILES)'; \
 	unique=`for i in $$list; do \
 	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 	  done | \
@@ -580,7 +580,7 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile config.h x_config.h
+all-am: Makefile config.h xerces_hdr_config.h
 installdirs: installdirs-recursive
 installdirs-am:
 install: install-recursive
