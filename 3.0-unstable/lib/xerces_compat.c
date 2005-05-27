@@ -27,3 +27,4 @@ void
 xerces_compat_dummy()
 {
 }
+
