@@ -22,11 +22,11 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	tc_list=
 	
 	# Check for iconv support
-	AC_CHECK_HEADERS([wchar.h wctype.h], [], [no_iconv=true])
-	AC_CHECK_FUNCS([towupper towlower iswspace mblen wcstombs mbstowcs], [], [no_iconv=true])
+	no_iconv=false
+	AC_CHECK_HEADERS([wchar.h], [], [no_iconv=true])
+	AC_CHECK_FUNCS([mblen wcstombs mbstowcs], [], [no_iconv=true])
 	AC_MSG_CHECKING([for whether we can support the iconv Transcoder])
 	list_add=
-	no_iconv=false
 	AS_IF([! $no_iconv], [
 		AC_ARG_ENABLE([transcoder-iconv],
 			AS_HELP_STRING([--enable-transcoder-iconv],

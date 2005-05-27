@@ -23360,10 +23360,14 @@ fi
 
 
 
+
+
+
 for ac_func in clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeofday localeconv \
 				mblen memmove memset nl_langinfo pathconf realpath setlocale socket \
 				strcasecmp strncasecmp stricmp strnicmp strchr strdup strncasecmp \
 				strrchr strstr strtol strtoul \
+				towupper towlower iswspace \
 
 do
 as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
@@ -24043,9 +24047,9 @@ echo "${ECHO_T}$xerces_cv_icu_prefix" >&6
 	tc_list=
 
 	# Check for iconv support
+	no_iconv=false
 
-
-for ac_header in wchar.h wctype.h
+for ac_header in wchar.h
 do
 as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
 if eval "test \"\${$as_ac_Header+set}\" = set"; then
@@ -24199,10 +24203,7 @@ done
 
 
 
-
-
-
-for ac_func in towupper towlower iswspace mblen wcstombs mbstowcs
+for ac_func in mblen wcstombs mbstowcs
 do
 as_ac_var=`echo "ac_cv_func_$ac_func" | $as_tr_sh`
 echo "$as_me:$LINENO: checking for $ac_func" >&5
@@ -24308,7 +24309,6 @@ done
 	echo "$as_me:$LINENO: checking for whether we can support the iconv Transcoder" >&5
 echo $ECHO_N "checking for whether we can support the iconv Transcoder... $ECHO_C" >&6
 	list_add=
-	no_iconv=false
 	if ! $no_iconv; then
 
 		# Check whether --enable-transcoder-iconv or --disable-transcoder-iconv was given.

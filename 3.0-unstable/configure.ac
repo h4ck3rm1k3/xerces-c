@@ -91,6 +91,7 @@ AC_CHECK_FUNCS([clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeof
 				mblen memmove memset nl_langinfo pathconf realpath setlocale socket \
 				strcasecmp strncasecmp stricmp strnicmp strchr strdup strncasecmp \
 				strrchr strstr strtol strtoul \
+				towupper towlower iswspace \
 				])
 				
 
