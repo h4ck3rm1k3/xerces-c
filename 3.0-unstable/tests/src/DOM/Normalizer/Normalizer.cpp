@@ -28,10 +28,10 @@
 
 #include <xercesc/util/XMLUni.hpp>
 #include <xercesc/util/XMLUniDefs.hpp>
-#include "../../../src/xercesc/dom/impl/DOMConfigurationImpl.hpp"
-#include "../../../src/xercesc/dom/impl/DOMDocumentImpl.hpp"
-#include "../../../src/xercesc/dom/impl/DOMEntityImpl.hpp"
-#include "../../../src/xercesc/dom/impl/DOMEntityReferenceImpl.hpp"
+#include "xercesc/dom/impl/DOMConfigurationImpl.hpp"
+#include "xercesc/dom/impl/DOMDocumentImpl.hpp"
+#include "xercesc/dom/impl/DOMEntityImpl.hpp"
+#include "xercesc/dom/impl/DOMEntityReferenceImpl.hpp"
 
 // ---------------------------------------------------------------------------
 //  This is a simple class that lets us do easy (though not terribly efficient)
