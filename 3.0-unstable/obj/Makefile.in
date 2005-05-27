@@ -34,7 +34,7 @@
 # $Id$
 #
 
-SOURCES = $(libXerces_la_SOURCES) $(nodist_EXTRA_libXerces_la_SOURCES)
+SOURCES = $(libxerces_la_SOURCES) $(nodist_EXTRA_libxerces_la_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -94,9 +94,9 @@ am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
 am__installdirs = "$(DESTDIR)$(libdir)"
 libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
-libXerces_la_DEPENDENCIES = ${src}/libsrc.la ${lib}/libcompat.la
-am_libXerces_la_OBJECTS =
-libXerces_la_OBJECTS = $(am_libXerces_la_OBJECTS)
+libxerces_la_DEPENDENCIES = ${src}/libsrc.la ${lib}/libcompat.la
+am_libxerces_la_OBJECTS =
+libxerces_la_OBJECTS = $(am_libxerces_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
@@ -108,8 +108,8 @@ LTCXXCOMPILE = $(LIBTOOL) --tag=CXX --mode=compile $(CXX) $(DEFS) \
 CXXLD = $(CXX)
 CXXLINK = $(LIBTOOL) --tag=CXX --mode=link $(CXXLD) $(AM_CXXFLAGS) \
 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(libXerces_la_SOURCES) $(nodist_EXTRA_libXerces_la_SOURCES)
-DIST_SOURCES = $(libXerces_la_SOURCES)
+SOURCES = $(libxerces_la_SOURCES) $(nodist_EXTRA_libxerces_la_SOURCES)
+DIST_SOURCES = $(libxerces_la_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -246,10 +246,10 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 src = ${top_srcdir}/src
 lib = ${top_srcdir}/lib
-lib_LTLIBRARIES = libXerces.la
-libXerces_la_SOURCES = 
-nodist_EXTRA_libXerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
-libXerces_la_LIBADD = ${src}/libsrc.la ${lib}/libcompat.la
+lib_LTLIBRARIES = libxerces.la
+libxerces_la_SOURCES = 
+nodist_EXTRA_libxerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
+libxerces_la_LIBADD = ${src}/libsrc.la ${lib}/libcompat.la
 all: all-am
 
 .SUFFIXES:
@@ -310,8 +310,8 @@ clean-libLTLIBRARIES:
 	  echo "rm -f \"$${dir}/so_locations\""; \
 	  rm -f "$${dir}/so_locations"; \
 	done
-libXerces.la: $(libXerces_la_OBJECTS) $(libXerces_la_DEPENDENCIES) 
-	$(CXXLINK) -rpath $(libdir) $(libXerces_la_LDFLAGS) $(libXerces_la_OBJECTS) $(libXerces_la_LIBADD) $(LIBS)
+libxerces.la: $(libxerces_la_OBJECTS) $(libxerces_la_DEPENDENCIES) 
+	$(CXXLINK) -rpath $(libdir) $(libxerces_la_LDFLAGS) $(libxerces_la_OBJECTS) $(libxerces_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

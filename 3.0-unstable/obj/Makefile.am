@@ -21,8 +21,8 @@
 src	=						${top_srcdir}/src
 lib	=						${top_srcdir}/lib
 
-lib_LTLIBRARIES	= 			libXerces.la
-libXerces_la_SOURCES =
-nodist_EXTRA_libXerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
+lib_LTLIBRARIES	= 			libxerces.la
+libxerces_la_SOURCES =
+nodist_EXTRA_libxerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
 
-libXerces_la_LIBADD = 		${src}/libsrc.la ${lib}/libcompat.la
+libxerces_la_LIBADD = 		${src}/libsrc.la ${lib}/libcompat.la
