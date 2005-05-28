@@ -300,17 +300,6 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-@XERCES_PRETTY_MAKE_TRUE@PRETTY_MAKE = ${top_srcdir}/config/pretty-make
-@XERCES_PRETTY_MAKE_TRUE@PRETTY_COMPILE = ${PRETTY_MAKE} Compiling
-CXXCOMPILE = ${PRETTY_COMPILE} \
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-
-LTCXXCOMPILE = ${PRETTY_COMPILE}  \
-	$(LIBTOOL) --quiet --tag=CXX --mode=compile \
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-
 LDADD = ../obj/libxerces.la
 AM_CPPFLAGS = -I${top_srcdir}/src
 
@@ -390,6 +379,17 @@ XSerializerTest_SOURCES = src/XSerializerTest/XSerializerHandlers.cpp \
 
 XSValueTest_SOURCES = src/XSValueTest/XSValueTest.cpp \
 									src/XSValueTest/XSValueTest.hpp
+
+@XERCES_PRETTY_MAKE_TRUE@PRETTY_MAKE = ${top_srcdir}/config/pretty-make
+@XERCES_PRETTY_MAKE_TRUE@PRETTY_COMPILE = ${PRETTY_MAKE} Compiling
+CXXCOMPILE = ${PRETTY_COMPILE} \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+
+LTCXXCOMPILE = ${PRETTY_COMPILE}  \
+	$(LIBTOOL) --quiet --tag=CXX --mode=compile \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 
 all: all-am
 
@@ -582,7 +582,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerHandlers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerTest.Po@am__quote@
 
-.cpp.o:
+@XERCES_PRETTY_MAKE_FALSE@.cpp.o:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`; \
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
 @am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
@@ -590,7 +590,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ $<
 
-.cpp.obj:
+@XERCES_PRETTY_MAKE_FALSE@.cpp.obj:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`; \
 @am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
 @am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
@@ -598,7 +598,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
-.cpp.lo:
+@XERCES_PRETTY_MAKE_FALSE@.cpp.lo:
 @am__fastdepCXX_TRUE@	depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
 @am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
 @am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Plo"; else rm -f "$$depbase.Tpo"; exit 1; fi
@@ -810,7 +810,29 @@ uninstall-am: uninstall-info-am
 # Warning: If Automake changes sufficiently, these rules may need to
 #          be regenerated from the (new) default output of Automake
 #
-@XERCES_PRETTY_MAKE_TRUE@.SILENT:
+@XERCES_PRETTY_MAKE_TRUE@.cpp.o:
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(CXXCOMPILE) -c -o $@ $<
+
+@XERCES_PRETTY_MAKE_TRUE@.cpp.obj:
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+@XERCES_PRETTY_MAKE_TRUE@.cpp.lo:
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Plo"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(LTCXXCOMPILE) -c -o $@ $<
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

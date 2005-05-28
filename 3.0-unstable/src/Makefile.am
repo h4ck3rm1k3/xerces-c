@@ -20,27 +20,6 @@
 
 
 #
-# Override generated rules to provide prettier make rules
-#
-# Warning: If Automake changes sufficiently, these rules may need to
-#          be regenerated from the (new) default output of Automake
-#
-if XERCES_PRETTY_MAKE
-.SILENT:
-PRETTY_MAKE=${top_srcdir}/config/pretty-make
-PRETTY_COMPILE=${PRETTY_MAKE} Compiling
-endif
-
-CXXCOMPILE = ${PRETTY_COMPILE} \
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-LTCXXCOMPILE = ${PRETTY_COMPILE}  \
-	$(LIBTOOL) --quiet --tag=CXX --mode=compile \
-	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
-	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
-
-
-#
 # Specify the convenience libraries for various xerces components
 # These are used only during the build process and are not themselves installed
 #
@@ -1085,3 +1064,43 @@ macplatform_sources = \
 	xercesc/util/Platforms/MacOS/MacCarbonFile.cpp \
 	xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp \
 	xercesc/util/Platforms/MacOS/MacPosixFile.cpp
+	
+	
+	
+	
+#
+# Override generated rules to provide prettier make rules
+#
+# Warning: If Automake changes sufficiently, these rules may need to
+#          be regenerated from the (new) default output of Automake
+#
+if XERCES_PRETTY_MAKE
+
+.SILENT: \
+				xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo \
+				xercesc/util/NetAccessors/LibWWW/libwww_la-LibWWWNetAccessor.lo \
+				xercesc/util/NetAccessors/LibWWW/libwww_la-BinURLInputStream.lo
+
+.cpp.lo:
+@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
+@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
+@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Plo"; else rm -f "$$depbase.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	@$(LTCXXCOMPILE) -c -o $@ $<
+
+PRETTY_MAKE=${top_srcdir}/config/pretty-make
+PRETTY_COMPILE=${PRETTY_MAKE} Compiling
+
+endif
+
+CXXCOMPILE = ${PRETTY_COMPILE} \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = ${PRETTY_COMPILE}  \
+	$(LIBTOOL) --quiet --tag=CXX --mode=compile \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+
+
+
