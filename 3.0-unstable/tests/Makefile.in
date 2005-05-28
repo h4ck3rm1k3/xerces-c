@@ -815,24 +815,24 @@ uninstall-am: uninstall-info-am
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
 @XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(CXXCOMPILE) -c -o $@ $<
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ $<
 
 @XERCES_PRETTY_MAKE_TRUE@.cpp.obj:
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Po"; else rm -f "$$depbase.Tpo"; exit 1; fi
 @XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 @XERCES_PRETTY_MAKE_TRUE@.cpp.lo:
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	then mv -f "$$depbase.Tpo" "$$depbase.Plo"; else rm -f "$$depbase.Tpo"; exit 1; fi
 @XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	@DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	@$(LTCXXCOMPILE) -c -o $@ $<
+@XERCES_PRETTY_MAKE_TRUE@@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

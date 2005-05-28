@@ -24052,8 +24052,8 @@ done
 ######################################################
 
 
-	echo "$as_me:$LINENO: checking for whether we we'll do a pretty make" >&5
-echo $ECHO_N "checking for whether we we'll do a pretty make... $ECHO_C" >&6
+	echo "$as_me:$LINENO: checking for whether we'll generate prettier make output" >&5
+echo $ECHO_N "checking for whether we'll generate prettier make output... $ECHO_C" >&6
 	# Check whether --enable-pretty-make or --disable-pretty-make was given.
 if test "${enable_pretty_make+set}" = set; then
   enableval="$enable_pretty_make"
