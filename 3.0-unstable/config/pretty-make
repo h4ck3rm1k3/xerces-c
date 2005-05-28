@@ -33,8 +33,8 @@ cmd=$@
 
 # Try to find the name of the file we're building. This is fraught with
 # problems, and may not be reliable across all compilers. Given the
-# dependencies, this is usually the last argument, but sometimes there
-# is an extra dependency, it seems, which throws this off. So we look
+# dependencies, this is usually the last argument, but sometimes libtool
+# adds additional flags, which throws this off. So we look
 # for the last arg that doesn't start with -.
 while [ $# -gt 0 ]; do
 	[ "${1##-*}" ] && target=$1
