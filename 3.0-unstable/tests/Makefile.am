@@ -18,6 +18,26 @@
 # $Id: DOM.hpp,v 1.12 2004/09/08 13:55:38 peiyongz Exp $
 #
 
+#
+# Override generated rules to provide prettier make rules
+#
+# Warning: If Automake changes sufficiently, these rules may need to
+#          be regenerated from the (new) default output of Automake
+#
+if XERCES_PRETTY_MAKE
+.SILENT:
+PRETTY_MAKE=${top_srcdir}/config/pretty-make
+PRETTY_COMPILE=${PRETTY_MAKE} Compiling
+endif
+
+CXXCOMPILE = ${PRETTY_COMPILE} \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = ${PRETTY_COMPILE}  \
+	$(LIBTOOL) --quiet --tag=CXX --mode=compile \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+
 
 check_PROGRAMS =					${testprogs}
 

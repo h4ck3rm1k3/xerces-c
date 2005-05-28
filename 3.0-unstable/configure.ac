@@ -138,6 +138,8 @@ AC_REPLACE_FUNCS([stricmp strnicmp iswspace towlower towupper])
 # Look for availability of available packages
 ######################################################
 
+XERCES_PRETTY_MAKE
+
 XERCES_CURL_PREFIX
 XERCES_LIBWWW_PREFIX
 

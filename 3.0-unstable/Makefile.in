@@ -59,6 +59,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
 	$(top_srcdir)/m4/xerces_no_threads.m4 \
+	$(top_srcdir)/m4/xerces_pretty_make.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
 	$(top_srcdir)/m4/xerces_type_16bit_int.m4 \
 	$(top_srcdir)/m4/xerces_type_32bit_int.m4 \
@@ -154,6 +155,8 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
 VERSION = @VERSION@
+XERCES_PRETTY_MAKE_FALSE = @XERCES_PRETTY_MAKE_FALSE@
+XERCES_PRETTY_MAKE_TRUE = @XERCES_PRETTY_MAKE_TRUE@
 XERCES_USE_ATOMICOPMGR_MACOS_FALSE = @XERCES_USE_ATOMICOPMGR_MACOS_FALSE@
 XERCES_USE_ATOMICOPMGR_MACOS_TRUE = @XERCES_USE_ATOMICOPMGR_MACOS_TRUE@
 XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE = @XERCES_USE_ATOMICOPMGR_NOTHREAD_FALSE@

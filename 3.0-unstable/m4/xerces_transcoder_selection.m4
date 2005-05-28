@@ -59,10 +59,10 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	
 	
 	# Check for MacOSUnicodeConverter
-	AC_MSG_CHECKING([for whether we can support the MacOSUnicodeConverter Transcoder])
 	list_add=
 	case $host_os in
 	darwin*)
+		AC_MSG_CHECKING([for whether we can support the MacOSUnicodeConverter Transcoder])
 		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
 		AC_ARG_ENABLE([transcoder-macosunicodeconverter],
 			AS_HELP_STRING([--enable-transcoder-macosunicodeconverter],

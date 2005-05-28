@@ -69,10 +69,10 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	)
 	
 	
-	AC_MSG_CHECKING([for whether we can support the CFURL NetAccessor (Mac OS X)])
 	list_add=
 	case $host_os in
 	darwin*)
+		AC_MSG_CHECKING([for whether we can support the CFURL NetAccessor (Mac OS X)])
 		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
 			AC_ARG_ENABLE([netaccessor-cfurl],
 				AS_HELP_STRING([--enable-netaccessor-cfurl],
