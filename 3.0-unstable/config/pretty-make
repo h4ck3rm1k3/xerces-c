@@ -28,8 +28,10 @@ action=$1
 shift
 
 cmd=$@
-shift $(($#-1))
-target=$1
+while [ $# -gt 0 ]; do
+	[ "${1##-*}" ] && target=$1
+	shift
+done
 
 echo $action $target
 
