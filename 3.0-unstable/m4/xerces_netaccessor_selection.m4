@@ -127,32 +127,34 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 		case $na_list in
 		
 		*-curl-*)
-			AC_DEFINE([XERCES_USE_NETACCESSOR_CURL], 1, [Define to use the CURL NetAccessor])
 			netaccessor=curl
+			AC_DEFINE([XERCES_USE_NETACCESSOR_CURL], 1, [Define to use the CURL NetAccessor])
 			break
 			;;
 			
 		*-cfurl-*)
-			AC_DEFINE([XERCES_USE_NETACCESSOR_CFURL], 1, [Define to use the Mac OS X CFURL NetAccessor])
 			netaccessor=cfurl
+			AC_DEFINE([XERCES_USE_NETACCESSOR_CFURL], 1, [Define to use the Mac OS X CFURL NetAccessor])
+			XERCES_LINK_DARWIN_FRAMEWORK([CoreServices])
 			break
 			;;
 			
 		*-winsock-*)
-			AC_DEFINE([XERCES_USE_NETACCESSOR_WINSOCK], 1, [Define to use the WinSock NetAccessor])
 			netaccessor=winsock
+			AC_DEFINE([XERCES_USE_NETACCESSOR_WINSOCK], 1, [Define to use the WinSock NetAccessor])
 			break
 			;;
 			
 		*-socket-*)
-			AC_DEFINE([XERCES_USE_NETACCESSOR_SOCKET], 1, [Define to use the Sockets-based NetAccessor])
 			netaccessor=socket
+			AC_DEFINE([XERCES_USE_NETACCESSOR_SOCKET], 1, [Define to use the Sockets-based NetAccessor])
 			break
 			;;
 			
 		*-libwww-*)
-			AC_DEFINE([XERCES_USE_NETACCESSOR_LIBWWW], 1, [Define to use the libwww NetAccessor])
 			netaccessor=libwww
+			AC_DEFINE([XERCES_USE_NETACCESSOR_LIBWWW], 1, [Define to use the libwww NetAccessor])
+			LIBS="${LIBS} -L${xerces_cv_libwww_prefix}/lib -lwww"
 			break
 			;;
 			

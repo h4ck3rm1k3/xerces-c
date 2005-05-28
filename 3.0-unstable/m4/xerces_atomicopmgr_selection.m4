@@ -36,6 +36,7 @@ AC_DEFUN([XERCES_ATOMICOPMGR_SELECTION],
 					[
 						mgr=MacOS
 						AC_DEFINE([XERCES_USE_ATOMICOPMGR_MACOS], 1, [Define to use the MacOS AtomicOp mgr])
+						XERCES_LINK_DARWIN_FRAMEWORK([CoreServices])
 					])
 				;;
 			esac

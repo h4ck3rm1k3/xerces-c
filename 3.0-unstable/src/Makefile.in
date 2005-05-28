@@ -129,6 +129,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_filemgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_icu_prefix.m4 \
 	$(top_srcdir)/m4/xerces_libwww_prefix.m4 \
+	$(top_srcdir)/m4/xerces_link_darwin_framework.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
 	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
@@ -260,7 +261,7 @@ am__objects_5 = xercesc/util/Transcoders/Iconv/IconvTransService.lo
 @XERCES_USE_TRANSCODER_ICONV_TRUE@	$(am__objects_5)
 libiconv_la_OBJECTS = $(am_libiconv_la_OBJECTS)
 @XERCES_USE_TRANSCODER_ICONV_TRUE@am_libiconv_la_rpath =
-libicu_la_DEPENDENCIES =
+libicu_la_LIBADD =
 am__libicu_la_SOURCES_DIST =  \
 	xercesc/util/Transcoders/ICU/ICUTransService.cpp
 am__objects_6 =  \
@@ -561,7 +562,7 @@ am__objects_21 = xercesc/validators/common/AllContentModel.lo \
 	xercesc/validators/schema/XUtil.lo
 am_libvalidators_la_OBJECTS = $(am__objects_21)
 libvalidators_la_OBJECTS = $(am_libvalidators_la_OBJECTS)
-libwww_la_DEPENDENCIES =
+libwww_la_LIBADD =
 am__libwww_la_SOURCES_DIST =  \
 	xercesc/util/NetAccessors/LibWWW/LibWWWNetAccessor.cpp \
 	xercesc/util/NetAccessors/LibWWW/BinURLInputStream.cpp
@@ -906,23 +907,19 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_NETACCESSOR_LIBWWW_TRUE@nobase_libwww_la_HEADERS = ${libwww_headers}
 @XERCES_USE_NETACCESSOR_LIBWWW_TRUE@libwww_la_SOURCES = ${libwww_sources}
 @XERCES_USE_NETACCESSOR_LIBWWW_TRUE@libwww_la_CXXFLAGS = ${AM_CXXFLAGS} -I${LIBWWW_PREFIX}/include/w3c-libwww
-@XERCES_USE_NETACCESSOR_LIBWWW_TRUE@libwww_la_LIBADD = -L${LIBWWW_PREFIX}/lib -lwww
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@libcfurl_ladir = ${includedir}
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@nobase_libcfurl_la_HEADERS = ${cfurl_headers}
 @XERCES_USE_NETACCESSOR_CFURL_TRUE@libcfurl_la_SOURCES = ${cfurl_sources}
-@XERCES_USE_NETACCESSOR_CFURL_TRUE@libcfurl_la_LDFLAGS = ${AM_LDFLAGS} -Wl,-framework -Wl,CoreServices
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_ladir = ${includedir}
 @XERCES_USE_TRANSCODER_ICU_TRUE@nobase_libicu_la_HEADERS = ${icu_headers}
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_SOURCES = ${icu_sources}
 @XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_CXXFLAGS = ${AM_CXXFLAGS} -I${ICU_PREFIX}/include
-@XERCES_USE_TRANSCODER_ICU_TRUE@libicu_la_LIBADD = -L${ICU_PREFIX}/lib -licuuc -licudata
 @XERCES_USE_TRANSCODER_ICONV_TRUE@libiconv_ladir = ${includedir}
 @XERCES_USE_TRANSCODER_ICONV_TRUE@nobase_libiconv_la_HEADERS = ${iconv_headers}
 @XERCES_USE_TRANSCODER_ICONV_TRUE@libiconv_la_SOURCES = ${iconv_sources}
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@libmacosunicodeconverter_ladir = ${includedir}
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@nobase_libmacosunicodeconverter_la_HEADERS = ${macosunicodeconverter_headers}
 @XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@libmacosunicodeconverter_la_SOURCES = ${macosunicodeconverter_sources}
-@XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER_TRUE@libmacosunicodeconverter_la_LDFLAGS = -Wl,-framework -Wl,CoreServices
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_ladir = ${includedir}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@nobase_libinmemory_la_HEADERS = ${inmemory_headers}
 @XERCES_USE_MSGLOADER_INMEMORY_TRUE@libinmemory_la_SOURCES = ${inmemory_sources}
@@ -935,7 +932,6 @@ libvalidators_la_SOURCES = ${validators_sources}
 @XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_ladir = ${includedir}
 @XERCES_USE_ATOMICOPMGR_MACOS_TRUE@nobase_libmacosaomgr_la_HEADERS = ${macosaomgr_headers}
 @XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_la_SOURCES = ${macosaomgr_sources}
-@XERCES_USE_ATOMICOPMGR_MACOS_TRUE@libmacosaomgr_la_LDFLAGS = ${AM_LDFLAGS} -Wl,-framework -Wl,CoreServices
 @XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@libnothreadmmgr_ladir = ${includedir}
 @XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@nobase_libnothreadmmgr_la_HEADERS = ${nothreadmmgr_headers}
 @XERCES_USE_MUTEXMGR_NOTHREAD_TRUE@libnothreadmmgr_la_SOURCES = ${nothreadmmgr_sources}

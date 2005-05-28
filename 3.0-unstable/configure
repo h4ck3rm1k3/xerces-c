@@ -24303,52 +24303,68 @@ echo $ECHO_N "checking for which NetAccessor to use (choices:$na_list)... $ECHO_
 		case $na_list in
 
 		*-curl-*)
+			netaccessor=curl
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_CURL 1
 _ACEOF
 
-			netaccessor=curl
 			break
 			;;
 
 		*-cfurl-*)
+			netaccessor=cfurl
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_CFURL 1
 _ACEOF
 
-			netaccessor=cfurl
+
+	case $host_os in
+	darwin*)
+		test -z "${xerces_darwin_frameworks}" && xerces_darwin_frameworks="-"
+		case ${xerces_darwin_frameworks} in
+		*-CoreServices-*)
+			;;
+		*)
+			xerces_darwin_frameworks="-CoreServices${xerces_darwin_frameworks}"
+			LIBS="-Wl,-framework -Wl,CoreServices $LIBS"
+			;;
+		esac
+		;;
+	esac
+
 			break
 			;;
 
 		*-winsock-*)
+			netaccessor=winsock
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_WINSOCK 1
 _ACEOF
 
-			netaccessor=winsock
 			break
 			;;
 
 		*-socket-*)
+			netaccessor=socket
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_SOCKET 1
 _ACEOF
 
-			netaccessor=socket
 			break
 			;;
 
 		*-libwww-*)
+			netaccessor=libwww
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_LIBWWW 1
 _ACEOF
 
-			netaccessor=libwww
+			LIBS="${LIBS} -L${xerces_cv_libwww_prefix}/lib -lwww"
 			break
 			;;
 
@@ -24839,32 +24855,48 @@ echo $ECHO_N "checking for which Transcoder to use (choices:$tc_list)... $ECHO_C
 		case $tc_list in
 
 		*-icu-*)
+			transcoder=icu
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_TRANSCODER_ICU 1
 _ACEOF
 
-			transcoder=icu
+			LIBS="${LIBS} -L${xerces_cv_icu_prefix}/lib -licuuc -licudata"
 			break
 			;;
 
 		*-macosunicodeconverter-*)
+			transcoder=macosunicodeconverter
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER 1
 _ACEOF
 
-			transcoder=macosunicodeconverter
+
+	case $host_os in
+	darwin*)
+		test -z "${xerces_darwin_frameworks}" && xerces_darwin_frameworks="-"
+		case ${xerces_darwin_frameworks} in
+		*-CoreServices-*)
+			;;
+		*)
+			xerces_darwin_frameworks="-CoreServices${xerces_darwin_frameworks}"
+			LIBS="-Wl,-framework -Wl,CoreServices $LIBS"
+			;;
+		esac
+		;;
+	esac
+
 			break
 			;;
 
 		*-iconv-*)
+			transcoder=iconv
 
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_TRANSCODER_ICONV 1
 _ACEOF
 
-			transcoder=iconv
 			break
 			;;
 
@@ -25205,6 +25237,21 @@ fi
 cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_ATOMICOPMGR_MACOS 1
 _ACEOF
+
+
+	case $host_os in
+	darwin*)
+		test -z "${xerces_darwin_frameworks}" && xerces_darwin_frameworks="-"
+		case ${xerces_darwin_frameworks} in
+		*-CoreServices-*)
+			;;
+		*)
+			xerces_darwin_frameworks="-CoreServices${xerces_darwin_frameworks}"
+			LIBS="-Wl,-framework -Wl,CoreServices $LIBS"
+			;;
+		esac
+		;;
+	esac
 
 
 fi

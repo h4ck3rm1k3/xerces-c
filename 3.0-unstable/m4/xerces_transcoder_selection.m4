@@ -99,20 +99,22 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 		case $tc_list in
 		
 		*-icu-*)
-			AC_DEFINE([XERCES_USE_TRANSCODER_ICU], 1, [Define to use the ICU-based transcoder])
 			transcoder=icu
+			AC_DEFINE([XERCES_USE_TRANSCODER_ICU], 1, [Define to use the ICU-based transcoder])
+			LIBS="${LIBS} -L${xerces_cv_icu_prefix}/lib -licuuc -licudata"
 			break
 			;;
 			
 		*-macosunicodeconverter-*)
-			AC_DEFINE([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER], 1, [Define to use the Mac OS UnicodeConverter-based transcoder])
 			transcoder=macosunicodeconverter
+			AC_DEFINE([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER], 1, [Define to use the Mac OS UnicodeConverter-based transcoder])
+			XERCES_LINK_DARWIN_FRAMEWORK([CoreServices])
 			break
 			;;
 
 		*-iconv-*)
-			AC_DEFINE([XERCES_USE_TRANSCODER_ICONV], 1, [Define to use the iconv transcoder])
 			transcoder=iconv
+			AC_DEFINE([XERCES_USE_TRANSCODER_ICONV], 1, [Define to use the iconv transcoder])
 			break
 			;;
 			

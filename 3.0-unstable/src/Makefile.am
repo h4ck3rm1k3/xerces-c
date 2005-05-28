@@ -101,7 +101,6 @@ libwww_ladir =						${includedir}
 nobase_libwww_la_HEADERS =			${libwww_headers}
 libwww_la_SOURCES =					${libwww_sources}
 libwww_la_CXXFLAGS =				${AM_CXXFLAGS} -I${LIBWWW_PREFIX}/include/w3c-libwww
-libwww_la_LIBADD =					-L${LIBWWW_PREFIX}/lib -lwww
 endif
 
 if XERCES_USE_NETACCESSOR_CFURL
@@ -109,7 +108,6 @@ src_libraries +=					libcfurl.la
 libcfurl_ladir =					${includedir}
 nobase_libcfurl_la_HEADERS =		${cfurl_headers}
 libcfurl_la_SOURCES =				${cfurl_sources}
-libcfurl_la_LDFLAGS =				${AM_LDFLAGS} -Wl,-framework -Wl,CoreServices
 endif
 
 #
@@ -121,7 +119,6 @@ libicu_ladir =						${includedir}
 nobase_libicu_la_HEADERS =			${icu_headers}
 libicu_la_SOURCES =					${icu_sources}
 libicu_la_CXXFLAGS =				${AM_CXXFLAGS} -I${ICU_PREFIX}/include
-libicu_la_LIBADD =					-L${ICU_PREFIX}/lib -licuuc -licudata
 endif
 
 if XERCES_USE_TRANSCODER_ICONV
@@ -136,7 +133,6 @@ src_libraries +=								libmacosunicodeconverter.la
 libmacosunicodeconverter_ladir =				${includedir}
 nobase_libmacosunicodeconverter_la_HEADERS =	${macosunicodeconverter_headers}
 libmacosunicodeconverter_la_SOURCES =			${macosunicodeconverter_sources}
-libmacosunicodeconverter_la_LDFLAGS =			-Wl,-framework -Wl,CoreServices
 endif
 
 #
@@ -171,7 +167,6 @@ src_libraries +=					libmacosaomgr.la
 libmacosaomgr_ladir =				${includedir}
 nobase_libmacosaomgr_la_HEADERS =	${macosaomgr_headers}
 libmacosaomgr_la_SOURCES =			${macosaomgr_sources}
-libmacosaomgr_la_LDFLAGS =			${AM_LDFLAGS} -Wl,-framework -Wl,CoreServices
 endif
 
 #
