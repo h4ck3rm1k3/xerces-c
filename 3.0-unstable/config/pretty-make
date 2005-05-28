@@ -27,14 +27,11 @@
 action=$1
 shift
 
-args=("$@")
-target=${args[$#-1]}
+cmd=$@
+shift $(($#-1))
+target=$1
 
 echo $action $target
 
-if [ ${VERBOSE} ]; then
-	echo $@
-fi
-$@
-
-
+[ ${VERBOSE} ] && echo $cmd
+$cmd
