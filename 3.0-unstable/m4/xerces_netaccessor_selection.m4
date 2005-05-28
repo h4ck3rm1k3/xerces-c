@@ -68,10 +68,10 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 		[AC_MSG_RESULT(no)]
 	)
 	
-	
-	list_add=
+	# Check for OS-specific transcoders
 	case $host_os in
 	darwin*)
+		list_add=
 		AC_MSG_CHECKING([for whether we can support the CFURL NetAccessor (Mac OS X)])
 		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
 			AC_ARG_ENABLE([netaccessor-cfurl],
@@ -82,32 +82,28 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 				[list_add=cfurl])
 			]
 		)
+		AS_IF([test x"$list_add" != x],
+			[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
+			[AC_MSG_RESULT(no)]
+		)
 		;;
-	esac
-	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
-		[AC_MSG_RESULT(no)]
-	)
-	
-	
-	# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
-	AC_MSG_CHECKING([for whether we can support the WinSock NetAccessor (Windows)])
-	list_add=
-	case $host_os in
-	some-test-for-windows-os*)
+	windows*)
+		# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
+		list_add=
+		AC_MSG_CHECKING([for whether we can support the WinSock NetAccessor (Windows)])
 		AC_ARG_ENABLE([netaccessor-winsock],
 			AS_HELP_STRING([--enable-netaccessor-winsock],
 				[Enable winsock-based NetAccessor support]),
 			[AS_IF([test x"$enableval" = xyes],
 				[list_add=WINSOCK])],
 			[list_add=winsock])
+		AS_IF([test x"$list_add" != x],
+			[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
+			[AC_MSG_RESULT(no)]
+		)
 		;;
 	esac
-	AS_IF([test x"$list_add" != x],
-		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
-		[AC_MSG_RESULT(no)]
-	)
-	
+		
 	
 	######################################################
 	# Determine which netaccessor to use.

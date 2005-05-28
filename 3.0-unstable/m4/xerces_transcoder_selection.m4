@@ -63,20 +63,20 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	case $host_os in
 	darwin*)
 		AC_MSG_CHECKING([for whether we can support the MacOSUnicodeConverter Transcoder])
-		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
-		AC_ARG_ENABLE([transcoder-macosunicodeconverter],
-			AS_HELP_STRING([--enable-transcoder-macosunicodeconverter],
-				[Enable MacOSUnicodeConverter-based transcoder support]),
-			[AS_IF([test x"$enableval" = xyes],
-				[list_add=MACOSUNICODECONVERTER])],
-			[list_add=macosunicodeconverter])
-		fi
+		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
+			AC_ARG_ENABLE([transcoder-macosunicodeconverter],
+				AS_HELP_STRING([--enable-transcoder-macosunicodeconverter],
+					[Enable MacOSUnicodeConverter-based transcoder support]),
+				[AS_IF([test x"$enableval" = xyes],
+					[list_add=MACOSUNICODECONVERTER])],
+				[list_add=macosunicodeconverter])
+		])
+		AS_IF([test x"$list_add" != x],
+			[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
+			[AC_MSG_RESULT(no)]
+		)
 		;;
 	esac
-	AS_IF([test x"$list_add" != x],
-		[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
-		[AC_MSG_RESULT(no)]
-	)
 
 	# TODO: Tests for additional transcoders
 	

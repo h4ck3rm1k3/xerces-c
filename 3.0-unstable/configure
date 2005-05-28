@@ -24255,10 +24255,10 @@ echo "${ECHO_T}no" >&6
 fi
 
 
-
-	list_add=
+	# Check for OS-specific transcoders
 	case $host_os in
 	darwin*)
+		list_add=
 		echo "$as_me:$LINENO: checking for whether we can support the CFURL NetAccessor (Mac OS X)" >&5
 echo $ECHO_N "checking for whether we can support the CFURL NetAccessor (Mac OS X)... $ECHO_C" >&6
 		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
@@ -24277,9 +24277,7 @@ fi;
 
 fi
 
-		;;
-	esac
-	if test x"$list_add" != x; then
+		if test x"$list_add" != x; then
   na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
@@ -24288,14 +24286,12 @@ echo "${ECHO_T}no" >&6
 
 fi
 
-
-
-	# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
-	echo "$as_me:$LINENO: checking for whether we can support the WinSock NetAccessor (Windows)" >&5
+		;;
+	windows*)
+		# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
+		list_add=
+		echo "$as_me:$LINENO: checking for whether we can support the WinSock NetAccessor (Windows)" >&5
 echo $ECHO_N "checking for whether we can support the WinSock NetAccessor (Windows)... $ECHO_C" >&6
-	list_add=
-	case $host_os in
-	some-test-for-windows-os*)
 		# Check whether --enable-netaccessor-winsock or --disable-netaccessor-winsock was given.
 if test "${enable_netaccessor_winsock+set}" = set; then
   enableval="$enable_netaccessor_winsock"
@@ -24306,9 +24302,7 @@ fi
 else
   list_add=winsock
 fi;
-		;;
-	esac
-	if test x"$list_add" != x; then
+		if test x"$list_add" != x; then
   na_list="$na_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
@@ -24317,6 +24311,8 @@ echo "${ECHO_T}no" >&6
 
 fi
 
+		;;
+	esac
 
 
 	######################################################
@@ -24845,7 +24841,8 @@ fi
 		echo "$as_me:$LINENO: checking for whether we can support the MacOSUnicodeConverter Transcoder" >&5
 echo $ECHO_N "checking for whether we can support the MacOSUnicodeConverter Transcoder... $ECHO_C" >&6
 		if test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes; then
-		# Check whether --enable-transcoder-macosunicodeconverter or --disable-transcoder-macosunicodeconverter was given.
+
+			# Check whether --enable-transcoder-macosunicodeconverter or --disable-transcoder-macosunicodeconverter was given.
 if test "${enable_transcoder_macosunicodeconverter+set}" = set; then
   enableval="$enable_transcoder_macosunicodeconverter"
   if test x"$enableval" = xyes; then
@@ -24855,10 +24852,10 @@ fi
 else
   list_add=macosunicodeconverter
 fi;
-		fi
-		;;
-	esac
-	if test x"$list_add" != x; then
+
+fi
+
+		if test x"$list_add" != x; then
   tc_list="$tc_list -$list_add-"; echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
 else
@@ -24867,6 +24864,8 @@ echo "${ECHO_T}no" >&6
 
 fi
 
+		;;
+	esac
 
 	# TODO: Tests for additional transcoders
 
