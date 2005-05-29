@@ -21,9 +21,13 @@
 //
 // There are two primary xerces configuration header files:
 //
-//	xerces_hdr_config.h		--  For configuration of items that must be accessable
+//	Xerces_autoconf_config.h--  For configuration of items that must be accessable
 //								through public headers. This file has limited information
 //								and carefully works to avoid collision of macro names, etc.
+//
+//								This file is included by XercesDefs.h. In the event
+//								of a non-configured platform, a similar header specific
+//								to the platform will be included instead.
 //
 //	config.h				--  Generalized autoconf header file, with much more
 //								information, used to supply configuration information
@@ -31,38 +35,10 @@
 //
 // For autoconf based builds, this header is configured from by the configure
 // script from the .in template file of the same name.
-//
-// For non-autoconf based builds, the default (non-template) copy of the file
-// is used out of the box.
-//
 
-#ifndef X_CONFIG_HPP
-#define X_CONFIG_HPP
 
-#if !HAVE_CONFIG_H
-// ===========================================================================
-//  This section provides hooks for build environments where autoconf
-//  is not used. At a minimum, these environments must supply the definitions
-//	below.
-// ===========================================================================
-
-//	*** TODO: this is an example/idea for how this should be done
-
-#if   WINDOWS_IDE_BUILD
-	// Configuration for a build through Visual Studio
-	#include <..SOMEPATHTO../WindowsVisualStudioConfig.h>
-#elif MACOS_XCODE_BUILD
-	// Configuration for a build through XCode
-	#include <..SOMEPATHTO../MacsOSXCodeConfig.h>
-#else
-	#error This build must be configured through autoconf or by providing
-	#error specific instructions for a non-autoconf build.
-#endif
-
-#else
-// ===========================================================================
-//	This section contains defines that are configured through autoconf.
-// ===========================================================================
+#ifndef XERCES_AUTOCONFIG_HPP
+#define XERCES_AUTOCONFIG_HPP
 
 // ---------------------------------------------------------------------------
 //  These defines are set by configure as appropriate for the platform.
@@ -131,5 +107,4 @@ typedef unsigned XERCES_32BIT_INT	XMLFilePos;
 #define XERCES_DEBUG
 #endif
 
-#endif
 #endif

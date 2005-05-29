@@ -28,7 +28,7 @@ AC_CONFIG_SRCDIR([src/Makefile.am])
 AC_CONFIG_LIBOBJ_DIR([xercesc/compat])
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_HEADERS([config.h src/xercesc/util/Xerces_hdr_config.h])
+AC_CONFIG_HEADERS([config.h src/xercesc/util/Xerces_autoconf_config.h])
 AC_CONFIG_FILES([Makefile lib/Makefile src/Makefile obj/Makefile tests/Makefile samples/Makefile])
 
 # Check the target system

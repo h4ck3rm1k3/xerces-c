@@ -28,7 +28,7 @@
 //	used by the remainder of this file.
 //
 //	There are two major configuration files:
-//		- xerces_hdr_config.h		-- Contains defines that are safe for
+//		- xerces_autoconf_config.h	-- Contains defines that are safe for
 //									   access through public headers.
 //
 //		- config.h					-- Contains defines that may conflict
@@ -37,7 +37,18 @@
 //
 //	Both of these files are generated through the autoconf/configure process.
 // ---------------------------------------------------------------------------
-#include	<xerces_hdr_config.h>
+
+//
+// If this is an autoconf configured build, we include Xerces_autoconf_config.
+// Otherwise we include a preconfigured config appropriate for the particular
+// platform.
+//
+#if FLAG_TO_INDICATE_WINDOWS_BUILD
+#	include <xercesc/util/Xerces_windows_config.h>
+#else
+//  If the next line generates an error then you haven't run ./configure
+#	include	<xercesc/util/Xerces_autoconf_config.h>
+#endif
 
 // ---------------------------------------------------------------------------
 //  Include the Xerces version information; this is kept in a separate file to
