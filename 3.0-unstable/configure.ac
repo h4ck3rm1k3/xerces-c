@@ -195,6 +195,9 @@ AS_IF([test x$ac_cv_type_ssize_t = xyes],
 	AC_DEFINE([XERCES_SSIZE_T], [ssize_t], [Define as the appropriate ssize_t type]),
 	AC_DEFINE([XERCES_SSIZE_T], [unsigned long], [Define as the appropriate ssize_t type]))
 	
+AS_IF([test x$ac_cv_cxx_have_namespaces = xyes],
+	AC_DEFINE([XERCES_HAS_CPP_NAMESPACE], 1, [Define if namespaces is supported by the compiler]))
+	
 AS_IF([test x$ac_cv_cxx_have_std_namespace = xyes],
 	AC_DEFINE([XERCES_STD_NAMESPACE], 1, [Define if the std namespace is supported]))
 	

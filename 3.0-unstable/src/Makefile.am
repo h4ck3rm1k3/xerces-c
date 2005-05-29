@@ -42,7 +42,7 @@ src_libraries =
 
 src_libraries +=					libutil.la
 libutil_ladir =						${includedir}
-nobase_libutil_la_HEADERS =			${util_headers}
+nobase_libutil_la_HEADERS =			${util_headers} ../xerces_hdr_config.h
 libutil_la_SOURCES =				${util_sources}
 
 src_libraries +=					libdom.la
@@ -662,6 +662,7 @@ util_headers = \
 	xercesc/util/XML88591Transcoder.hpp \
 	xercesc/util/XMLAbstractDoubleFloat.hpp \
 	xercesc/util/XMLASCIITranscoder.hpp \
+	xercesc/util/XMLAtomicOpMgr.hpp \
 	xercesc/util/XMLBigDecimal.hpp \
 	xercesc/util/XMLBigInteger.hpp \
 	xercesc/util/XMLChar.hpp \
@@ -675,11 +676,13 @@ util_headers = \
 	xercesc/util/XMLEnumerator.hpp \
 	xercesc/util/XMLException.hpp \
 	xercesc/util/XMLExceptMsgs.hpp \
+	xercesc/util/XMLFileMgr.hpp \
 	xercesc/util/XMLFloat.hpp \
 	xercesc/util/XMLIBM1047Transcoder.hpp \
 	xercesc/util/XMLIBM1140Transcoder.hpp \
 	xercesc/util/XMLInitializer.hpp \
 	xercesc/util/XMLInteger.hpp \
+	xercesc/util/XMLMutexMgr.hpp \
 	xercesc/util/XMLMsgLoader.hpp \
 	xercesc/util/XMLNetAccessor.hpp \
 	xercesc/util/XMLNumber.hpp \
