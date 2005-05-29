@@ -26,3 +26,4 @@ libxerces_la_SOURCES =
 nodist_EXTRA_libxerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
 
 libxerces_la_LIBADD = 		${src}/libsrc.la ${lib}/libcompat.la
+libxerces_la_LDFLAGS =		-version-info 3:0:0
