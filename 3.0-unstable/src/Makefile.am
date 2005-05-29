@@ -42,7 +42,7 @@ src_libraries =
 
 src_libraries +=					libutil.la
 libutil_ladir =						${includedir}
-nobase_libutil_la_HEADERS =			${util_headers} ../xerces_hdr_config.h
+nobase_libutil_la_HEADERS =			${util_headers}
 libutil_la_SOURCES =				${util_sources}
 
 src_libraries +=					libdom.la
@@ -657,6 +657,7 @@ util_headers = \
 	xercesc/util/ValueVectorOf.hpp \
 	xercesc/util/XercesDefs.hpp \
 	xercesc/util/XercesVersion.hpp \
+	xercesc/util/Xerces_autoconf_config.hpp \
 	xercesc/util/XMemory.hpp \
 	xercesc/util/XML256TableTranscoder.hpp \
 	xercesc/util/XML88591Transcoder.hpp \

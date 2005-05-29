@@ -21,24 +21,24 @@
 //
 // There are two primary xerces configuration header files:
 //
-//	Xerces_autoconf_config.h--  For configuration of items that must be accessable
-//								through public headers. This file has limited information
-//								and carefully works to avoid collision of macro names, etc.
+//	Xerces_autoconf_config.hpp	--  For configuration of items that must be accessable
+//									through public headers. This file has limited information
+//									and carefully works to avoid collision of macro names, etc.
 //
-//								This file is included by XercesDefs.h. In the event
-//								of a non-configured platform, a similar header specific
-//								to the platform will be included instead.
+//									This file is included by XercesDefs.h. In the event
+//									of a non-configured platform, a similar header specific
+//									to the platform will be included instead.
 //
-//	config.h				--  Generalized autoconf header file, with much more
-//								information, used to supply configuration information
-//								for use in implementation files.
+//	config.h					--  Generalized autoconf header file, with much more
+//									information, used to supply configuration information
+//									for use in implementation files.
 //
 // For autoconf based builds, this header is configured from by the configure
 // script from the .in template file of the same name.
 
 
-#ifndef XERCES_AUTOCONFIG_HPP
-#define XERCES_AUTOCONFIG_HPP
+#ifndef XERCES_AUTOCONFIG_CONFIG_HPP
+#define XERCES_AUTOCONFIG_CONFIG_HPP
 
 // ---------------------------------------------------------------------------
 //  These defines are set by configure as appropriate for the platform.

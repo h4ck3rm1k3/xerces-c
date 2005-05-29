@@ -143,7 +143,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h \
-	$(top_builddir)/src/xercesc/util/Xerces_autoconf_config.h
+	$(top_builddir)/src/xercesc/util/Xerces_autoconf_config.hpp
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 libcfurl_la_LIBADD =
@@ -872,7 +872,7 @@ src_libraries = libutil.la libdom.la libdomimpl.la libframework.la \
 	$(am__append_9) $(am__append_10) $(am__append_11) \
 	$(am__append_12) $(am__append_13)
 libutil_ladir = ${includedir}
-nobase_libutil_la_HEADERS = ${util_headers} ../xerces_hdr_config.h
+nobase_libutil_la_HEADERS = ${util_headers}
 libutil_la_SOURCES = ${util_sources}
 libdom_ladir = ${includedir}
 nobase_libdom_la_HEADERS = ${dom_headers}
@@ -1393,6 +1393,7 @@ util_headers = \
 	xercesc/util/ValueVectorOf.hpp \
 	xercesc/util/XercesDefs.hpp \
 	xercesc/util/XercesVersion.hpp \
+	xercesc/util/Xerces_autoconf_config.hpp \
 	xercesc/util/XMemory.hpp \
 	xercesc/util/XML256TableTranscoder.hpp \
 	xercesc/util/XML88591Transcoder.hpp \
@@ -4286,7 +4287,7 @@ distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
-	$(mkdir_p) $(distdir)/.. $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/AtomicOpManagers $(distdir)/xercesc/util/FileManagers $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/MutexManagers $(distdir)/xercesc/util/NetAccessors/LibWWW $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/NetAccessors/Socket $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/Iconv $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
+	$(mkdir_p) $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/AtomicOpManagers $(distdir)/xercesc/util/FileManagers $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/MutexManagers $(distdir)/xercesc/util/NetAccessors/LibWWW $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/NetAccessors/Socket $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/Iconv $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

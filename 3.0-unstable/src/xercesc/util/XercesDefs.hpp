@@ -28,7 +28,7 @@
 //	used by the remainder of this file.
 //
 //	There are two major configuration files:
-//		- xerces_autoconf_config.h	-- Contains defines that are safe for
+//		- xerces_autoconf_config.hpp-- Contains defines that are safe for
 //									   access through public headers.
 //
 //		- config.h					-- Contains defines that may conflict
@@ -44,10 +44,10 @@
 // platform.
 //
 #if FLAG_TO_INDICATE_WINDOWS_BUILD
-#	include <xercesc/util/Xerces_windows_config.h>
+#	include <xercesc/util/Xerces_windows_config.hpp>
 #else
 //  If the next line generates an error then you haven't run ./configure
-#	include	<xercesc/util/Xerces_autoconf_config.h>
+#	include	<xercesc/util/Xerces_autoconf_config.hpp>
 #endif
 
 // ---------------------------------------------------------------------------

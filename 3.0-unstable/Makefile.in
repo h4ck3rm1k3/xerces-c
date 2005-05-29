@@ -38,7 +38,7 @@ host_triplet = @host@
 DIST_COMMON = $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(top_srcdir)/configure \
-	$(top_srcdir)/src/xercesc/util/Xerces_autoconf_config.h.in \
+	$(top_srcdir)/src/xercesc/util/Xerces_autoconf_config.hpp.in \
 	config/compile config/config.guess config/config.sub \
 	config/depcomp config/install-sh config/ltmain.sh \
 	config/missing config/mkinstalldirs
@@ -71,7 +71,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno configure.status.lineno
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = config.h \
-	$(top_builddir)/src/xercesc/util/Xerces_autoconf_config.h
+	$(top_builddir)/src/xercesc/util/Xerces_autoconf_config.hpp
 CONFIG_CLEAN_FILES =
 SOURCES =
 DIST_SOURCES =
@@ -287,18 +287,18 @@ $(srcdir)/config.h.in: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	rm -f stamp-h1
 	touch $@
 
-src/xercesc/util/Xerces_autoconf_config.h: src/xercesc/util/stamp-h2
+src/xercesc/util/Xerces_autoconf_config.hpp: src/xercesc/util/stamp-h2
 	@if test ! -f $@; then \
 	  rm -f src/xercesc/util/stamp-h2; \
 	  $(MAKE) src/xercesc/util/stamp-h2; \
 	else :; fi
 
-src/xercesc/util/stamp-h2: $(top_srcdir)/src/xercesc/util/Xerces_autoconf_config.h.in $(top_builddir)/config.status
+src/xercesc/util/stamp-h2: $(top_srcdir)/src/xercesc/util/Xerces_autoconf_config.hpp.in $(top_builddir)/config.status
 	@rm -f src/xercesc/util/stamp-h2
-	cd $(top_builddir) && $(SHELL) ./config.status src/xercesc/util/Xerces_autoconf_config.h
+	cd $(top_builddir) && $(SHELL) ./config.status src/xercesc/util/Xerces_autoconf_config.hpp
 
 distclean-hdr:
-	-rm -f config.h stamp-h1 src/xercesc/util/Xerces_autoconf_config.h src/xercesc/util/stamp-h2
+	-rm -f config.h stamp-h1 src/xercesc/util/Xerces_autoconf_config.hpp src/xercesc/util/stamp-h2
 
 mostlyclean-libtool:
 	-rm -f *.lo
