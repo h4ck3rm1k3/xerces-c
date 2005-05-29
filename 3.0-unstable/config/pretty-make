@@ -41,7 +41,7 @@ while [ $# -gt 0 ]; do
 	shift
 done
 
-# Notify user of the action, and what it's operating one
+# Notify user of the action, and what it's operating on
 echo $action $target
 
 # Be verbose if requested
