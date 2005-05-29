@@ -1570,7 +1570,7 @@ echo "$as_me: error: cannot find macro directory \`m4'" >&2;}
    { (exit 1); exit 1; }; }
 fi
 
-                    ac_config_headers="$ac_config_headers config.h xerces_hdr_config.h"
+                    ac_config_headers="$ac_config_headers config.h src/xercesc/util/Xerces_hdr_config.h"
 
                                                             ac_config_files="$ac_config_files Makefile lib/Makefile src/Makefile obj/Makefile tests/Makefile samples/Makefile"
 
@@ -25464,6 +25464,15 @@ _ACEOF
 fi
 
 
+if test x$ac_cv_cxx_have_namespaces = xyes; then
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_HAS_CPP_NAMESPACE 1
+_ACEOF
+
+fi
+
+
 if test x$ac_cv_cxx_have_std_namespace = xyes; then
 
 cat >>confdefs.h <<\_ACEOF
@@ -26166,7 +26175,7 @@ do
   "samples/Makefile" ) CONFIG_FILES="$CONFIG_FILES samples/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
-  "xerces_hdr_config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS xerces_hdr_config.h" ;;
+  "src/xercesc/util/Xerces_hdr_config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS src/xercesc/util/Xerces_hdr_config.h" ;;
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}
    { (exit 1); exit 1; }; };;

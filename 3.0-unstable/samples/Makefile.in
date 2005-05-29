@@ -87,7 +87,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h \
-	$(top_builddir)/xerces_hdr_config.h
+	$(top_builddir)/src/xercesc/util/Xerces_hdr_config.h
 CONFIG_CLEAN_FILES =
 am__EXEEXT_1 = CreateDOMDocument$(EXEEXT) DOMCount$(EXEEXT) \
 	DOMPrint$(EXEEXT) EnumVal$(EXEEXT) MemParse$(EXEEXT) \
@@ -172,7 +172,7 @@ am_StdInParse_OBJECTS = src/StdInParse/StdInParse.$(OBJEXT) \
 StdInParse_OBJECTS = $(am_StdInParse_OBJECTS)
 StdInParse_LDADD = $(LDADD)
 StdInParse_DEPENDENCIES = ../obj/libxerces.la
-DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
+DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)/src/xercesc/util
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
 CXXLD = $(CXX)

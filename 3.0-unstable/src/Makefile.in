@@ -143,7 +143,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h \
-	$(top_builddir)/xerces_hdr_config.h
+	$(top_builddir)/src/xercesc/util/Xerces_hdr_config.h
 CONFIG_CLEAN_FILES =
 LTLIBRARIES = $(noinst_LTLIBRARIES)
 libcfurl_la_LIBADD =
@@ -573,7 +573,7 @@ am__objects_22 = xercesc/util/NetAccessors/LibWWW/libwww_la-LibWWWNetAccessor.lo
 @XERCES_USE_NETACCESSOR_LIBWWW_TRUE@	$(am__objects_22)
 libwww_la_OBJECTS = $(am_libwww_la_OBJECTS)
 @XERCES_USE_NETACCESSOR_LIBWWW_TRUE@am_libwww_la_rpath =
-DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
+DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)/src/xercesc/util
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
 CXXLD = $(CXX)
@@ -872,7 +872,7 @@ src_libraries = libutil.la libdom.la libdomimpl.la libframework.la \
 	$(am__append_9) $(am__append_10) $(am__append_11) \
 	$(am__append_12) $(am__append_13)
 libutil_ladir = ${includedir}
-nobase_libutil_la_HEADERS = ${util_headers}
+nobase_libutil_la_HEADERS = ${util_headers} ../xerces_hdr_config.h
 libutil_la_SOURCES = ${util_sources}
 libdom_ladir = ${includedir}
 nobase_libdom_la_HEADERS = ${dom_headers}
@@ -1398,6 +1398,7 @@ util_headers = \
 	xercesc/util/XML88591Transcoder.hpp \
 	xercesc/util/XMLAbstractDoubleFloat.hpp \
 	xercesc/util/XMLASCIITranscoder.hpp \
+	xercesc/util/XMLAtomicOpMgr.hpp \
 	xercesc/util/XMLBigDecimal.hpp \
 	xercesc/util/XMLBigInteger.hpp \
 	xercesc/util/XMLChar.hpp \
@@ -1411,11 +1412,13 @@ util_headers = \
 	xercesc/util/XMLEnumerator.hpp \
 	xercesc/util/XMLException.hpp \
 	xercesc/util/XMLExceptMsgs.hpp \
+	xercesc/util/XMLFileMgr.hpp \
 	xercesc/util/XMLFloat.hpp \
 	xercesc/util/XMLIBM1047Transcoder.hpp \
 	xercesc/util/XMLIBM1140Transcoder.hpp \
 	xercesc/util/XMLInitializer.hpp \
 	xercesc/util/XMLInteger.hpp \
+	xercesc/util/XMLMutexMgr.hpp \
 	xercesc/util/XMLMsgLoader.hpp \
 	xercesc/util/XMLNetAccessor.hpp \
 	xercesc/util/XMLNumber.hpp \
@@ -4283,7 +4286,7 @@ distclean-tags:
 	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
-	$(mkdir_p) $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/AtomicOpManagers $(distdir)/xercesc/util/FileManagers $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/MutexManagers $(distdir)/xercesc/util/NetAccessors/LibWWW $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/NetAccessors/Socket $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/Iconv $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
+	$(mkdir_p) $(distdir)/.. $(distdir)/xercesc/dom $(distdir)/xercesc/dom/impl $(distdir)/xercesc/framework $(distdir)/xercesc/framework/psvi $(distdir)/xercesc/internal $(distdir)/xercesc/parsers $(distdir)/xercesc/sax $(distdir)/xercesc/sax2 $(distdir)/xercesc/util $(distdir)/xercesc/util/AtomicOpManagers $(distdir)/xercesc/util/FileManagers $(distdir)/xercesc/util/MsgLoaders/InMemory $(distdir)/xercesc/util/MutexManagers $(distdir)/xercesc/util/NetAccessors/LibWWW $(distdir)/xercesc/util/NetAccessors/MacOSURLAccessCF $(distdir)/xercesc/util/NetAccessors/Socket $(distdir)/xercesc/util/Transcoders/ICU $(distdir)/xercesc/util/Transcoders/Iconv $(distdir)/xercesc/util/Transcoders/MacOSUnicodeConverter $(distdir)/xercesc/util/regx $(distdir)/xercesc/validators/DTD $(distdir)/xercesc/validators/common $(distdir)/xercesc/validators/datatype $(distdir)/xercesc/validators/schema $(distdir)/xercesc/validators/schema/identity
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

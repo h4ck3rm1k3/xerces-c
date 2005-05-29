@@ -86,7 +86,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/config/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h \
-	$(top_builddir)/xerces_hdr_config.h
+	$(top_builddir)/src/xercesc/util/Xerces_hdr_config.h
 CONFIG_CLEAN_FILES =
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
@@ -100,7 +100,7 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libxerces_la_DEPENDENCIES = ${src}/libsrc.la ${lib}/libcompat.la
 am_libxerces_la_OBJECTS =
 libxerces_la_OBJECTS = $(am_libxerces_la_OBJECTS)
-DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)
+DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir) -I$(top_builddir)/src/xercesc/util
 depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 am__depfiles_maybe = depfiles
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -260,6 +260,7 @@ lib_LTLIBRARIES = libxerces.la
 libxerces_la_SOURCES = 
 nodist_EXTRA_libxerces_la_SOURCES = dummyfile-to-force-cpp-linking.cpp
 libxerces_la_LIBADD = ${src}/libsrc.la ${lib}/libcompat.la
+libxerces_la_LDFLAGS = -version-info 3:0:0
 all: all-am
 
 .SUFFIXES:
