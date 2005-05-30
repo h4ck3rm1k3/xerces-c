@@ -12,7 +12,7 @@ dnl $Id$
 
 AC_DEFUN([XERCES_PRETTY_MAKE],
 	[
-	AC_MSG_CHECKING([for whether we'll generate prettier make output])
+	AC_MSG_CHECKING([whether we'll generate prettier make output])
 	AC_ARG_ENABLE([pretty-make],
 		AS_HELP_STRING([--pretty-make],
 			[Enable prettier make output]),

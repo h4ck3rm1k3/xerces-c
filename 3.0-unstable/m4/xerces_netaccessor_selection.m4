@@ -20,7 +20,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	######################################################
 	na_list=
 	
-	AC_MSG_CHECKING([for whether we can support the libcurl-based NetAccessor])
+	AC_MSG_CHECKING([whether we can support the libcurl-based NetAccessor])
 	list_add=
 	# TODO: netaccessor-curl is disabled for now until actually written: (false just below)
 	AS_IF([false && test x"$xerces_cv_curl_prefix" != x], [
@@ -37,7 +37,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	)
 	
 	AC_REQUIRE([XERCES_LIBWWW_PREFIX])	
-	AC_MSG_CHECKING([for whether we can support the libwww-based NetAccessor])
+	AC_MSG_CHECKING([whether we can support the libwww-based NetAccessor])
 	list_add=
 	AS_IF([test x"$xerces_cv_libwww_prefix" != x], [
 		AC_ARG_ENABLE([netaccessor-libwww],
@@ -45,7 +45,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 				[Enable libwww-based NetAccessor support]),
 			[AS_IF([test x"$enableval" = xyes],
 				[list_add=LIBWWW])],
-			[na_list=libwww])
+			[list_add=libwww])
 	])
 	AS_IF([test x"$list_add" != x],
 		[na_list="$na_list -$list_add-"; AC_MSG_RESULT(yes)],
@@ -53,7 +53,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	)
 	
 	
-	AC_MSG_CHECKING([for whether we can support the sockets-based NetAccessor])
+	AC_MSG_CHECKING([whether we can support the sockets-based NetAccessor])
 	list_add=
 	AS_IF([test x"$ac_cv_header_sys_socket_h" = xyes],
 		[AC_ARG_ENABLE([netaccessor-socket],
@@ -72,7 +72,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	case $host_os in
 	darwin*)
 		list_add=
-		AC_MSG_CHECKING([for whether we can support the CFURL NetAccessor (Mac OS X)])
+		AC_MSG_CHECKING([whether we can support the CFURL NetAccessor (Mac OS X)])
 		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
 			AC_ARG_ENABLE([netaccessor-cfurl],
 				AS_HELP_STRING([--enable-netaccessor-cfurl],
@@ -90,7 +90,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	windows*)
 		# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
 		list_add=
-		AC_MSG_CHECKING([for whether we can support the WinSock NetAccessor (Windows)])
+		AC_MSG_CHECKING([whether we can support the WinSock NetAccessor (Windows)])
 		AC_ARG_ENABLE([netaccessor-winsock],
 			AS_HELP_STRING([--enable-netaccessor-winsock],
 				[Enable winsock-based NetAccessor support]),

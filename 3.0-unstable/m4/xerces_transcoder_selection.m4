@@ -25,7 +25,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	no_iconv=false
 	AC_CHECK_HEADERS([wchar.h], [], [no_iconv=true])
 	AC_CHECK_FUNCS([mblen wcstombs mbstowcs], [], [no_iconv=true])
-	AC_MSG_CHECKING([for whether we can support the iconv Transcoder])
+	AC_MSG_CHECKING([whether we can support the iconv Transcoder])
 	list_add=
 	AS_IF([! $no_iconv], [
 		AC_ARG_ENABLE([transcoder-iconv],
@@ -42,7 +42,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 
 	# Check for ICU
 	AC_REQUIRE([XERCES_ICU_PREFIX])
-	AC_MSG_CHECKING([for whether we can support the ICU Transcoder])
+	AC_MSG_CHECKING([whether we can support the ICU Transcoder])
 	list_add=
 	AS_IF([test x"$xerces_cv_icu_prefix" != x], [
 		AC_ARG_ENABLE([transcoder-icu],
@@ -62,7 +62,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	list_add=
 	case $host_os in
 	darwin*)
-		AC_MSG_CHECKING([for whether we can support the MacOSUnicodeConverter Transcoder])
+		AC_MSG_CHECKING([whether we can support the MacOSUnicodeConverter Transcoder])
 		AS_IF([test x"$ac_cv_header_CoreServices_CoreServices_h" = xyes], [
 			AC_ARG_ENABLE([transcoder-macosunicodeconverter],
 				AS_HELP_STRING([--enable-transcoder-macosunicodeconverter],

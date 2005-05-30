@@ -22,7 +22,7 @@ AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 	ml_list=
 	
 	# Check for inmemory msgloader
-	AC_MSG_CHECKING([for whether we support the InMemory MsgLoader])
+	AC_MSG_CHECKING([whether we support the InMemory MsgLoader])
 	list_add=
 	AS_IF([true], [
 		AC_ARG_ENABLE([msgloader-inmemory],
@@ -33,7 +33,7 @@ AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 			[list_add=inmemory])
 	])
 	AS_IF([test x"$list_add" != x],
-		[ml_list="$ml_list $list_add"; AC_MSG_RESULT(yes)],
+		[ml_list="$ml_list -$list_add-"; AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)]
 	)
 	
@@ -56,7 +56,7 @@ AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 		
 		# Check for each msgloader, in implicit rank order
 		case $ml_list in
-		*inmemory*)
+		*-inmemory-*)
 			AC_DEFINE([XERCES_USE_MSGLOADER_INMEMORY], 1, [Define to use the InMemory MsgLoader])
 			msgloader=inmemory
 			break
