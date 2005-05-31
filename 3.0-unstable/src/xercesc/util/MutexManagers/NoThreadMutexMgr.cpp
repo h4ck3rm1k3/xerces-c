@@ -18,8 +18,6 @@
  * $Id$
  */
 
-#include <pthread.h>
-
 #include <xercesc/util/MutexManagers/NoThreadMutexMgr.hpp>
 
 XERCES_CPP_NAMESPACE_BEGIN
