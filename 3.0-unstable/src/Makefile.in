@@ -4647,13 +4647,6 @@ uninstall-am: uninstall-info-am uninstall-nobase_libcfurlna_laHEADERS \
 #          be regenerated from the (new) default output of Automake
 #
 
-@XERCES_PRETTY_MAKE_TRUE@.SILENT: \
-@XERCES_PRETTY_MAKE_TRUE@				xercesc/util/Transcoders/ICU/libicutc_la-ICUTransService.lo \
-@XERCES_PRETTY_MAKE_TRUE@				xercesc/util/NetAccessors/Curl/libcurlna_la-CurlNetAccessor.lo \
-@XERCES_PRETTY_MAKE_TRUE@				xercesc/util/NetAccessors/Curl/libcurlna_la-CurlURLInputStream.lo \
-@XERCES_PRETTY_MAKE_TRUE@				xercesc/util/NetAccessors/LibWWW/libwwwna_la-LibWWWNetAccessor.lo \
-@XERCES_PRETTY_MAKE_TRUE@				xercesc/util/NetAccessors/LibWWW/libwwwna_la-BinURLInputStream.lo
-
 @XERCES_PRETTY_MAKE_TRUE@.cpp.lo:
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \
 @XERCES_PRETTY_MAKE_TRUE@@am__fastdepCXX_TRUE@	if $(LTCXXCOMPILE) -MT $@ -MD -MP -MF "$$depbase.Tpo" -c -o $@ $<; \
