@@ -85,6 +85,10 @@
 #if XERCES_USE_NETACCESSOR_CFURL
 #	include <xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.hpp>
 #endif
+#if XERCES_USE_NETACCESSOR_WINSOCK
+#	include <xercesc/util/NetAccessors/WinSock/WinSockNetAccessor.hpp>
+#endif
+
 
 #include <xercesc/util/XMLMsgLoader.hpp>
 #if XERCES_USE_MSGLOADER_ICU
@@ -382,6 +386,8 @@ XMLNetAccessor* XMLPlatformUtils::makeNetAccessor()
 		na = new LibWWWNetAccessor();
 	#elif defined (XERCES_USE_NETACCESSOR_CFURL)
 		na = new MacOSURLAccessCF();
+    #elif defined (XERCES_USE_NETACCESSOR_WINSOCK)
+		na = new WinSockNetAccessor();
 	#else
 		#warning No NetAccessor is configured for this platform. Xerces will have no net access.
 	#endif
@@ -639,14 +645,14 @@ unsigned long XMLPlatformUtils::getCurrentMillis()
 	unsigned long ms = 0;
 	
 	// *** TODO: additional platform support?
-	#if   HAVE_SYS_TIME_H
-		struct timeval aTime;
-		gettimeofday(&aTime, NULL);
-		ms = (unsigned long) (aTime.tv_sec * 1000 + aTime.tv_usec / 1000);
-	#elif HAVE_SYS_TIMEB_H
+	#if HAVE_SYS_TIMEB_H
 		timeb aTime;
 		ftime(&aTime);
 		ms = (unsigned long)(aTime.time*1000 + aTime.millitm);
+	#elif   HAVE_SYS_TIME_H
+		struct timeval aTime;
+		gettimeofday(&aTime, NULL);
+		ms = (unsigned long) (aTime.tv_sec * 1000 + aTime.tv_usec / 1000);
 	#else
 		// Make this a warning instead?
 		#error No timing support is configured for this platform. You must configure it.
