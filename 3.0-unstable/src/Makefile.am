@@ -88,44 +88,52 @@ libvalidators_la_SOURCES =			${validators_sources}
 #
 # NetAccessors, conditionally built based on settings from configure
 #
+if XERCES_USE_NETACCESSOR_CURL
+src_libraries +=					libcurlna.la
+libcurlna_ladir =					${includedir}
+nobase_libcurlna_la_HEADERS =		${curl_headers}
+libcurlna_la_SOURCES =				${curl_sources}
+libcurlna_la_CXXFLAGS =				${AM_CXXFLAGS} -I${CURL_PREFIX}/include/curl
+endif
+
 if XERCES_USE_NETACCESSOR_SOCKET
-src_libraries +=					libsockets.la
-libsockets_ladir =					${includedir}
-nobase_libsockets_la_HEADERS =		${sockets_headers}
-libsockets_la_SOURCES =				${sockets_sources}
+src_libraries +=					libsocketsna.la
+libsocketsna_ladir =				${includedir}
+nobase_libsocketsna_la_HEADERS =	${sockets_headers}
+libsocketsna_la_SOURCES =			${sockets_sources}
 endif
 
 if XERCES_USE_NETACCESSOR_LIBWWW
-src_libraries +=					libwww.la
-libwww_ladir =						${includedir}
-nobase_libwww_la_HEADERS =			${libwww_headers}
-libwww_la_SOURCES =					${libwww_sources}
-libwww_la_CXXFLAGS =				${AM_CXXFLAGS} -I${LIBWWW_PREFIX}/include/w3c-libwww
+src_libraries +=					libwwwna.la
+libwwwna_ladir =					${includedir}
+nobase_libwwwna_la_HEADERS =		${libwww_headers}
+libwwwna_la_SOURCES =				${libwww_sources}
+libwwwna_la_CXXFLAGS =				${AM_CXXFLAGS} -I${LIBWWW_PREFIX}/include/w3c-libwww
 endif
 
 if XERCES_USE_NETACCESSOR_CFURL
-src_libraries +=					libcfurl.la
-libcfurl_ladir =					${includedir}
-nobase_libcfurl_la_HEADERS =		${cfurl_headers}
-libcfurl_la_SOURCES =				${cfurl_sources}
+src_libraries +=					libcfurlna.la
+libcfurlna_ladir =					${includedir}
+nobase_libcfurlna_la_HEADERS =		${cfurl_headers}
+libcfurlna_la_SOURCES =				${cfurl_sources}
 endif
 
 #
 # Transcoders, conditionally built based on settings from configure
 #
 if XERCES_USE_TRANSCODER_ICU
-src_libraries +=					libicu.la
-libicu_ladir =						${includedir}
-nobase_libicu_la_HEADERS =			${icu_headers}
-libicu_la_SOURCES =					${icu_sources}
-libicu_la_CXXFLAGS =				${AM_CXXFLAGS} -I${ICU_PREFIX}/include
+src_libraries +=					libicutc.la
+libicutc_ladir =					${includedir}
+nobase_libicutc_la_HEADERS =		${icu_headers}
+libicutc_la_SOURCES =				${icu_sources}
+libicutc_la_CXXFLAGS =				${AM_CXXFLAGS} -I${ICU_PREFIX}/include
 endif
 
 if XERCES_USE_TRANSCODER_ICONV
-src_libraries +=					libiconv.la
-libiconv_ladir =					${includedir}
-nobase_libiconv_la_HEADERS =		${iconv_headers}
-libiconv_la_SOURCES =				${iconv_sources}
+src_libraries +=					libiconvtc.la
+libiconvtc_ladir =					${includedir}
+nobase_libiconvtc_la_HEADERS =		${iconv_headers}
+libiconvtc_la_SOURCES =				${iconv_sources}
 endif
 
 if XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER
@@ -985,6 +993,14 @@ macosunicodeconverter_sources = \
 	xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.cpp
 
 
+curl_headers = \
+	xercesc/util/NetAccessors/Curl/CurlNetAccessor.hpp \
+	xercesc/util/NetAccessors/Curl/CurlURLInputStream.hpp
+	
+curl_sources = \
+	xercesc/util/NetAccessors/Curl/CurlNetAccessor.cpp \
+	xercesc/util/NetAccessors/Curl/CurlURLInputStream.cpp
+	
 sockets_headers = \
 	xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp \
 	xercesc/util/NetAccessors/Socket/UnixHTTPURLInputStream.hpp
@@ -1079,11 +1095,6 @@ macplatform_sources = \
 #          be regenerated from the (new) default output of Automake
 #
 if XERCES_PRETTY_MAKE
-
-.SILENT: \
-				xercesc/util/Transcoders/ICU/libicu_la-ICUTransService.lo \
-				xercesc/util/NetAccessors/LibWWW/libwww_la-LibWWWNetAccessor.lo \
-				xercesc/util/NetAccessors/LibWWW/libwww_la-BinURLInputStream.lo
 
 .cpp.lo:
 @am__fastdepCXX_TRUE@	@depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`; \

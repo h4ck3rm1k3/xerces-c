@@ -24169,11 +24169,11 @@ echo "${ECHO_T}$xerces_cv_libwww_prefix" >&6
 	######################################################
 	na_list=
 
+
 	echo "$as_me:$LINENO: checking whether we can support the libcurl-based NetAccessor" >&5
 echo $ECHO_N "checking whether we can support the libcurl-based NetAccessor... $ECHO_C" >&6
 	list_add=
-	# TODO: netaccessor-curl is disabled for now until actually written: (false just below)
-	if false && test x"$xerces_cv_curl_prefix" != x; then
+	if test x"$xerces_cv_curl_prefix" != x; then
 
 		# Check whether --enable-netaccessor-curl or --disable-netaccessor-curl was given.
 if test "${enable_netaccessor_curl+set}" = set; then
@@ -24340,6 +24340,7 @@ cat >>confdefs.h <<\_ACEOF
 #define XERCES_USE_NETACCESSOR_CURL 1
 _ACEOF
 
+			LIBS="${LIBS} -L${xerces_cv_curl_prefix}/lib -lcurl"
 			break
 			;;
 

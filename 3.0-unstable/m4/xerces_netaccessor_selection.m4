@@ -20,10 +20,10 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	######################################################
 	na_list=
 	
+	AC_REQUIRE([XERCES_CURL_PREFIX])	
 	AC_MSG_CHECKING([whether we can support the libcurl-based NetAccessor])
 	list_add=
-	# TODO: netaccessor-curl is disabled for now until actually written: (false just below)
-	AS_IF([false && test x"$xerces_cv_curl_prefix" != x], [
+	AS_IF([test x"$xerces_cv_curl_prefix" != x], [
 		AC_ARG_ENABLE([netaccessor-curl],
 			AS_HELP_STRING([--enable-netaccessor-curl],
 				[Enable libcurl-based NetAccessor support]),
@@ -125,6 +125,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 		*-curl-*)
 			netaccessor=curl
 			AC_DEFINE([XERCES_USE_NETACCESSOR_CURL], 1, [Define to use the CURL NetAccessor])
+			LIBS="${LIBS} -L${xerces_cv_curl_prefix}/lib -lcurl"
 			break
 			;;
 			

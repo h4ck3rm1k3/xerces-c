@@ -76,6 +76,9 @@
 #endif
 
 #include <xercesc/util/XMLNetAccessor.hpp>
+#if XERCES_USE_NETACCESSOR_CURL
+#	include <xercesc/util/NetAccessors/Curl/CurlNetAccessor.hpp>
+#endif
 #if XERCES_USE_NETACCESSOR_SOCKET
 #	include <xercesc/util/NetAccessors/Socket/SocketNetAccessor.hpp>
 #endif
@@ -380,7 +383,9 @@ XMLNetAccessor* XMLPlatformUtils::makeNetAccessor()
 {
 	XMLNetAccessor* na = 0;
 	
-	#if defined (XERCES_USE_NETACCESSOR_SOCKET)
+	#if defined (XERCES_USE_NETACCESSOR_CURL)
+		na = new CurlNetAccessor();
+	#elif defined (XERCES_USE_NETACCESSOR_SOCKET)
 		na = new SocketNetAccessor();
 	#elif defined (XERCES_USE_NETACCESSOR_LIBWWW)
 		na = new LibWWWNetAccessor();
