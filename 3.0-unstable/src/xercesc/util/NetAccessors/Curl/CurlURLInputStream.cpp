@@ -166,12 +166,13 @@ CurlURLInputStream::readBytes(XMLByte* const    toFill
 			if (fBufferTailPtr == fBufferHeadPtr)
 				fBufferHeadPtr = fBufferTailPtr = fBuffer;
 				
-			//printf("consuming rebuffered %d bytes\n", bufCnt);
+			//printf("consuming %d buffered bytes\n", bufCnt);
 
 			tryAgain = true;
 			continue;
 		}
 	
+		// Ask the curl to do some work
 		int runningHandles = 0;
 		CURLMcode curlResult = curl_multi_perform(fMulti, &runningHandles);
 		tryAgain = (curlResult == CURLM_CALL_MULTI_PERFORM);
