@@ -72,6 +72,9 @@ InitTermTest_SOURCES = 				src/InitTermTest/InitTermTest.cpp \
 #									src/MemHandlerTest/SimpleHashPtr.hpp \
 #									src/MemHandlerTest/SimpleValueHashTableOf.hpp
 
+testprogs +=						NetAccessorTest
+NetAccessorTest_SOURCES = 			src/NetAccessorTest/NetAccessorTest.cpp
+
 # Doesn't compile under gcc4 for some reason
 # dcargill says this is obsolete and we can delete it.
 #testprogs +=						ParserTest

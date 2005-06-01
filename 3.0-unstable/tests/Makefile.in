@@ -33,7 +33,7 @@
 #
 # $Id$
 #
-SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) $(EncodingTest_SOURCES) $(InitTermTest_SOURCES) $(Normalizer_SOURCES) $(RangeTest_SOURCES) $(Traversal_SOURCES) $(TypeInfo_SOURCES) $(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
+SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) $(EncodingTest_SOURCES) $(InitTermTest_SOURCES) $(NetAccessorTest_SOURCES) $(Normalizer_SOURCES) $(RangeTest_SOURCES) $(Traversal_SOURCES) $(TypeInfo_SOURCES) $(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
 
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
@@ -91,7 +91,8 @@ CONFIG_CLEAN_FILES =
 am__EXEEXT_1 = DOMTest$(EXEEXT) DOMMemTest$(EXEEXT) \
 	Normalizer$(EXEEXT) RangeTest$(EXEEXT) Traversal$(EXEEXT) \
 	TypeInfo$(EXEEXT) EncodingTest$(EXEEXT) InitTermTest$(EXEEXT) \
-	XSerializerTest$(EXEEXT) XSValueTest$(EXEEXT)
+	NetAccessorTest$(EXEEXT) XSerializerTest$(EXEEXT) \
+	XSValueTest$(EXEEXT)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_DOMMemTest_OBJECTS = src/DOM/DOMMemTest/DOMMemTest.$(OBJEXT)
 DOMMemTest_OBJECTS = $(am_DOMMemTest_OBJECTS)
@@ -109,6 +110,11 @@ am_InitTermTest_OBJECTS = src/InitTermTest/InitTermTest.$(OBJEXT)
 InitTermTest_OBJECTS = $(am_InitTermTest_OBJECTS)
 InitTermTest_LDADD = $(LDADD)
 InitTermTest_DEPENDENCIES = ../obj/libxerces.la
+am_NetAccessorTest_OBJECTS =  \
+	src/NetAccessorTest/NetAccessorTest.$(OBJEXT)
+NetAccessorTest_OBJECTS = $(am_NetAccessorTest_OBJECTS)
+NetAccessorTest_LDADD = $(LDADD)
+NetAccessorTest_DEPENDENCIES = ../obj/libxerces.la
 am_Normalizer_OBJECTS = src/DOM/Normalizer/Normalizer.$(OBJEXT)
 Normalizer_OBJECTS = $(am_Normalizer_OBJECTS)
 Normalizer_LDADD = $(LDADD)
@@ -151,13 +157,13 @@ LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) \
 	$(EncodingTest_SOURCES) $(InitTermTest_SOURCES) \
-	$(Normalizer_SOURCES) $(RangeTest_SOURCES) \
-	$(Traversal_SOURCES) $(TypeInfo_SOURCES) \
+	$(NetAccessorTest_SOURCES) $(Normalizer_SOURCES) \
+	$(RangeTest_SOURCES) $(Traversal_SOURCES) $(TypeInfo_SOURCES) \
 	$(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
 DIST_SOURCES = $(DOMMemTest_SOURCES) $(DOMTest_SOURCES) \
 	$(EncodingTest_SOURCES) $(InitTermTest_SOURCES) \
-	$(Normalizer_SOURCES) $(RangeTest_SOURCES) \
-	$(Traversal_SOURCES) $(TypeInfo_SOURCES) \
+	$(NetAccessorTest_SOURCES) $(Normalizer_SOURCES) \
+	$(RangeTest_SOURCES) $(Traversal_SOURCES) $(TypeInfo_SOURCES) \
 	$(XSValueTest_SOURCES) $(XSerializerTest_SOURCES)
 ETAGS = etags
 CTAGS = ctags
@@ -343,7 +349,8 @@ AM_CPPFLAGS = -I${top_srcdir}/src
 
 # Fails to compile under gcc4 (values too long for long type)
 testprogs = DOMTest DOMMemTest Normalizer RangeTest Traversal TypeInfo \
-	EncodingTest InitTermTest XSerializerTest XSValueTest
+	EncodingTest InitTermTest NetAccessorTest XSerializerTest \
+	XSValueTest
 DOMTest_SOURCES = src/DOM/DOMTest/DTest.cpp \
 									src/DOM/DOMTest/DTest.h
 
@@ -372,6 +379,7 @@ EncodingTest_SOURCES = src/EncodingTest/EncodingTest.cpp
 InitTermTest_SOURCES = src/InitTermTest/InitTermTest.cpp \
 									src/InitTermTest/InitTermTest.hpp
 
+NetAccessorTest_SOURCES = src/NetAccessorTest/NetAccessorTest.cpp
 XSerializerTest_SOURCES = src/XSerializerTest/XSerializerHandlers.cpp \
 									src/XSerializerTest/XSerializerHandlers.hpp \
 									src/XSerializerTest/XSerializerTest.cpp \
@@ -478,6 +486,18 @@ src/InitTermTest/InitTermTest.$(OBJEXT):  \
 InitTermTest$(EXEEXT): $(InitTermTest_OBJECTS) $(InitTermTest_DEPENDENCIES) 
 	@rm -f InitTermTest$(EXEEXT)
 	$(CXXLINK) $(InitTermTest_LDFLAGS) $(InitTermTest_OBJECTS) $(InitTermTest_LDADD) $(LIBS)
+src/NetAccessorTest/$(am__dirstamp):
+	@$(mkdir_p) src/NetAccessorTest
+	@: > src/NetAccessorTest/$(am__dirstamp)
+src/NetAccessorTest/$(DEPDIR)/$(am__dirstamp):
+	@$(mkdir_p) src/NetAccessorTest/$(DEPDIR)
+	@: > src/NetAccessorTest/$(DEPDIR)/$(am__dirstamp)
+src/NetAccessorTest/NetAccessorTest.$(OBJEXT):  \
+	src/NetAccessorTest/$(am__dirstamp) \
+	src/NetAccessorTest/$(DEPDIR)/$(am__dirstamp)
+NetAccessorTest$(EXEEXT): $(NetAccessorTest_OBJECTS) $(NetAccessorTest_DEPENDENCIES) 
+	@rm -f NetAccessorTest$(EXEEXT)
+	$(CXXLINK) $(NetAccessorTest_LDFLAGS) $(NetAccessorTest_OBJECTS) $(NetAccessorTest_LDADD) $(LIBS)
 src/DOM/Normalizer/$(am__dirstamp):
 	@$(mkdir_p) src/DOM/Normalizer
 	@: > src/DOM/Normalizer/$(am__dirstamp)
@@ -563,6 +583,7 @@ mostlyclean-compile:
 	-rm -f src/DOM/TypeInfo/TypeInfo.$(OBJEXT)
 	-rm -f src/EncodingTest/EncodingTest.$(OBJEXT)
 	-rm -f src/InitTermTest/InitTermTest.$(OBJEXT)
+	-rm -f src/NetAccessorTest/NetAccessorTest.$(OBJEXT)
 	-rm -f src/XSValueTest/XSValueTest.$(OBJEXT)
 	-rm -f src/XSerializerTest/XSerializerHandlers.$(OBJEXT)
 	-rm -f src/XSerializerTest/XSerializerTest.$(OBJEXT)
@@ -578,6 +599,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@src/DOM/TypeInfo/$(DEPDIR)/TypeInfo.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/EncodingTest/$(DEPDIR)/EncodingTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/InitTermTest/$(DEPDIR)/InitTermTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@src/NetAccessorTest/$(DEPDIR)/NetAccessorTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/XSValueTest/$(DEPDIR)/XSValueTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerHandlers.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@src/XSerializerTest/$(DEPDIR)/XSerializerTest.Po@am__quote@
@@ -732,6 +754,8 @@ distclean-generic:
 	-rm -f src/EncodingTest/$(am__dirstamp)
 	-rm -f src/InitTermTest/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/InitTermTest/$(am__dirstamp)
+	-rm -f src/NetAccessorTest/$(DEPDIR)/$(am__dirstamp)
+	-rm -f src/NetAccessorTest/$(am__dirstamp)
 	-rm -f src/XSValueTest/$(DEPDIR)/$(am__dirstamp)
 	-rm -f src/XSValueTest/$(am__dirstamp)
 	-rm -f src/XSerializerTest/$(DEPDIR)/$(am__dirstamp)
@@ -746,7 +770,7 @@ clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
+	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/NetAccessorTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-libtool distclean-tags
@@ -772,7 +796,7 @@ install-man:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
+	-rm -rf src/DOM/DOMMemTest/$(DEPDIR) src/DOM/DOMTest/$(DEPDIR) src/DOM/Normalizer/$(DEPDIR) src/DOM/RangeTest/$(DEPDIR) src/DOM/Traversal/$(DEPDIR) src/DOM/TypeInfo/$(DEPDIR) src/EncodingTest/$(DEPDIR) src/InitTermTest/$(DEPDIR) src/NetAccessorTest/$(DEPDIR) src/XSValueTest/$(DEPDIR) src/XSerializerTest/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
