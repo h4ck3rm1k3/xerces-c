@@ -79,7 +79,7 @@ typedef XMLUInt32           UCS4Ch;
 //
 //  This flag will be set in the per-development environment stuff above.
 // ---------------------------------------------------------------------------
-#if defined(NO_NATIVE_BOOL)
+#if defined(XERCES_NO_NATIVE_BOOL)
   #ifndef bool
     typedef int     bool;
   #endif
@@ -91,15 +91,11 @@ typedef XMLUInt32           UCS4Ch;
   #endif
 #endif
 
-#if defined(XML_NETBSD)
-#include       <xercesc/util/Platforms/NetBSD/NetBSDDefs.hpp>
-#endif
-
 // ---------------------------------------------------------------------------
 //  According to whether the compiler suports L"" type strings, we define
 //  the XMLStrL() macro one way or another.
 // ---------------------------------------------------------------------------
-#if defined(XML_LSTRSUPPORT)
+#if defined(XERCES_LSTRSUPPORT)
 #define XMLStrL(str)  L##str
 #else
 #define XMLStrL(str)  str
@@ -138,6 +134,20 @@ typedef XMLUInt32           UCS4Ch;
 //  PLATFORM_XXXX keywords are set in the per-development environment
 //  include above.
 // ---------------------------------------------------------------------------
+
+// The DLL_EXPORT flag should be defined on the command line during the build of a DLL
+// configure conspires to make this happen.
+#if DLL_EXPORT
+#define PROJ_XMLUTIL
+#define PROJ_XMLPARSER
+#define PROJ_SAX4C
+#define PROJ_SAX2
+#define PROJ_DOM
+#define PROJ_DEPRECATED_DOM
+#define PROJ_PARSERS
+#define PROJ_VALIDATORS
+#endif
+
 #if defined(PROJ_XMLUTIL)
 #define XMLUTIL_EXPORT XERCES_PLATFORM_EXPORT
 #else

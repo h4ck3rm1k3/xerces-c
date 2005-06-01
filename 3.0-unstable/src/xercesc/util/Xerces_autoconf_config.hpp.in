@@ -55,12 +55,11 @@
 #undef XERCES_HAS_CPP_NAMESPACE
 #undef XERCES_STD_NAMESPACE
 #undef XERCES_NEW_IOSTREAMS
+#undef XERCES_NO_NATIVE_BOOL
+#undef XERCES_LSTRSUPPORT
 
-#if !defined(XERCES_STATIC_LIBRARY)
 #undef XERCES_PLATFORM_EXPORT
 #undef XERCES_PLATFORM_IMPORT
-#endif
-
 
 // ---------------------------------------------------------------------------
 //  Must include sys/types.h if we're going to typedef to size_t below,
@@ -98,6 +97,15 @@ typedef XERCES_32BIT_INT			XMLInt32;
 // ---------------------------------------------------------------------------
 typedef unsigned XERCES_32BIT_INT	XMLFilePos;
 
+
+#define PROJ_XMLUTIL
+#define PROJ_XMLPARSER
+#define PROJ_SAX4C
+#define PROJ_SAX2
+#define PROJ_DOM
+#define PROJ_DEPRECATED_DOM
+#define PROJ_PARSERS
+#define PROJ_VALIDATORS
 
 
 // ---------------------------------------------------------------------------

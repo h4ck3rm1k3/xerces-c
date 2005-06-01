@@ -1150,10 +1150,7 @@ macplatform_sources = \
 	xercesc/util/Platforms/MacOS/MacCarbonFile.cpp \
 	xercesc/util/Platforms/MacOS/MacOSPlatformUtils.cpp \
 	xercesc/util/Platforms/MacOS/MacPosixFile.cpp
-	
-	
-	
-DEFS += -DPROJ_XMLUTIL -DPROJ_XMLPARSER -DPROJ_SAX4C -DPROJ_SAX2 -DPROJ_DOM -DPROJ_DEPRECATED_DOM -DPROJ_PARSERS -DPROJ_VALIDATORS
+
 
 #
 # Override generated rules to provide prettier make rules
