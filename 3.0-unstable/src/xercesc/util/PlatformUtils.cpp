@@ -55,6 +55,9 @@
 #if XERCES_USE_FILEMGR_POSIX
 #	include <xercesc/util/FileManagers/PosixFileMgr.hpp>
 #endif
+#if XERCES_USE_FILEMGR_WINDOWS
+#	include <xercesc/util/FileManagers/WindowsFileMgr.hpp>
+#endif
 
 #include <xercesc/util/XMLMutexMgr.hpp>
 #if XERCES_USE_MUTEXMGR_NOTHREAD
@@ -62,6 +65,9 @@
 #endif
 #if XERCES_USE_MUTEXMGR_POSIX
 #	include <xercesc/util/MutexManagers/PosixMutexMgr.hpp>
+#endif
+#if XERCES_USE_MUTEXMGR_WINDOWS
+#	include <xercesc/util/MutexManagers/WindowsMutexMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLAtomicOpMgr.hpp>
@@ -73,6 +79,9 @@
 #endif
 #if XERCES_USE_ATOMICOPMGR_MACOS
 #	include <xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.hpp>
+#endif
+#if XERCES_USE_ATOMICOPMGR_WINDOWS
+#	include <xercesc/util/AtomicOpManagers/WindowsAtomicOpMgr.hpp>
 #endif
 
 #include <xercesc/util/XMLNetAccessor.hpp>
@@ -113,6 +122,9 @@
 #endif
 #if XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER
 #	include <xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.hpp>
+#endif
+#if XERCES_USE_TRANSCODER_WINDOWS
+#	include <xercesc/util/Transcoders/Win32/Win32TransService.hpp>
 #endif
 
 XERCES_CPP_NAMESPACE_BEGIN
@@ -449,7 +461,9 @@ XMLTransService* XMLPlatformUtils::makeTransService()
 	#elif defined (XERCES_USE_TRANSCODER_ICONV)
 		tc = new IconvTransService;
 	#elif defined (XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER)
-		tc = new MacOSUnicodeConverter();
+		tc = new MacOSUnicodeConverter;
+	#elif defined (XERCES_USE_TRANSCODER_WINDOWS)
+		tc = new Win32TransService;
 	#else
 		#error No Transcoder configured for platform! You must configure it.
 	#endif
@@ -468,6 +482,8 @@ XMLPlatformUtils::makeFileMgr(MemoryManager* const memmgr)
 	
 	#if XERCES_USE_FILEMGR_POSIX
 		mgr = new (memmgr) PosixFileMgr;
+	#elif XERCES_USE_FILEMGR_WINDOWS
+		mgr = new (memmgr) WindowsFileMgr;
 	#else
 		#error No File Manager configured for platform! You must configure it.
 	#endif
@@ -678,6 +694,8 @@ XMLMutexMgr* XMLPlatformUtils::makeMutexMgr(MemoryManager* const memmgr)
 		mgr = new (memmgr) NoThreadMutexMgr;
 	#elif XERCES_USE_MUTEXMGR_POSIX
 		mgr = new (memmgr) PosixMutexMgr;
+	#elif XERCES_USE_MUTEXMGR_WINDOWS
+		mgr = new (memmgr) WindowsMutexMgr;
 	#else
 		#error No Mutex Manager configured for platform! You must configure it.
 	#endif
@@ -735,6 +753,8 @@ XMLAtomicOpMgr* XMLPlatformUtils::makeAtomicOpMgr(MemoryManager* const memmgr)
 		mgr = new (memmgr) PosixAtomicOpMgr;
 	#elif XERCES_USE_ATOMICOPMGR_MACOS
 		mgr = new (memmgr) MacOSAtomicOpMgr;
+	#elif XERCES_USE_ATOMICOPMGR_WINDOWS
+		mgr = new (memmgr) WindowsAtomicOpMgr;
 	#else
 		#error No AtomicOp Manager configured for platform! You must configure it.
 	#endif

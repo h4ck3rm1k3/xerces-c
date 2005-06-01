@@ -76,10 +76,22 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 			[AC_MSG_RESULT(no)]
 		)
 		;;
+	windows* | cygwin* | mingw*)
+		AC_MSG_CHECKING([whether we can support the Windows Transcoder])
+		AC_ARG_ENABLE([transcoder-windows],
+			AS_HELP_STRING([--enable-transcoder-windows],
+				[Enable Windows-based transcoder support]),
+			[AS_IF([test x"$enableval" = xyes],
+				[list_add=WINDOWS])],
+			[list_add=windows])
+		AS_IF([test x"$list_add" != x],
+			[tc_list="$tc_list -$list_add-"; AC_MSG_RESULT(yes)],
+			[AC_MSG_RESULT(no)]
+		)
+		;;
 	esac
 
 	# TODO: Tests for additional transcoders
-	
 	
 	######################################################
 	# Determine which transcoder to use.
@@ -118,6 +130,12 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 			break
 			;;
 			
+		*-windows-*)
+			transcoder=windows
+			AC_DEFINE([XERCES_USE_TRANSCODER_WINDOWS], 1, [Define to use the Windows transcoder])
+			break
+			;;
+
 		*)
 			if [test $i -eq 2]; then
 				AC_MSG_RESULT([none])
@@ -135,6 +153,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	AM_CONDITIONAL([XERCES_USE_TRANSCODER_ICU],						[test x"$transcoder" = xicu])
 	AM_CONDITIONAL([XERCES_USE_TRANSCODER_MACOSUNICODECONVERTER],	[test x"$transcoder" = xmacosunicodeconverter])
 	AM_CONDITIONAL([XERCES_USE_TRANSCODER_ICONV],					[test x"$transcoder" = xiconv])
+	AM_CONDITIONAL([XERCES_USE_TRANSCODER_WINDOWS],					[test x"$transcoder" = xwindows])
 
 	]
 )

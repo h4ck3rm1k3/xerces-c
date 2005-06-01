@@ -21,15 +21,16 @@ AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 	AS_IF([test x$xerces_cv_no_threads = xyes],
 		[
 			mgr=NoThreads
-			AC_DEFINE([XERCES_USE_MUTEXMGR_NOTHREAD], 1, [Define to use the NoThread Mutex mgr])
+			AC_DEFINE([XERCES_USE_MUTEXMGR_NOTHREAD], 1, [Define to use the NoThread mutex mgr])
 		])
 	
 	# Platform specific checks
 	AS_IF([test -z "$mgr"],
 		[
 			case $host_os in
-			windows* | cygwin*)
-				#mgr=Windows
+			windows* | cygwin* | mingw*)
+				mgr=Windows;
+				AC_DEFINE([XERCES_USE_MUTEXMGR_WINDOWS], 1, [Define to use the Windows mutex mgr])
 				;;
 			esac
 		])
@@ -55,6 +56,7 @@ AC_DEFUN([XERCES_MUTEXMGR_SELECTION],
 	# Note that these macros can't be executed conditionally, which is why they're here, not above.
 	AM_CONDITIONAL([XERCES_USE_MUTEXMGR_NOTHREAD],	[test x"$mgr" = xNoThreads])
 	AM_CONDITIONAL([XERCES_USE_MUTEXMGR_POSIX],		[test x"$mgr" = xPOSIX])
+	AM_CONDITIONAL([XERCES_USE_MUTEXMGR_WINDOWS],	[test x"$mgr" = xWindows])
 	
 	]
 )

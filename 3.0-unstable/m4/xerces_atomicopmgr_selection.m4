@@ -27,8 +27,9 @@ AC_DEFUN([XERCES_ATOMICOPMGR_SELECTION],
 	AS_IF([test -z "$mgr"],
 		[
 			case $host_os in
-			windows* | cygwin*)
-				#mgr=Windows
+			windows* | cygwin* | mingw*)
+				mgr=Windows;
+				AC_DEFINE([XERCES_USE_ATOMICOPMGR_WINDOWS], 1, [Define to use the Windows AtomicOp mgr])
 				;;
 			darwin*)
 				# On MacOS, use the built-in AtomicOp primitives
@@ -56,6 +57,7 @@ AC_DEFUN([XERCES_ATOMICOPMGR_SELECTION],
 	AM_CONDITIONAL([XERCES_USE_ATOMICOPMGR_NOTHREAD],	[test x"$mgr" = xNoThreads])
 	AM_CONDITIONAL([XERCES_USE_ATOMICOPMGR_POSIX],		[test x"$mgr" = xPOSIX])
 	AM_CONDITIONAL([XERCES_USE_ATOMICOPMGR_MACOS],		[test x"$mgr" = xMacOS])
+	AM_CONDITIONAL([XERCES_USE_ATOMICOPMGR_WINDOWS],	[test x"$mgr" = xWindows])
 	
 	]
 )

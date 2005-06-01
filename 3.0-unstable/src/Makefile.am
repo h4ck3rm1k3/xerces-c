@@ -118,6 +118,13 @@ nobase_libcfurlna_la_HEADERS =		${cfurl_headers}
 libcfurlna_la_SOURCES =				${cfurl_sources}
 endif
 
+if XERCES_USE_NETACCESSOR_WINSOCK
+src_libraries +=					libwinsockna.la
+libwinsockna_ladir =				${includedir}
+nobase_libwinsockna_la_HEADERS =	${winsock_headers}
+libwinsockna_la_SOURCES =			${winsock_sources}
+endif
+
 #
 # Transcoders, conditionally built based on settings from configure
 #
@@ -141,6 +148,13 @@ src_libraries +=								libmacosunicodeconverter.la
 libmacosunicodeconverter_ladir =				${includedir}
 nobase_libmacosunicodeconverter_la_HEADERS =	${macosunicodeconverter_headers}
 libmacosunicodeconverter_la_SOURCES =			${macosunicodeconverter_sources}
+endif
+
+if XERCES_USE_TRANSCODER_WINDOWS
+src_libraries +=					libwintrans.la
+libwintrans_ladir =					${includedir}
+nobase_libwintrans_la_HEADERS =		${wintrans_headers}
+libwintrans_la_SOURCES =				${wintrans_sources}
 endif
 
 #
@@ -177,6 +191,13 @@ nobase_libmacosaomgr_la_HEADERS =	${macosaomgr_headers}
 libmacosaomgr_la_SOURCES =			${macosaomgr_sources}
 endif
 
+if XERCES_USE_ATOMICOPMGR_WINDOWS
+src_libraries +=					libwinaomgr.la
+libwinaomgr_ladir =					${includedir}
+nobase_libwinaomgr_la_HEADERS =		${winaomgr_headers}
+libwinaomgr_la_SOURCES =			${winaomgr_sources}
+endif
+
 #
 # Mutex Managers, conditionally built based on settings from configure
 #
@@ -194,6 +215,13 @@ nobase_libposixmmgr_la_HEADERS =	${posixmmgr_headers}
 libposixmmgr_la_SOURCES =			${posixmmgr_sources}
 endif
 
+if XERCES_USE_MUTEXMGR_WINDOWS
+src_libraries +=					libwinmmgr.la
+libwinmmgr_ladir =					${includedir}
+nobase_libwinmmgr_la_HEADERS =		${winmmgr_headers}
+libwinmmgr_la_SOURCES =				${winmmgr_sources}
+endif
+
 #
 # File Managers, conditionally built based on settings from configure
 #
@@ -202,6 +230,13 @@ src_libraries +=					libposixfmgr.la
 libposixfmgr_ladir =				${includedir}
 nobase_libposixfmgr_la_HEADERS =	${posixfmgr_headers}
 libposixfmgr_la_SOURCES =			${posixfmgr_sources}
+endif
+
+if XERCES_USE_FILEMGR_WINDOWS
+src_libraries +=					libwinfmgr.la
+libwinfmgr_ladir =					${includedir}
+nobase_libwinfmgr_la_HEADERS =		${winfmgr_headers}
+libwinfmgr_la_SOURCES =				${winfmgr_sources}
 endif
 
 #
@@ -992,6 +1027,12 @@ macosunicodeconverter_headers = \
 macosunicodeconverter_sources = \
 	xercesc/util/Transcoders/MacOSUnicodeConverter/MacOSUnicodeConverter.cpp
 
+wintrans_headers = \
+	xercesc/util/Transcoders/Win32/Win32TransService.hpp
+
+wintrans_sources = \
+	xercesc/util/Transcoders/Win32/Win32TransService.cpp
+
 
 curl_headers = \
 	xercesc/util/NetAccessors/Curl/CurlNetAccessor.hpp \
@@ -1025,6 +1066,13 @@ cfurl_sources = \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/MacOSURLAccessCF.cpp \
 	xercesc/util/NetAccessors/MacOSURLAccessCF/URLAccessCFBinInputStream.cpp
 	
+winsock_headers = \
+	xercesc/util/NetAccessors/WinSock/WinSockNetAccessor.hpp \
+	xercesc/util/NetAccessors/WinSock/BinHTTPURLInputStream.hpp
+	
+winsock_sources = \
+	xercesc/util/NetAccessors/WinSock/WinSockNetAccessor.cpp \
+	xercesc/util/NetAccessors/WinSock/BinHTTPURLInputStream.cpp
 
 inmemory_headers = \
 	xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.hpp \
@@ -1040,6 +1088,12 @@ posixfmgr_headers = \
 posixfmgr_sources = \
 	xercesc/util/FileManagers/PosixFileMgr.cpp
 
+winfmgr_headers = \
+	xercesc/util/FileManagers/WindowsFileMgr.hpp
+
+winfmgr_sources = \
+	xercesc/util/FileManagers/WindowsFileMgr.cpp
+
 
 nothreadmmgr_headers = \
 	xercesc/util/MutexManagers/NoThreadMutexMgr.hpp
@@ -1052,6 +1106,12 @@ posixmmgr_headers = \
 
 posixmmgr_sources = \
 	xercesc/util/MutexManagers/PosixMutexMgr.cpp
+
+winmmgr_headers = \
+	xercesc/util/MutexManagers/WindowsMutexMgr.hpp
+
+winmmgr_sources = \
+	xercesc/util/MutexManagers/WindowsMutexMgr.cpp
 
 
 nothreadaomgr_headers = \
@@ -1072,6 +1132,12 @@ macosaomgr_headers = \
 macosaomgr_sources = \
 	xercesc/util/AtomicOpManagers/MacOSAtomicOpMgr.cpp
 
+winaomgr_headers = \
+	xercesc/util/AtomicOpManagers/WindowsAtomicOpMgr.hpp
+
+winaomgr_sources = \
+	xercesc/util/AtomicOpManagers/WindowsAtomicOpMgr.cpp
+
 
 macplatform_headers = \
 	xercesc/util/Platforms/MacOS/MacAbstractFile.hpp \
@@ -1087,7 +1153,8 @@ macplatform_sources = \
 	
 	
 	
-	
+DEFS += -DPROJ_XMLUTIL -DPROJ_XMLPARSER -DPROJ_SAX4C -DPROJ_SAX2 -DPROJ_DOM -DPROJ_DEPRECATED_DOM -DPROJ_PARSERS -DPROJ_VALIDATORS
+
 #
 # Override generated rules to provide prettier make rules
 #

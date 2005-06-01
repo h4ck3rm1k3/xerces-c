@@ -87,8 +87,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 			[AC_MSG_RESULT(no)]
 		)
 		;;
-	windows*)
-		# TODO: FINALIZE THIS TEST FOR AVAILABILITY OF WINSOCK NETACCESSOR
+	windows* | mingw*)
 		list_add=
 		AC_MSG_CHECKING([whether we can support the WinSock NetAccessor (Windows)])
 		AC_ARG_ENABLE([netaccessor-winsock],
@@ -171,7 +170,7 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 	# Note that these macros can't be executed conditionally, which is why they're here, not above.
 	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_CURL],		[test x"$netaccessor" = xcurl])
 	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_CFURL],		[test x"$netaccessor" = xcfurl])
-	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_WINSOCK],	[test x"$netaccessor" = xwinsockl])
+	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_WINSOCK],	[test x"$netaccessor" = xwinsock])
 	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_SOCKET],		[test x"$netaccessor" = xsocket])
 	AM_CONDITIONAL([XERCES_USE_NETACCESSOR_LIBWWW],		[test x"$netaccessor" = xlibwww])
 
