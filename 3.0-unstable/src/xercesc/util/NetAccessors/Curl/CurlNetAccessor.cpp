@@ -81,25 +81,11 @@ CurlNetAccessor::cleanupCurl()
 BinInputStream*
 CurlNetAccessor::makeNew(const XMLURL&  urlSource, const XMLNetHTTPInfo* httpInfo/*=0*/)
 {
-    XMLURL::Protocols  protocol = urlSource.getProtocol();
-    switch(protocol)
-    {
-        case XMLURL::HTTP:
-        {
-            CurlURLInputStream* retStrm =
-                new (urlSource.getMemoryManager()) CurlURLInputStream(urlSource, httpInfo);
-            return retStrm;            
-        }
-
-        //
-        // These are the only protocols we support now. So throw an
-        // unsupported protocol exception for the others.
-        //
-        default :
-            ThrowXMLwithMemMgr(MalformedURLException, XMLExcepts::URL_UnsupportedProto, urlSource.getMemoryManager());
-            break;
-    }
-    return 0;
+	// Just create a CurlURLInputStream
+	// We defer any checking of the url type for curl in CurlURLInputStream
+	CurlURLInputStream* retStrm =
+		new (urlSource.getMemoryManager()) CurlURLInputStream(urlSource, httpInfo);
+	return retStrm;            
 }
 
 XERCES_CPP_NAMESPACE_END
