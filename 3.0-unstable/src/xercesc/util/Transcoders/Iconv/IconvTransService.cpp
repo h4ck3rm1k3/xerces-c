@@ -278,20 +278,31 @@ unsigned int IconvLCPTranscoder::calcRequiredSize(const XMLCh* const srcText
     return retVal;
 }
 
+bool IconvLCPTranscoder::transcode( const   XMLCh* const    toTranscode
+                                    ,       char* const     toFill
+                                    , const unsigned int    maxBytes
+                                    , MemoryManager* const  manager)
+{
+	size_t bytesWritten, lettersConsumed;
+	return transcode(toTranscode, toFill, maxBytes, bytesWritten, lettersConsumed);
+}
 
-static void reallocString(char *&ref, size_t &size, MemoryManager* const manager, bool release_old)
+bool IconvLCPTranscoder::transcode( const   char* const     toTranscode
+                                    ,       XMLCh* const    toFill
+                                    , const unsigned int    maxChars
+                                    , MemoryManager* const  manager)
+{
+	size_t bytesWritten, lettersConsumed;
+	return transcode(toTranscode, toFill, maxBytes, bytesWritten, lettersConsumed);
+}
+
+static void reallocString(char *&ref, size_t &size, MemoryManager* const manager, bool releaseOld)
 {
 	char *tmp = (char*)manager->allocate(2 * size * sizeof(char));
 	memcpy(tmp, ref, size * sizeof(char));
-	if (release_old) manager->deallocate(ref);
+	if (releaseOld) manager->deallocate(ref);
 	ref = tmp;
 	size *= 2;
-}
-
-
-char* IconvLCPTranscoder::transcode(const XMLCh* const toTranscode)
-{
-	return transcode(toTranscode, XMLPlatformUtils::fgMemoryManager);
 }
 
 
@@ -332,75 +343,12 @@ char* IconvLCPTranscoder::transcode(const XMLCh* const toTranscode,
 }
 
 
-bool IconvLCPTranscoder::transcode( const   XMLCh* const    toTranscode
-                                    ,       char* const     toFill
-                                    , const unsigned int    maxBytes
-                                    , MemoryManager* const  manager)
-{
-    // Watch for a couple of pyscho corner cases
-    if (!toTranscode || !maxBytes)
-    {
-        toFill[0] = 0;
-        return true;
-    }
 
-    if (!*toTranscode)
-    {
-        toFill[0] = 0;
-        return true;
-    }
-
-    unsigned int  wLent = getWideCharLength(toTranscode);
-    wchar_t       tmpWideCharArr[gTempBuffArraySize];
-    wchar_t*      allocatedArray = 0;
-    wchar_t*      wideCharBuf = 0;
-
-    if (wLent > maxBytes) {
-        wLent = maxBytes;
-    }
-
-    if (maxBytes >= gTempBuffArraySize) {
-        wideCharBuf = allocatedArray = (wchar_t*)
-            manager->allocate
-            (
-                (maxBytes + 1) * sizeof(wchar_t)
-            );//new wchar_t[maxBytes + 1];
-    }
-    else
-        wideCharBuf = tmpWideCharArr;
-
-    for (unsigned int i = 0; i < wLent; i++)
-    {
-        wideCharBuf[i] = toTranscode[i];
-    }
-    wideCharBuf[wLent] = 0x00;
-
-    // Ok, go ahead and try the transcoding. If it fails, then ...
-    size_t mblen = ::wcstombs(toFill, wideCharBuf, maxBytes);
-    if (mblen == -1)
-    {
-        manager->deallocate(allocatedArray);//delete [] allocatedArray;
-        return false;
-    }
-
-    // Cap it off just in case
-    toFill[mblen] = 0;
-    manager->deallocate(allocatedArray);//delete [] allocatedArray;
-    return true;
-}
-
-
-
-XMLCh* IconvLCPTranscoder::transcode(const char* const toTranscode)
-{
-	return transcode(toTranscode, XMLPlatformUtils::fgMemoryManager);
-}
-
-static void reallocXMLString(XMLCh *&ref, size_t &size, MemoryManager* const manager, bool release_old)
+static void reallocXMLString(XMLCh *&ref, size_t &size, MemoryManager* const manager, bool releaseOld)
 {
 	XMLCh *tmp = (XMLCh*)manager->allocate(2 * size * sizeof(XMLCh));
 	memcpy(tmp, ref, size * sizeof(XMLCh));
-	if (release_old) manager->deallocate(ref);
+	if (releaseOld) manager->deallocate(ref);
 	ref = tmp;
 	size *= 2;
 }
@@ -440,58 +388,6 @@ XMLCh* IconvLCPTranscoder::transcode(const char* const toTranscode,
 	resultString[dstCursor] = L'\0';
 	return resultString;
 }
-
-
-bool IconvLCPTranscoder::transcode( const   char* const     toTranscode
-                                    ,       XMLCh* const    toFill
-                                    , const unsigned int    maxChars
-                                    , MemoryManager* const  manager)
-{
-    // Check for a couple of psycho corner cases
-    if (!toTranscode || !maxChars)
-    {
-        toFill[0] = 0;
-        return true;
-    }
-
-    if (!*toTranscode)
-    {
-        toFill[0] = 0;
-        return true;
-    }
-
-    unsigned int len = calcRequiredSize(toTranscode);
-    wchar_t       tmpWideCharArr[gTempBuffArraySize];
-    wchar_t*      allocatedArray = 0;
-    wchar_t*      wideCharBuf = 0;
-
-    if (len > maxChars) {
-        len = maxChars;
-    }
-
-    if (maxChars >= gTempBuffArraySize)
-        wideCharBuf = allocatedArray = (wchar_t*) manager->allocate
-        (
-            (maxChars + 1) * sizeof(wchar_t)
-        );//new wchar_t[maxChars + 1];
-    else
-        wideCharBuf = tmpWideCharArr;
-
-    if (::mbstowcs(wideCharBuf, toTranscode, maxChars) == -1)
-    {
-        manager->deallocate(allocatedArray);//delete [] allocatedArray;
-        return false;
-    }
-
-    for (unsigned int i = 0; i < len; i++)
-    {
-        toFill[i] = (XMLCh) wideCharBuf[i];
-    }
-    toFill[len] = 0x00;
-    manager->deallocate(allocatedArray);//delete [] allocatedArray;
-    return true;
-}
-
 
 
 // ---------------------------------------------------------------------------

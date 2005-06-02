@@ -431,8 +431,7 @@ int main(int argC, char* argV[])
         try
         {
             // get a serializer, an instance of DOMWriter
-            XMLCh tempStr[100];
-            XMLString::transcode("LS", tempStr, 99);
+            XMLCh tempStr[3] = {chLatin_L, chLatin_S, chNull};
             DOMImplementation *impl          = DOMImplementationRegistry::getDOMImplementation(tempStr);
             DOMWriter         *theSerializer = ((DOMImplementationLS*)impl)->createDOMWriter();
 
