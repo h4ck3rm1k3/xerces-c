@@ -58,7 +58,7 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 	)
 	
 	
-	# Check for MacOSUnicodeConverter
+	# Check for platform-specific transcoders
 	list_add=
 	case $host_os in
 	darwin*)
@@ -137,10 +137,11 @@ AC_DEFUN([XERCES_TRANSCODER_SELECTION],
 			;;
 
 		*)
-			if [test $i -eq 2]; then
+			AS_IF([test $i -eq 2], [
 				AC_MSG_RESULT([none])
 				AC_MSG_ERROR([Xerces cannot function without a transcoder])
-			fi
+				]
+			)
 			;;
 		esac
 	done

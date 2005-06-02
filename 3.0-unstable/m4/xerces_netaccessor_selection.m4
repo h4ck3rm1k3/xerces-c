@@ -155,9 +155,10 @@ AC_DEFUN([XERCES_NETACCESSOR_SELECTION],
 			;;
 			
 		*)
-			if [test $i -eq 2]; then
+			AS_IF([test $i -eq 2], [
 				AC_MSG_RESULT([none available; there will be no network access!!!])
-			fi
+				]
+			)
 			;;
 			
 		esac

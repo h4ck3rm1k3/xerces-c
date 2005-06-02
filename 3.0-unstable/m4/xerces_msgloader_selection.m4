@@ -62,10 +62,11 @@ AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 			break
 			;;
 		*)
-			if [test $i -eq 2]; then
+			AS_IF([test $i -eq 2], [
 				AC_MSG_RESULT([none])
 				AC_MSG_ERROR([Xerces cannot function without a MsgLoader])
-			fi
+				]
+			)
 			;;
 		esac
 	done
