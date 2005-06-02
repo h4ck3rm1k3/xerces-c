@@ -14,7 +14,7 @@ AC_DEFUN([XERCES_PRETTY_MAKE],
 	[
 	AC_MSG_CHECKING([whether we'll generate prettier make output])
 	AC_ARG_ENABLE([pretty-make],
-		AS_HELP_STRING([--pretty-make],
+		AS_HELP_STRING([--enable-pretty-make],
 			[Enable prettier make output]),
 		[AS_IF([test x"$enableval" = xyes],
 			[xerces_pretty_make=yes],
