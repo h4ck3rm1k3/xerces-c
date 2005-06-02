@@ -1037,7 +1037,7 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
-  --pretty-make           Enable prettier make output
+  --enable-pretty-make    Enable prettier make output
   --enable-netaccessor-curl
                           Enable libcurl-based NetAccessor support
   --enable-netaccessor-libwww
@@ -1068,9 +1068,9 @@ Optional Packages:
                           both]
   --with-tags[=TAGS]
                           include additional configurations [automatic]
-  --with-curl[=DIR]           Specify location of libcurl
-  --with-libwww[=DIR]         Include libwww support
-  --with-icu[=DIR]           Specify location of icu
+  --with-curl[=DIR]       Specify location of libcurl
+  --with-libwww[=DIR]     Specify locations of libwww
+  --with-icu[=DIR]        Specify location of icu
 
 Some influential environment variables:
   CXX         C++ compiler command
