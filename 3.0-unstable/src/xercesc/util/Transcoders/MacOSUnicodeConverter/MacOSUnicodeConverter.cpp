@@ -806,15 +806,6 @@ MacOSLCPTranscoder::calcRequiredSize(const XMLCh* const srcText
 
 
 char*
-MacOSLCPTranscoder::transcode(const XMLCh* const srcText)
-{
-	//	Transcode using a memory manager that allocates
-	//	memory using new[].
-	return transcode(srcText, XMLPlatformUtils::fgArrayMemoryManager);
-}
-
-
-char*
 MacOSLCPTranscoder::transcode(const XMLCh* const srcText,
                               MemoryManager* const manager)
 {
@@ -887,15 +878,6 @@ MacOSLCPTranscoder::transcode(const XMLCh* const srcText,
 	}
 
 	return result.release();
-}
-
-
-XMLCh*
-MacOSLCPTranscoder::transcode(const char* const srcText)
-{
-	//	Transcode using a memory manager that allocates
-	//	memory using new[].
-	return transcode(srcText, XMLPlatformUtils::fgArrayMemoryManager);
 }
 
 

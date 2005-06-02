@@ -233,25 +233,7 @@ public :
     virtual XMLCh* transcode(const char* const toTranscode,
                             MemoryManager* const manager = XMLPlatformUtils::fgMemoryManager);
 
-    virtual bool transcode
-    (
-        const   char* const     toTranscode
-        ,       XMLCh* const    toFill
-        , const unsigned int    maxChars
-        , size_t               &lettersWritten
-        , size_t               &bytesConsumed
-    );
-
-    virtual bool transcode
-    (
-        const   XMLCh* const    toTranscode
-        ,       char* const     toFill
-        , const unsigned int    maxChars
-        , size_t               &bytesWritten
-        , size_t               &lettersConsumed
-    );
-
-    // -----------------------------------------------------------------------
+	// -----------------------------------------------------------------------
     //  DEPRECATED old transcode interface
     // -----------------------------------------------------------------------
     virtual unsigned int calcRequiredSize(const char* const srcText
@@ -260,6 +242,21 @@ public :
     virtual unsigned int calcRequiredSize(const XMLCh* const srcText
         , MemoryManager* const manager = XMLPlatformUtils::fgMemoryManager);
 
+    virtual bool transcode
+    (
+        const   char* const     toTranscode
+        ,       XMLCh* const    toFill
+        , const unsigned int    maxChars
+        , MemoryManager* const  manager = XMLPlatformUtils::fgMemoryManager
+    );
+
+    virtual bool transcode
+    (
+        const   XMLCh* const    toTranscode
+        ,       char* const     toFill
+        , const unsigned int    maxChars
+        , MemoryManager* const  manager = XMLPlatformUtils::fgMemoryManager
+    );
 
 private :
     // -----------------------------------------------------------------------
