@@ -24647,9 +24647,13 @@ _ACEOF
 
 		*)
 			if test $i -eq 2; then
+
 				echo "$as_me:$LINENO: result: none available; there will be no network access!!!" >&5
 echo "${ECHO_T}none available; there will be no network access!!!" >&6
-			fi
+
+
+fi
+
 			;;
 
 		esac
@@ -25080,7 +25084,7 @@ fi
 
 
 
-	# Check for MacOSUnicodeConverter
+	# Check for platform-specific transcoders
 	list_add=
 	case $host_os in
 	darwin*)
@@ -25214,12 +25218,16 @@ _ACEOF
 
 		*)
 			if test $i -eq 2; then
+
 				echo "$as_me:$LINENO: result: none" >&5
 echo "${ECHO_T}none" >&6
 				{ { echo "$as_me:$LINENO: error: Xerces cannot function without a transcoder" >&5
 echo "$as_me: error: Xerces cannot function without a transcoder" >&2;}
    { (exit 1); exit 1; }; }
-			fi
+
+
+fi
+
 			;;
 		esac
 	done
@@ -25344,12 +25352,16 @@ _ACEOF
 			;;
 		*)
 			if test $i -eq 2; then
+
 				echo "$as_me:$LINENO: result: none" >&5
 echo "${ECHO_T}none" >&6
 				{ { echo "$as_me:$LINENO: error: Xerces cannot function without a MsgLoader" >&5
 echo "$as_me: error: Xerces cannot function without a MsgLoader" >&2;}
    { (exit 1); exit 1; }; }
-			fi
+
+
+fi
+
 			;;
 		esac
 	done
