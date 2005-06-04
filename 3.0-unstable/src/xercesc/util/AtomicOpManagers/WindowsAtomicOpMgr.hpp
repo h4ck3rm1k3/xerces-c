@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id: $
+ * $Id$
  */
 
 #ifndef WINDOWSATOMICOPMGR_HPP

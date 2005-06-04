@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: $
+ * $Id$
  */
 
 #ifndef WINDOWSFILEMGR_HPP

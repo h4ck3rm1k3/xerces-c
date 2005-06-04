@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: WindowsMutexMgr.cpp 179230 2005-05-31 16:09:28Z amassari $
+ * $Id$
  */
 
 #include <windows.h>

@@ -15,7 +15,7 @@
  */
 
 /*
- * $Id: $
+ * $Id$
  */
 
 #ifndef WINDOWSMUTEXMGR_HPP

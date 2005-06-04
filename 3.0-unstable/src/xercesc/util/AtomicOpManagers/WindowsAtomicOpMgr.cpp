@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id:  $
+ * $Id$
  */
 
 #include <windows.h>
