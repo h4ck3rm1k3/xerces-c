@@ -21480,7 +21480,7 @@ fi
 
 
 
-for ac_header in stdint.h
+for ac_header in inttypes.h
 do
 as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
 if eval "test \"\${$as_ac_Header+set}\" = set"; then
@@ -23109,7 +23109,7 @@ if test "${xerces_cv_type_s16bit_int+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
 
-		if test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_int16_t = xyes; then
+		if test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_int16_t = xyes; then
   xerces_cv_type_s16bit_int=int16_t
 else
 
@@ -23139,7 +23139,7 @@ if test "${xerces_cv_type_u16bit_int+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
 
-		if test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_uint16_t = xyes; then
+		if test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_uint16_t = xyes; then
   xerces_cv_type_u16bit_int=uint16_t
 else
 
@@ -23170,7 +23170,7 @@ if test "${xerces_cv_type_s32bit_int+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
 
-		if test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_int32_t = xyes; then
+		if test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_int32_t = xyes; then
   xerces_cv_type_s32bit_int=int32_t
 else
 
@@ -23200,7 +23200,7 @@ if test "${xerces_cv_type_u32bit_int+set}" = set; then
   echo $ECHO_N "(cached) $ECHO_C" >&6
 else
 
-		if test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_uint32_t = xyes; then
+		if test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_uint32_t = xyes; then
   xerces_cv_type_u32bit_int=uint32_t
 else
 
@@ -25769,10 +25769,10 @@ _ACEOF
 
 fi
 
-if test x$ac_cv_header_stdint_h = xyes; then
+if test x$ac_cv_header_inttypes_h = xyes; then
 
 cat >>confdefs.h <<\_ACEOF
-#define XERCES_HAVE_STDINT_H 1
+#define XERCES_HAVE_INTTYPES_H 1
 _ACEOF
 
 fi
