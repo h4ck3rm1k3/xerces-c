@@ -269,6 +269,9 @@
 /* Define if there is no native bool support in this environment */
 #undef XERCES_NO_NATIVE_BOOL
 
+/* Define to use backslash as an extra path delimiter character */
+#undef XERCES_PATH_DELIMITER_BACKSLASH
+
 /* Define as the platform's export attribute */
 #undef XERCES_PLATFORM_EXPORT
 

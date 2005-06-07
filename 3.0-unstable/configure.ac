@@ -105,42 +105,12 @@ AC_CHECK_FUNCS([clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeof
 AC_REPLACE_FUNCS([stricmp strnicmp iswspace towlower towupper])
 
 
-
-
-# Things we've got to conditionally compile:
-#
-#	Transcoder
-#	MsgLoader
-#	NetAccessor
-#	File
-#	Mutex
-#	Timer
-#
-#	Specify location of libraries
-#	--with-curl=<location>
-#	--with-icu=<location>
-#	--with-libwww=<location>
-#
-#	Enable netaccessor selection:
-#	--enable-netaccessor-curl
-#	--enable-netaccessor-libwww
-#	--enable-netaccessor-socket
-#	--enable-netaccessor-cfurlaccessor
-#	--enable-netaccessor-winsock
-#
-#	Enable msgloader selection:
-#	--enable-msgloader-memory
-#	--enable-msgloader-icu
-#	--enable-msgloader-msgcatalog
-#	--enable-msgloader-msgfile
-#	--enable-msgloader-win32
-#
-
 ######################################################
 # Look for availability of available packages
 ######################################################
 
 XERCES_PRETTY_MAKE
+XERCES_PATH_DELIMITERS
 
 XERCES_CURL_PREFIX
 XERCES_LIBWWW_PREFIX
