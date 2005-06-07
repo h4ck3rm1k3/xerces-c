@@ -19,7 +19,7 @@
  */
 
 
-/* This is just a dummy function to make ensure that the compat
+/* This is just a dummy function to ensure that the compat
    lib always has as least _something_ in it, since it's not portable
    to make a convenience library with nothing in it.
 */
