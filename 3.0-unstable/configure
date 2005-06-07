@@ -23144,9 +23144,9 @@ else
 else
 
 				if test $ac_cv_sizeof_int -eq 2; then
-					xerces_cv_type_s16bit_int="unsigned int"
+					xerces_cv_type_u16bit_int="unsigned int"
 				elif test $ac_cv_sizeof_short -eq 2; then
-					xerces_cv_type_s16bit_int="unsigned short"
+					xerces_cv_type_u16bit_int="unsigned short"
 				else
 					{ { echo "$as_me:$LINENO: error: Couldn't find an unsigned 16 bit int type" >&5
 echo "$as_me: error: Couldn't find an unsigned 16 bit int type" >&2;}
@@ -23205,9 +23205,9 @@ else
 else
 
 				if test $ac_cv_sizeof_int -eq 4; then
-					xerces_cv_type_s32bit_int="unsigned int"
+					xerces_cv_type_u32bit_int="unsigned int"
 				elif test $ac_cv_sizeof_long -eq 4; then
-					xerces_cv_type_s32bit_int="unsigned long"
+					xerces_cv_type_u32bit_int="unsigned long"
 				else
 					{ { echo "$as_me:$LINENO: error: Couldn't find an unsigned 32 bit int type" >&5
 echo "$as_me: error: Couldn't find an unsigned 32 bit int type" >&2;}

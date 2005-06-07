@@ -46,9 +46,9 @@ AC_DEFUN([XERCES_INT_TYPES],
 			[xerces_cv_type_u16bit_int=uint16_t],
 			[
 				if test $ac_cv_sizeof_int -eq 2; then
-					xerces_cv_type_s16bit_int="unsigned int"
+					xerces_cv_type_u16bit_int="unsigned int"
 				elif test $ac_cv_sizeof_short -eq 2; then
-					xerces_cv_type_s16bit_int="unsigned short"
+					xerces_cv_type_u16bit_int="unsigned short"
 				else
 					AC_MSG_ERROR([Couldn't find an unsigned 16 bit int type])
 				fi
@@ -81,9 +81,9 @@ AC_DEFUN([XERCES_INT_TYPES],
 			[xerces_cv_type_u32bit_int=uint32_t],
 			[
 				if test $ac_cv_sizeof_int -eq 4; then
-					xerces_cv_type_s32bit_int="unsigned int"
+					xerces_cv_type_u32bit_int="unsigned int"
 				elif test $ac_cv_sizeof_long -eq 4; then
-					xerces_cv_type_s32bit_int="unsigned long"
+					xerces_cv_type_u32bit_int="unsigned long"
 				else
 					AC_MSG_ERROR([Couldn't find an unsigned 32 bit int type])
 				fi
