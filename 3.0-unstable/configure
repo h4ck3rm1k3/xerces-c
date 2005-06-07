@@ -24318,37 +24318,6 @@ done
 
 
 
-
-
-# Things we've got to conditionally compile:
-#
-#	Transcoder
-#	MsgLoader
-#	NetAccessor
-#	File
-#	Mutex
-#	Timer
-#
-#	Specify location of libraries
-#	--with-curl=<location>
-#	--with-icu=<location>
-#	--with-libwww=<location>
-#
-#	Enable netaccessor selection:
-#	--enable-netaccessor-curl
-#	--enable-netaccessor-libwww
-#	--enable-netaccessor-socket
-#	--enable-netaccessor-cfurlaccessor
-#	--enable-netaccessor-winsock
-#
-#	Enable msgloader selection:
-#	--enable-msgloader-memory
-#	--enable-msgloader-icu
-#	--enable-msgloader-msgcatalog
-#	--enable-msgloader-msgfile
-#	--enable-msgloader-win32
-#
-
 ######################################################
 # Look for availability of available packages
 ######################################################
@@ -24384,6 +24353,27 @@ else
 fi
 
 
+
+
+
+		echo "$as_me:$LINENO: checking for which path delimiter characters to accept" >&5
+echo $ECHO_N "checking for which path delimiter characters to accept... $ECHO_C" >&6
+
+				path_delims=/
+
+		case $host_os in
+		msdos* | windows* | cygwin* | mingw*)
+
+cat >>confdefs.h <<\_ACEOF
+#define XERCES_PATH_DELIMITER_BACKSLASH 1
+_ACEOF
+
+			path_delims="${path_delims}\\"
+			;;
+		esac
+
+		echo "$as_me:$LINENO: result: $path_delims" >&5
+echo "${ECHO_T}$path_delims" >&6
 
 
 

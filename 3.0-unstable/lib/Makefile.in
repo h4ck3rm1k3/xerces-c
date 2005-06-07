@@ -79,6 +79,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_mutexmgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_netaccessor_selection.m4 \
 	$(top_srcdir)/m4/xerces_no_threads.m4 \
+	$(top_srcdir)/m4/xerces_path_delimiters.m4 \
 	$(top_srcdir)/m4/xerces_pretty_make.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
 	$(top_srcdir)/configure.ac
