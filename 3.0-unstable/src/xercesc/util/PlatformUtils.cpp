@@ -648,13 +648,24 @@ bool XMLPlatformUtils::isRelative(const XMLCh* const toCheck
 inline bool
 XMLPlatformUtils::isAnySlash(XMLCh c) 
 {
-    return (
+	// As far as we know, all supported Xerces
+	// platforms use at least a forward slash
+	// as a path separator. So we always check for
+	// that.
+	//
+	// If XERCES_PATHSEP_BACKSLASH evaluates to true,
+	// we also consider that as a slash.
+	//
+	// XERCES_PATHSEP_BACKSLASH may be set in config.h
+	// by configure, or elsewhere by platform-specific
+	// code.
+    return	(
 			false
 		 || chForwardSlash == c
-#if TODO_AUTOCONF_CHECK
+	#if XERCES_PATHSEP_BACKSLASH
 		 || chBackSlash == c
-#endif
-     );
+	#endif
+     		);
 }
 
 
