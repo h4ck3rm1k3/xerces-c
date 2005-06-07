@@ -142,7 +142,7 @@ public :
 
 protected :
     // -----------------------------------------------------------------------
-    //  Protected virtual methods, implemented in Win32TransService2.cpp
+    //  Protected virtual methods
     // -----------------------------------------------------------------------
     virtual XMLTranscoder* makeNewXMLTranscoder
     (

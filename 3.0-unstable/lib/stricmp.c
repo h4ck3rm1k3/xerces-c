@@ -25,6 +25,10 @@
 #include <string.h>
 #endif
 
+#if defined(HAVE_STRINGS)
+#include <strings.h>
+#endif
+
 int stricmp(const char* const str1, const char* const  str2) 
 {
 #if defined(HAVE_STRCASECMP)
