@@ -71,6 +71,7 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_curl_prefix.m4 \
 	$(top_srcdir)/m4/xerces_filemgr_selection.m4 \
 	$(top_srcdir)/m4/xerces_icu_prefix.m4 \
+	$(top_srcdir)/m4/xerces_int_types.m4 \
 	$(top_srcdir)/m4/xerces_libwww_prefix.m4 \
 	$(top_srcdir)/m4/xerces_link_darwin_framework.m4 \
 	$(top_srcdir)/m4/xerces_msgloader_selection.m4 \
@@ -79,8 +80,6 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/acx_pthread.m4 \
 	$(top_srcdir)/m4/xerces_no_threads.m4 \
 	$(top_srcdir)/m4/xerces_pretty_make.m4 \
 	$(top_srcdir)/m4/xerces_transcoder_selection.m4 \
-	$(top_srcdir)/m4/xerces_type_16bit_int.m4 \
-	$(top_srcdir)/m4/xerces_type_32bit_int.m4 \
 	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
