@@ -21,19 +21,19 @@
 #include "stricmp.h"
 #include "config.h"
 
-#if defined(HAVE_STRING)
-#include <string.h>
+#if HAVE_STRING
+#	include <string.h>
 #endif
-
-#if defined(HAVE_STRINGS)
-#include <strings.h>
+#if HAVE_STRINGS
+#	include <strings.h>
 #endif
 
 int stricmp(const char* const str1, const char* const  str2) 
 {
-#if defined(HAVE_STRCASECMP)
+#if HAVE_STRCASECMP
 	return strcasecmp(str1, str2);
 #else
 	#error Need implementation of stricmp compatibility function
 #endif
+
 }

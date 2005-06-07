@@ -21,13 +21,16 @@
 #include "strnicmp.h"
 #include "config.h"
 
-#if defined(HAVE_STRING)
-#include <string.h>
+#if HAVE_STRING
+#	include <string.h>
+#endif
+#if HAVE_STRINGS
+#	include <strings.h>
 #endif
 
 int strnicmp(const char* const str1, const char* const  str2, const unsigned int count)
 {
-#if defined(HAVE_STRNCASECMP)
+#if HAVE_STRNCASECMP
 	return (count == 0) ? 0 : strncasecmp( str1, str2, count);
 #else
 	#error Need implementation of strnicmp compatibility function
