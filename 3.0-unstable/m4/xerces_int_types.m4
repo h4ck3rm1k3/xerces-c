@@ -12,7 +12,7 @@ dnl $Id$
 
 AC_DEFUN([XERCES_INT_TYPES],
 	[
-	AC_CHECK_HEADERS([stdint.h])
+	AC_CHECK_HEADERS([inttypes.h])
 	AC_CHECK_SIZEOF(short)
 	AC_CHECK_SIZEOF(int)
 	AC_CHECK_SIZEOF(long)
@@ -25,7 +25,7 @@ AC_DEFUN([XERCES_INT_TYPES],
 	# Select a signed 16 bit integer type
 	#
 	AC_CACHE_CHECK([for an appropriate signed 16 bit integer type], [xerces_cv_type_s16bit_int], [
-		AS_IF([test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_int16_t = xyes],
+		AS_IF([test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_int16_t = xyes],
 			[xerces_cv_type_s16bit_int=int16_t],
 			[
 				if test $ac_cv_sizeof_int -eq 2; then
@@ -42,7 +42,7 @@ AC_DEFUN([XERCES_INT_TYPES],
 	# Select an unsigned 16 bit integer type
 	#
 	AC_CACHE_CHECK([for an appropriate unsigned 16 bit integer type], [xerces_cv_type_u16bit_int], [
-		AS_IF([test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_uint16_t = xyes],
+		AS_IF([test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_uint16_t = xyes],
 			[xerces_cv_type_u16bit_int=uint16_t],
 			[
 				if test $ac_cv_sizeof_int -eq 2; then
@@ -60,7 +60,7 @@ AC_DEFUN([XERCES_INT_TYPES],
 	# Select a signed 32 bit integer type
 	#
 	AC_CACHE_CHECK([for an appropriate signed 32 bit integer type], [xerces_cv_type_s32bit_int], [
-		AS_IF([test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_int32_t = xyes],
+		AS_IF([test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_int32_t = xyes],
 			[xerces_cv_type_s32bit_int=int32_t],
 			[
 				if test $ac_cv_sizeof_int -eq 4; then
@@ -77,7 +77,7 @@ AC_DEFUN([XERCES_INT_TYPES],
 	# Select an unsigned 32 bit integer type
 	#
 	AC_CACHE_CHECK([for an appropriate unsigned 32 bit integer type], [xerces_cv_type_u32bit_int], [
-		AS_IF([test x$ac_cv_header_stdint_h = xyes && test x$ac_cv_type_uint32_t = xyes],
+		AS_IF([test x$ac_cv_header_inttypes_h = xyes && test x$ac_cv_type_uint32_t = xyes],
 			[xerces_cv_type_u32bit_int=uint32_t],
 			[
 				if test $ac_cv_sizeof_int -eq 4; then

@@ -162,8 +162,8 @@ AC_DEFINE([XERCES_AUTOCONF], 1, [Define to true if autoconf is used in this conf
 
 AS_IF([test x$ac_cv_header_sys_types_h = xyes],
 	AC_DEFINE([XERCES_HAVE_SYS_TYPES_H], 1, [Define to 1 if we have sys/types.h]))
-AS_IF([test x$ac_cv_header_stdint_h = xyes],
-	AC_DEFINE([XERCES_HAVE_STDINT_H],    1, [Define to 1 if we have stdint.h]))
+AS_IF([test x$ac_cv_header_inttypes_h = xyes],
+	AC_DEFINE([XERCES_HAVE_INTTYPES_H],    1, [Define to 1 if we have inttypes.h]))
 
 case $host in
 *-*-msdos* | *-*-mingw32* | *-*-cygwin* | *-*-windows* )
