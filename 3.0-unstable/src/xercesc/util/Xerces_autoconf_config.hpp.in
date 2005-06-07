@@ -45,9 +45,12 @@
 // ---------------------------------------------------------------------------
 #undef XERCES_AUTOCONF
 #undef XERCES_HAVE_SYS_TYPES_H
+#undef XERCES_HAVE_STDINT_H
 
-#undef XERCES_16BIT_INT
-#undef XERCES_32BIT_INT
+#undef XERCES_S16BIT_INT
+#undef XERCES_S32BIT_INT
+#undef XERCES_U16BIT_INT
+#undef XERCES_U32BIT_INT
 #undef XERCES_XMLCH_T
 #undef XERCES_SIZE_T
 #undef XERCES_SSIZE_T
@@ -62,9 +65,11 @@
 #undef XERCES_PLATFORM_IMPORT
 
 // ---------------------------------------------------------------------------
-//  Must include sys/types.h if we're going to typedef to size_t below,
-//	so include sys/types.h if it's available.
+//  Include standard headers, if available, that we may rely on below.
 // ---------------------------------------------------------------------------
+#if XERCES_HAVE_STDINT_H
+#	include <stdint.h>
+#endif
 #if XERCES_HAVE_SYS_TYPES_H
 #	include <sys/types.h>
 #endif
@@ -84,18 +89,18 @@ typedef XERCES_XMLCH_T				XMLCh;
 // ---------------------------------------------------------------------------
 //  Define unsigned 16 and 32 bit integers
 // ---------------------------------------------------------------------------
-typedef unsigned XERCES_16BIT_INT	XMLUInt16;
-typedef unsigned XERCES_32BIT_INT	XMLUInt32;
+typedef XERCES_U16BIT_INT			XMLUInt16;
+typedef XERCES_U32BIT_INT			XMLUInt32;
 
 // ---------------------------------------------------------------------------
 //  Define signed 32 bit integers
 // ---------------------------------------------------------------------------
-typedef XERCES_32BIT_INT			XMLInt32;
+typedef XERCES_S32BIT_INT			XMLInt32;
 
 // ---------------------------------------------------------------------------
 //  XMLFilePos is the type used to represent a file position.
 // ---------------------------------------------------------------------------
-typedef unsigned XERCES_32BIT_INT	XMLFilePos;
+typedef XERCES_U32BIT_INT			XMLFilePos;
 
 
 #define PROJ_XMLUTIL

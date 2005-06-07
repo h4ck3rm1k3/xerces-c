@@ -54,7 +54,7 @@ AM_PROG_CC_C_O
 AC_HEADER_STDC
 AC_HEADER_TIME
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h float.h inttypes.h langinfo.h limits.h locale.h \
-				memory.h netdb.h netinet/in.h nl_types.h stddef.h stdlib.h \
+				memory.h netdb.h netinet/in.h nl_types.h stddef.h stdint.h stdlib.h \
 				string.h strings.h \
 				sys/param.h sys/socket.h sys/time.h sys/timeb.h \
 				unistd.h wchar.h wctype.h \
@@ -68,13 +68,14 @@ AC_C_INLINE
 AC_C_VOLATILE
 AC_C_BIGENDIAN
 
-AC_TYPE_OFF_T
-AC_TYPE_SIZE_T
-XERCES_TYPE_16BIT_INT
-XERCES_TYPE_32BIT_INT
 AC_CHECK_SIZEOF(wchar_t)
 AC_CHECK_TYPE(size_t)
 AC_CHECK_TYPE(ssize_t)
+
+AC_TYPE_OFF_T
+AC_TYPE_SIZE_T
+
+XERCES_INT_TYPES
 
 AC_CXX_HAVE_BOOL
 AC_CXX_HAVE_NAMESPACES
@@ -161,6 +162,8 @@ AC_DEFINE([XERCES_AUTOCONF], 1, [Define to true if autoconf is used in this conf
 
 AS_IF([test x$ac_cv_header_sys_types_h = xyes],
 	AC_DEFINE([XERCES_HAVE_SYS_TYPES_H], 1, [Define to 1 if we have sys/types.h]))
+AS_IF([test x$ac_cv_header_stdint_h = xyes],
+	AC_DEFINE([XERCES_HAVE_STDINT_H],    1, [Define to 1 if we have stdint.h]))
 
 case $host in
 *-*-msdos* | *-*-mingw32* | *-*-cygwin* | *-*-windows* )
@@ -181,12 +184,7 @@ AS_IF([test ! $ac_cv_cxx_have_bool],
 AS_IF([test $ac_cv_cxx_have_lstring],
 	AC_DEFINE([XERCES_LSTRSUPPORT], 1, [Define if there is support for L"widestring"]))
 
-AC_DEFINE_UNQUOTED([XERCES_16BIT_INT], $xerces_cv_type_16bit_int, [An appropriate 16 bit integer type])
-AC_DEFINE_UNQUOTED([XERCES_32BIT_INT], $xerces_cv_type_32bit_int, [An appropriate 32 bit integer type])
-
-AS_IF([test $ac_cv_sizeof_wchar_t -eq 2],
-	AC_DEFINE([XERCES_XMLCH_T], [wchar_t], [Define to the 16 bit type used to represent Xerces UTF-16 characters]),
-	AC_DEFINE_UNQUOTED([XERCES_XMLCH_T], [unsigned $xerces_cv_type_16bit_int], [Define to the 16 bit type used to represent Xerces UTF-16 characters]))
+AC_DEFINE_UNQUOTED([XERCES_XMLCH_T], [$xerces_cv_type_u16bit_int], [Define to the 16 bit type used to represent Xerces UTF-16 characters])
 	
 AS_IF([test x$ac_cv_type_size_t = xyes],
 	AC_DEFINE([XERCES_SIZE_T], [size_t], [Define as the appropriate size_t type]),
