@@ -44,8 +44,8 @@ class WindowsFileMgr : public XMLFileMgr
         virtual XMLFilePos	curPos(FileHandle f, MemoryManager* const manager);
         virtual XMLFilePos	size(FileHandle f, MemoryManager* const manager);
 
-        virtual size_t		read(FileHandle f, size_t byteCount, XMLByte* buffer, MemoryManager* const manager);
-        virtual void		write(FileHandle f, size_t byteCount, const XMLByte* buffer, MemoryManager* const manager);
+        virtual XMLSize_t   read(FileHandle f, XMLSize_t byteCount, XMLByte* buffer, MemoryManager* const manager);
+        virtual void		write(FileHandle f, XMLSize_t byteCount, const XMLByte* buffer, MemoryManager* const manager);
         
         // Ancillary path handling routines
         virtual XMLCh*		getFullPath(const XMLCh* const srcPath, MemoryManager* const manager);
