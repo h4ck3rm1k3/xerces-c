@@ -47,8 +47,6 @@ AC_PROG_LIBTOOL
 AM_PROG_CC_C_O
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lc':
-#AC_CHECK_LIB([c], [main])
 AC_CHECK_LIB([socket], [socket])
 AC_CHECK_LIB([nsl], [gethostbyname])
 
