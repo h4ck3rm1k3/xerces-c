@@ -37,7 +37,13 @@ cmd=$@
 # adds additional flags, which throws this off. So we look
 # for the last arg that doesn't start with -.
 while [ $# -gt 0 ]; do
-	[ "${1##-*}" ] && target=$1
+	case ${1} in
+	-*)
+		;;
+	*)
+		target=$1
+		;;
+	esac
 	shift
 done
 
