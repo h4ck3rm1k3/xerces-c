@@ -552,7 +552,7 @@ XMLPlatformUtils::closeFile(const FileHandle theFile
     if (!fgFileMgr)
 		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
 
-	return fgFileMgr->close(theFile, memmgr);
+	fgFileMgr->close(theFile, memmgr);
 }
 
 void
@@ -562,7 +562,7 @@ XMLPlatformUtils::resetFile(FileHandle theFile
     if (!fgFileMgr)
 		ThrowXMLwithMemMgr(XMLPlatformUtilsException, XMLExcepts::CPtr_PointerIsZero, memmgr);
 
-	return fgFileMgr->reset(theFile, memmgr);
+	fgFileMgr->reset(theFile, memmgr);
 }
 
 
