@@ -30,12 +30,14 @@
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/dom/DOM.hpp>
+#include <xercesc/util/OutOfMemoryException.hpp>
+
 #if defined(XERCES_NEW_IOSTREAMS)
 #include <iostream>
 #else
 #include <iostream.h>
 #endif
-#include <xercesc/util/OutOfMemoryException.hpp>
+
 
 XERCES_CPP_NAMESPACE_USE
 

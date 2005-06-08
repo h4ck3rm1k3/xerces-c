@@ -25,6 +25,8 @@
 // ---------------------------------------------------------------------------
 #if HAVE_CONFIG_H
 #	include <config.h>
+#else
+#	include <xercesc/util/Xerces_no_autoconf_config.hpp>
 #endif
 
 #if HAVE_LIMITS_H
@@ -111,6 +113,9 @@
 #endif
 #if XERCES_USE_MSGLOADER_INMEMORY
 #	include <xercesc/util/MsgLoaders/InMemory/InMemMsgLoader.hpp>
+#endif
+#if XERCES_USE_WIN32_MSGLOADER
+#	include <xercesc/util/MsgLoaders/Win32/Win32MsgLoader.hpp>
 #endif
 
 #include <xercesc/util/TransService.hpp>
@@ -428,6 +433,8 @@ XMLMsgLoader* XMLPlatformUtils::loadAMsgSet(const XMLCh* const msgDomain)
 		ms = new ICUMsgLoader(msgDomain);
 	#elif defined (XERCES_USE_MSGLOADER_ICONV)
 		ms = new MsgCatalogLoader(msgDomain);
+    #elif defined (XERCES_USE_WIN32_MSGLOADER)
+		ms = new Win32MsgLoader(msgDomain);
 	#else // XERCES_USE_MSGLOADER_INMEMORY
 		ms = new InMemMsgLoader(msgDomain);
 	#endif
@@ -685,7 +692,7 @@ unsigned long XMLPlatformUtils::getCurrentMillis()
 		timeb aTime;
 		ftime(&aTime);
 		ms = (unsigned long)(aTime.time*1000 + aTime.millitm);
-	#lse
+	#else
 		// Make this a warning instead?
 		#error No timing support is configured for this platform. You must configure it.
 	#endif

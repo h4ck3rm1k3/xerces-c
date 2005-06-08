@@ -43,8 +43,8 @@
 // Otherwise we include a preconfigured config appropriate for the particular
 // platform.
 //
-#if FLAG_TO_INDICATE_WINDOWS_BUILD
-#	include <xercesc/util/Xerces_windows_config.hpp>
+#ifdef XERCES_NO_CONFIGURE_SUPPORT
+#	include <xercesc/util/Xerces_no_autoconf_config.hpp>
 #else
 //  If the next line generates an error then you haven't run ./configure
 #	include	<xercesc/util/Xerces_autoconf_config.hpp>
@@ -137,63 +137,39 @@ typedef XMLUInt32           UCS4Ch;
 
 // The DLL_EXPORT flag should be defined on the command line during the build of a DLL
 // configure conspires to make this happen.
-#if DLL_EXPORT
-#define PROJ_XMLUTIL
-#define PROJ_XMLPARSER
-#define PROJ_SAX4C
-#define PROJ_SAX2
-#define PROJ_DOM
-#define PROJ_DEPRECATED_DOM
-#define PROJ_PARSERS
-#define PROJ_VALIDATORS
-#endif
 
-#if defined(PROJ_XMLUTIL)
-#define XMLUTIL_EXPORT XERCES_PLATFORM_EXPORT
+#if defined(DLL_EXPORT)
+  #if defined(XERCES_BUILDING_LIBRARY)
+    #define XMLUTIL_EXPORT XERCES_PLATFORM_EXPORT
+    #define XMLPARSER_EXPORT XERCES_PLATFORM_EXPORT
+    #define SAX_EXPORT XERCES_PLATFORM_EXPORT
+    #define SAX2_EXPORT XERCES_PLATFORM_EXPORT
+    #define CDOM_EXPORT XERCES_PLATFORM_EXPORT
+    #define PARSERS_EXPORT  XERCES_PLATFORM_EXPORT
+    #define VALIDATORS_EXPORT  XERCES_PLATFORM_EXPORT
+  #else
+    #define XMLUTIL_EXPORT XERCES_PLATFORM_IMPORT
+    #define XMLPARSER_EXPORT XERCES_PLATFORM_IMPORT
+    #define SAX_EXPORT XERCES_PLATFORM_IMPORT
+    #define SAX2_EXPORT XERCES_PLATFORM_IMPORT
+    #define CDOM_EXPORT XERCES_PLATFORM_IMPORT
+    #define PARSERS_EXPORT  XERCES_PLATFORM_IMPORT
+    #define VALIDATORS_EXPORT  XERCES_PLATFORM_IMPORT
+  #endif
+  #if defined(XERCES_BUILDING_DEPRECATED_LIBRARY)
+    #define DEPRECATED_DOM_EXPORT XERCES_PLATFORM_EXPORT
+  #else
+    #define DEPRECATED_DOM_EXPORT XERCES_PLATFORM_IMPORT
+  #endif
 #else
-#define XMLUTIL_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_XMLPARSER)
-#define XMLPARSER_EXPORT XERCES_PLATFORM_EXPORT
-#else
-#define XMLPARSER_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_SAX4C)
-#define SAX_EXPORT XERCES_PLATFORM_EXPORT
-#else
-#define SAX_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_SAX2)
-#define SAX2_EXPORT XERCES_PLATFORM_EXPORT
-#else
-#define SAX2_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_DOM)
-#define CDOM_EXPORT XERCES_PLATFORM_EXPORT
-#else
-#define CDOM_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_DEPRECATED_DOM)
-#define DEPRECATED_DOM_EXPORT XERCES_PLATFORM_EXPORT
-#else
-#define DEPRECATED_DOM_EXPORT XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_PARSERS)
-#define PARSERS_EXPORT  XERCES_PLATFORM_EXPORT
-#else
-#define PARSERS_EXPORT  XERCES_PLATFORM_IMPORT
-#endif
-
-#if defined(PROJ_VALIDATORS)
-#define VALIDATORS_EXPORT  XERCES_PLATFORM_EXPORT
-#else
-#define VALIDATORS_EXPORT  XERCES_PLATFORM_IMPORT
+  #define XMLUTIL_EXPORT 
+  #define XMLPARSER_EXPORT 
+  #define SAX_EXPORT 
+  #define SAX2_EXPORT
+  #define CDOM_EXPORT
+  #define DEPRECATED_DOM_EXPORT 
+  #define PARSERS_EXPORT 
+  #define VALIDATORS_EXPORT
 #endif
 
 #endif

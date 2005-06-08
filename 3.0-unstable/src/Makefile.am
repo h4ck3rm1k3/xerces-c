@@ -18,6 +18,7 @@
 # $Id$
 #
 
+DEFS += -DXERCES_BUILDING_LIBRARY
 
 #
 # Specify the convenience libraries for various xerces components
