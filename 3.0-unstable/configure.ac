@@ -49,6 +49,8 @@ AM_PROG_CC_C_O
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lc':
 #AC_CHECK_LIB([c], [main])
+AC_CHECK_LIB([socket], [socket])
+AC_CHECK_LIB([nsl], [gethostbyname])
 
 # Checks for header files.
 AC_HEADER_STDC
@@ -93,7 +95,7 @@ ACX_PTHREAD
 #AC_FUNC_STRTOD
 AC_CHECK_FUNCS([clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeofday localeconv \
 				mblen memmove memset nl_langinfo pathconf realpath setlocale socket \
-				strcasecmp strncasecmp stricmp strnicmp strchr strdup strncasecmp \
+				strcasecmp strncasecmp stricmp strnicmp strchr strdup \
 				strrchr strstr strtol strtoul \
 				towupper towlower iswspace \
 				])
