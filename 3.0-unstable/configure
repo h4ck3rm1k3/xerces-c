@@ -19770,8 +19770,6 @@ fi
 
 
 # Checks for libraries.
-# FIXME: Replace `main' with a function in `-lc':
-#AC_CHECK_LIB([c], [main])
 
 echo "$as_me:$LINENO: checking for socket in -lsocket" >&5
 echo $ECHO_N "checking for socket in -lsocket... $ECHO_C" >&6
@@ -24236,10 +24234,9 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
 
-
 for ac_func in clock_gettime ftime getcwd gethostbyaddr gethostbyname gettimeofday localeconv \
 				mblen memmove memset nl_langinfo pathconf realpath setlocale socket \
-				strcasecmp strncasecmp stricmp strnicmp strchr strdup strncasecmp \
+				strcasecmp strncasecmp stricmp strnicmp strchr strdup \
 				strrchr strstr strtol strtoul \
 				towupper towlower iswspace \
 
