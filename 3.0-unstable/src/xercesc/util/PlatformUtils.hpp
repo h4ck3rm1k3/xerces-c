@@ -214,7 +214,7 @@ public :
       * @param manager The MemoryManager to use to allocate objects
       */
 	static XMLFileMgr*
-	XMLPlatformUtils::makeFileMgr(MemoryManager* const manager);
+	makeFileMgr(MemoryManager* const manager);
 	
     /** Get the current file position
       *
