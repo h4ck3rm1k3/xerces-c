@@ -1700,7 +1700,6 @@ bool XSValue::getActualNumericValue(const XMLCh*  const content
 {
     char *nptr = XMLString::transcode(content, manager);
     ArrayJanitor<char> jan(nptr, manager);
-    int   strLen = strlen(nptr);
     char *endptr = 0;
     errno = 0;
 
@@ -1801,6 +1800,7 @@ bool XSValue::getActualNumericValue(const XMLCh*  const content
         return false;
     }
     // check if all chars are valid char
+    unsigned int strLen = strlen(nptr);
     if ( (endptr - nptr) != strLen)
     {
         for (unsigned int i=endptr - nptr; i <strLen; i++) {
