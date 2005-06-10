@@ -133,6 +133,9 @@ public :
 	static XMLAtomicOpMgr*		fgAtomicOpMgr;
     
     static XMLMutex*			fgAtomicMutex;
+    
+    static bool					fgXMLChBigEndian;
+    
     //@}
 
 

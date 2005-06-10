@@ -66,7 +66,6 @@ AC_HEADER_STDBOOL
 AC_C_CONST
 AC_C_INLINE
 AC_C_VOLATILE
-AC_C_BIGENDIAN
 
 AC_CHECK_SIZEOF(wchar_t)
 AC_CHECK_TYPE(size_t)
@@ -121,8 +120,6 @@ XERCES_MSGLOADER_SELECTION
 XERCES_FILEMGR_SELECTION
 XERCES_MUTEXMGR_SELECTION
 XERCES_ATOMICOPMGR_SELECTION
-
-
 
 ######################################################
 # Define some namespace-protected macros for use in the publicly visible
