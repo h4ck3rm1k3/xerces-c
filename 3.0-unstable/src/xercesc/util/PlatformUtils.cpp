@@ -39,8 +39,6 @@
 #	include <sys/timeb.h>
 #endif
 
-#include <assert.h>
-
 #include <xercesc/util/Mutexes.hpp>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/util/RefVectorOf.hpp>
@@ -243,13 +241,12 @@ void XMLPlatformUtils::Initialize(const char*          const locale
     
     
     // Determine our endianness (with regard to a XMLCh 16-bit word)
-    assert(sizeof(XMLCh) == 2);
     union {
     	XMLCh ch;
-    	unsigned char ar[2];
+    	unsigned char ar[sizeof(XMLCh)];
     } endianTest;
-    endianTest.ch = 0x0102;
-    fgXMLChBigEndian = (endianTest.ar[0] == 0x01);
+    endianTest.ch = 1;
+    fgXMLChBigEndian = (endianTest.ar[sizeof(XMLCh)-1] == 1);
     
     
     // Initialize the platform-specific mutex file, and atomic op mgrs
