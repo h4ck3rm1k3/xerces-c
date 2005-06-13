@@ -83,9 +83,8 @@ NetAccessorTest_SOURCES = 			src/NetAccessorTest/NetAccessorTest.cpp
 #									src/ParserTest/ParserTest_Parser.cpp \
 #									src/ParserTest/ParserTest_Parser.hpp
 
-# Needs to use generic pthread conditionals HAS_PTHREADS
-#testprogs +=						ThreadTest
-#ThreadTest_SOURCES = 				src/ThreadTest/ThreadTest.cpp
+testprogs +=						ThreadTest
+ThreadTest_SOURCES = 				src/ThreadTest/ThreadTest.cpp
 
 # Fails to compile under gcc 4 (ambiguous calls to NullPointerException)
 # dcargill says this is obsolete and we can delete it.

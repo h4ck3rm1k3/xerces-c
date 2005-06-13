@@ -20,6 +20,10 @@
  * @author Andy Heninger, IBM
  */
 
+#if HAVE_CONFIG_H
+#	include <config.h>
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -44,51 +48,7 @@
 
 void clearFileInfoMemory();
 
-//------------------------------------------------------------------------------
-//
-//   Windows specific code for starting threads
-//
-//------------------------------------------------------------------------------
-#ifdef PLATFORM_WIN32
-
-#include "Windows.h"
-#include "process.h"
-
-typedef DWORD (WINAPI *ThreadFunc)(void *);
-
-class ThreadFuncs           // This class isolates OS dependent threading
-{                           //   functions from the rest of ThreadTest program.
-public:
-    static void Sleep(int millis) {::Sleep(millis);};
-    static void startThread(ThreadFunc, void *param);
-};
-
-void ThreadFuncs::startThread(ThreadFunc func, void *param)
-{
-    HANDLE  tHandle;
-    DWORD   threadID;
-
-    tHandle = CreateThread(0,          // Security Attributes,
-                           0x10000,    // Stack Size,
-                           func,       // Starting Address.
-                           param,      // Parmeters
-                           0,          // Creation Flags,
-                           &threadID); // Thread ID (Can not be null on 95/98)
-
-    if (tHandle == 0)
-    {
-        fprintf(stderr, "Error starting thread.  Errno = %d\n", errno);
-        clearFileInfoMemory();
-        exit(-1);
-    }
-
-    // Set the priority of the working threads low, so that the UI of the running system will
-    //   remain responsive.
-    SetThreadPriority(tHandle, THREAD_PRIORITY_IDLE);
-}
-
-
-#elif defined (AIX) || defined(SOLARIS) || defined(LINUX) || defined(HPUX) || defined (OS390) || defined(MACOSX) || defined(FREEBSD) || defined(__CYGWIN__) || defined(__QNXNTO__) || defined(INTERIX)
+#ifdef HAVE_PTHREAD
 #include <pthread.h>
 #include <unistd.h>
 #include <errno.h>
@@ -148,8 +108,51 @@ void ThreadFuncs::startThread(ThreadFunc func, void *param)
 }
 
 } // end of extern "C"
+
 #else
-#error This platform is not supported
+
+//------------------------------------------------------------------------------
+//
+//   Windows specific code for starting threads
+//
+//------------------------------------------------------------------------------
+
+#include <Windows.h>
+#include <process.h>
+
+typedef DWORD (WINAPI *ThreadFunc)(void *);
+
+class ThreadFuncs           // This class isolates OS dependent threading
+{                           //   functions from the rest of ThreadTest program.
+public:
+    static void Sleep(int millis) {::Sleep(millis);};
+    static void startThread(ThreadFunc, void *param);
+};
+
+void ThreadFuncs::startThread(ThreadFunc func, void *param)
+{
+    HANDLE  tHandle;
+    DWORD   threadID;
+
+    tHandle = CreateThread(0,          // Security Attributes,
+                           0x10000,    // Stack Size,
+                           func,       // Starting Address.
+                           param,      // Parmeters
+                           0,          // Creation Flags,
+                           &threadID); // Thread ID (Can not be null on 95/98)
+
+    if (tHandle == 0)
+    {
+        fprintf(stderr, "Error starting thread.  Errno = %d\n", errno);
+        clearFileInfoMemory();
+        exit(-1);
+    }
+
+    // Set the priority of the working threads low, so that the UI of the running system will
+    //   remain responsive.
+    SetThreadPriority(tHandle, THREAD_PRIORITY_IDLE);
+}
+
 #endif
 
 
@@ -1045,11 +1048,11 @@ void clearFileInfoMemory()
 //
 //----------------------------------------------------------------------
 
-#ifdef PLATFORM_WIN32
-unsigned long WINAPI threadMain (void *param)
-#else
+#ifdef HAVE_PTHREAD
 extern "C" {
 void threadMain (void *param)
+#else
+unsigned long WINAPI threadMain (void *param)
 #endif
 {
     ThreadInfo   *thInfo = (ThreadInfo *)param;
@@ -1133,11 +1136,11 @@ void threadMain (void *param)
         }
     }
     delete thParser;
-#ifdef PLATFORM_WIN32
-    return 0;
-#else
-    return;
+#ifdef HAVE_PTHREAD
+	return;
 }
+#else
+    return 0;
 #endif
 }
 
