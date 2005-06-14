@@ -319,6 +319,7 @@ domimpl_headers	= \
 	xercesc/dom/impl/DOMConfigurationImpl.hpp \
 	xercesc/dom/impl/DOMDeepNodeListImpl.hpp \
 	xercesc/dom/impl/DOMDeepNodeListPool.hpp \
+	xercesc/dom/impl/DOMDeepNodeListPool.c \
 	xercesc/dom/impl/DOMDocumentFragmentImpl.hpp \
 	xercesc/dom/impl/DOMDocumentImpl.hpp \
 	xercesc/dom/impl/DOMDocumentTypeImpl.hpp \
@@ -413,6 +414,7 @@ framework_headers = \
 	xercesc/framework/psvi/XSModelGroupDefinition.hpp \
 	xercesc/framework/psvi/XSMultiValueFacet.hpp \
 	xercesc/framework/psvi/XSNamedMap.hpp \
+	xercesc/framework/psvi/XSNamedMap.c \
 	xercesc/framework/psvi/XSNamespaceItem.hpp \
 	xercesc/framework/psvi/XSNotationDeclaration.hpp \
 	xercesc/framework/psvi/XSObject.hpp \
@@ -616,16 +618,19 @@ util_headers = \
 	xercesc/util/AutoSense.hpp \
 	xercesc/util/Base64.hpp \
 	xercesc/util/BaseRefVectorOf.hpp \
+	xercesc/util/BaseRefVectorOf.c \
 	xercesc/util/BinFileInputStream.hpp \
 	xercesc/util/BinInputStream.hpp \
 	xercesc/util/BinMemInputStream.hpp \
 	xercesc/util/BitOps.hpp \
 	xercesc/util/BitSet.hpp \
 	xercesc/util/CountedPointer.hpp \
+	xercesc/util/CountedPointer.c \
 	xercesc/util/DefaultPanicHandler.hpp \
 	xercesc/util/EmptyStackException.hpp \
 	xercesc/util/EncodingValidator.hpp \
 	xercesc/util/FlagJanitor.hpp \
+	xercesc/util/FlagJanitor.c \
 	xercesc/util/HashBase.hpp \
 	xercesc/util/HashCMStateSet.hpp \
 	xercesc/util/HashPtr.hpp \
@@ -635,11 +640,16 @@ util_headers = \
 	xercesc/util/InvalidCastException.hpp \
 	xercesc/util/IOException.hpp \
 	xercesc/util/Janitor.hpp \
+	xercesc/util/Janitor.c \
 	xercesc/util/KeyRefPair.hpp \
+	xercesc/util/KeyRefPair.c \
 	xercesc/util/KeyValuePair.hpp \
+	xercesc/util/KeyValuePair.c \
 	xercesc/util/KVStringPair.hpp \
 	xercesc/util/Mutexes.hpp \
+	xercesc/util/LogicalPath.c \
 	xercesc/util/NameIdPool.hpp \
+	xercesc/util/NameIdPool.c \
 	xercesc/util/NoSuchElementException.hpp \
 	xercesc/util/NullPointerException.hpp \
 	xercesc/util/NumberFormatException.hpp \
@@ -649,12 +659,19 @@ util_headers = \
 	xercesc/util/PlatformUtils.hpp \
 	xercesc/util/QName.hpp \
 	xercesc/util/RefArrayOf.hpp \
+	xercesc/util/RefArrayOf.c \
 	xercesc/util/RefArrayVectorOf.hpp \
+	xercesc/util/RefArrayVectorOf.c \
 	xercesc/util/RefHash2KeysTableOf.hpp \
+	xercesc/util/RefHash2KeysTableOf.c \
 	xercesc/util/RefHash3KeysIdPool.hpp \
+	xercesc/util/RefHash3KeysIdPool.c \
 	xercesc/util/RefHashTableOf.hpp \
+	xercesc/util/RefHashTableOf.c \
 	xercesc/util/RefStackOf.hpp \
+	xercesc/util/RefStackOf.c \
 	xercesc/util/RefVectorOf.hpp \
+	xercesc/util/RefVectorOf.c \
 	xercesc/util/regx/ASCIIRangeFactory.hpp \
 	xercesc/util/regx/BlockRangeFactory.hpp \
 	xercesc/util/regx/BMPattern.hpp \
@@ -691,14 +708,19 @@ util_headers = \
 	xercesc/util/SynchronizedStringPool.hpp \
 	xercesc/util/TranscodingException.hpp \
 	xercesc/util/TransENameMap.hpp \
+	xercesc/util/TransENameMap.c \
 	xercesc/util/TransService.hpp \
 	xercesc/util/UnexpectedEOFException.hpp \
 	xercesc/util/UnsupportedEncodingException.hpp \
 	xercesc/util/UTFDataFormatException.hpp \
 	xercesc/util/ValueArrayOf.hpp \
+	xercesc/util/ValueArrayOf.c \
 	xercesc/util/ValueHashTableOf.hpp \
+	xercesc/util/ValueHashTableOf.c \
 	xercesc/util/ValueStackOf.hpp \
+	xercesc/util/ValueStackOf.c \
 	xercesc/util/ValueVectorOf.hpp \
+	xercesc/util/ValueVectorOf.c \
 	xercesc/util/XercesDefs.hpp \
 	xercesc/util/XercesVersion.hpp \
 	xercesc/util/Xerces_autoconf_config.hpp \
@@ -714,6 +736,7 @@ util_headers = \
 	xercesc/util/XMLChTranscoder.hpp \
 	xercesc/util/XMLDateTime.hpp \
 	xercesc/util/XMLDeleterFor.hpp \
+	xercesc/util/XMLDeleterFor.c \
 	xercesc/util/XMLDOMMsg.hpp \
 	xercesc/util/XMLDouble.hpp \
 	xercesc/util/XMLEBCDICTranscoder.hpp \
