@@ -1,49 +1,49 @@
 dnl @synopsis ACX_PTHREAD([ACTION-IF-FOUND[, ACTION-IF-NOT-FOUND]])
+dnl @summary figure out how to build C programs using POSIX threads
+dnl @category InstalledPackages
 dnl
-dnl This macro figures out how to build C programs using POSIX threads.
-dnl It sets the PTHREAD_LIBS output variable to the threads library and
-dnl linker flags, and the PTHREAD_CFLAGS output variable to any special
-dnl C compiler flags that are needed. (The user can also force certain
-dnl compiler flags/libs to be tested by setting these environment
-dnl variables.)
+dnl This macro figures out how to build C programs using POSIX
+dnl threads.  It sets the PTHREAD_LIBS output variable to the threads
+dnl library and linker flags, and the PTHREAD_CFLAGS output variable
+dnl to any special C compiler flags that are needed.  (The user can also
+dnl force certain compiler flags/libs to be tested by setting these
+dnl environment variables.)
 dnl
 dnl Also sets PTHREAD_CC to any special C compiler that is needed for
 dnl multi-threaded programs (defaults to the value of CC otherwise).
 dnl (This is necessary on AIX to use the special cc_r compiler alias.)
 dnl
 dnl NOTE: You are assumed to not only compile your program with these
-dnl flags, but also link it with them as well. e.g. you should link
-dnl with $PTHREAD_CC $CFLAGS $PTHREAD_CFLAGS $LDFLAGS ... $PTHREAD_LIBS
-dnl $LIBS
+dnl flags, but also link it with them as well.  e.g. you should link
+dnl with $PTHREAD_CC $CFLAGS $PTHREAD_CFLAGS $LDFLAGS ... $PTHREAD_LIBS $LIBS
 dnl
-dnl If you are only building threads programs, you may wish to use
-dnl these variables in your default LIBS, CFLAGS, and CC:
+dnl If you are only building threads programs, you may wish to
+dnl use these variables in your default LIBS, CFLAGS, and CC:
 dnl
 dnl        LIBS="$PTHREAD_LIBS $LIBS"
 dnl        CFLAGS="$CFLAGS $PTHREAD_CFLAGS"
 dnl        CC="$PTHREAD_CC"
 dnl
 dnl In addition, if the PTHREAD_CREATE_JOINABLE thread-attribute
-dnl constant has a nonstandard name, defines PTHREAD_CREATE_JOINABLE to
-dnl that name (e.g. PTHREAD_CREATE_UNDETACHED on AIX).
+dnl constant has a nonstandard name, defines PTHREAD_CREATE_JOINABLE
+dnl to that name (e.g. PTHREAD_CREATE_UNDETACHED on AIX).
 dnl
 dnl ACTION-IF-FOUND is a list of shell commands to run if a threads
-dnl library is found, and ACTION-IF-NOT-FOUND is a list of commands to
-dnl run it if it is not found. If ACTION-IF-FOUND is not specified, the
-dnl default action will define HAVE_PTHREAD.
+dnl library is found, and ACTION-IF-NOT-FOUND is a list of commands
+dnl to run it if it is not found.  If ACTION-IF-FOUND is not specified,
+dnl the default action will define HAVE_PTHREAD.
 dnl
-dnl Please let the authors know if this macro fails on any platform, or
-dnl if you have any other suggestions or comments. This macro was based
-dnl on work by SGJ on autoconf scripts for FFTW (www.fftw.org) (with
-dnl help from M. Frigo), as well as ac_pthread and hb_pthread macros
-dnl posted by Alejandro Forero Cuervo to the autoconf macro repository.
-dnl We are also grateful for the helpful feedback of numerous users.
+dnl Please let the authors know if this macro fails on any platform,
+dnl or if you have any other suggestions or comments.  This macro was
+dnl based on work by SGJ on autoconf scripts for FFTW (www.fftw.org)
+dnl (with help from M. Frigo), as well as ac_pthread and hb_pthread
+dnl macros posted by Alejandro Forero Cuervo to the autoconf macro
+dnl repository.  We are also grateful for the helpful feedback of
+dnl numerous users.
 dnl
-dnl @category InstalledPackages
-dnl @author Steven G. Johnson <stevenj@alum.mit.edu>
-dnl @version 2005-01-14
+dnl @version 2005-06-15
 dnl @license GPLWithACException
-dnl
+dnl @author Steven G. Johnson <stevenj@alum.mit.edu>
 dnl (license info is here: http://ac-archive.sourceforge.net/doc/copyright.html)
 
 AC_DEFUN([ACX_PTHREAD], [
@@ -117,7 +117,7 @@ case "${host_cpu}-${host_os}" in
         # who knows whether they'll stub that too in a future libc.)  So,
         # we'll just look for -pthreads and -lpthread first:
 
-        acx_pthread_flags="-pthread -pthreads pthread -mt $acx_pthread_flags"
+        acx_pthread_flags="-pthreads pthread -mt -pthread $acx_pthread_flags"
         ;;
 esac
 
@@ -191,7 +191,7 @@ if test "x$acx_pthread_ok" = xyes; then
 	AC_MSG_CHECKING([for joinable pthread attribute])
 	attr_name=unknown
 	for attr in PTHREAD_CREATE_JOINABLE PTHREAD_CREATE_UNDETACHED; do
-	    AC_TRY_LINK([#include <pthread.h>], [int attr=$attr;],
+	    AC_TRY_LINK([#include <pthread.h>], [int attr=$attr; return attr;],
                         [attr_name=$attr; break])
 	done
         AC_MSG_RESULT($attr_name)
