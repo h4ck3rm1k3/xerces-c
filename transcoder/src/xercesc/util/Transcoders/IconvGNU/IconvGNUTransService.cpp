@@ -170,9 +170,10 @@ IconvGNUWrapper::IconvGNUWrapper (MemoryManager* manager)
 IconvGNUWrapper::IconvGNUWrapper ( iconv_t    cd_from,
                iconv_t    cd_to,
                size_t    uchsize,
-               unsigned int    ubo )
+               unsigned int    ubo,
+               MemoryManager* manager)
     : fUChSize(uchsize), fUBO(ubo),
-      fCDTo(cd_to), fCDFrom(cd_from)
+      fCDTo(cd_to), fCDFrom(cd_from), fMutex(manager)
 {
     if (fCDFrom == (iconv_t) -1 || fCDTo == (iconv_t) -1) {
         XMLPlatformUtils::panic (PanicHandler::Panic_NoTransService);
@@ -548,7 +549,7 @@ const XMLCh* IconvGNUTransService::getId() const
 
 XMLLCPTranscoder* IconvGNUTransService::makeNewLCPTranscoder(MemoryManager* manager)
 {
-    return new (manager) IconvGNULCPTranscoder (cdFrom(), cdTo(), uChSize(), UBO());
+    return new (manager) IconvGNULCPTranscoder (cdFrom(), cdTo(), uChSize(), UBO(), manager);
 }
 
 bool IconvGNUTransService::supportsSrcOfs() const
@@ -942,8 +943,9 @@ bool IconvGNULCPTranscoder::transcode(const   char* const    toTranscode
 IconvGNULCPTranscoder::IconvGNULCPTranscoder (iconv_t        cd_from,
                         iconv_t        cd_to,
                         size_t        uchsize,
-                        unsigned int    ubo)
-    : IconvGNUWrapper (cd_from, cd_to, uchsize, ubo)
+                        unsigned int    ubo,
+                        MemoryManager* manager)
+    : IconvGNUWrapper (cd_from, cd_to, uchsize, ubo, manager)
 {
 }
 
@@ -965,7 +967,7 @@ IconvGNUTranscoder::IconvGNUTranscoder (const    XMLCh* const    encodingName
                       , MemoryManager* const manager
     )
     : XMLTranscoder(encodingName, blockSize, manager)
-    , IconvGNUWrapper (cd_from, cd_to, uchsize, ubo)
+    , IconvGNUWrapper (cd_from, cd_to, uchsize, ubo, manager)
 {
 }
 

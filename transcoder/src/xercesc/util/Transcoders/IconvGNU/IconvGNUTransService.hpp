@@ -44,7 +44,8 @@ public:
       iconv_t		cd_from,
       iconv_t		cd_to,
       size_t		uchsize,
-      unsigned int	ubo
+      unsigned int	ubo,
+      MemoryManager* manager
     );
     virtual ~IconvGNUWrapper();
 
@@ -295,7 +296,8 @@ public :
       iconv_t		from,
       iconv_t		to,
       size_t		uchsize,
-      unsigned int	ubo
+      unsigned int	ubo,
+      MemoryManager* manager
     );
 
 protected:
