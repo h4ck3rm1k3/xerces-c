@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: RefHash2KeysTableOf.hpp 883368 2009-11-23 15:28:19Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_REFHASH2KEYSTABLEOF_HPP)

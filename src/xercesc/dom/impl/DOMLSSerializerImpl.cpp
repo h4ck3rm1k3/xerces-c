@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMLSSerializerImpl.cpp 1329216 2012-04-23 12:44:51Z amassari $
  */
 
 #include "DOMLSSerializerImpl.hpp"

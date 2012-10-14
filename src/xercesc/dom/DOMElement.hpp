@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMElement.hpp 792236 2009-07-08 17:22:35Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMELEMENT_HPP)

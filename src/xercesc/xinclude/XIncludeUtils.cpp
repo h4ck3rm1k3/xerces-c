@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XIncludeUtils.cpp 1329252 2012-04-23 14:24:41Z amassari $
  */
 
 #include <xercesc/xinclude/XIncludeUtils.hpp>

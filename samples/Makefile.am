@@ -16,7 +16,7 @@
 #
 
 #
-# $Id$
+# $Id: Makefile.am 883272 2009-11-23 08:17:49Z borisk $
 #
 
 bin_PROGRAMS =                      ${sampleprogs}

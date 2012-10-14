@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLChTranscoder.hpp 635560 2008-03-10 14:10:09Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLCHTRANSCODER_HPP)

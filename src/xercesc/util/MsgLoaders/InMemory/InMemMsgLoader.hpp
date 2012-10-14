@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: InMemMsgLoader.hpp 570552 2007-08-28 19:57:36Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_INMEMMSGLOADER_HPP)

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: strnicmp.h 673966 2008-07-04 08:59:34Z borisk $
  */
 
 #ifndef STRNICMP_H

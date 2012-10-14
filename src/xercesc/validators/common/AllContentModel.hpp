@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: AllContentModel.hpp 901107 2010-01-20 08:45:02Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_ALLCONTENTMODEL_HPP)

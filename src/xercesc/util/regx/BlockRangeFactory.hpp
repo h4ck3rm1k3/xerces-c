@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: BlockRangeFactory.hpp 678879 2008-07-22 20:05:05Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_BLOCKRANGEFACTORY_HPP)

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: ICUMsgLoader.cpp 883612 2009-11-24 07:24:53Z borisk $
  */
 
 

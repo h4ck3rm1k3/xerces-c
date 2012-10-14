@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLGrammarPoolImpl.hpp 671531 2008-06-25 12:38:28Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLGRAMMARPOOLIMPL_HPP)

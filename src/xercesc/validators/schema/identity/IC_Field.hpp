@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: IC_Field.hpp 932889 2010-04-11 13:10:10Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_IC_FIELD_HPP)

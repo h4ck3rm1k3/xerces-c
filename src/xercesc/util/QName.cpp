@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: QName.cpp 810580 2009-09-02 15:52:22Z amassari $
  */
 
 #include <xercesc/util/Janitor.hpp>

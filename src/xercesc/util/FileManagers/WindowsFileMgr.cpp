@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: WindowsFileMgr.cpp 556533 2007-07-16 07:36:41Z amassari $
  */
 
 #include <windows.h>

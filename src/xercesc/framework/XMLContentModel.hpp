@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLContentModel.hpp 677705 2008-07-17 20:15:32Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLCONTENTMODEL_HPP)

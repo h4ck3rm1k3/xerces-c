@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: PlatformUtils.cpp 932876 2010-04-11 12:16:58Z borisk $
  *
  */
 

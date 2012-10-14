@@ -7,7 +7,7 @@ dnl @author James Berry
 dnl @version 2005-05-23
 dnl @license AllPermissive
 dnl
-dnl $Id$
+dnl $Id: xerces_msgloader_selection.m4 835245 2009-11-12 05:57:31Z borisk $
 
 AC_DEFUN([XERCES_MSGLOADER_SELECTION],
 	[

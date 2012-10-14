@@ -7,7 +7,7 @@ dnl @author James Berry
 dnl @version 2005-05-23
 dnl @license AllPermissive
 dnl
-dnl $Id$
+dnl $Id: xerces_curl_prefix.m4 883272 2009-11-23 08:17:49Z borisk $
 
 AC_DEFUN([XERCES_CURL_PREFIX],
 	[

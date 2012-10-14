@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLString.cpp 1395625 2012-10-08 15:45:34Z amassari $
  */
 
 

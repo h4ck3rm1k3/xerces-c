@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: AnyURIDatatypeValidator.hpp 608951 2008-01-04 18:21:22Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_ANYURI_DATATYPEVALIDATOR_HPP)

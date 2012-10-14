@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMDocumentImpl.cpp 932950 2010-04-11 17:41:04Z borisk $
  */
 #include "DOMDocumentImpl.hpp"
 #include "DOMCasts.hpp"

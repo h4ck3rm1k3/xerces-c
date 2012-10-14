@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XPathMatcher.hpp 803869 2009-08-13 12:56:21Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XPATHMATCHER_HPP)

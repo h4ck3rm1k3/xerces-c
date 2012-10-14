@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: SchemaSymbols.hpp 802804 2009-08-10 14:21:48Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_SCHEMASYMBOLS_HPP)

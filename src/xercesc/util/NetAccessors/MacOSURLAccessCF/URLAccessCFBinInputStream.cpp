@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: URLAccessCFBinInputStream.cpp 936317 2010-04-21 14:20:51Z borisk $
  */
 
 #include <cstdlib>

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSTSHarness.cpp 983800 2010-08-09 20:04:19Z amassari $
  */
 
 

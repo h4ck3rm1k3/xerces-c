@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: MemBufFormatTarget.cpp 932889 2010-04-11 13:10:10Z borisk $
  */
 
 #include <xercesc/framework/MemBufFormatTarget.hpp>

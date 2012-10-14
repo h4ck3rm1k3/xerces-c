@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: URLAccessCFBinInputStream.hpp 670359 2008-06-22 13:43:45Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_URLACCESSCFBININPUTSTREAM_HPP)

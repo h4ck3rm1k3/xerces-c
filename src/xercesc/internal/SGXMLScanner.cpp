@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: SGXMLScanner.cpp 1002312 2010-09-28 18:33:53Z amassari $
  */
 
 

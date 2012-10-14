@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: StdOutFormatTarget.hpp 553937 2007-07-06 16:02:19Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_STDOUTFORMATTARGET_HPP)

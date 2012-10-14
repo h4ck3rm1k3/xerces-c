@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XML256TableTranscoder.hpp 635560 2008-03-10 14:10:09Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XML256TABLETRANSCODER_HPP)

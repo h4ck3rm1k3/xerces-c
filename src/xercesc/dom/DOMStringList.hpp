@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMStringList.hpp 671894 2008-06-26 13:29:21Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMSTRINGLIST_HPP)

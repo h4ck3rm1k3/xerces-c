@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMCasts.hpp 673975 2008-07-04 09:23:56Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMCASTS_HPP)

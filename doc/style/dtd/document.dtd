@@ -16,4 +16,4 @@
 <!ATTLIST s3 title CDATA #REQUIRED>
 <!ATTLIST s4 title CDATA #REQUIRED>
 
-<!-- CVS $Revision$ $Date$ -->
+<!-- CVS $Revision: 173497 $ $Date: 2002-02-13 20:49:41 +0100 (Wed, 13 Feb 2002) $ -->

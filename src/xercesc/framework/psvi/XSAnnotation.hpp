@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSAnnotation.hpp 672273 2008-06-27 13:57:00Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XSANNOTATION_HPP)

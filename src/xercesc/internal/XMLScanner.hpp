@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLScanner.hpp 882548 2009-11-20 13:44:14Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLSCANNER_HPP)

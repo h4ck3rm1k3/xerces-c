@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMErrorImpl.cpp 671894 2008-06-26 13:29:21Z borisk $
  */
 
 #include "DOMErrorImpl.hpp"

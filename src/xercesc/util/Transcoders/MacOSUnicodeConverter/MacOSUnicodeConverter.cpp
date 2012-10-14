@@ -16,7 +16,7 @@
  */
 
 /*
- *	$Id$
+ *	$Id: MacOSUnicodeConverter.cpp 942560 2010-05-09 16:59:49Z borisk $
  */
  
  

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XIncludeDOMDocumentProcessor.hpp 655706 2008-05-13 01:08:39Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XINCLUDEDOMDOCUMENTPROCESSOR_HPP)

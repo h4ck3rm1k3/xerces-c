@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: StDOMNode.hpp 570480 2007-08-28 16:36:34Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_STDOMNODE_HPP)

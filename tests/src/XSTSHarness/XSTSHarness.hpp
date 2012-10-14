@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSTSHarness.hpp 804211 2009-08-14 13:18:09Z amassari $
  */
 
 #ifndef XSTS_HARNESS_HPP

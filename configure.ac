@@ -20,7 +20,7 @@
 #
 
 #
-# $Id$
+# $Id: configure.ac 1391481 2012-09-28 14:16:35Z amassari $
 #
 
 AC_PREREQ(2.60)

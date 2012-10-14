@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLString.hpp 1137951 2011-06-21 10:49:44Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLSTRING_HPP)

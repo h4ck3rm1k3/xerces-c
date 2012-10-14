@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: PosixFileMgr.cpp 673975 2008-07-04 09:23:56Z borisk $
  */
 
 #include <stdio.h>

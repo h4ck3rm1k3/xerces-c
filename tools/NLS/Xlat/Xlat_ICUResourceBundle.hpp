@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: Xlat_ICUResourceBundle.hpp 470094 2006-11-01 20:41:30Z amassari $
  */
 
 #ifndef ICU_RESBUND_FORMATTER_H

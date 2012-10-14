@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: ContentLeafNameTypeVector.hpp 676911 2008-07-15 13:27:32Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_CONTENTLEAFNAMETYPEVECTOR_HPP)

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: Xerces_autoconf_config.borland.hpp 834826 2009-11-11 10:03:53Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XERCES_AUTOCONFIG_CONFIG_HPP)

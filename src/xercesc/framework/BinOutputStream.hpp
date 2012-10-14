@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: BinOutputStream.hpp 553915 2007-07-06 14:57:08Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_BIN_OUTPUT_STREAM_HPP)

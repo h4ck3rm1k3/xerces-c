@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSElementDeclaration.hpp 527149 2007-04-10 14:56:39Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XSELEMENTDECLARATION_HPP)

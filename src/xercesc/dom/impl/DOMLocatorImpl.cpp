@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMLocatorImpl.cpp 676853 2008-07-15 09:58:05Z borisk $
  */
 
 #include "DOMLocatorImpl.hpp"

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMDocumentImpl.hpp 1327014 2012-04-17 09:35:00Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMDOCUMENTIMPL_HPP)

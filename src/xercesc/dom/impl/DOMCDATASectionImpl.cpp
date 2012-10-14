@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMCDATASectionImpl.cpp 1027994 2010-10-27 15:07:29Z amassari $
  */
 
 #include "DOMCDATASectionImpl.hpp"

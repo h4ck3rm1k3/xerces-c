@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSDElementNSImpl.cpp 678381 2008-07-21 10:15:01Z borisk $
  */
 #include <xercesc/util/XMLUniDefs.hpp>
 #include <xercesc/dom/DOMException.hpp>

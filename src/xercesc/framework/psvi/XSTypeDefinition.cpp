@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSTypeDefinition.cpp 471747 2006-11-06 14:31:56Z amassari $
  */
 
 #include <xercesc/framework/psvi/XSTypeDefinition.hpp>

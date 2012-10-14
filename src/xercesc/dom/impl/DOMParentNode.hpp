@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMParentNode.hpp 678709 2008-07-22 10:56:56Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_DOMPARENTNODE_HPP)

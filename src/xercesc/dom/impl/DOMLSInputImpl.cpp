@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMLSInputImpl.cpp 752848 2009-03-12 12:44:40Z amassari $
  */
 
 #include "DOMLSInputImpl.hpp"

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- CVS $Revision$ $Date$ -->
+<!-- CVS $Revision: 173477 $ $Date: 2002-02-05 22:57:44 +0100 (Tue, 05 Feb 2002) $ -->
 
 <loader>
   <processor name="xslt">

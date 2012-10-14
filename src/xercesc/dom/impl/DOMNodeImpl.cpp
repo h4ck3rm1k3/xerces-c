@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMNodeImpl.cpp 673428 2008-07-02 16:00:35Z amassari $
  */
 
 // This class doesn't support having any children, and implements the behavior

@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLUniCharacter.hpp 671870 2008-06-26 12:19:31Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLUNICHARACTER_HPP)

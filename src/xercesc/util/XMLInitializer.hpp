@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XMLInitializer.hpp 1329252 2012-04-23 14:24:41Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_XMLINITIALIZER_HPP)

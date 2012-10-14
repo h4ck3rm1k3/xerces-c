@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: BinFileOutputStream.cpp 553915 2007-07-06 14:57:08Z amassari $
  */
 
 

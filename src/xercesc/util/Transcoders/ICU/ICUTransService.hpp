@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: ICUTransService.hpp 932889 2010-04-11 13:10:10Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_ICUTRANSSERVICE_HPP)

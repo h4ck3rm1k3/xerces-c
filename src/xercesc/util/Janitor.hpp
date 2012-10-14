@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: Janitor.hpp 669844 2008-06-20 10:11:44Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_JANITOR_HPP)

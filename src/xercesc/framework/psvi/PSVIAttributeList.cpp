@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: PSVIAttributeList.cpp 674012 2008-07-04 11:18:21Z borisk $
  */
 
 #include <xercesc/framework/psvi/PSVIAttributeList.hpp>

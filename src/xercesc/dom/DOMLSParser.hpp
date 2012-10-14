@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMLSParser.hpp 832686 2009-11-04 08:55:59Z borisk $
  *
  */
 

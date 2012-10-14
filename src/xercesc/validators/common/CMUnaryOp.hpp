@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: CMUnaryOp.hpp 677396 2008-07-16 19:36:20Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_CMUNARYOP_HPP)

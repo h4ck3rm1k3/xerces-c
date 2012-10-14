@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: DOMAttrImpl.cpp 678709 2008-07-22 10:56:56Z borisk $
  */
 
 #include <xercesc/dom/DOMDocument.hpp>

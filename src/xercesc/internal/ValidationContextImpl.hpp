@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: ValidationContextImpl.hpp 729944 2008-12-29 17:03:32Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_VALIDATION_CONTEXTIMPL_HPP)

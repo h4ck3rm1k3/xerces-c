@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: TransService.hpp 1224891 2011-12-27 10:59:21Z amassari $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_TRANSSERVICE_HPP)

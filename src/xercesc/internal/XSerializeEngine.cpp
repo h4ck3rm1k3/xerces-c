@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: XSerializeEngine.cpp 834826 2009-11-11 10:03:53Z borisk $
  */
 
 

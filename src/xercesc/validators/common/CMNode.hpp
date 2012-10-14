@@ -16,7 +16,7 @@
  */
 
 /*
- * $Id$
+ * $Id: CMNode.hpp 677430 2008-07-16 21:05:31Z borisk $
  */
 
 #if !defined(XERCESC_INCLUDE_GUARD_CMNODE_HPP)
